@@ -36,6 +36,13 @@ let g:syntastic_auto_loc_list=1
 let g:LustyJugglerShowKeys = 'a'
 "let g:LustyJugglerShowKeys = 1
 
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
 " Plugin bindings
 nn <silent> <Leader>t :Tlist<CR><C-w>h
 nn <silent> <Leader>s :nohls<CR>
