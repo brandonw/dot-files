@@ -14,7 +14,6 @@ set ruler
 set showcmd
 set incsearch
 set nobackup
-set directory=~/.vim/tmp
 set ignorecase
 set smartcase
 set title
