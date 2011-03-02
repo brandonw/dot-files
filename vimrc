@@ -27,14 +27,19 @@ set t_Co=256
 set hidden
 set tags+=tags;$HOME
 
+set laststatus=2
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline+=%{BW_syntasticStatuslineSpace()}
+set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:LustyJugglerShowKeys = 'a'
 "let g:LustyJugglerShowKeys = 1
 let g:snips_author = 'Brandon Waskiewicz'
+
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
@@ -104,3 +109,11 @@ endif " has("autocmd")
 " file it was loaded from, thus the changes you made.
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 	 	\ | wincmd p | diffthis
+
+function! BW_syntasticStatuslineSpace()
+    if len(SyntasticStatuslineFlag()) > 0
+	return ' '
+    else
+        return ''
+    endif
+endfunction
