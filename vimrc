@@ -54,6 +54,7 @@ nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>j :LustyJuggler<CR>
 nn <silent> <Leader>a :A<CR>
+nn <F5> :GundoToggle<CR>
 
 " Window switching bindings
 nn <C-h> <C-w>h
