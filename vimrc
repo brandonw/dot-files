@@ -34,6 +34,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:LustyJugglerShowKeys = 'a'
 "let g:LustyJugglerShowKeys = 1
+let g:snips_author = 'Brandon Waskiewicz'
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
@@ -47,6 +48,7 @@ nn <silent> <Leader>t :Tlist<CR><C-w>h
 nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>j :LustyJuggler<CR>
+nn <silent> <Leader>a :A<CR>
 
 " Window switching bindings
 nn <C-h> <C-w>h
