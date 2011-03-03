@@ -84,7 +84,7 @@ let g:gist_open_browser_after_post = 1
 let g:gist_browser_command = 'google-chrome %URL%'
 
 colorscheme inkpot
-" inkpot molokai
+" inkpot molokai mustang vitamins
 
 if has("gui_running")
   set guifont=Inconsolata\ Medium\ 12
