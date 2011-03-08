@@ -25,21 +25,26 @@ syntax on
 set hlsearch
 set t_Co=256
 set hidden
+set laststatus=2
 set tags+=tags;$HOME
 
-set laststatus=2
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%{BW_syntasticStatuslineSpace()}
+if &diff
+  
+else
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  set statusline+=%{BW_syntasticStatuslineSpace()}
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_loc_list=1
+  
+endif
+
 set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
 let g:LustyJugglerShowKeys = 'a'
 "let g:LustyJugglerShowKeys = 1
 let g:snips_author = 'Brandon Waskiewicz'
-
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
