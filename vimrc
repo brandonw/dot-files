@@ -37,7 +37,6 @@ else
   set statusline+=%{BW_syntasticStatuslineSpace()}
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
-  
 endif
 
 set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -106,6 +105,8 @@ if has("autocmd")
   au!
 
   autocmd FileType text setlocal textwidth=79
+  autocmd FileType c setlocal fo+=t
+  autocmd FileType c setlocal textwidth=80
   "autocmd FileType clojure set path+=/home/brandon/code/**1/src
 else
 
