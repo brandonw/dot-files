@@ -71,14 +71,6 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" Rebind omnicomplete
-ino <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-			\ "\<lt>C-n>" :
-			\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-			\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-			\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-imap <C-@> <C-Space>
-
 let Tlist_Inc_Winwidth = 0
 let $PAGER=''
 let g:gist_clip_command = 'xclip -selection clipboard'
