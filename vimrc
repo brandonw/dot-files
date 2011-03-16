@@ -97,7 +97,7 @@ if has("autocmd")
 
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal fo+=t
-  autocmd FileType c setlocal cino=(0
+  "autocmd FileType c setlocal cino=(0
   autocmd FileType c setlocal textwidth=80
   "autocmd FileType clojure set path+=/home/brandon/code/**1/src
 else
