@@ -20,7 +20,6 @@ set title
 set scrolloff=3
 set shortmess=atI
 set autoindent
-"set foldcolumn=1
 syntax on
 set hlsearch
 set t_Co=256
@@ -42,7 +41,6 @@ endif
 set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 let g:LustyJugglerShowKeys = 'a'
-"let g:LustyJugglerShowKeys = 1
 let g:snips_author = 'Brandon Waskiewicz'
 
 if exists(":Tabularize")
@@ -109,6 +107,7 @@ endif " has("autocmd")
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 	 	\ | wincmd p | diffthis
 
+" Returns a space if there are synastic errors, and no space if there aren't
 function! BW_syntasticStatuslineSpace()
     if len(SyntasticStatuslineFlag()) > 0
 	return ' '
