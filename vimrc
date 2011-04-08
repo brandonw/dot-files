@@ -76,6 +76,7 @@ let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_browser_command = 'google-chrome %URL%'
 let c_syntax_for_h = 1
+let g:xml_syntax_folding = 1
 
 colorscheme inkpot
 " inkpot molokai
@@ -94,6 +95,7 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
+  autocmd FileType xml setlocal foldmethod=syntax
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal fo+=t
   "autocmd FileType c setlocal cino=(0
