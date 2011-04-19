@@ -25,15 +25,9 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule "bundle/ragtag"]
-	path = bundle/ragtag
-	url = https://github.com/tpope/vim-ragtag.git
 [submodule "bundle/repeat"]
 	path = bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/unimpaired"]
-	path = bundle/unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "bundle/extradite"]
 	path = bundle/extradite
 	url = https://github.com/int3/vim-extradite.git
