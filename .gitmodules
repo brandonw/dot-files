@@ -1,48 +1,48 @@
-[submodule "bundle/tabular"]
-	path = bundle/tabular
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
 	ignore = dirty
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
 	ignore = dirty
-[submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 	ignore = dirty
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 	ignore = dirty
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 	ignore = dirty
-[submodule "bundle/lusty"]
-	path = bundle/lusty
+[submodule "vim/bundle/lusty"]
+	path = vim/bundle/lusty
 	url = https://github.com/sjbach/lusty.git
 	ignore = dirty
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 	ignore = dirty
-[submodule "bundle/surround"]
-	path = bundle/surround
+[submodule "vim/bundle/surround"]
+	path = vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
 	ignore = dirty
-[submodule "bundle/markdown"]
-	path = bundle/markdown
+[submodule "vim/bundle/markdown"]
+	path = vim/bundle/markdown
 	url = https://github.com/tpope/vim-markdown.git
 	ignore = dirty
-[submodule "bundle/repeat"]
-	path = bundle/repeat
+[submodule "vim/bundle/repeat"]
+	path = vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
 	ignore = dirty
-[submodule "bundle/extradite"]
-	path = bundle/extradite
+[submodule "vim/bundle/extradite"]
+	path = vim/bundle/extradite
 	url = https://github.com/int3/vim-extradite.git
 	ignore = dirty
-[submodule "bundle/indent-guide"]
-	path = bundle/indent-guide
+[submodule "vim/bundle/indent-guide"]
+	path = vim/bundle/indent-guide
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
 	ignore = dirty
