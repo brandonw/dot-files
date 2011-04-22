@@ -98,6 +98,7 @@ if has("autocmd")
   autocmd FileType xml setlocal foldmethod=syntax
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80
+  autocmd FileType c setlocal fo+=t
   "autocmd FileType clojure set path+=/home/brandon/code/**1/src
 else
 
