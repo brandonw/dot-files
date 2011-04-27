@@ -13,3 +13,5 @@ URxvt.cursorColor:	blue
 
 URxvt.scrollBar:	false
 URxvt.urgentOnBell:     true
+
+!URxvt.background:	Gray
