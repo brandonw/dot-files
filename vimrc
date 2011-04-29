@@ -71,6 +71,8 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 let Tlist_Inc_Winwidth = 0
 let Tlist_Show_One_File = 1
+let Tlist_Close_On_Select = 1
+let TList_Process_File_Always = 1
 let $PAGER=''
 let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
