@@ -219,7 +219,7 @@ settings = {
     beep_when_away = "yes";
     beep_msg_level = "MSGS NOTICES HILIGHT";
     bell_beeps = "yes";
-    theme = "default";
+    theme = "solarish";
     hilight_color = "= %M";
   };
   "perl/core/scripts" = { nicklist_width = "17"; };
