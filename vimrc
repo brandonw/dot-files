@@ -81,11 +81,12 @@ let g:gist_browser_command = 'google-chrome %URL%'
 let c_syntax_for_h = 1
 let g:xml_syntax_folding = 1
 
-colorscheme inkpot
-" inkpot molokai
+set background=dark
+colorscheme solarized
+" inkpot molokai solarized
 
 if has("gui_running")
-  set guifont=Inconsolata\ Medium\ 12
+  set guifont=Dina
   set guioptions-=T
   set guioptions-=m
   set lines=60
