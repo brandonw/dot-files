@@ -4,7 +4,7 @@ then
 	stty stop undef
 	stty start undef
 fi
-if [ "$HOSTNAME" == "waskiewicz-pc" ]
+if [ "$HOSTNAME" == "brandon-pc" ]
 then
 	# use rxvt instead of rxvt-unicode as TERM
 	export TERM="rxvt"
