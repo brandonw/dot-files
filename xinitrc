@@ -16,8 +16,5 @@ done &
 
 numlockx &
 
-feh --bg-tile ~/.wallpaper.png
-conky &
-
 #exec xmonad
 exec dwm
