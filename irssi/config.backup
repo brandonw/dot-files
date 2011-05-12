@@ -235,5 +235,5 @@ mainwindows = {
   2 = { first_line = "8"; lines = "50"; };
   1 = { first_line = "1"; lines = "7"; };
 };
-ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
+#ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
 logs = { };
