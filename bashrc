@@ -8,28 +8,10 @@ if [ "$HOSTNAME" == "brandon-pc" ]
 then
 	# use rxvt instead of rxvt-unicode as TERM
 	export TERM="rxvt"
+fi
 
-	# exports STREAM_KEY
-	. .stream_key
-
-	streaming() {
-		INRES="640x480"
-		OUTRES="640x480"
-		SCREEN_OFF=":0.0+1,19"
-		AUDIO_IN="pulse"
-		FPS="20"
-		PIX_FMT="yuv420p"
-		QUAL="faster"
-
-		# -f flv "rtmp://live.justin.tv/app/$STREAM_KEY flashver=FMLE/3.0\20(compatible;\20FMSc/1.0)"
-
-		ffmpeg \
-			-f x11grab -s "$INRES" -r "$FPS" -i "$SCREEN_OFF" \
-			-f alsa -ac 2 -i "$AUDIO_IN" \
-			-vcodec libx264 -vpre "$QUAL" -s "$OUTRES" -pix_fmt $PIX_FMT \
-			-acodec libmp3lame -ab 128k -threads 0  \
-			-f flv "test.flv"
-	}
+if [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
 fi
 
 alias ls='ls --color=auto'
