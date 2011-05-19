@@ -1,18 +1,17 @@
+URxvt.perl-lib:          /home/brandon/.urxvtperl
 URxvt.perl-ext-common:   default,url-select
 URxvt.keysym.M-u:        perl:url-select:select_next
 URxvt.urlLauncher:       google-chrome
+!URxvt.urlLauncher:	 firefox
 URxvt.underlineURLs:     true
 
-URxvt.cursorBlink:	true
-URxvt.cursorColor:	blue
+!URxvt.cursorBlink:	true
+!URxvt.cursorColor:	blue
 
 URxvt.scrollBar:	false
 URxvt.urgentOnBell:     true
 
-!URxvt.background:	#bbbbbb
-
-!font config stuff
-URxvt.font:		xft:Dina
+URxvt.font:		xft:Dina:cleartype=false:hinting=false
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
