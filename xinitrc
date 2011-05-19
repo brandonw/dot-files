@@ -14,7 +14,7 @@ while true; do
 	sleep 1s
 done &
 
-numlockx &
+#numlockx &
 
 #exec xmonad
 exec dwm
