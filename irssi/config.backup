@@ -220,7 +220,8 @@ settings = {
     beep_msg_level = "MSGS NOTICES HILIGHT";
     bell_beeps = "yes";
     theme = "solarish";
-    hilight_color = "= %M";
+    hilight_color = "%M";
+    hilight_act_color = "%W";
     autolog = "yes";
     autolog_path = "~/.irclogs/$tag/$0.log";
   };
@@ -235,5 +236,5 @@ mainwindows = {
   2 = { first_line = "8"; lines = "50"; };
   1 = { first_line = "1"; lines = "7"; };
 };
-ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
+#ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
 logs = { };
