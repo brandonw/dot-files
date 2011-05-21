@@ -12,4 +12,6 @@ while true; do
 	sleep 1s
 done &
 
+export PATH=$PATH:/home/brandon/.bin
+
 exec dwm
