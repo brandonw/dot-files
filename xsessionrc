@@ -6,6 +6,7 @@
 
 xset r rate 250 20
 wmname LG3D
+numlockx
 
 while true; do
 	xsetroot -name "$( date +"%a %b %d %r")"
