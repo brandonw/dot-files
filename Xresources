@@ -11,7 +11,8 @@ URxvt.underlineURLs:     true
 URxvt.scrollBar:	false
 URxvt.urgentOnBell:     true
 
-URxvt.font:		xft:Dina:cleartype=false:hinting=false
+!URxvt.font:		xft:Dina:cleartype=false:hinting=false:pixelsize=10
+URxvt.font:		xft:Dina
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
