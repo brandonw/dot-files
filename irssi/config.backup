@@ -40,6 +40,8 @@ channels = (
   { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#arch"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#debian"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##C"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##crawl"; chatnet = "freenode"; autojoin = "no"; },
   { name = "#haskell"; chatnet = "freenode"; autojoin = "no"; },
