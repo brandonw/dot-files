@@ -6,10 +6,6 @@
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 	ignore = dirty
-[submodule "vim/bundle/indent-guides"]
-	path = vim/bundle/indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides.git
-	ignore = dirty
 [submodule "vim/bundle/lusty"]
 	path = vim/bundle/lusty
 	url = https://github.com/sjbach/lusty.git
