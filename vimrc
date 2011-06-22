@@ -103,6 +103,7 @@ if has("autocmd")
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80
   autocmd FileType c setlocal fo+=t
+  autocmd FileType gitcommit hi def link gitcommitOverflow Error
   "autocmd FileType clojure set path+=/home/brandon/code/**1/src
 else
 
