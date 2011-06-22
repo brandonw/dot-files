@@ -9,8 +9,9 @@ wmname LG3D
 numlockx
 xrdb -merge ~/.Xresources
 
-# xset m 1 1000
-# sudo lmctl -b 005 -8
+xinput --set-prop 9 245 7
+xset m 3/1 1
+#sudo lmctl -b 005 -8
 
 while true; do
 	xsetroot -name "$( date +"%a %b %d %r")"
