@@ -40,12 +40,14 @@ channels = (
   { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#arch"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#debian"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##C"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##crawl"; chatnet = "freenode"; autojoin = "no"; },
-  { name = "#haskell"; chatnet = "freenode"; autojoin = "no"; },
-  { name = "#clojure"; chatnet = "freenode"; autojoin = "no"; }
+  { name = "##C++"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#scala"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "##crawl"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#minecraft"; chatnet = "esper"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -227,7 +229,6 @@ settings = {
     autolog = "yes";
     autolog_path = "~/.irclogs/$tag/$0.log";
   };
-  "perl/core/scripts" = { nicklist_width = "17"; };
 };
 hilights = ( { text = "brandonw"; nick = "yes"; word = "yes"; } );
 windows = {
