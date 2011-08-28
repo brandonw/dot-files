@@ -20,14 +20,14 @@ servers = (
 chatnets = {
   freenode = {
     type = "IRC";
-    autosendcmd = "/msg nickserv identify brandonw *;wait 2000";
+    autosendcmd = "/msg nickserv identify brandonw *;wait 7000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
   };
   esper = {
     type = "IRC";
-    autosendcmd = "/msg nickserv identify *;wait 2000";
+    autosendcmd = "/msg nickserv identify *;wait 7000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
@@ -43,8 +43,8 @@ channels = (
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##c"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#c++"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#scala"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##java"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "##java"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#scala"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
