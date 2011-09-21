@@ -37,7 +37,6 @@ chatnets = {
 channels = (
   { name = "#starcraft"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#v()"; chatnet = "esper"; autojoin = "yes"; },
-  { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#casualteam"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
