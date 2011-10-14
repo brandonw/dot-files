@@ -42,8 +42,7 @@ channels = (
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##c"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#c++"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##java"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#scala"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "##java"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
