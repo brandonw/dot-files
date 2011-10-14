@@ -69,6 +69,8 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
+cmap w!! %!sudo tee > /dev/null %
+
 let Tlist_Inc_Winwidth = 0
 let Tlist_Show_One_File = 1
 let Tlist_Close_On_Select = 1
