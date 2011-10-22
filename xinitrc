@@ -9,8 +9,8 @@ wmname LG3D
 numlockx
 xrdb -merge ~/.Xresources
 
-xinput --set-prop 9 245 7
-xset m 9/2 1
+xinput --set-prop 9 245 -1
+#sudo lomoco -h
 
 while true; do
 	xsetroot -name "$( date +"%a %b %d %r")"
