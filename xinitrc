@@ -9,6 +9,8 @@ wmname LG3D
 numlockx
 xrdb -merge ~/.Xresources
 
+start-pulseaudio-x11
+
 xinput --set-prop 9 245 -1
 #sudo lomoco -h
 
