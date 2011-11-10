@@ -41,12 +41,10 @@ channels = (
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##c"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#c++"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##java"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#android"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#clojure"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#scala"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#clojure"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
