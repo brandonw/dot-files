@@ -38,12 +38,12 @@ channels = (
   { name = "#starcraft"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#v()"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#casualteam"; chatnet = "esper"; autojoin = "yes"; },
-  { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##c"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##java"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#android"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#android-dev"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -237,3 +237,4 @@ mainwindows = {
 };
 #ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
 logs = { };
+ignores = ( );
