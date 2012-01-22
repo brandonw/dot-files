@@ -27,19 +27,6 @@ set hidden
 set laststatus=2
 set tags+=tags;$HOME
 
-if &diff
-  
-else
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  set statusline+=%{BW_syntasticStatuslineSpace()}
-  let g:syntastic_enable_signs=1
-  let g:syntastic_auto_loc_list=1
-endif
-
-set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
 let g:LustyJugglerShowKeys = 'a'
 let g:snips_author = 'Brandon Waskiewicz'
 
@@ -106,7 +93,6 @@ if has("autocmd")
   autocmd FileType c setlocal textwidth=80
   autocmd FileType c setlocal fo+=t
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
-  "autocmd FileType clojure set path+=/home/brandon/code/**1/src
 else
 
 endif " has("autocmd")
@@ -115,16 +101,6 @@ endif " has("autocmd")
 " file it was loaded from, thus the changes you made.
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 	 	\ | wincmd p | diffthis
-
-" Returns a space if there are synastic errors, and no space if there aren't
-function! BW_syntasticStatuslineSpace()
-    if len(SyntasticStatuslineFlag()) > 0
-	return ' '
-    else
-        return ''
-    endif
-endfunction
-
 
 " ex command for toggling hex mode - define mapping if desired
 command -bar Hexmode call ToggleHex()
