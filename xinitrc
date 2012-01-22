@@ -5,7 +5,7 @@
 # Executed by startx (run your window manager from here)
 
 xset r rate 250 20
-wmname LG3D
+#wmname LG3D
 numlockx
 xrdb -merge ~/.Xresources
 

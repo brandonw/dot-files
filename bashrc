@@ -10,6 +10,7 @@ if [ "$HOSTNAME" == "brandon-pc" ]
 then
 	# use rxvt instead of rxvt-unicode as TERM
 	export TERM="rxvt"
+	export WINEDEBUG=-all
 	alias pacman='pacman-color'
 	alias sudo='sudo '
 
