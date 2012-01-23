@@ -113,7 +113,6 @@ let g:xml_syntax_folding = 1
 
 set background=dark
 colorscheme solarized
-" inkpot molokai solarized
 
 if has("gui_running")
   set guifont=Dina
