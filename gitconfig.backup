@@ -3,7 +3,6 @@
 	email = brandon.waskiewicz@gmail.com
 [core]
 	editor = vim
-	pager = vim -R -
 [merge]
 	tool = vimdiff
 [diff]
