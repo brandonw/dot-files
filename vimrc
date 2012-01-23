@@ -2,11 +2,27 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Required by vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle [required]
+Bundle 'gmarik/vundle'
+
+" github bundles
+
+
+" vim-scripts repos
+
+
+" non github repos
+
+
+filetype plugin indent on
+
 " Avoid duplicate auto commands when writing .vimrc
 autocmd!
-
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
 
 set backspace=indent,eol,start
 set history=1000
@@ -82,7 +98,6 @@ if has("gui_running")
 endif
 
 if has("autocmd")
-  filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
