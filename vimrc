@@ -11,10 +11,38 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " github bundles
-
+Bundle 'int3/vim-extradite'
+Bundle 'tpope/vim-fugitive'
+Bundle 'defunkt/gist'
+Bundle 'gregsexton/gitv'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'sjbach/lusty'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-repeat'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-markdown'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+Bundle 'docunext/closetag.vim'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'Raimondi/delimitMate'
+Bundle 'msanders/snipmate.vim'
+Bundle 'wincent/Command-T'
+Bundle 'bkad/CamelCaseMotion'
 
 " vim-scripts repos
-
+Bundle 'a.vim'
+Bundle 'cscope_macros.vim'
+Bundle 'loremipsum'
+Bundle 'Gundo'
+Bundle 'matchit.zip'
+Bundle 'argtextobj.vim'
 
 " non github repos
 
@@ -40,11 +68,13 @@ syntax on
 set hlsearch
 set t_Co=256
 set hidden
-set laststatus=2
 set tags+=tags;$HOME
+set list
+set listchars=tab:▸\ ,eol:¬
 
 let g:LustyJugglerShowKeys = 'a'
 let g:snips_author = 'Brandon Waskiewicz'
+let g:indent_guides_enable_on_vim_startup = 1
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
@@ -54,10 +84,10 @@ if exists(":Tabularize")
 endif
 
 " Plugin bindings
-nn <silent> <Leader>t :Tlist<CR><C-w>h
+nnoremap <silent> <F9> :TagbarToggle<CR>
+nn <silent> <Leader>t :CommandT<CR>
 nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
-nn <silent> <Leader>j :LustyJuggler<CR>
 nn <silent> <Leader>a :A<CR>
 
 " Window switching bindings
@@ -70,14 +100,9 @@ nn <C-l> <C-w>l
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
-let Tlist_Inc_Winwidth = 0
-let Tlist_Show_One_File = 1
-let Tlist_Close_On_Select = 1
-let TList_Process_File_Always = 1
 let $PAGER=''
 let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
@@ -111,49 +136,3 @@ if has("autocmd")
 else
 
 endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-	 	\ | wincmd p | diffthis
-
-" ex command for toggling hex mode - define mapping if desired
-command -bar Hexmode call ToggleHex()
-
-" helper function to toggle hex mode
-function ToggleHex()
-  " hex mode should be considered a read-only operation
-  " save values for modified and read-only for restoration later,
-  " and clear the read-only flag for now
-  let l:modified=&mod
-  let l:oldreadonly=&readonly
-  let &readonly=0
-  let l:oldmodifiable=&modifiable
-  let &modifiable=1
-  if !exists("b:editHex") || !b:editHex
-    " save old options
-    let b:oldft=&ft
-    let b:oldbin=&bin
-    " set new options
-    setlocal binary " make sure it overrides any textwidth, etc.
-    let &ft="xxd"
-    " set status
-    let b:editHex=1
-    " switch to hex editor
-    %!xxd
-  else
-    " restore old options
-    let &ft=b:oldft
-    if !b:oldbin
-      setlocal nobinary
-    endif
-    " set status
-    let b:editHex=0
-    " return to normal editing
-    %!xxd -r
-  endif
-  " restore values for modified and read only state
-  let &mod=l:modified
-  let &readonly=l:oldreadonly
-  let &modifiable=l:oldmodifiable
-endfunction
