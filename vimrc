@@ -74,7 +74,6 @@ set listchars=tab:▸\ ,eol:¬
 
 let g:LustyJugglerShowKeys = 'a'
 let g:snips_author = 'Brandon Waskiewicz'
-let g:indent_guides_enable_on_vim_startup = 1
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
@@ -89,6 +88,7 @@ nn <silent> <Leader>t :CommandT<CR>
 nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
+nn <silent> <leader>i :IndentGuidesToggle<CR>
 
 " Window switching bindings
 nn <C-h> <C-w>h
