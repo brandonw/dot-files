@@ -71,6 +71,7 @@ set hidden
 set tags+=tags;$HOME
 "set list
 set listchars=tab:▸\ ,eol:¬
+set laststatus=2
 
 let g:LustyJugglerShowKeys = 'a'
 let g:snips_author = 'Brandon Waskiewicz'
