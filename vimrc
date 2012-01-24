@@ -113,6 +113,14 @@ let g:gist_browser_command = 'google-chrome %URL%'
 let c_syntax_for_h = 1
 let g:xml_syntax_folding = 1
 let g:Powerline_symbols = 'unicode'
+let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_auto_refresh_includes = 1
+let g:syntastic_mode_map = { 'mode': 'passive',
+			   \ 'active_filetypes': ['c', 'haskell'],
+			   \ 'passive_filetypes': [] }
+
 
 set background=dark
 colorscheme solarized
