@@ -69,7 +69,7 @@ set hlsearch
 set t_Co=256
 set hidden
 set tags+=tags;$HOME
-set list
+"set list
 set listchars=tab:▸\ ,eol:¬
 
 let g:LustyJugglerShowKeys = 'a'
@@ -84,6 +84,7 @@ endif
 
 " Plugin bindings
 nnoremap <silent> <F9> :TagbarToggle<CR>
+nnoremap <F5> :GundoToggle<CR>
 nn <silent> <Leader>t :CommandT<CR>
 nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
