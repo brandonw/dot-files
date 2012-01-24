@@ -88,7 +88,7 @@ nn <silent> <Leader>t :CommandT<CR>
 nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
-nn <silent> <leader>i :IndentGuidesToggle<CR>
+nn <silent> <leader>ig :IndentGuidesToggle<CR>
 
 " Window switching bindings
 nn <C-h> <C-w>h
