@@ -35,6 +35,8 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'msanders/snipmate.vim'
 Bundle 'wincent/Command-T'
 Bundle 'bkad/CamelCaseMotion'
+Bundle 'ervandew/supertab'
+Bundle 'Rip-Rip/clang_complete'
 
 " vim-scripts repos
 Bundle 'a.vim'
