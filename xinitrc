@@ -9,8 +9,6 @@ xset r rate 250 20
 numlockx
 xrdb -merge ~/.Xresources
 
-start-pulseaudio-x11
-
 xinput --set-prop 10 241 -1
 #sudo lomoco -h
 
