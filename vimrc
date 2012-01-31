@@ -34,7 +34,6 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'Raimondi/delimitMate'
 Bundle 'msanders/snipmate.vim'
 Bundle 'wincent/Command-T'
-Bundle 'bkad/CamelCaseMotion'
 Bundle 'ervandew/supertab'
 Bundle 'Rip-Rip/clang_complete'
 
@@ -44,7 +43,6 @@ Bundle 'cscope_macros.vim'
 Bundle 'loremipsum'
 Bundle 'Gundo'
 Bundle 'matchit.zip'
-Bundle 'argtextobj.vim'
 
 " non github repos
 
