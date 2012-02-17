@@ -5,12 +5,9 @@
 # Executed by startx (run your window manager from here)
 
 xset r rate 250 20
-#wmname LG3D
-numlockx
 xrdb -merge ~/.Xresources
-
-xinput --set-prop 10 241 -1
-#sudo lomoco -h
+xbindkeys
+xmodmap ~/.Xmodmap
 
 while true; do
 	xsetroot -name "$( date +"%a %b %d %r")"

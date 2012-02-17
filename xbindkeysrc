@@ -1,0 +1,16 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+
+"amixer set Master playback 1-"
+    m:0x0 + c:122
+    XF86AudioLowerVolume
+
+"amixer set Master playback 1+"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume
+
+##################################
+# End of xbindkeys configuration #
+##################################
