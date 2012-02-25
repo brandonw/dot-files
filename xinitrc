@@ -9,6 +9,12 @@ xrdb -merge ~/.Xresources
 xbindkeys
 xmodmap ~/.Xmodmap
 
+# screen powersave
+xset +dpms
+xset dpms 0 300 0
+
+upower -e
+
 while true; do
 	xsetroot -name "$(awk 'gsub(/,/,"") {print $3, $4}' <(acpi -b)) \
 | Vol. $(awk '/Front Left:/ { gsub(/[\[\]]/,""); print $5}' <(amixer get Master)) \
