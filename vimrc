@@ -89,7 +89,9 @@ nn <silent> <Leader>t :CommandT<CR>
 nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
-nn <silent> <leader>ig :IndentGuidesToggle<CR>
+nn <silent> <Leader>ig :IndentGuidesToggle<CR>
+nn <silent> <Leader>c :SyntasticToggleMode<CR>
+nmap <SPACE> :
 
 " Window switching bindings
 nn <C-h> <C-w>h
@@ -112,7 +114,6 @@ let g:gist_browser_command = 'google-chrome %URL%'
 let c_syntax_for_h = 1
 let g:xml_syntax_folding = 1
 let g:Powerline_symbols = 'unicode'
-let g:syntastic_check_on_open = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_c_check_header = 1
 let g:syntastic_c_auto_refresh_includes = 1
@@ -123,6 +124,16 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 
 set background=dark
 colorscheme solarized
+
+" Removes trailing spaces
+function TrimWhiteSpace()
+    %s/\s\+$//e
+:endfunction
+
+autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd BufWritePre     * :call TrimWhiteSpace()
 
 if has("gui_running")
   set guifont=Dina
