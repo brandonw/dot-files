@@ -131,11 +131,6 @@ function TrimWhiteSpace()
     %s/\s\+$//e
 :endfunction
 
-autocmd FileWritePre    * :call TrimWhiteSpace()
-autocmd FileAppendPre   * :call TrimWhiteSpace()
-autocmd FilterWritePre  * :call TrimWhiteSpace()
-autocmd BufWritePre     * :call TrimWhiteSpace()
-
 if has("gui_running")
   set guifont=Dina
   set guioptions-=T
@@ -154,6 +149,10 @@ if has("autocmd")
   autocmd FileType c setlocal textwidth=80
   autocmd FileType c setlocal fo+=t
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
+  autocmd FileWritePre    * :call TrimWhiteSpace()
+  autocmd FileAppendPre   * :call TrimWhiteSpace()
+  autocmd FilterWritePre  * :call TrimWhiteSpace()
+  autocmd BufWritePre     * :call TrimWhiteSpace()
 else
 
 endif " has("autocmd")
