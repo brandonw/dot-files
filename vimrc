@@ -92,7 +92,7 @@ nn <silent> <Leader>a :A<CR>
 nn <silent> <Leader>ig :IndentGuidesToggle<CR>
 nn <silent> <Leader>c :SyntasticToggleMode<CR>
 nmap <SPACE> :
-imap ii <Esc>
+imap jk <Esc>
 
 " Window switching bindings
 nn <C-h> <C-w>h
