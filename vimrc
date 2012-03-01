@@ -32,14 +32,13 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'docunext/closetag.vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'msanders/snipmate.vim'
+Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
 Bundle 'Rip-Rip/clang_complete'
 
 " vim-scripts repos
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
-Bundle 'loremipsum'
 Bundle 'Gundo'
 Bundle 'matchit.zip'
 
@@ -73,7 +72,6 @@ set listchars=tab:▸\ ,eol:¬
 set laststatus=2
 
 let g:LustyJugglerShowKeys = 'a'
-let g:snips_author = 'Brandon Waskiewicz'
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
@@ -121,7 +119,10 @@ let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
 			   \ 'active_filetypes': ['c', 'haskell'],
 			   \ 'passive_filetypes': [] }
-
+let g:UltiSnipsExpandTrigger = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+nnoremap <silent> <F8> :call UltiSnips_ListSnippets()<CR>
 
 set background=dark
 colorscheme solarized
