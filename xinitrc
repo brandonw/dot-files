@@ -11,7 +11,7 @@ xmodmap ~/.Xmodmap
 
 # screen powersave
 xset +dpms
-xset dpms 0 300 0
+xset dpms 0 0 300
 
 upower -e
 
