@@ -81,16 +81,18 @@ if exists(":Tabularize")
 endif
 
 " Plugin bindings
-nnoremap <silent> <F9> :TagbarToggle<CR>
-nnoremap <F5> :GundoToggle<CR>
+nn <silent> <F9> :TagbarToggle<CR>
+nn <silent> <F5> :GundoToggle<CR>
 nn <silent> <Leader>t :CommandT<CR>
 nn <silent> <Leader>s :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <silent> <Leader>ig :IndentGuidesToggle<CR>
 nn <silent> <Leader>c :SyntasticToggleMode<CR>
-nmap <SPACE> :
-imap jk <Esc>
+nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
+im <F8> :call UltiSnips_ListSnippets()<CR>
+nm <SPACE> :
+im jk <Esc>
 
 " Window switching bindings
 nn <C-h> <C-w>h
@@ -119,10 +121,11 @@ let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
 			   \ 'active_filetypes': ['c', 'haskell'],
 			   \ 'passive_filetypes': [] }
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-nnoremap <silent> <F8> :call UltiSnips_ListSnippets()<CR>
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:SuperTabMappingForward = '<nul>'
+let g:SuperTabMappingBackward = '<s-nul>'
 
 set background=dark
 colorscheme solarized
