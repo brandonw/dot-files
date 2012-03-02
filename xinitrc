@@ -24,4 +24,4 @@ while true; do
 	sleep 1s
 done &
 
-exec dwm
+exec ck-launch-session bash -c "devmon & dwm"
