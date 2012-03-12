@@ -69,6 +69,7 @@ set tags+=tags;$HOME
 "set list
 set listchars=tab:▸\ ,eol:¬
 set laststatus=2
+set wildmenu
 
 let g:LustyJugglerShowKeys = 'a'
 
