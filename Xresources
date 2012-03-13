@@ -9,7 +9,7 @@ URxvt.underlineURLs:     true
 URxvt.scrollBar:	false
 URxvt.urgentOnBell:     true
 
-URxvt.font:		-windows-dina-medium-r-normal--16-100-96-96-c-80-microsoft-cp1252
+URxvt.font:		-*-dina-medium-r-*-*-16-*-*-*-*-*-*
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
