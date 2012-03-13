@@ -130,6 +130,8 @@ let g:SuperTabMappingBackward = '<s-nul>'
 set background=dark
 colorscheme solarized
 
+match ErrorMsg '\s\+$'
+
 " Removes trailing spaces
 function TrimWhiteSpace()
     %s/\s\+$//e
