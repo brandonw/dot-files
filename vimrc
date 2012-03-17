@@ -154,6 +154,7 @@ if has("autocmd")
   autocmd FileType xml setlocal foldmethod=syntax
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80
+  autocmd FileType c setlocal formatoptions+=t
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd QuickFixCmdPost [^l]* nested cwindow
   autocmd QuickFixCmdPost    l* nested lwindow
