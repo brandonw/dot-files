@@ -127,6 +127,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:SuperTabMappingForward = '<nul>'
 let g:SuperTabMappingBackward = '<s-nul>'
+let g:tagbar_autoclose = 1
 
 set background=dark
 colorscheme solarized
