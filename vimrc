@@ -157,8 +157,6 @@ if has("autocmd")
   autocmd FileType c setlocal textwidth=80
   autocmd FileType c setlocal formatoptions+=t
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
-  autocmd QuickFixCmdPost [^l]* nested cwindow
-  autocmd QuickFixCmdPost    l* nested lwindow
   autocmd FileWritePre    * :call TrimWhiteSpace()
   autocmd FileAppendPre   * :call TrimWhiteSpace()
   autocmd FilterWritePre  * :call TrimWhiteSpace()
