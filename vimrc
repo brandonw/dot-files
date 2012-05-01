@@ -159,7 +159,7 @@ if has("autocmd")
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileWritePre    * :call TrimWhiteSpace()
   autocmd FileAppendPre   * :call TrimWhiteSpace()
-  autocmd FilterWritePre  * :call TrimWhiteSpace()
+  "autocmd FilterWritePre  * :call TrimWhiteSpace()
   autocmd BufWritePre     * :call TrimWhiteSpace()
 else
 
