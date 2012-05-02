@@ -19,6 +19,8 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
+Bundle 'kana/vim-smartinput'
+Bundle 'epeli/slimux'
 
 Bundle 'docunext/closetag.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -34,6 +36,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'Rip-Rip/clang_complete'
+Bundle 'jelera/vim-javascript-syntax'
 
 " vim-scripts repos
 Bundle 'a.vim'
