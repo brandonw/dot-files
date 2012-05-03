@@ -13,5 +13,6 @@ export EDITOR="vim"
 export PATH=$PATH:~/.bin
 export TERM="rxvt"
 export BROWSER=chromium
+export DJANGO_SETTINGS_MODULE=project.settings
 
 source .keys

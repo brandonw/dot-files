@@ -37,6 +37,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'tpope/vim-git'
 
 " vim-scripts repos
 Bundle 'a.vim'
@@ -74,6 +75,7 @@ set listchars=tab:▸\ ,eol:¬
 set laststatus=2
 set wildmenu
 set colorcolumn=+1
+set completeopt=menuone,longest,preview
 
 let g:LustyJugglerShowKeys = 'a'
 
@@ -128,9 +130,11 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabMappingForward = '<nul>'
 let g:SuperTabMappingBackward = '<s-nul>'
 let g:tagbar_autoclose = 1
+let g:slime_target = "tmux"
 
 set background=dark
 colorscheme solarized
@@ -162,8 +166,22 @@ if has("autocmd")
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileWritePre    * :call TrimWhiteSpace()
   autocmd FileAppendPre   * :call TrimWhiteSpace()
-  "autocmd FilterWritePre  * :call TrimWhiteSpace()
   autocmd BufWritePre     * :call TrimWhiteSpace()
+  autocmd FileType python set foldmethod=indent
+  autocmd FileType python set foldlevel=99
+  autocmd FileType python set omnifunc=pythoncomplete#Complete
 else
 
 endif " has("autocmd")
+
+" Add the virtualenv's site-packages to vim path
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
