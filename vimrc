@@ -21,6 +21,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'kana/vim-smartinput'
 Bundle 'epeli/slimux'
+Bundle 'klen/python-mode'
 
 Bundle 'docunext/closetag.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
