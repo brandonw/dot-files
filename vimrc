@@ -129,12 +129,10 @@ let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
 			   \ 'active_filetypes': ['c'],
 			   \ 'passive_filetypes': [] }
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<nul>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabMappingForward = '<nul>'
-let g:SuperTabMappingBackward = '<s-nul>'
 let g:tagbar_autoclose = 1
 let g:slime_target = "tmux"
 
