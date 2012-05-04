@@ -19,14 +19,13 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
-Bundle 'kana/vim-smartinput'
 Bundle 'epeli/slimux'
 Bundle 'klen/python-mode'
 
+Bundle 'kana/vim-smartinput'
 Bundle 'docunext/closetag.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'sjbach/lusty'
 Bundle 'wincent/Command-T'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -78,7 +77,6 @@ set wildmenu
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
 
-let g:LustyJugglerShowKeys = 'a'
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
