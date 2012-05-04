@@ -89,7 +89,7 @@ endif
 nn <silent> <F9> :TagbarToggle<CR>
 nn <silent> <F5> :GundoToggle<CR>
 nn <silent> <Leader>t :CommandT<CR>
-nn <silent> <Leader>s :nohls<CR>
+nn <silent> <Leader>/ :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <silent> <Leader>ig :IndentGuidesToggle<CR>
@@ -98,6 +98,9 @@ nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
 im <F8> :call UltiSnips_ListSnippets()<CR>
 nm <SPACE> :
 im jk <Esc>
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
 
 " Window switching bindings
 nn <C-h> <C-w>h
