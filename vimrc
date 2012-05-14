@@ -20,7 +20,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'epeli/slimux'
-Bundle 'klen/python-mode'
 
 Bundle 'kana/vim-smartinput'
 Bundle 'docunext/closetag.vim'
@@ -127,7 +126,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_c_check_header = 1
 let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
-			   \ 'active_filetypes': ['c'],
+			   \ 'active_filetypes': ['c', 'python'],
 			   \ 'passive_filetypes': [] }
 let g:UltiSnipsExpandTrigger = "<nul>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
@@ -163,6 +162,7 @@ if has("autocmd")
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80
   autocmd FileType c setlocal formatoptions+=t
+  autocmd FileType python setlocal foldmethod=indent
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileWritePre    * :call TrimWhiteSpace()
   autocmd FileAppendPre   * :call TrimWhiteSpace()
