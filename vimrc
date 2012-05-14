@@ -20,7 +20,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'epeli/slimux'
-Bundle 'klen/python-mode'
 
 Bundle 'kana/vim-smartinput'
 Bundle 'docunext/closetag.vim'
