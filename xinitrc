@@ -17,7 +17,7 @@ upower -e
 
 while true; do
 	xsetroot -name "$(awk 'gsub(/,/,"") {print $3, $4}' <(acpi -b)) \
-| Vol. $(awk '/Front Left:/ { gsub(/[\[\]]/,""); print $5}' <(amixer get Master)) \
+| Vol. $(awk '/Mono:/ { gsub(/[\[\]]/,""); print $4}' <(amixer get Master)) \
 | $(awk '/Mem:/ { print $3"/"$2"M" }' <(free -m)) \
 | $(date +"%a, %b %d %r")"
 
