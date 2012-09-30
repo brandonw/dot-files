@@ -25,24 +25,22 @@ Bundle 'kana/vim-smartinput'
 Bundle 'docunext/closetag.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-markdown'
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'Rip-Rip/clang_complete'
-Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tpope/vim-git'
 
 " vim-scripts repos
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
-Bundle 'Gundo'
 Bundle 'matchit.zip'
+Bundle 'pydoc.vim'
 
 " non github repos
 
@@ -76,18 +74,8 @@ set wildmenu
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
 
-
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-
 " Plugin bindings
 nn <silent> <F9> :TagbarToggle<CR>
-nn <silent> <F5> :GundoToggle<CR>
-nn <silent> <Leader>t :CommandT<CR>
 nn <silent> <Leader>/ :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
@@ -162,7 +150,7 @@ if has("autocmd")
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80
   autocmd FileType c setlocal formatoptions+=t
-  autocmd FileType python setlocal foldmethod=indent
+  autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileWritePre    * :call TrimWhiteSpace()
   autocmd FileAppendPre   * :call TrimWhiteSpace()
