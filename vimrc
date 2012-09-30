@@ -32,15 +32,12 @@ Bundle 'tpope/vim-markdown'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'ervandew/supertab'
-Bundle 'Rip-Rip/clang_complete'
 Bundle 'tpope/vim-git'
 
 " vim-scripts repos
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
 Bundle 'matchit.zip'
-Bundle 'pydoc.vim'
 
 " non github repos
 
@@ -119,7 +116,6 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 let g:UltiSnipsExpandTrigger = "<nul>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:SuperTabDefaultCompletionType = "context"
 let g:tagbar_autoclose = 1
 let g:slime_target = "tmux"
 
