@@ -152,6 +152,7 @@ if has("autocmd")
   autocmd FileType c setlocal formatoptions+=t
   autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
+  autocmd FileType gitcommit setlocal spell
   autocmd FileWritePre    * :call TrimWhiteSpace()
   autocmd FileAppendPre   * :call TrimWhiteSpace()
   autocmd BufWritePre     * :call TrimWhiteSpace()
