@@ -11,36 +11,32 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " github bundles
-Bundle 'int3/vim-extradite'
-Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-fugitive'
 Bundle 'defunkt/gist'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'sjbach/lusty'
-Bundle 'wincent/Command-T'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
+Bundle 'gregsexton/gitv'
+Bundle 'epeli/slimux'
+
+Bundle 'kana/vim-smartinput'
+Bundle 'docunext/closetag.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-markdown'
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'docunext/closetag.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'msanders/snipmate.vim'
-Bundle 'ervandew/supertab'
-Bundle 'Rip-Rip/clang_complete'
+Bundle 'tpope/vim-git'
 
 " vim-scripts repos
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
-Bundle 'loremipsum'
-Bundle 'Gundo'
 Bundle 'matchit.zip'
 
 " non github repos
@@ -71,25 +67,24 @@ set tags+=tags;$HOME
 "set list
 set listchars=tab:▸\ ,eol:¬
 set laststatus=2
-
-let g:LustyJugglerShowKeys = 'a'
-let g:snips_author = 'Brandon Waskiewicz'
-
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+set wildmenu
+set colorcolumn=+1
+set completeopt=menuone,longest,preview
 
 " Plugin bindings
-nnoremap <silent> <F9> :TagbarToggle<CR>
-nnoremap <F5> :GundoToggle<CR>
-nn <silent> <Leader>t :CommandT<CR>
-nn <silent> <Leader>s :nohls<CR>
+nn <silent> <F9> :TagbarToggle<CR>
+nn <silent> <Leader>/ :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
-nn <silent> <leader>ig :IndentGuidesToggle<CR>
+nn <silent> <Leader>ig :IndentGuidesToggle<CR>
+nn <silent> <Leader>c :SyntasticToggleMode<CR>
+nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
+im <F8> :call UltiSnips_ListSnippets()<CR>
+nm <SPACE> :
+im jk <Esc>
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
 
 " Window switching bindings
 nn <C-h> <C-w>h
@@ -112,17 +107,27 @@ let g:gist_browser_command = 'google-chrome %URL%'
 let c_syntax_for_h = 1
 let g:xml_syntax_folding = 1
 let g:Powerline_symbols = 'unicode'
-let g:syntastic_check_on_open = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_c_check_header = 1
 let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
-			   \ 'active_filetypes': ['c', 'haskell'],
+			   \ 'active_filetypes': ['c', 'python'],
 			   \ 'passive_filetypes': [] }
-
+let g:UltiSnipsExpandTrigger = "<nul>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:tagbar_autoclose = 1
+let g:slime_target = "tmux"
 
 set background=dark
 colorscheme solarized
+
+match ErrorMsg '\s\+$'
+
+" Removes trailing spaces
+function TrimWhiteSpace()
+    %s/\s\+$//e
+:endfunction
 
 if has("gui_running")
   set guifont=Dina
@@ -140,8 +145,13 @@ if has("autocmd")
   autocmd FileType xml setlocal foldmethod=syntax
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80
-  autocmd FileType c setlocal fo+=t
+  autocmd FileType c setlocal formatoptions+=t
+  autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
+  autocmd FileType gitcommit setlocal spell
+  autocmd FileWritePre    * :call TrimWhiteSpace()
+  autocmd FileAppendPre   * :call TrimWhiteSpace()
+  autocmd BufWritePre     * :call TrimWhiteSpace()
 else
 
 endif " has("autocmd")

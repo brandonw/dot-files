@@ -1,7 +1,7 @@
-URxvt.perl-ext-common:   default,url-select
-URxvt.keysym.M-u:        perl:url-select:select_next
-URxvt.urlLauncher:       chromium
-URxvt.underlineURLs:     true
+URxvt.perl-ext-common:   	default,url-select
+URxvt.keysym.M-u:        	perl:url-select:select_next
+URxvt.url-select.launcher:	chromium
+URxvt.url-select.underline:	true
 
 !URxvt.cursorBlink:	true
 !URxvt.cursorColor:	blue
@@ -9,8 +9,7 @@ URxvt.underlineURLs:     true
 URxvt.scrollBar:	false
 URxvt.urgentOnBell:     true
 
-!URxvt.font:		xft:Dina:cleartype=false:hinting=false:pixelsize=10
-URxvt.font:		xft:Dina
+URxvt.font:		-*-dina-medium-r-*-*-16-*-*-*-*-*-*
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------

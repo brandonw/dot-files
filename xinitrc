@@ -5,16 +5,23 @@
 # Executed by startx (run your window manager from here)
 
 xset r rate 250 20
-#wmname LG3D
-numlockx
 xrdb -merge ~/.Xresources
+xbindkeys
+xmodmap ~/.Xmodmap
 
-xinput --set-prop 10 241 -1
-#sudo lomoco -h
+# screen powersave
+xset +dpms
+xset dpms 0 0 300
+
+upower -e
 
 while true; do
-	xsetroot -name "$( date +"%a %b %d %r")"
+	xsetroot -name "$(awk 'gsub(/,/,"") {print $3, $4}' <(acpi -b)) \
+| Vol. $(awk '/Mono:/ { gsub(/[\[\]]/,""); print $4}' <(amixer get Master)) \
+| $(awk '/Mem:/ { print $3"/"$2"M" }' <(free -m)) \
+| $(date +"%a, %b %d %r")"
+
 	sleep 1s
 done &
 
-exec dwm
+exec ck-launch-session bash -c "devmon & dwm"
