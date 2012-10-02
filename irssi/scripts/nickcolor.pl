@@ -19,7 +19,7 @@ Irssi::theme_register([
 
 my %saved_colors;
 my %session_colors = {};
-my @colors = qw/2 3 4 6 7 9 10 11 12 13/;
+my @colors = qw/2 3 4 5 6 7 9 10 11 12 13/;
 
 sub load_colors {
   open COLORS, "$ENV{HOME}/.irssi/saved_colors";
