@@ -13,8 +13,6 @@ xmodmap ~/.Xmodmap
 xset +dpms
 xset dpms 0 0 300
 
-upower -e
-
 while true; do
 	xsetroot -name "$(awk 'gsub(/,/,"") {print $3, $4}' <(acpi -b)) \
 | Vol. $(awk '/Mono:/ { gsub(/[\[\]]/,""); print $4}' <(amixer get Master)) \
