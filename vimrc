@@ -20,6 +20,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'epeli/slimux'
+Bundle 'sjl/gundo.vim'
 
 Bundle 'kana/vim-smartinput'
 Bundle 'docunext/closetag.vim'
@@ -32,12 +33,15 @@ Bundle 'tpope/vim-markdown'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'ervandew/supertab'
+Bundle 'Rip-Rip/clang_complete'
 Bundle 'tpope/vim-git'
 
 " vim-scripts repos
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
 Bundle 'matchit.zip'
+Bundle 'pydoc.vim'
 
 " non github repos
 
@@ -73,6 +77,7 @@ set completeopt=menuone,longest,preview
 
 " Plugin bindings
 nn <silent> <F9> :TagbarToggle<CR>
+nn <silent> <F5> :GundoToggle<CR>
 nn <silent> <Leader>/ :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
@@ -116,6 +121,7 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 let g:UltiSnipsExpandTrigger = "<nul>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:SuperTabDefaultCompletionType = "context"
 let g:tagbar_autoclose = 1
 let g:slime_target = "tmux"
 
@@ -146,6 +152,9 @@ if has("autocmd")
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80
   autocmd FileType c setlocal formatoptions+=t
+  autocmd FileType python setlocal foldmethod=indent
+  autocmd FileType python setlocal foldlevel=99
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileType gitcommit setlocal spell
