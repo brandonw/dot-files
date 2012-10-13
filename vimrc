@@ -74,6 +74,7 @@ set laststatus=2
 set wildmenu
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
+set nu
 
 " Plugin bindings
 nn <silent> <F9> :TagbarToggle<CR>
@@ -104,6 +105,16 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 
 cmap w!! %!sudo tee > /dev/null %
+
+" use Ctrl+L to toggle the line number counting method
+function! g:ToggleNuMode()
+  if &nu == 1
+     set rnu
+  else
+     set nu
+  endif
+endfunction
+nnoremap <silent><C-L> :call g:ToggleNuMode()<cr>
 
 let $PAGER=''
 let g:gist_clip_command = 'xclip -selection clipboard'
