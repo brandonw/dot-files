@@ -90,6 +90,7 @@ im jk <Esc>
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
+nn <silent> <C-y> :CtrlPBuffer<CR>
 
 " Window switching bindings
 nn <C-h> <C-w>h
