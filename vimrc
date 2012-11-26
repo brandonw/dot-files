@@ -128,7 +128,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_c_check_header = 1
 let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
-			   \ 'active_filetypes': ['c', 'python'],
+			   \ 'active_filetypes': ['c', 'python', 'haskell'],
 			   \ 'passive_filetypes': [] }
 let g:UltiSnipsExpandTrigger = "<nul>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
