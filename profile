@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH=$PATH:~/.bin
+export PATH=$PATH:~/.bin:~/.cabal/bin
 
 # use vim as man pager
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
