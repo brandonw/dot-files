@@ -56,6 +56,7 @@ channels = (
   { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#git"; chatnet = "freenode"; autojoin = "yes"; }
   { name = "##c"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; },
