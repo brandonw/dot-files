@@ -85,9 +85,16 @@ They print '1' if the python version is compiled in, '0' if not.
 
 Test if Vim is compiled with python version 2.x: >
     :echo has("python")
+The python version Vim is linked agains can be found with: >
+    :py import sys; print(sys.version)
 
 Test if Vim is compiled with python version 3.x: >
     :echo has("python3")
+The python version Vim is linked agains can be found with: >
+    :py3 import sys; print(sys.version)
+
+Note that Vim is maybe not using your system wide installed python version, so
+make sure to check the Python version inside of Vim.
 
 UltiSnips attempts to autodetect which python version is compiled into Vim.
 Unfortunately, in some versions of Vim this detection does not work.
@@ -139,6 +146,12 @@ Using bzr, checkout UltiSnips into a directory of your choice. >
 Then add this directory to your Vim runtime path by adding this line to your
 vimrc file. >
    set runtimepath+=~/.vim/ultisnips_rep
+
+UltiSnips also needs that Vim sources files from the ftdetect/ directory.
+Unfortunately, Vim only allows this directory in the .vim directory. You
+therefore have to symlink/copy the files: >
+   mkdir -p ~/.vim/ftdetect/
+   ln -s ~/.vim/ultisnips_rep/ftdetect/* ~/.vim/ftdetect/
 
 Restart Vim and UltiSnips should work. To access the help, use >
    :helptags ~/.vim/ultisnips_rep/doc
@@ -1246,6 +1259,8 @@ Contributors listed in chronological order:
    aschrab - Aaron Schrab
    stardiviner - NagatoPain
    skeept - Jorge Rodrigues
+   buztard
+   stephenmckinney - Steve McKinney
 
 
 7.2 Snippets                                       *UltiSnips-contrisnippets*
@@ -1274,6 +1289,10 @@ Contributors listed in chronological order:
    Jacek Wysocki (exu)
    Alexander Kondratskiy (KholdStare)
    Martin Krauskopf (martin-krauskopf)
+   Theocrite (theocrite)
+   Ferdinand Majerech (kiith-sa)
+   Vivien Didelot
+   Øystein Walle (osse)
 
 Thank you for your support.
 

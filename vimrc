@@ -19,9 +19,8 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
-Bundle 'epeli/slimux'
 Bundle 'sjl/gundo.vim'
-
+Bundle 'bitc/lushtags'
 Bundle 'kana/vim-smartinput'
 Bundle 'docunext/closetag.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -33,9 +32,11 @@ Bundle 'tpope/vim-markdown'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'ervandew/supertab'
-Bundle 'Rip-Rip/clang_complete'
 Bundle 'tpope/vim-git'
+Bundle 'Shougo/neocomplcache'
+Bundle 'ujihisa/neco-ghc'
+Bundle 'Shougo/vimproc'
+Bundle 'eagletmt/ghcmod-vim'
 
 " vim-scripts repos
 Bundle 'a.vim'
@@ -88,10 +89,12 @@ nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
 im <F8> :call UltiSnips_ListSnippets()<CR>
 nm <SPACE> :
 im jk <Esc>
-map <Leader>s :SlimuxREPLSendLine<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
-map <Leader>a :SlimuxShellLast<CR>
 nn <silent> <C-y> :CtrlPBuffer<CR>
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+function! s:check_back_space()"{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1] =~ '\s'
+endfunction"}}
 
 " Window switching bindings
 nn <C-h> <C-w>h
@@ -130,17 +133,17 @@ let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
 			   \ 'active_filetypes': ['c', 'python', 'haskell'],
 			   \ 'passive_filetypes': [] }
-let g:UltiSnipsExpandTrigger = "<nul>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:SuperTabDefaultCompletionType = "context"
+let g:UltiSnipsExpandTrigger="<nul>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:tagbar_autoclose = 1
-let g:slime_target = "tmux"
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_disable_auto_complete = 1
 
 set background=dark
 colorscheme solarized
 
-match ErrorMsg '\s\+$'
+"match ErrorMsg '\s\+$'
 
 " Removes trailing spaces
 function TrimWhiteSpace()
@@ -161,19 +164,22 @@ if has("autocmd")
   au!
 
   autocmd FileType xml setlocal foldmethod=syntax
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType text setlocal textwidth=79
-  autocmd FileType c setlocal textwidth=80
-  autocmd FileType c setlocal formatoptions+=t
-  autocmd FileType python setlocal foldmethod=indent
-  autocmd FileType python setlocal foldlevel=99
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType c setlocal textwidth=80 formatoptions+=t
+  autocmd FileType python setlocal foldmethod=indent foldlevel=99
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+  autocmd FileType haskell setlocal textwidth=80 ts=4 sts=4 sw=4 et
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileType gitcommit setlocal spell
   autocmd BufRead /tmp/mutt-* set tw=72
-  autocmd FileWritePre    * :call TrimWhiteSpace()
-  autocmd FileAppendPre   * :call TrimWhiteSpace()
-  autocmd BufWritePre     * :call TrimWhiteSpace()
+  autocmd FileWritePre  * :call TrimWhiteSpace()
+  autocmd FileAppendPre * :call TrimWhiteSpace()
+  autocmd BufWritePre   * :call TrimWhiteSpace()
 else
 
 endif " has("autocmd")
