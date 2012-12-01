@@ -11,38 +11,39 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " github bundles
-Bundle 'tpope/vim-fugitive'
-Bundle 'defunkt/gist'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'godlygeek/tabular'
-Bundle 'gregsexton/gitv'
-Bundle 'sjl/gundo.vim'
-Bundle 'bitc/lushtags'
-Bundle 'kana/vim-smartinput'
 Bundle 'docunext/closetag.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
+
 Bundle 'tpope/vim-markdown'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'sjl/gundo.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'bitc/lushtags'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-git'
 Bundle 'Shougo/neocomplcache'
 Bundle 'ujihisa/neco-ghc'
 Bundle 'Shougo/vimproc'
 Bundle 'eagletmt/ghcmod-vim'
+Bundle 'mattn/webapi-vim'
 
 " vim-scripts repos
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
 Bundle 'matchit.zip'
 Bundle 'pydoc.vim'
+Bundle 'Gist.vim'
 
 " non github repos
 
@@ -83,18 +84,13 @@ nn <silent> <F5> :GundoToggle<CR>
 nn <silent> <Leader>/ :nohls<CR>
 nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
-nn <silent> <Leader>ig :IndentGuidesToggle<CR>
 nn <silent> <Leader>c :SyntasticToggleMode<CR>
 nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
+nn <Leader>t :Tabularize /
 im <F8> :call UltiSnips_ListSnippets()<CR>
 nm <SPACE> :
 im jk <Esc>
-nn <silent> <C-y> :CtrlPBuffer<CR>
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
-function! s:check_back_space()"{{{
-let col = col('.') - 1
-return !col || getline('.')[col - 1] =~ '\s'
-endfunction"}}
+ino <expr><nul>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>"
 
 " Window switching bindings
 nn <C-h> <C-w>h
@@ -133,12 +129,14 @@ let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
 			   \ 'active_filetypes': ['c', 'python', 'haskell'],
 			   \ 'passive_filetypes': [] }
-let g:UltiSnipsExpandTrigger="<nul>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:tagbar_autoclose = 1
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_disable_auto_complete = 1
+let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_open_new_file = 'r'
 
 set background=dark
 colorscheme solarized
