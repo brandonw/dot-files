@@ -85,10 +85,12 @@ nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <silent> <Leader>c :SyntasticToggleMode<CR>
 nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
-nn <Leader>t :Tabularize /
+nn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
+vn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
 im <F8> :call UltiSnips_ListSnippets()<CR>
 nm <SPACE> :
 im jk <Esc>
+im <C-F> <ESC>:r!google-contacts-lookup.sh <cword><CR><ESC>
 ino <expr><nul>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>"
 
 " Window switching bindings
