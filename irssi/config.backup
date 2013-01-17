@@ -14,14 +14,6 @@ servers = (
     use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
-  },
-  {
-    address = "irc.mozilla.org";
-    chatnet = "mozilla";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
-    autoconnect = "yes";
   }
 );
 
@@ -40,13 +32,6 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  mozilla = {
-    type = "IRC";
-    autosendcmd = "/msg nickserv identify *; wait 7000";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
 };
 
 channels = (
@@ -59,8 +44,6 @@ channels = (
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; }
   { name = "##c"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#rust"; chatnet = "mozilla"; autojoin = "yes"; }
 );
 
 aliases = {
