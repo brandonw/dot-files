@@ -22,7 +22,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'sjl/gundo.vim'
 Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'bitc/lushtags'
@@ -168,7 +167,7 @@ if has("autocmd")
   autocmd FileType c setlocal textwidth=80 formatoptions+=t
   autocmd FileType python setlocal foldmethod=indent foldlevel=99
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-  autocmd FileType haskell setlocal textwidth=80 ts=4 sts=4 sw=4 et
+  autocmd FileType haskell setlocal textwidth=80 ts=4 sw=4 et
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
