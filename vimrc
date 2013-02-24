@@ -35,6 +35,7 @@ Bundle 'ujihisa/neco-ghc'
 Bundle 'Shougo/vimproc'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'mattn/webapi-vim'
+Bundle 'saltstack/salt-vim'
 
 " vim-scripts repos
 Bundle 'a.vim'
