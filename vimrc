@@ -81,7 +81,6 @@ set nu
 nn <silent> <F9> :TagbarToggle<CR>
 nn <silent> <F5> :GundoToggle<CR>
 nn <silent> <Leader>/ :nohls<CR>
-nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <silent> <Leader>c :SyntasticToggleMode<CR>
 nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
