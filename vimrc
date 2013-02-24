@@ -135,7 +135,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:tagbar_autoclose = 1
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_disable_auto_complete = 1
-let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_open_new_file = 'r'
 
 set background=dark
