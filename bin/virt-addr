@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Get the MAC address of vnet0
+mac=$(virsh domiflist $1 | grep vnet0 | awk '{print $5}')
+
+# Get the ip address assigned to this MAC from dnsmasq
+ip=$(awk -vmac=$mac '$2 == mac {print $3}' /var/lib/libvirt/dnsmasq/default.leases )
+echo $ip
