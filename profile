@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export PATH=$PATH:~/.bin:~/.cabal/bin
+export LIBVIRT_DEFAULT_URI=qemu:///system
 
 export PAGER="less"
 export EDITOR="vim"
