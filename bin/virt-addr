@@ -16,4 +16,5 @@ if [[ "$ip" = "" ]]
 then
 	echo "No IP for $1 found. Does it have a network configured?"
 	exit 1
+fi
 echo $ip
