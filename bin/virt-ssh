@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ip=$(virt-addr $1)
+
+if [[ $? -eq 1 ]]
+then
+	echo "$1 IP could not be found."
+	exit 1
+fi
+
+ssh -l root $(virt-addr $1)
