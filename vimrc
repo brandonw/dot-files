@@ -22,7 +22,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'sjl/gundo.vim'
 Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'bitc/lushtags'
@@ -36,6 +35,7 @@ Bundle 'ujihisa/neco-ghc'
 Bundle 'Shougo/vimproc'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'mattn/webapi-vim'
+Bundle 'saltstack/salt-vim'
 
 " vim-scripts repos
 Bundle 'a.vim'
@@ -81,7 +81,6 @@ set nu
 nn <silent> <F9> :TagbarToggle<CR>
 nn <silent> <F5> :GundoToggle<CR>
 nn <silent> <Leader>/ :nohls<CR>
-nn <silent> <Leader>n :NERDTreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <silent> <Leader>c :SyntasticToggleMode<CR>
 nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
@@ -136,7 +135,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:tagbar_autoclose = 1
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_disable_auto_complete = 1
-let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_open_new_file = 'r'
 
 set background=dark
@@ -168,7 +166,7 @@ if has("autocmd")
   autocmd FileType c setlocal textwidth=80 formatoptions+=t
   autocmd FileType python setlocal foldmethod=indent foldlevel=99
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-  autocmd FileType haskell setlocal textwidth=80 ts=4 sts=4 sw=4 et
+  autocmd FileType haskell setlocal textwidth=80 ts=4 sw=4 et
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
