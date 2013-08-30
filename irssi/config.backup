@@ -41,9 +41,10 @@ channels = (
   { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#git"; chatnet = "freenode"; autojoin = "yes"; }
-  { name = "##c"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#python"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#django"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -212,6 +213,7 @@ settings = {
     real_name = "Mike Wazowski";
     user_name = "brandonw";
     nick = "brandonw";
+    log_timestamp = "%F %T";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = {
