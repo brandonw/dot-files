@@ -22,4 +22,4 @@ while true; do
 	sleep 1s
 done &
 
-exec ck-launch-session bash -c "devmon & dwm"
+exec bash -c "devmon & dwm"
