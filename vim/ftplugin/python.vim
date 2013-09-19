@@ -5,7 +5,8 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set shiftround
-filetype indent on
+set foldmethod=indent
+set foldlevel=99
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
