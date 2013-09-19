@@ -75,7 +75,7 @@ set laststatus=2
 set wildmenu
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
-set nu
+set rnu
 
 " Plugin bindings
 nn <silent> <F9> :TagbarToggle<CR>
@@ -105,7 +105,6 @@ map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
-" use Ctrl+L to toggle the line number counting method
 function! g:ToggleNuMode()
   if &nu == 1
      set rnu
@@ -113,7 +112,7 @@ function! g:ToggleNuMode()
      set nu
   endif
 endfunction
-nnoremap <silent><C-L> :call g:ToggleNuMode()<cr>
+nnoremap <silent><C-N> :call g:ToggleNuMode()<cr>
 
 let $PAGER=''
 let g:gist_clip_command = 'xclip -selection clipboard'
@@ -147,6 +146,12 @@ function TrimWhiteSpace()
     %s/\s\+$//e
 :endfunction
 
+function Reload()
+    "if findfile("reload.sh", ".") == "reload.sh"
+    silent exec "!./reload.sh &>/dev/null &"
+    "endif
+:endfunction
+
 if has("gui_running")
   set guifont=Dina
   set guioptions-=T
@@ -160,11 +165,9 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  autocmd FileType xml setlocal foldmethod=syntax
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType text setlocal textwidth=79
   autocmd FileType c setlocal textwidth=80 formatoptions+=t
-  autocmd FileType python setlocal foldmethod=indent foldlevel=99
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
   autocmd FileType haskell setlocal textwidth=80 ts=4 sw=4 et
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -174,9 +177,9 @@ if has("autocmd")
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileType gitcommit setlocal spell
   autocmd BufRead /tmp/mutt-* set tw=72
-  autocmd FileWritePre  * :call TrimWhiteSpace()
-  autocmd FileAppendPre * :call TrimWhiteSpace()
-  autocmd BufWritePre   * :call TrimWhiteSpace()
+  autocmd FileWritePost,FileAppendPost,BufWritePost *.py :call Reload()
+  autocmd FileWritePost,FileAppendPost,BufWritePost *.html :call Reload()
+  autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
 else
 
 endif " has("autocmd")
