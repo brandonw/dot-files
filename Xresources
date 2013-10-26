@@ -9,7 +9,7 @@ URxvt.url-select.underline:	true
 URxvt.scrollBar:	false
 URxvt.urgentOnBell:     true
 
-URxvt.font:		-*-dina-medium-r-*-*-16-*-*-*-*-*-*
+URxvt.font:		-*-dina-medium-r-*-*-13-*-*-*-*-*-*
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
