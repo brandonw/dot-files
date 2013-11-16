@@ -11,7 +11,6 @@ export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export EDITOR="vim"
 export TERM="rxvt"
 export BROWSER=chromium
-export SDL_VIDEO_FULLSCREEN_HEAD=1
+export SDL_VIDEO_FULLSCREEN_HEAD=2
 
 alias e='emacs -nw'
-#source .keys
