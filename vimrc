@@ -10,42 +10,9 @@ call vundle#rc()
 " let Vundle manage Vundle [required]
 Bundle 'gmarik/vundle'
 
-" github bundles
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-
-Bundle 'SirVer/ultisnips'
-Bundle 'tpope/vim-markdown'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'sjl/gundo.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-repeat'
-Bundle 'bitc/lushtags'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Shougo/neocomplcache'
-Bundle 'ujihisa/neco-ghc'
-Bundle 'Shougo/vimproc'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'saltstack/salt-vim'
-
-" vim-scripts repos
-Bundle 'a.vim'
-Bundle 'cscope_macros.vim'
-Bundle 'matchit.zip'
-Bundle 'pydoc.vim'
-Bundle 'Gist.vim'
-
-" non github repos
-
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on
 
@@ -64,35 +31,23 @@ set title
 set scrolloff=10
 set shortmess=atI
 set autoindent
-syntax on
 set hlsearch
 set t_Co=256
 set hidden
-set tags+=tags;$HOME
-"set list
-set listchars=tab:▸\ ,eol:¬
 set laststatus=2
 set wildmenu
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
 set rnu
+set background=dark
+syntax on
+colorscheme solarized
 
-" Plugin bindings
-nn <silent> <F9> :TagbarToggle<CR>
-nn <silent> <F5> :GundoToggle<CR>
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+
 nn <silent> <Leader>/ :nohls<CR>
-nn <silent> <Leader>a :A<CR>
-nn <silent> <Leader>c :SyntasticToggleMode<CR>
-nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
-nn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
-vn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
-im <F8> :call UltiSnips_ListSnippets()<CR>
 nm <SPACE> :
-im jk <Esc>
-im <C-F> <ESC>:r!google-contacts-lookup.sh <cword><CR><ESC>
-ino <expr><nul>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>"
-
-" Window switching bindings
 nn <C-h> <C-w>h
 nn <C-j> <C-w>j
 nn <C-k> <C-w>k
@@ -105,51 +60,8 @@ map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
-function! g:ToggleNuMode()
-  if &nu == 1
-     set rnu
-  else
-     set nu
-  endif
-endfunction
-nnoremap <silent><C-N> :call g:ToggleNuMode()<cr>
-
-let $PAGER=''
-let g:gist_clip_command = 'xclip -selection clipboard'
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-let g:gist_browser_command = 'google-chrome %URL%'
-let c_syntax_for_h = 1
-let g:xml_syntax_folding = 1
-let g:Powerline_symbols = 'unicode'
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_c_check_header = 1
-let g:syntastic_c_auto_refresh_includes = 1
-let g:syntastic_mode_map = { 'mode': 'passive',
-			   \ 'active_filetypes': ['c', 'python', 'haskell'],
-			   \ 'passive_filetypes': [] }
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:tagbar_autoclose = 1
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_disable_auto_complete = 1
-let g:ctrlp_open_new_file = 'r'
-
-set background=dark
-colorscheme solarized
-
-"match ErrorMsg '\s\+$'
-
-" Removes trailing spaces
 function TrimWhiteSpace()
     %s/\s\+$//e
-:endfunction
-
-function Reload()
-    "if findfile("reload.sh", ".") == "reload.sh"
-    silent exec "!./reload.sh &>/dev/null &"
-    "endif
 :endfunction
 
 if has("gui_running")
@@ -166,19 +78,8 @@ if has("autocmd")
   au!
 
   autocmd FileType text setlocal textwidth=79
-  autocmd FileType c setlocal textwidth=80 formatoptions+=t
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-  autocmd FileType haskell setlocal textwidth=80 ts=4 sw=4 et
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   autocmd FileType gitcommit hi def link gitcommitOverflow Error
   autocmd FileType gitcommit setlocal spell
-  autocmd BufRead /tmp/mutt-* set tw=72
-  autocmd FileWritePost,FileAppendPost,BufWritePost *.py :call Reload()
-  autocmd FileWritePost,FileAppendPost,BufWritePost *.html :call Reload()
   autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
 else
 
