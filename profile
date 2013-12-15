@@ -9,8 +9,7 @@ export PAGER="less"
 export LESS="-R "
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export EDITOR="vim"
-export TERM="rxvt-16color"
 export BROWSER=chromium
-export SDL_VIDEO_FULLSCREEN_HEAD=2
+export SDL_VIDEO_FULLSCREEN_HEAD=0
 
 alias e='emacs -nw'
