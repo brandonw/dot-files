@@ -46,7 +46,7 @@ colorscheme solarized
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
-nn <silent> <Leader>/ :nohls<CR>
+nn <silent> <Leader>s :nohls<CR>
 nm <SPACE> :
 nn <C-h> <C-w>h
 nn <C-j> <C-w>j
