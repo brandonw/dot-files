@@ -1,0 +1,22 @@
+Config { font = "-*-dina-medium-r-*-*-13-*-*-*-*-*-*"
+       , bgColor = "#222222"
+       , fgColor = "#bbbbbb"
+       , position = Static { xpos = 0, ypos = -5, width = 1679, height = 23 }
+       , lowerOnStart = True
+       , commands = [ Run StdinReader
+                    , Run Weather "KCEF" ["-t","<tempF>F","-L","40","-H","80","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Network "enp2s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %b %_d %Y %I:%M:%S %p" "date" 10
+		    , Run Com "nvidia-settings" ["-q","0/gpucoretemp", "-t"] "" 10
+		    , Run Com "cat" ["/sys/bus/platform/devices/coretemp.0/temp2_input"] "t1" 10
+		    , Run Com "cat" ["/sys/bus/platform/devices/coretemp.0/temp3_input"] "t2" 10
+		    , Run Com "cat" ["/sys/bus/platform/devices/coretemp.0/temp4_input"] "t3" 10
+		    , Run Com "cat" ["/sys/bus/platform/devices/coretemp.0/temp5_input"] "t4" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ cpu: %t1% %t1% %t1% %t1% <fc=#ffffff>|</fc> gpu: %nvidia-settings% <fc=#ffffff>|</fc> %cpu% <fc=#ffffff>|</fc> %memory% * %swap% <fc=#ffffff>|</fc> %enp2s0% <fc=#ffffff>|</fc> %KCEF% <fc=#ffffff>|</fc> <fc=#ee9a00>%date%</fc> "
+       }

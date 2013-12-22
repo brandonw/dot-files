@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# ~/.xprofile
+#
+
+if [ -x /usr/bin/numlockx ]; then
+	/usr/bin/numlockx on
+fi
+
+xset +fp /usr/share/fonts/local
+xset fp rehash
+xsetroot -cursor_name left_ptr
+xset r rate 250 20
+xset +dpms
+xset dpms 0 0 300
+
+#stalonetray -i 18 --geometry 1x1+1660 -t true -bg "#222222" --grow-gravity SE &
+setxkbmap -config .xkbmap
+xbindkeys
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
+
+devmon &

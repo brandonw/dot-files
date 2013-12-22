@@ -1,25 +1,23 @@
 #!/bin/sh
+
 #
 # ~/.xinitrc
 #
-# Executed by startx (run your window manager from here)
+# Executed by startx
+#
 
-xset r rate 250 20
-xrdb -merge ~/.Xresources
-xbindkeys
-xmodmap ~/.Xmodmap
-
-# screen powersave
-xset +dpms
-xset dpms 0 0 300
+. .xprofile
+. .profile
+xrdb -merge .Xresources
+xmodmap .Xmodmap
 
 while true; do
-	xsetroot -name "$(awk 'gsub(/,/,"") {print $3, $4}' <(acpi -b)) \
-| Vol. $(awk '/Mono:/ { gsub(/[\[\]]/,""); print $4}' <(amixer get Master)) \
-| $(awk '/Mem:/ { print $3"/"$2"M" }' <(free -m)) \
-| $(date +"%a, %b %d %r")"
-
-	sleep 1s
+	xsetroot -name "$(date +"%a %b %_d %Y %I:%M:%S %p")"
+	sleep 1m
 done &
+exec dwm
 
-exec bash -c "devmon & dwm"
+#Run Network "enp2s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+#Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+#Run Memory ["-t","Mem: <usedratio>%"] 10
+#Run Swap [] 10

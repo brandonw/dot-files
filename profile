@@ -9,7 +9,7 @@ export PAGER="less"
 export LESS="-R "
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export EDITOR="vim"
-export BROWSER=chromium
+export BROWSER=firefox
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 
 alias e='emacs -nw'
