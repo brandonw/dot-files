@@ -1,18 +1,26 @@
 servers = (
   {
     address = "irc.freenode.net";
+    port = "6697";
     chatnet = "freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
+    use_ssl = "yes";
+    ssl_verify = "yes";
     autoconnect = "yes";
   },
   {
     address = "irc.esper.net";
+    port = "6697";
     chatnet = "esper";
-    port = "6667";
-    use_ssl = "no";
+    use_ssl = "yes";
     ssl_verify = "no";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.mozilla.org";
+    port = "6697";
+    chatnet = "mozilla";
+    use_ssl = "yes";
+    ssl_verify = "yes";
     autoconnect = "yes";
   }
 );
@@ -32,6 +40,13 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
+  mozilla = {
+    type = "IRC";
+    autosendcmd = "/msg nickserv identify *;wait 7000";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
 };
 
 channels = (
@@ -42,8 +57,8 @@ channels = (
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#python"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#django"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#rust"; chatnet = "mozilla"; autojoin = "yes"; },
+  { name = "#rust-gamedev"; chatnet = "mozilla"; autojoin = "yes"; },
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
@@ -219,7 +234,7 @@ settings = {
   "fe-common/core" = {
     beep_when_window_active = "yes";
     beep_when_away = "yes";
-    beep_msg_level = "MSGS NOTICES HILIGHT";
+    beep_msg_level = "MSGS NOTICES HILIGHT DCC DCCMSGS INVITES";
     bell_beeps = "yes";
     theme = "solarish";
     hilight_color = "%M";
@@ -227,6 +242,7 @@ settings = {
     autolog = "yes";
     autolog_path = "~/.irclogs/$tag/$0.log";
   };
+  "irc/dcc" = { dcc_autoresume = "yes"; dcc_autorename = "yes"; };
 };
 hilights = ( { text = "brandonw"; nick = "yes"; word = "yes"; } );
 windows = {
