@@ -1,0 +1,14 @@
+[user]
+	name = Brandon Waskiewicz
+	email = brandon.waskiewicz@gmail.com
+[core]
+	editor = vim
+	pager = less
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[push]
+	default = simple
