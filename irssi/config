@@ -228,7 +228,7 @@ settings = {
     real_name = "Mike Wazowski";
     user_name = "brandonw";
     nick = "brandonw";
-    log_timestamp = "%F %T";
+    log_timestamp = "%T";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = {
@@ -240,7 +240,7 @@ settings = {
     hilight_color = "%M";
     hilight_act_color = "%W";
     autolog = "yes";
-    autolog_path = "~/.irclogs/$tag/$0.log";
+    autolog_path = "~/.irclogs/$tag/$0/%Y-%m-%d.log";
   };
   "irc/dcc" = { dcc_autoresume = "yes"; dcc_autorename = "yes"; };
 };
