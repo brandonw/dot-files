@@ -28,21 +28,21 @@ servers = (
 chatnets = {
   freenode = {
     type = "IRC";
-    autosendcmd = "/msg nickserv identify brandonw *;wait 7000";
+    autosendcmd = "/msg nickserv identify brandonw $FREENODE_IRC;wait 7000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
   };
   esper = {
     type = "IRC";
-    autosendcmd = "/msg nickserv identify *;wait 7000";
+    autosendcmd = "/msg nickserv identify $ESPER_IRC;wait 7000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
   };
   mozilla = {
     type = "IRC";
-    autosendcmd = "/msg nickserv identify *;wait 7000";
+    autosendcmd = "/msg nickserv identify $MOZILLA_IRC;wait 7000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
@@ -245,14 +245,114 @@ settings = {
   "irc/dcc" = { dcc_autoresume = "yes"; dcc_autorename = "yes"; };
 };
 hilights = ( { text = "brandonw"; nick = "yes"; word = "yes"; } );
-windows = {
-  1 = { immortal = "yes"; name = "hilight"; sticky = "yes"; };
-  2 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-};
-mainwindows = {
-  2 = { first_line = "8"; lines = "50"; };
-  1 = { first_line = "1"; lines = "7"; };
-};
 #ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
 logs = { };
 ignores = ( );
+windows = {
+  1 = { immortal = "yes"; name = "hilight"; sticky = "yes"; };
+  2 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#starcraft";
+        tag = "esper";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#v()";
+        tag = "esper";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#casualteam";
+        tag = "esper";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#triangle";
+        tag = "esper";
+      }
+    );
+  };
+  7 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#rust";
+        tag = "mozilla";
+      }
+    );
+  };
+  8 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#rust-gamedev";
+        tag = "mozilla";
+      }
+    );
+  };
+  9 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#archlinux";
+        tag = "freenode";
+      }
+    );
+  };
+  10 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#vim";
+        tag = "freenode";
+      }
+    );
+  };
+  11 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#git";
+        tag = "freenode";
+      }
+    );
+  };
+  12 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#haskell";
+        tag = "freenode";
+      }
+    );
+  };
+};
+mainwindows = {
+  2 = { first_line = "7"; lines = "54"; };
+  1 = { first_line = "1"; lines = "6"; };
+};
