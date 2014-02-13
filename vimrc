@@ -75,9 +75,8 @@ let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsListSnippets = "<c-e>"
-let g:unite_split_rule = "botright"
+let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 nm <SPACE> :
