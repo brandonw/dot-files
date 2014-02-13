@@ -74,10 +74,14 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_list_select_completion = ['<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-k>']
+let g:UltiSnipsExpandTrigger = "<TAB>"
+let g:UltiSnipsJumpForwardTrigger = "<TAB>"
+let g:UltiSnipsJumpBackwardTrigger = ""
+let g:UltiSnipsListSnippets = "<C-e>"
 
 nm <SPACE> :
 nn <C-h> <C-w>h
@@ -93,8 +97,6 @@ nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
 vn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
-nn <silent> <F8> :call UltiSnips_ListSnippets()<CR>
-im <F8> :call UltiSnips_ListSnippets()<CR>
 
 " Open file bindings
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -114,26 +116,6 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
-
-" UltiSnips completion function that tries to expand a snippet. If there's no
-" snippet for expanding, it checks for completion window and if it's
-" shown, selects first element. If there's no completion window it tries to
-" jump to next placeholder. If there's no placeholder it just returns TAB key
-function! g:UltiSnips_Complete()
-    call UltiSnips_ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips_JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
 if has("autocmd")
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -148,7 +130,6 @@ if has("autocmd")
   au FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
   au FileType c setlocal textwidth=80 formatoptions+=t
   au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
-  au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 else
 
 endif " has("autocmd")
