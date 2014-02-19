@@ -65,8 +65,6 @@ set completeopt=menuone,longest,preview
 set rnu
 set nu
 set background=dark
-syntax on
-colorscheme solarized
 
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -78,6 +76,10 @@ let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:UltiSnipsListSnippets = "<C-e>"
+let g:solarized_diffmode = "high"
+
+syntax on
+colorscheme solarized
 
 nm <SPACE> :
 nn <C-h> <C-w>h
