@@ -19,6 +19,6 @@ xrdb -merge .Xresources
 xmodmap .Xmodmap
 
 while true; do
-	xsetroot -name "$(sys-status) | $(date +"%a %b %_d %Y %I:%M:%S %p")"
+	xsetroot -name "$(sys-status)"
 done &
 exec dwm
