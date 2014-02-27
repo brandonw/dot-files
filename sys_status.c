@@ -198,7 +198,7 @@ main(int argc, char *argv[])
 				down_color, downkbrate,
 				up_color, upkbrate);
 	}
-	printf("%s \n", time_str);
+	printf(" %s \n", time_str);
 
 	for (i = 0; i < dev_count1; i++) free(net_data1[i]);
 	for (i = 0; i < dev_count2; i++) free(net_data2[i]);
