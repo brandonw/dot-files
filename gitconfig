@@ -12,3 +12,7 @@
 	prompt = false
 [push]
 	default = simple
+[rerere]
+	enabled = true
+[alias]
+	lg = log --graph --color --decorate --oneline
