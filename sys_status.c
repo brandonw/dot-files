@@ -13,9 +13,9 @@
 #define HIGH_COLOR	    ""
 #define CPU_MED_LIMIT	    50
 #define CPU_HIGH_LIMIT	    90
-#define SWAP_MED_LIMIT	    30
-#define SWAP_HIGH_LIMIT	    75
-#define MEM_MED_LIMIT	    50
+#define SWAP_MED_LIMIT	    45
+#define SWAP_HIGH_LIMIT	    90
+#define MEM_MED_LIMIT	    40
 #define MEM_HIGH_LIMIT	    80
 #define NET_DOWN_MED_LIMIT  1024
 #define NET_DOWN_HIGH_LIMIT 2048
@@ -99,11 +99,12 @@ main(int argc, char *argv[])
 	char time_str[256];
 	int cpu_stat1[10], cpu_stat2[10];
         int tmp, i = 0, dev_count1 = 0, dev_count2 = 0;
-	struct net_data *net_data1[MAX_NET_DEVICES], *net_data2[MAX_NET_DEVICES];
+        struct net_data *net_data1[MAX_NET_DEVICES], *net_data2[MAX_NET_DEVICES];
 
-	char *cpu_color, *swap_color, *mem_color;
-        int swap_free, swap_tot, swap_used, swap_pct;
-        int mem_free, mem_tot, mem_used, mem_pct;
+        char *cpu_color, *swap_color, *mem_color;
+        long int swap_free, swap_tot, swap_used;
+        long int mem_free, mem_tot, mem_buf, mem_cached, mem_used;
+        int swap_pct, mem_pct;
         int cpu_pct, cpu_tot;
 
         /* Retrieve swap and memory info */
@@ -114,25 +115,33 @@ main(int argc, char *argv[])
                 if (strlen(line) >= 8 && strncmp("SwapFree", line, 8) == 0) {
                         strtok(line, " ");
                         tmp = atoi(strtok(NULL, " "));
-                        swap_free = tmp / 1024;
+                        swap_free = tmp;
                 }
                 else if (strlen(line) >= 9 && strncmp("SwapTotal", line, 9) == 0) {
                         strtok(line, " ");
                         tmp = atoi(strtok(NULL, " "));
-                        swap_tot = tmp / 1024;
-                        if (swap_tot * 1024 < tmp) ++swap_tot;
+                        swap_tot = tmp;
                 }
                 else if (strlen(line) >= 8 && strncmp("MemTotal", line, 8) == 0) {
                         strtok(line, " ");
                         tmp = atoi(strtok(NULL, " "));
-                        mem_tot = tmp / 1024;
-                        if (mem_tot * 1024 < tmp) ++mem_tot;
+                        mem_tot = tmp;
                 }
                 else if (strlen(line) >= 7 && strncmp("MemFree", line, 7) == 0) {
                         strtok(line, " ");
                         tmp = atoi(strtok(NULL, " "));
-                        mem_free = tmp / 1024;
+                        mem_free = tmp;
                 }
+		else if (strlen(line) >= 7 && strncmp("Buffers", line, 7) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			mem_buf = tmp;
+		}
+		else if (strlen(line) >= 6 && strncmp("Cached", line, 6) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			mem_cached = tmp;
+		}
         }
         if (line)
                 free(line);
@@ -140,7 +149,7 @@ main(int argc, char *argv[])
                 fclose(fp);
         swap_used = swap_tot - swap_free;
 	swap_pct = (int)((float)swap_used / (float)swap_tot * 100.0f);
-        mem_used = mem_tot - mem_free;
+        mem_used = mem_tot - mem_free - mem_buf - mem_cached;
 	mem_pct = (int)((float)mem_used / (float)mem_tot * 100.0f);
 
         /* Retrieve cpu and net data */
