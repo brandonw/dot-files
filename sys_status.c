@@ -13,9 +13,9 @@
 #define HIGH_COLOR	    ""
 #define CPU_MED_LIMIT	    50
 #define CPU_HIGH_LIMIT	    90
-#define SWAP_MED_LIMIT	    30
-#define SWAP_HIGH_LIMIT	    75
-#define MEM_MED_LIMIT	    50
+#define SWAP_MED_LIMIT	    45
+#define SWAP_HIGH_LIMIT	    90
+#define MEM_MED_LIMIT	    40
 #define MEM_HIGH_LIMIT	    80
 #define NET_DOWN_MED_LIMIT  1024
 #define NET_DOWN_HIGH_LIMIT 2048
@@ -30,28 +30,28 @@ struct net_data {
 
 int
 get_cpu_data(int *cpu_data) {
-        int i = 0;
-        char *line = NULL, *tok = NULL;
-        size_t len = 0;
-        FILE *fp = NULL;
+	int i = 0;
+	char *line = NULL, *tok = NULL;
+	size_t len = 0;
+	FILE *fp = NULL;
 
-        for (i = 0; i < 10; i++)
-                cpu_data[i] = 0;
+	for (i = 0; i < 10; i++)
+		cpu_data[i] = 0;
 
-        fp = fopen("/proc/stat", "r");
-        if (!fp)
-                return -1;
+	fp = fopen("/proc/stat", "r");
+	if (!fp)
+		return -1;
 
-        getline(&line, &len, fp);
-        tok = strtok(line, " ");
+	getline(&line, &len, fp);
+	tok = strtok(line, " ");
 
-        for (i = 0; i < 10 && (tok = strtok(NULL, " ")) != NULL; i++)
-                cpu_data[i] = atoi(tok);
-        if (line)
-                free(line);
-        if (fp)
-                fclose(fp);
-        return 0;
+	for (i = 0; i < 10 && (tok = strtok(NULL, " ")) != NULL; i++)
+		cpu_data[i] = atoi(tok);
+	if (line)
+		free(line);
+	if (fp)
+		fclose(fp);
+	return 0;
 }
 
 int
@@ -88,73 +88,82 @@ get_net_data(struct net_data **data, int *num) {
 	return 0;
 }
 
-int
+	int
 main(int argc, char *argv[])
 {
-        FILE *fp = NULL;
-        char *line = NULL;
-        size_t len = 0;
-        ssize_t read;
+	FILE *fp = NULL;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
 	time_t currtime;
 	char time_str[256];
 	int cpu_stat1[10], cpu_stat2[10];
-        int tmp, i = 0, dev_count1 = 0, dev_count2 = 0;
+	int tmp, i = 0, dev_count1 = 0, dev_count2 = 0;
 	struct net_data *net_data1[MAX_NET_DEVICES], *net_data2[MAX_NET_DEVICES];
 
 	char *cpu_color, *swap_color, *mem_color;
-        int swap_free, swap_tot, swap_used, swap_pct;
-        int mem_free, mem_tot, mem_used, mem_pct;
-        int cpu_pct, cpu_tot;
+	long int swap_free, swap_tot, swap_used;
+	long int mem_free, mem_tot, mem_buf, mem_cached, mem_used;
+	int swap_pct, mem_pct;
+	int cpu_pct, cpu_tot;
 
-        /* Retrieve swap and memory info */
-        fp = fopen("/proc/meminfo", "r");
-        if (!fp)
-                return EXIT_FAILURE;
-        while ((read = getline(&line, &len, fp)) != -1) {
-                if (strlen(line) >= 8 && strncmp("SwapFree", line, 8) == 0) {
-                        strtok(line, " ");
-                        tmp = atoi(strtok(NULL, " "));
-                        swap_free = tmp / 1024;
-                }
-                else if (strlen(line) >= 9 && strncmp("SwapTotal", line, 9) == 0) {
-                        strtok(line, " ");
-                        tmp = atoi(strtok(NULL, " "));
-                        swap_tot = tmp / 1024;
-                        if (swap_tot * 1024 < tmp) ++swap_tot;
-                }
-                else if (strlen(line) >= 8 && strncmp("MemTotal", line, 8) == 0) {
-                        strtok(line, " ");
-                        tmp = atoi(strtok(NULL, " "));
-                        mem_tot = tmp / 1024;
-                        if (mem_tot * 1024 < tmp) ++mem_tot;
-                }
-                else if (strlen(line) >= 7 && strncmp("MemFree", line, 7) == 0) {
-                        strtok(line, " ");
-                        tmp = atoi(strtok(NULL, " "));
-                        mem_free = tmp / 1024;
-                }
-        }
-        if (line)
-                free(line);
-        if (fp)
-                fclose(fp);
-        swap_used = swap_tot - swap_free;
+	/* Retrieve swap and memory info */
+	fp = fopen("/proc/meminfo", "r");
+	if (!fp)
+		return EXIT_FAILURE;
+	while ((read = getline(&line, &len, fp)) != -1) {
+		if (strlen(line) >= 8 && strncmp("SwapFree", line, 8) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			swap_free = tmp;
+		}
+		else if (strlen(line) >= 9 && strncmp("SwapTotal", line, 9) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			swap_tot = tmp;
+		}
+		else if (strlen(line) >= 8 && strncmp("MemTotal", line, 8) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			mem_tot = tmp;
+		}
+		else if (strlen(line) >= 7 && strncmp("MemFree", line, 7) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			mem_free = tmp;
+		}
+		else if (strlen(line) >= 7 && strncmp("Buffers", line, 7) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			mem_buf = tmp;
+		}
+		else if (strlen(line) >= 6 && strncmp("Cached", line, 6) == 0) {
+			strtok(line, " ");
+			tmp = atoi(strtok(NULL, " "));
+			mem_cached = tmp;
+		}
+	}
+	if (line)
+		free(line);
+	if (fp)
+		fclose(fp);
+	swap_used = swap_tot - swap_free;
 	swap_pct = (int)((float)swap_used / (float)swap_tot * 100.0f);
-        mem_used = mem_tot - mem_free;
+	mem_used = mem_tot - mem_free - mem_buf - mem_cached;
 	mem_pct = (int)((float)mem_used / (float)mem_tot * 100.0f);
 
-        /* Retrieve cpu and net data */
-        get_cpu_data(cpu_stat1);
+	/* Retrieve cpu and net data */
+	get_cpu_data(cpu_stat1);
 	get_net_data(net_data1, &dev_count1);
-        sleep(1);
-        get_cpu_data(cpu_stat2);
+	sleep(1);
+	get_cpu_data(cpu_stat2);
 	get_net_data(net_data2, &dev_count2);
-        cpu_tot = 0;
-        for (i = 0; i < 10; i++) {
-                cpu_stat1[i] = cpu_stat2[i] - cpu_stat1[i];
-                cpu_tot += cpu_stat1[i];
-        }
-        cpu_pct = (int)((float)cpu_stat1[0] / (float)cpu_tot * 100.0f);
+	cpu_tot = 0;
+	for (i = 0; i < 10; i++) {
+		cpu_stat1[i] = cpu_stat2[i] - cpu_stat1[i];
+		cpu_tot += cpu_stat1[i];
+	}
+	cpu_pct = (int)((float)cpu_stat1[0] / (float)cpu_tot * 100.0f);
 
 	if (dev_count1 != dev_count2) {
 		printf("ERROR");
@@ -163,16 +172,16 @@ main(int argc, char *argv[])
 
 	/* colors */
 	cpu_color = cpu_pct < CPU_MED_LIMIT ? LOW_COLOR :
-			cpu_pct < CPU_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
+		cpu_pct < CPU_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
 	mem_color = mem_pct < MEM_MED_LIMIT ? LOW_COLOR :
-			mem_pct < MEM_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
+		mem_pct < MEM_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
 	swap_color = swap_pct < SWAP_MED_LIMIT ? LOW_COLOR :
-			swap_pct < SWAP_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
+		swap_pct < SWAP_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
 
 	currtime = time(NULL);
 	strftime(time_str, sizeof(time_str),
 			"%a %b %e %Y %I:%M:%S %p", localtime(&currtime));
-        /* Print status */
+	/* Print status */
 	printf("Cpu: %s%d%%", cpu_color, cpu_pct);
 	printf(" | ");
 	printf("Swap: %s%d%%", swap_color, swap_pct);
@@ -189,9 +198,9 @@ main(int argc, char *argv[])
 		downkbrate = (net_data2[i]->down_bytes - net_data1[i]->down_bytes) / 1024;
 		upkbrate = (net_data2[i]->up_bytes - net_data1[i]->up_bytes) / 1024;
 		down_color = downkbrate < NET_DOWN_MED_LIMIT ? LOW_COLOR :
-				downkbrate < NET_DOWN_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
+			downkbrate < NET_DOWN_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
 		up_color = upkbrate < NET_UP_MED_LIMIT ? LOW_COLOR :
-				upkbrate < NET_UP_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
+			upkbrate < NET_UP_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
 
 		printf("%s %s%5dKB %s%5dKB ",
 				net_data1[i]->device_name,
@@ -202,5 +211,5 @@ main(int argc, char *argv[])
 
 	for (i = 0; i < dev_count1; i++) free(net_data1[i]);
 	for (i = 0; i < dev_count2; i++) free(net_data2[i]);
-        return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
