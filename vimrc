@@ -32,6 +32,7 @@ Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
+Bundle 'wting/rust.vim'
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
 
