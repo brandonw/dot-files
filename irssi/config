@@ -58,8 +58,7 @@ channels = (
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#rust"; chatnet = "mozilla"; autojoin = "yes"; },
-  { name = "#rust-gamedev"; chatnet = "mozilla"; autojoin = "yes"; },
-  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#rust-gamedev"; chatnet = "mozilla"; autojoin = "yes"; }
 );
 
 aliases = {
