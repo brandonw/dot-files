@@ -79,6 +79,9 @@ let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:UltiSnipsListSnippets = "<C-e>"
 let g:solarized_diffmode = "high"
+let g:syntastic_mode_map = { 'mode': 'passive',
+                           \ 'active_filetypes': ['c'],
+                           \ 'passive_filetypes': [] }
 
 syntax on
 colorscheme solarized
