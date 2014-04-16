@@ -10,6 +10,8 @@ call vundle#rc()
 " let Vundle manage Vundle [required]
 Bundle 'gmarik/vundle'
 
+filetype plugin indent on
+
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'bling/vim-airline'
@@ -36,8 +38,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'wting/rust.vim'
 Bundle 'a.vim'
 Bundle 'cscope_macros.vim'
-
-filetype plugin indent on
 
 " Avoid duplicate auto commands when writing .vimrc
 autocmd!
