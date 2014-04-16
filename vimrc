@@ -125,6 +125,7 @@ if has("autocmd")
   au FileType text setlocal tw=79
   au FileType html,xml setlocal et ai tw=79 ts=4 sts=4 sw=4 fdm=syntax
   au FileType python setlocal et tw=79 ts=4 sts=4 sw=4 ai sr fdm=indent foldlevel=99
+  au FileType rust setlocal et tw=100 ts=4 sts=4 sw=4 fdm=syntax
   au FileType gitcommit hi def link gitcommitOverflow Error
   au FileType gitcommit setlocal spell
   au FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
