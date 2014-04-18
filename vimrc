@@ -82,6 +82,21 @@ let g:solarized_diffmode = "high"
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['c'],
                            \ 'passive_filetypes': [] }
+let g:tagbar_type_rust = {
+    \ 'ctagstype' : 'rust',
+    \ 'kinds'     : [
+        \ 'f:functions',
+        \ 'T:type definitions',
+        \ 'g:enumeration names',
+        \ 's:structure names',
+        \ 'm:module names',
+        \ 'c:static constants',
+        \ 't:traits',
+        \ 'i:trait implementations',
+        \ 'd:macro definitions'
+    \ ],
+    \ 'sro'       : '::'
+    \  }
 
 syntax on
 colorscheme solarized
