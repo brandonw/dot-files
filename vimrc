@@ -1,46 +1,39 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
-
-" Required by vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle [required]
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
+Plugin 'mbbill/undotree'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-repeat'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-surround'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'gregsexton/gitv'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'bitc/lushtags'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'kien/ctrlp.vim'
+Plugin 'wting/rust.vim'
+Plugin 'a.vim'
+Plugin 'cscope_macros.vim'
+Plugin 'ledger/vim-ledger'
+Plugin 'chase/vim-ansible-yaml'
+call vundle#end()
 
 filetype plugin indent on
-
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'bling/vim-airline'
-Bundle 'mbbill/undotree'
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-repeat'
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-surround'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'gregsexton/gitv'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'bitc/lushtags'
-Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'rking/ag.vim'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'kien/ctrlp.vim'
-Bundle 'wting/rust.vim'
-Bundle 'a.vim'
-Bundle 'cscope_macros.vim'
-
-" Avoid duplicate auto commands when writing .vimrc
-autocmd!
 
 " enable matchit.vim that is included with vim
 runtime macros/matchit.vim
