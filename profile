@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH=$PATH:~/.bin:~/.cabal/bin
+export PATH=$PATH:~/.bin:~/.cabal/bin:~/.local/bin
 #export WORKON_HOME=~/.virtualenvs
 #export VIRTUALENV_PYTHON="python2"
 
@@ -11,5 +11,6 @@ export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export EDITOR="vim"
 export BROWSER=firefox
 export SDL_VIDEO_FULLSCREEN_HEAD=0
+export LEDGER_PAGER=less
 
 alias e='emacs -nw'

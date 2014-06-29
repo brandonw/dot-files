@@ -68,6 +68,7 @@ set rnu
 set nu
 set background=dark
 
+let g:ledger_fillstring = '>>'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:indent_guides_start_level = 2
@@ -149,6 +150,8 @@ if has("autocmd")
   au FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
   au FileType c setlocal textwidth=80 formatoptions+=t
   au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
+  au BufNewFile,BufRead *.ldg,*.ledger setf ledger
+  au FileType ledger setlocal ts=2 sw=2
 else
 
 endif " has("autocmd")

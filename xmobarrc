@@ -1,7 +1,7 @@
 Config { font = "-*-dina-medium-r-*-*-13-*-*-*-*-*-*"
        , bgColor = "#222222"
        , fgColor = "#bbbbbb"
-       , position = Static { xpos = 0, ypos = -5, width = 1679, height = 23 }
+       , position = Static { xpos = 0, ypos = -5, width = 1919, height = 23 }
        , lowerOnStart = True
        , commands = [ Run StdinReader
                     , Run Weather "KCEF" ["-t","<tempF>F","-L","40","-H","80","--normal","green","--high","red","--low","lightblue"] 36000

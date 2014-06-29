@@ -65,7 +65,7 @@ myFocusedBorderColor = "#ff0000"
 
 -- dmenu arguments
 --
-font = "-*-dina-medium-r-*-*-13-*-*-*-*-*-*"
+font = "\"-*-dina-medium-r-*-*-13-*-*-*-*-*-*\""
 normalBgColor = "\"#222222\""
 normalFgColor = "\"#bbbbbb\""
 selFgColor    = "\"#eeeeee\""
@@ -231,19 +231,14 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    -- [ isFullscreen                  --> doFullFloat
-    -- , className =? "MPlayer"        --> doFloat
-    [ className =? "Steam"          --> doFloat
-    , className =? "stalonetray"    --> doIgnore
+    [ isFullscreen                  --> doFullFloat
+    , className =? "MPlayer"        --> doFloat
     , className =? "FTL"            --> doFullFloat
-    , className =? "FEZ.bin.x86_64" --> doCenterFloat
-    , className =? "ninja-bin64"    --> doCenterFloat
-    , className =? "CaveStory+"     --> doCenterFloat
     , resource  =? "xmessage"       --> doCenterFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
-    -- , className =? "Firefox"        --> doShift "9-web"
-    -- , className =? "Chromium"       --> doShift "9-web" ]
+    , resource  =? "kdesktop"       --> doIgnore
+    , className =? "Firefox"        --> doShift "9-web"
+    , className =? "Chromium"       --> doShift "9-web" ]
 
 ------------------------------------------------------------------------
 -- Event handling
