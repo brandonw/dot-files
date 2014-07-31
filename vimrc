@@ -61,6 +61,7 @@ set rnu
 set nu
 set background=dark
 
+let g:ctrlp_working_path_mode = '0'
 let g:ledger_fillstring = '>>'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
