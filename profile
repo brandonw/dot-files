@@ -1,8 +1,8 @@
 #!/bin/sh
 
 export PATH=$PATH:~/.bin:~/.cabal/bin:~/.local/bin
-#export WORKON_HOME=~/.virtualenvs
-#export VIRTUALENV_PYTHON="python2"
+export WORKON_HOME=~/.virtualenvs
+export VIRTUALENV_PYTHON="python2"
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export PAGER="less"
