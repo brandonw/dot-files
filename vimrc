@@ -136,8 +136,11 @@ if has("autocmd")
   au!
 
   au FileType text setlocal tw=79
-  au FileType html,xml setlocal et ai tw=79 ts=4 sw=4 fdm=syntax
+  au FileType html,xml,htmldjango setlocal et ai tw=79 ts=4 sw=4 fdm=syntax
+  au FileType css setlocal et ai tw=79 ts=2 sw=2
   au FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+  au FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+  au FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
   au FileType rust setlocal et tw=100 ts=4 sw=4
   au FileType gitcommit hi def link gitcommitOverflow Error
   au FileType gitcommit setlocal spell
@@ -146,6 +149,7 @@ if has("autocmd")
   au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
   au BufNewFile,BufRead *.ldg,*.ledger setf ledger
   au FileType ledger setlocal ts=2 sw=2
+  au BufRead,BufNewFile Vagrantfile set ft=ruby
 else
 
 endif " has("autocmd")
