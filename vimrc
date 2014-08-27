@@ -102,14 +102,18 @@ nn <C-j> <C-w>j
 nn <C-k> <C-w>k
 nn <C-l> <C-w>l
 
-nn <silent> <Leader>f :CtrlP<CR>
-nn <silent> <Leader>b :CtrlPBuffer<CR>
-nn <silent> <Leader>m :CtrlPMRU<CR>
+nn <silent> gof :CtrlP<CR>
+nn <silent> gob :CtrlPBuffer<CR>
+nn <silent> gom :CtrlPMRU<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
 vn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
+nn gwn <C-W><C-W>
+vn gwn <C-W><C-W>
+nn gwp <C-W>W
+vn gwp <C-W>W
 
 " Open file bindings
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
