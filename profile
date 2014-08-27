@@ -1,6 +1,9 @@
 #!/bin/sh
 
 export PATH=$PATH:~/.bin:~/.cabal/bin:~/.local/bin
+if which ruby >/dev/null && which gem >/dev/null; then
+	PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENV_PYTHON="python2"
 
