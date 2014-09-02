@@ -97,11 +97,6 @@ syntax on
 colorscheme solarized
 
 nm <SPACE> :
-nn <C-h> <C-w>h
-nn <C-j> <C-w>j
-nn <C-k> <C-w>k
-nn <C-l> <C-w>l
-
 nn <silent> gof :CtrlP<CR>
 nn <silent> gob :CtrlPBuffer<CR>
 nn <silent> gom :CtrlPMRU<CR>
@@ -114,6 +109,14 @@ nn gwn <C-W><C-W>
 vn gwn <C-W><C-W>
 nn gwp <C-W>W
 vn gwp <C-W>W
+nn gwh <C-W>h
+vn gwh <C-W>h
+nn gwj <C-W>j
+vn gwj <C-W>j
+nn gwk <C-W>k
+vn gwk <C-W>k
+nn gwl <C-W>l
+vn gwl <C-W>l
 
 " Open file bindings
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
