@@ -61,6 +61,7 @@ set rnu
 set nu
 set background=dark
 
+let g:ctrlp_working_path_mode = '0'
 let g:ledger_fillstring = '>>'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -96,19 +97,26 @@ syntax on
 colorscheme solarized
 
 nm <SPACE> :
-nn <C-h> <C-w>h
-nn <C-j> <C-w>j
-nn <C-k> <C-w>k
-nn <C-l> <C-w>l
-
-nn <silent> <Leader>f :CtrlP<CR>
-nn <silent> <Leader>b :CtrlPBuffer<CR>
-nn <silent> <Leader>m :CtrlPMRU<CR>
+nn <silent> gof :CtrlP<CR>
+nn <silent> gob :CtrlPBuffer<CR>
+nn <silent> gom :CtrlPMRU<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
 vn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
+nn gwn <C-W><C-W>
+vn gwn <C-W><C-W>
+nn gwp <C-W>W
+vn gwp <C-W>W
+nn gwh <C-W>h
+vn gwh <C-W>h
+nn gwj <C-W>j
+vn gwj <C-W>j
+nn gwk <C-W>k
+vn gwk <C-W>k
+nn gwl <C-W>l
+vn gwl <C-W>l
 
 " Open file bindings
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -135,8 +143,11 @@ if has("autocmd")
   au!
 
   au FileType text setlocal tw=79
-  au FileType html,xml setlocal et ai tw=79 ts=4 sw=4 fdm=syntax
+  au FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
+  au FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
   au FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+  au FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+  au FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
   au FileType rust setlocal et tw=100 ts=4 sw=4
   au FileType gitcommit hi def link gitcommitOverflow Error
   au FileType gitcommit setlocal spell
@@ -145,6 +156,7 @@ if has("autocmd")
   au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
   au BufNewFile,BufRead *.ldg,*.ledger setf ledger
   au FileType ledger setlocal ts=2 sw=2
+  au BufRead,BufNewFile Vagrantfile set ft=ruby
 else
 
 endif " has("autocmd")
