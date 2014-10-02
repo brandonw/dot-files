@@ -58,7 +58,10 @@ channels = (
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#rust"; chatnet = "mozilla"; autojoin = "yes"; },
-  { name = "#rust-gamedev"; chatnet = "mozilla"; autojoin = "yes"; }
+  { name = "#rust-gamedev"; chatnet = "mozilla"; autojoin = "yes"; },
+  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#python"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#django"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -350,8 +353,28 @@ windows = {
       }
     );
   };
+  13 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#python";
+        tag = "freenode";
+      }
+    );
+  };
+  14 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#django";
+        tag = "freenode";
+      }
+    );
+  };
 };
 mainwindows = {
-  2 = { first_line = "7"; lines = "54"; };
+  2 = { first_line = "7"; lines = "57"; };
   1 = { first_line = "1"; lines = "6"; };
 };
