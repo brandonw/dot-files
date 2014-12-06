@@ -71,10 +71,17 @@ let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
-let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
-let g:UltiSnipsListSnippets = "<C-e>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger = "<nop>"
+let g:ulti_expand_or_jump_res = 0
+function ExpandSnippetOrCarriageReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
 let g:solarized_diffmode = "high"
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['c'],
@@ -107,6 +114,7 @@ nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 nn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
 vn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
+ino <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 nn gwn <C-W><C-W>
 vn gwn <C-W><C-W>
 nn gwp <C-W>W
