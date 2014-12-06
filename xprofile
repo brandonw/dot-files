@@ -13,6 +13,9 @@ fi
 if [ -d ~/.local/share/fonts ]; then
 	xset +fp ~/.local/share/fonts
 fi
+if [ -e ~/.xbindkeysrc ]; then
+	xbindkeys
+fi
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xsetroot -cursor_name left_ptr
