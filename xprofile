@@ -10,6 +10,9 @@ fi
 if [ -d ~/.fonts ]; then
 	xset +fp ~/.fonts
 fi
+if [ -d ~/.local/share/fonts ]; then
+	xset +fp ~/.local/share/fonts
+fi
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xsetroot -cursor_name left_ptr
