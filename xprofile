@@ -26,4 +26,5 @@ xset dpms 0 0 300
 #autocutsel -fork &
 #autocutsel -selection PRIMARY -fork &
 
+xautolock -time 10 -locker slock -detectsleep &
 devmon &
