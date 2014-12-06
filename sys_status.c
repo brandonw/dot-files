@@ -10,6 +10,10 @@
 #define LOW_COLOR	    ""
 #define MED_COLOR	    ""
 #define HIGH_COLOR	    ""
+#define BATT_FULL           ""
+#define BATT_80             ""
+#define BATT_30             ""
+#define BATT_EMPTY          ""
 #define CPU_MED_LIMIT	    50
 #define CPU_HIGH_LIMIT	    90
 #define MEM_MED_LIMIT	    40
@@ -18,12 +22,46 @@
 #define NET_DOWN_HIGH_LIMIT 2048
 #define NET_UP_MED_LIMIT    256
 #define NET_UP_HIGH_LIMIT   768
+#define BAT_MED_LIMIT       16
+#define BAT_LOW_LIMIT       6
 
 struct net_data {
 	char device_name[256];
 	long int down_bytes;
 	long int up_bytes;
 };
+
+int
+get_battery_pct() {
+	char *line = NULL;
+	size_t len = 0;
+	FILE *fp = NULL;
+	int max, current;
+
+	fp = fopen("/sys/class/power_supply/BAT0/energy_now", "r");
+	if (!fp)
+		return -1;
+	getline(&line, &len, fp);
+	current = atoi(line);
+	if (line)
+		free(line);
+	if (fp)
+		fclose(fp);
+
+	line = NULL;
+	len = 0;
+	fp = fopen("/sys/class/power_supply/BAT0/energy_full", "r");
+	if (!fp)
+		return -1;
+	getline(&line, &len, fp);
+	max = atoi(line);
+	if (line)
+		free(line);
+	if (fp)
+		fclose(fp);
+
+	return (int)((float)current / (float)max * 100.0f);
+}
 
 int
 get_cpu_data(int *cpu_data) {
@@ -103,6 +141,10 @@ main()
 	int mem_pct;
 	int cpu_pct, cpu_tot;
 
+	char *batt_color;
+	int batt_pct;
+	char *batt_icon;
+
 	/* Retrieve memory info */
 	fp = fopen("/proc/meminfo", "r");
 	if (!fp)
@@ -136,9 +178,10 @@ main()
 	mem_used = mem_tot - mem_free - mem_buf - mem_cached;
 	mem_pct = (int)((float)mem_used / (float)mem_tot * 100.0f);
 
-	/* Retrieve cpu and net data */
+	/* Retrieve cpu, net, and battery data */
 	get_cpu_data(cpu_stat1);
 	get_net_data(net_data1, &dev_count1);
+	batt_pct = get_battery_pct();
 	sleep(1);
 	get_cpu_data(cpu_stat2);
 	get_net_data(net_data2, &dev_count2);
@@ -159,6 +202,8 @@ main()
 		cpu_pct < CPU_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR);
 	mem_color = (char*)(mem_pct < MEM_MED_LIMIT ? LOW_COLOR :
 		mem_pct < MEM_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR);
+	batt_color = (char*)(batt_pct < BAT_LOW_LIMIT ? HIGH_COLOR :
+		batt_pct < BAT_MED_LIMIT ? MED_COLOR : LOW_COLOR);
 
 	currtime = time(NULL);
 	strftime(time_str, sizeof(time_str),
@@ -166,7 +211,7 @@ main()
 	/* Print status */
 	printf("Cpu: %s%d%%", cpu_color, cpu_pct);
 	printf(" | ");
-	printf("Mem %s%d%%", mem_color, mem_pct);
+	printf("Mem: %s%d%%", mem_color, mem_pct);
 	printf(" | ");
 	for (i = 0; i < dev_count1; i++) {
 		int downkbrate = 0;
@@ -187,6 +232,22 @@ main()
 				down_color, downkbrate,
 				up_color, upkbrate);
 	}
+
+	if (batt_pct != -1) {
+		if (batt_pct >= 95) {
+			batt_icon = (char*)BATT_FULL;
+		} else if (batt_pct > 40) {
+			batt_icon = (char*)BATT_80;
+		} else if (batt_pct > 10) {
+			batt_icon = (char*)BATT_30;
+		} else {
+			batt_icon = (char*)BATT_EMPTY;
+		}
+
+		printf(" | ");
+		printf("%s%d%% %s ", batt_color, batt_pct, batt_icon);
+	}
+
 	printf(" %s \n", time_str);
 
 	for (i = 0; i < dev_count1; i++) free(net_data1[i]);
