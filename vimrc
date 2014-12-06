@@ -84,7 +84,7 @@ function ExpandSnippetOrCarriageReturn()
 endfunction
 let g:solarized_diffmode = "high"
 let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['c'],
+                           \ 'active_filetypes': ['c', 'python', 'htmldjango'],
                            \ 'passive_filetypes': [] }
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
