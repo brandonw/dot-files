@@ -10,6 +10,7 @@ Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-repeat'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -145,6 +146,7 @@ if has("autocmd")
 
   au FileType text setlocal tw=79
   au FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
+  au FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
   au FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
   au FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
   au FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
