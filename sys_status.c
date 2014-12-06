@@ -1,4 +1,3 @@
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -70,7 +69,7 @@ get_net_data(struct net_data **data, int *num) {
 	if (getline(&line, &len, fp) == -1) return -1;
 
 	while (getline(&line, &len, fp) > 0 && *num < MAX_NET_DEVICES) {
-		nd = malloc(sizeof(struct net_data));
+		nd = (struct net_data*)malloc(sizeof(struct net_data));
 		data[*num] = nd;
 		tok = strtok(line, " ");
 		strncpy(nd->device_name, tok, sizeof(nd->device_name));
@@ -87,7 +86,7 @@ get_net_data(struct net_data **data, int *num) {
 }
 
 	int
-main(int argc, char *argv[])
+main()
 {
 	FILE *fp = NULL;
 	char *line = NULL;
@@ -156,10 +155,10 @@ main(int argc, char *argv[])
 	}
 
 	/* colors */
-	cpu_color = cpu_pct < CPU_MED_LIMIT ? LOW_COLOR :
-		cpu_pct < CPU_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
-	mem_color = mem_pct < MEM_MED_LIMIT ? LOW_COLOR :
-		mem_pct < MEM_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
+	cpu_color = (char*)(cpu_pct < CPU_MED_LIMIT ? LOW_COLOR :
+		cpu_pct < CPU_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR);
+	mem_color = (char*)(mem_pct < MEM_MED_LIMIT ? LOW_COLOR :
+		mem_pct < MEM_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR);
 
 	currtime = time(NULL);
 	strftime(time_str, sizeof(time_str),
@@ -178,10 +177,10 @@ main(int argc, char *argv[])
 			continue;
 		downkbrate = (net_data2[i]->down_bytes - net_data1[i]->down_bytes) / 1024;
 		upkbrate = (net_data2[i]->up_bytes - net_data1[i]->up_bytes) / 1024;
-		down_color = downkbrate < NET_DOWN_MED_LIMIT ? LOW_COLOR :
-			downkbrate < NET_DOWN_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
-		up_color = upkbrate < NET_UP_MED_LIMIT ? LOW_COLOR :
-			upkbrate < NET_UP_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR;
+		down_color = (char*)(downkbrate < NET_DOWN_MED_LIMIT ? LOW_COLOR :
+			downkbrate < NET_DOWN_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR);
+		up_color = (char*)(upkbrate < NET_UP_MED_LIMIT ? LOW_COLOR :
+			upkbrate < NET_UP_HIGH_LIMIT ? MED_COLOR : HIGH_COLOR);
 
 		printf("%s %s%5dKB %s%5dKB ",
 				net_data1[i]->device_name,
