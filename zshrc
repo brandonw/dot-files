@@ -62,7 +62,7 @@ unsetopt correct_all
 unsetopt share_history
 
 streaming() {
-	INRES="1680x1050" # input resolution
+	INRES="1920x1080" # input resolution
 	OUTRES="672x420"
 	FPS="25" # target FPS
 	QUAL="superfast" #x264 preset
