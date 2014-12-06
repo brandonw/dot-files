@@ -13,7 +13,6 @@ export LESS="-R "
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export EDITOR="vim"
 export BROWSER=firefox
-export SDL_VIDEO_FULLSCREEN_HEAD=0
 export LEDGER_PAGER=less
 
 alias e='emacs -nw'
