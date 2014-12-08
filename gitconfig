@@ -17,3 +17,7 @@
 	enabled = true
 [alias]
 	lg = log --graph --color --decorate --oneline
+	
+	; Explicit is better than implicit. If we want to merge
+	; we should do so ourselves.
+	pull = pull --ff-only
