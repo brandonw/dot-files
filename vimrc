@@ -71,6 +71,7 @@ let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_always_populate_location_list = 1
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsExpandTrigger = "<nop>"
 let g:ulti_expand_or_jump_res = 0
@@ -83,9 +84,11 @@ function ExpandSnippetOrCarriageReturn()
     endif
 endfunction
 let g:solarized_diffmode = "high"
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['c', 'python', 'htmldjango'],
                            \ 'passive_filetypes': [] }
+let g:syntastic_python_checkers = ["flake8"]
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds'     : [
