@@ -38,7 +38,7 @@ get_battery_pct() {
 	FILE *fp = NULL;
 	int max, current;
 
-	fp = fopen("/sys/class/power_supply/BAT0/charge_now", "r");
+	fp = fopen("/sys/class/power_supply/BAT0/energy_now", "r");
 	if (!fp)
 		return -1;
 	getline(&line, &len, fp);
@@ -50,7 +50,7 @@ get_battery_pct() {
 
 	line = NULL;
 	len = 0;
-	fp = fopen("/sys/class/power_supply/BAT0/charge_full", "r");
+	fp = fopen("/sys/class/power_supply/BAT0/energy_full", "r");
 	if (!fp)
 		return -1;
 	getline(&line, &len, fp);
