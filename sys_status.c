@@ -39,8 +39,11 @@ get_battery_pct() {
 	int max, current;
 
 	fp = fopen("/sys/class/power_supply/BAT0/energy_now", "r");
-	if (!fp)
-		return -1;
+	if (!fp) {
+		fp = fopen("/sys/class/power_supply/BAT0/charge_now", "r");
+		if (!fp)
+			return -1;
+	}
 	getline(&line, &len, fp);
 	current = atoi(line);
 	if (line)
@@ -51,8 +54,11 @@ get_battery_pct() {
 	line = NULL;
 	len = 0;
 	fp = fopen("/sys/class/power_supply/BAT0/energy_full", "r");
-	if (!fp)
-		return -1;
+	if (!fp) {
+		fopen("/sys/class/power_supply/BAT0/charge_full", "r");
+		if (!fp)
+			return -1;
+	}
 	getline(&line, &len, fp);
 	max = atoi(line);
 	if (line)
