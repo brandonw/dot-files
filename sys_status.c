@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include <math.h>
 
 #define MAX_NET_DEVICES     10
 #define SHOW_LOOPBACK       0
@@ -66,7 +67,7 @@ get_battery_pct() {
 	if (fp)
 		fclose(fp);
 
-	return (int)((float)current / (float)max * 100.0f);
+	return (int)ceilf((float)current / (float)max * 100.0f);
 }
 
 int
