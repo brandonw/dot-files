@@ -56,7 +56,7 @@ get_battery_pct() {
 	len = 0;
 	fp = fopen("/sys/class/power_supply/BAT0/energy_full", "r");
 	if (!fp) {
-		fopen("/sys/class/power_supply/BAT0/charge_full", "r");
+		fp = fopen("/sys/class/power_supply/BAT0/charge_full", "r");
 		if (!fp)
 			return -1;
 	}
