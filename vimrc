@@ -48,7 +48,7 @@ set nobackup
 set ignorecase
 set smartcase
 set title
-set scrolloff=10
+set scrolloff=5
 set shortmess=atI
 set autoindent
 set t_Co=256
