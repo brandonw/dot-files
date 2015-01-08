@@ -67,7 +67,10 @@ get_battery_pct() {
 	if (fp)
 		fclose(fp);
 
-	return (int)ceilf((float)current / (float)max * 100.0f);
+	current = (int)ceilf((float)current / (float)max * 100.0f);
+	if (current > 100)
+		current = 100;
+	return current;
 }
 
 int
