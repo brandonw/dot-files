@@ -59,7 +59,6 @@ channels = (
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#rust"; chatnet = "mozilla"; autojoin = "yes"; },
   { name = "#rust-gamedev"; chatnet = "mozilla"; autojoin = "yes"; },
-  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#python"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#django"; chatnet = "freenode"; autojoin = "yes"; }
 );
@@ -348,22 +347,12 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#haskell";
-        tag = "freenode";
-      }
-    );
-  };
-  13 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
         name = "#python";
         tag = "freenode";
       }
     );
   };
-  14 = {
+  13 = {
     items = (
       {
         type = "CHANNEL";
