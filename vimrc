@@ -4,20 +4,19 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
+Plugin 'szw/vim-ctrlspace'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
-Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-dispatch'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 Plugin 'gregsexton/gitv'
-Plugin 'eagletmt/ghcmod-vim'
 Plugin 'bitc/lushtags'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
@@ -25,13 +24,14 @@ Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kien/ctrlp.vim'
 Plugin 'wting/rust.vim'
 Plugin 'a.vim'
 Plugin 'cscope_macros.vim'
+Plugin 'closetag.vim'
 Plugin 'ledger/vim-ledger'
 Plugin 'chase/vim-ansible-yaml'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -116,8 +116,6 @@ nn <silent> gom :CtrlPMRU<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
-nn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
-vn <Leader>t= :Tabularize /[^=]\+\zs=\(=\)\@!<CR>
 ino <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 nn gwn <C-W><C-W>
 vn gwn <C-W><C-W>
