@@ -22,6 +22,7 @@ xsetroot -cursor_name left_ptr
 xset r rate 250 20
 xset +dpms
 xset dpms 0 0 300
+xset m 3/2 0
 
 #autocutsel -fork &
 #autocutsel -selection PRIMARY -fork &
