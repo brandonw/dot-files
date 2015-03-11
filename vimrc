@@ -7,7 +7,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
-Plugin 'szw/vim-ctrlspace'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
@@ -63,10 +62,11 @@ set nu
 set background=dark
 set tabline=%!MyTabLine()
 
+let g:ctrlp_max_files = 0
 let g:ctrlp_working_path_mode = '0'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_tabpage_position = 'al'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
 let g:ledger_fillstring = '>>'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -80,10 +80,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsExpandTrigger = "<nop>"
 let g:ulti_expand_or_jump_res = 0
 let g:airline_exclude_preview = 1
-let g:ctrlspace_unicode_font = 0
-let g:ctrlspace_save_workspace_on_exit = 1
-let g:ctrlspace_save_workspace_on_switch = 1
-let g:ctrlspace_load_last_workspace_on_start = 1
+
 function ExpandSnippetOrCarriageReturn()
     let snippet = UltiSnips#ExpandSnippetOrJump()
     if g:ulti_expand_or_jump_res > 0
@@ -118,10 +115,9 @@ syntax on
 colorscheme solarized
 
 nm <SPACE> :
-nn <silent> gob :CtrlSpace<CR>
 nn <silent> gof :CtrlP<CR>
-nn <silent> got :CtrlSpace l<CR>
-nn <silent> gow :CtrlSpace w<CR>
+nn <silent> gob :CtrlPBuffer<CR>
+nn <silent> gom :CtrlPMRU<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
