@@ -63,7 +63,6 @@ chatnets = {
 };
 
 channels = (
-  { name = "#starcraft"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#v()"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#casualteam"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
@@ -280,7 +279,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#starcraft";
+        name = "#v()";
         tag = "esper";
       }
     );
@@ -290,7 +289,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#v()";
+        name = "#casualteam";
         tag = "esper";
       }
     );
@@ -300,7 +299,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#casualteam";
+        name = "#triangle";
         tag = "esper";
       }
     );
@@ -310,22 +309,12 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#triangle";
-        tag = "esper";
-      }
-    );
-  };
-  8 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
         name = "#rust";
         tag = "mozilla";
       }
     );
   };
-  9 = {
+  8 = {
     items = (
       {
         type = "CHANNEL";
@@ -335,7 +324,7 @@ windows = {
       }
     );
   };
-  10 = {
+  9 = {
     items = (
       {
         type = "CHANNEL";
@@ -345,7 +334,7 @@ windows = {
       }
     );
   };
-  11 = {
+  10 = {
     items = (
       {
         type = "CHANNEL";
@@ -355,7 +344,7 @@ windows = {
       }
     );
   };
-  12 = {
+  11 = {
     items = (
       {
         type = "CHANNEL";
@@ -365,7 +354,7 @@ windows = {
       }
     );
   };
-  13 = {
+  12 = {
     items = (
       {
         type = "CHANNEL";
@@ -375,7 +364,7 @@ windows = {
       }
     );
   };
-  14 = {
+  13 = {
     items = (
       {
         type = "CHANNEL";
