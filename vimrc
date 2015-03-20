@@ -28,6 +28,7 @@ Plugin 'wting/rust.vim'
 Plugin 'a.vim'
 Plugin 'cscope_macros.vim'
 Plugin 'closetag.vim'
+Plugin 'fholgado/minibufexpl.vim'
 Plugin 'ledger/vim-ledger'
 Plugin 'chase/vim-ansible-yaml'
 
@@ -63,6 +64,7 @@ set background=dark
 set tabline=%!MyTabLine()
 set diffopt=vertical
 
+let g:miniBufExplShowBufNumbers = 0
 let g:ctrlp_max_files = 0
 let g:ctrlp_working_path_mode = '0'
 let g:ctrlp_open_new_file = 'r'
@@ -117,7 +119,7 @@ colorscheme solarized
 
 nm <SPACE> :
 nn <silent> gof :CtrlP<CR>
-nn <silent> gob :CtrlPBuffer<CR>
+nn <silent> gob :MBEFocus<CR>
 nn <silent> gom :CtrlPMRU<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
