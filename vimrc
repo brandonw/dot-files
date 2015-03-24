@@ -7,6 +7,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
+Plugin 'szw/vim-ctrlspace'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
@@ -81,7 +82,10 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsExpandTrigger = "<nop>"
 let g:ulti_expand_or_jump_res = 0
 let g:airline_exclude_preview = 1
-
+let g:ctrlspace_unicode_font = 0
+let g:ctrlspace_save_workspace_on_exit = 1
+let g:ctrlspace_save_workspace_on_switch = 1
+let g:ctrlspace_load_last_workspace_on_start = 1
 function ExpandSnippetOrCarriageReturn()
     let snippet = UltiSnips#ExpandSnippetOrJump()
     if g:ulti_expand_or_jump_res > 0
@@ -116,9 +120,10 @@ syntax on
 colorscheme solarized
 
 nm <SPACE> :
+nn <silent> gob :CtrlSpace<CR>
 nn <silent> gof :CtrlP<CR>
-nn <silent> gob :CtrlPBuffer<CR>
-nn <silent> gom :CtrlPMRU<CR>
+nn <silent> got :CtrlSpace l<CR>
+nn <silent> gow :CtrlSpace w<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
