@@ -65,7 +65,8 @@ set tabline=%!MyTabLine()
 set diffopt=vertical
 
 let g:ctrlp_max_files = 0
-let g:ctrlp_working_path_mode = '0'
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_default_input = 1
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_tabpage_position = 'al'
 let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
