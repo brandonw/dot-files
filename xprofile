@@ -16,7 +16,9 @@ fi
 if [ -e ~/.xbindkeysrc ]; then
 	xbindkeys
 fi
-xset +fp /usr/share/fonts/local
+if [ -d /usr/share/fonts/local ]; then
+	xset +fp /usr/share/fonts/local
+fi
 xset fp rehash
 xsetroot -cursor_name left_ptr
 xset r rate 250 20
@@ -24,8 +26,10 @@ xset +dpms
 xset dpms 0 0 300
 xset m 3/2 0
 
-#autocutsel -fork &
-#autocutsel -selection PRIMARY -fork &
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
 
-eval $(cat ~/.fehbg)
+if [ -e ~/.fehbg ]; then
+	eval $(cat ~/.fehbg)
+fi
 xautolock -time 10 -locker slock -detectsleep &
