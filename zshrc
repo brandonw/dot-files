@@ -71,7 +71,7 @@ streaming() {
 		-f alsa -ac 2 -i pulse \
 		-vcodec libx264 -preset $QUAL -s "$OUTRES" -pix_fmt yuv420p \
 		-acodec libmp3lame -ar 44100 -ab 64k -threads 0  \
-		-f flv "rtmp://live.justin.tv/app/$JTV_STREAM_KEY"
+		-f flv "rtmp://live.twitch.tv/app/$TWITCH_STREAM_KEY"
 }
 
 # ssh
