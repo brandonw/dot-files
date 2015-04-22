@@ -63,15 +63,22 @@ unsetopt share_history
 
 streaming() {
 	INRES="1920x1080" # input resolution
-	OUTRES="672x420"
+	OUTRES="1920x1080"
 	FPS="25" # target FPS
-	QUAL="superfast" #x264 preset
+	GOP="50" # i-frame interval, should be double FPS
+	GOPMIN="25" # min i-frame interval, should be equal to FPS
+	THREADS="2"
+	CBR="750k"
+	QUALITY="fast" #x264 preset: ultrafast,superfast,veryfast,faster,fast,medium
+	AUDIO_RATE="44100"
+	SERVER="live-jfk"
 
-	ffmpeg  -f x11grab -s "$INRES" -r "$FPS" -i :0.0 \
-		-f alsa -ac 2 -i pulse \
-		-vcodec libx264 -preset $QUAL -s "$OUTRES" -pix_fmt yuv420p \
-		-acodec libmp3lame -ar 44100 -ab 64k -threads 0  \
-		-f flv "rtmp://live.twitch.tv/app/$TWITCH_STREAM_KEY"
+	ffmpeg  -thread_queue_size 512 -f x11grab -s "$INRES" -r "$FPS" -i :0.0 \
+		-thread_queue_size 512 -f alsa -i pulse -ac 2 -ar $AUDIO_RATE \
+		-vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -bufsize $CBR \
+			-preset $QUALITY -s "$OUTRES" -pix_fmt yuv420p -tune film \
+		-acodec libmp3lame -ar 44100 -ab 64k -threads $THREADS -strict normal \
+		-f flv "rtmp://$SERVER.twitch.tv/app/$TWITCH_STREAM_KEY"
 }
 
 # ssh
