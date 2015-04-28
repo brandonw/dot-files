@@ -297,21 +297,24 @@ formats = {
     part = "%M-%n {channick $0} {chanhost $1} left {channel $2} {reason $3}";
     kick = "%M!%n {channick $0} was kicked from {channel $1} by {nick $2} {reason $3}";
     quit = "%M=%n {channick $0} {chanhost $1} quit {reason $2}";
-    own_msg = "{ownmsgnick $2 {ownnick $[-9]0}}$1";
-    pubmsg = "{pubmsgnick $2 {pubnick $[-9]0}}$1";
-    pubmsg_me = "{pubmsgmenick $2 {menick $[-9]0}}$1";
-    pubmsg_hilight = "{pubmsghinick $0 $3 $[-9]1}$2";
-    own_msg_channel = "{ownmsgnick $3 {ownnick $[-9]0}{msgchannel $1}}$2";
-    pubmsg_me_channel = "{pubmsgmenick $3 {menick $[-9]0}{msgchannel $1}}$2";
-    pubmsg_hilight_channel = "{pubmsghinick $0 $4 $[-9]1{msgchannel $2}}$3";
-    pubmsg_channel = "{pubmsgnick $3 {pubnick $[-9]0}{msgchannel $1}}$2";
+    own_msg = "{ownmsgnick $2 {ownnick $[-10]0}}$1";
+    own_msg_channel = "{ownmsgnick $3 {ownnick $[-10]0}{msgchannel $1}}$2";
+    own_msg_private_query = "{ownprivmsgnick {ownprivnick $[-10]2}}$1";
+    pubmsg_me = "{pubmsgmenick $2 {menick $[-10]0}}$1";
+    pubmsg_me_channel = "{pubmsgmenick $3 {menick $[-10]0}{msgchannel $1}}$2";
+    pubmsg_hilight = "{pubmsghinick $0 $3 $[-10]1%n}$2";
+    pubmsg_hilight_channel = "{pubmsghinick $0 $4 $[-10]1{msgchannel $2}}$3";
+    pubmsg = "{pubmsgnick $2 {pubnick %r$[-10]0}}$1";
+    pubmsg_channel = "{pubmsgnick $2 {pubnick %r$[-10]0}}$1";
+    msg_private_query = "{privmsgnick $[-10]0}$2";
   };
   "fe-common/irc" = {
     chanmode_change = "%M~%n {nick $2} set {mode $1} on {channel $0}";
     whois = "{nick $0} {nickhost $1@$2}%: ircname : $3";
     server_chanmode_change = "{netsplit ServerMode}/{channelhilight $0}: {mode $1} by {nick $2}";
-  };
-  "Irssi::Script::nickcolor" = {
-    pubmsg_hilight = "{pubmsghinick $0 $3 $[-9]1}$2";
+    own_action = "{ownaction $[-9]0} $1";
+    action_private = "{pvtaction $[-9]0}$1";
+    action_private_query = "{pvtaction_query $[-9]0} $2";
+    action_public = "{pubaction $[-9]0}$1";
   };
 };
