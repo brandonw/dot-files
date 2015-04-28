@@ -256,6 +256,15 @@ settings = {
     autolog_path = "~/.irclogs/$tag/$0/%Y-%m-%d.log";
   };
   "irc/dcc" = { dcc_autoresume = "yes"; dcc_autorename = "yes"; };
+  "perl/core/scripts" = {
+    neat_colorize = "yes";
+    neat_left_actions = "no";
+    neat_left_messages = "no";
+    neat_right_mode = "no";
+    neat_autosave = "0";
+    neat_melength = "1";
+    neat_maxlength = "10";
+  };
 };
 hilights = ( { text = "brandonw"; nick = "yes"; word = "yes"; } );
 #ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
