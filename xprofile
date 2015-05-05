@@ -25,6 +25,7 @@ xset r rate 250 20
 xset +dpms
 xset dpms 0 0 300
 xset m 3/2 0
+xset s 600
 
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
@@ -32,4 +33,5 @@ autocutsel -selection PRIMARY -fork &
 if [ -e ~/.fehbg ]; then
 	eval $(cat ~/.fehbg)
 fi
-xautolock -time 10 -locker slock -detectsleep &
+
+xss-lock -- slock &
