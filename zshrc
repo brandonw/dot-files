@@ -73,7 +73,7 @@ streaming() {
 	AUDIO_RATE="44100"
 	SERVER="live-jfk"
 
-	ffmpeg  -thread_queue_size 512 -f x11grab -s "$INRES" -r "$FPS" -i :0.0 \
+	ffmpeg  -thread_queue_size 512 -f x11grab -s "$INRES" -r "$FPS" -i :1.0 \
 		-thread_queue_size 512 -f alsa -i pulse -ac 2 -ar $AUDIO_RATE \
 		-vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -bufsize $CBR \
 			-preset $QUALITY -s "$OUTRES" -pix_fmt yuv420p -tune film \
