@@ -63,10 +63,13 @@ set nu
 set background=dark
 set tabline=%!MyTabLine()
 set diffopt=vertical
+set dir=~/.swap
 
+let g:ctrlp_switch_buffer = 'evh'
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_default_input = 1
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_tabpage_position = 'al'
 let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
@@ -86,7 +89,6 @@ let g:airline_exclude_preview = 1
 let g:ctrlspace_unicode_font = 0
 let g:ctrlspace_save_workspace_on_exit = 1
 let g:ctrlspace_save_workspace_on_switch = 1
-let g:ctrlspace_load_last_workspace_on_start = 1
 function ExpandSnippetOrCarriageReturn()
     let snippet = UltiSnips#ExpandSnippetOrJump()
     if g:ulti_expand_or_jump_res > 0
@@ -125,6 +127,7 @@ nn <silent> gob :CtrlSpace<CR>
 nn <silent> gof :CtrlP<CR>
 nn <silent> got :CtrlSpace l<CR>
 nn <silent> gow :CtrlSpace w<CR>
+nn <silent> goe :Ex<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
@@ -141,11 +144,6 @@ nn gwk <C-W>k
 vn gwk <C-W>k
 nn gwl <C-W>l
 vn gwl <C-W>l
-
-" Open file bindings
-map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
