@@ -99,9 +99,7 @@ function ExpandSnippetOrCarriageReturn()
 endfunction
 let g:solarized_diffmode = "high"
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['c', 'python', 'htmldjango'],
-                           \ 'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'active' }
 let g:syntastic_python_checkers = ["flake8"]
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
@@ -128,6 +126,7 @@ nn <silent> gof :CtrlP<CR>
 nn <silent> got :CtrlSpace l<CR>
 nn <silent> gow :CtrlSpace w<CR>
 nn <silent> goe :Ex<CR>
+nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
