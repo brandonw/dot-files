@@ -30,8 +30,6 @@ xset s 600
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 
-if [ -e ~/.fehbg ]; then
-	eval $(cat ~/.fehbg)
-fi
+feh  --bg-scale '/home/brandon/.background.jpg'
 
 xss-lock -- slock &
