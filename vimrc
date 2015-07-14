@@ -20,6 +20,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'bitc/lushtags'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
+Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
@@ -65,6 +66,9 @@ set tabline=%!MyTabLine()
 set diffopt=vertical
 set dir=~/.swap
 
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeShowLineNumbers = 1
 let g:ctrlp_switch_buffer = 'evh'
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update = 1
@@ -125,7 +129,7 @@ nn <silent> gob :CtrlSpace<CR>
 nn <silent> gof :CtrlP<CR>
 nn <silent> got :CtrlSpace l<CR>
 nn <silent> gow :CtrlSpace w<CR>
-nn <silent> goe :Ex<CR>
+nn <silent> goe :NERDTreeToggle<CR>
 nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <F5> :UndotreeToggle<CR>
@@ -143,6 +147,7 @@ nn gwk <C-W>k
 vn gwk <C-W>k
 nn gwl <C-W>l
 vn gwl <C-W>l
+nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
