@@ -82,21 +82,10 @@ let g:airline_right_sep = '◀'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsExpandTrigger = "<nop>"
-let g:ulti_expand_or_jump_res = 0
 let g:airline_exclude_preview = 1
 let g:ctrlspace_unicode_font = 0
 let g:ctrlspace_save_workspace_on_exit = 1
 let g:ctrlspace_save_workspace_on_switch = 1
-function ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
 let g:solarized_diffmode = "high"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active' }
@@ -129,7 +118,6 @@ nn <silent> goe :NERDTreeToggle<CR>
 nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <Leader>a :A<CR>
-ino <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 nn gwn <C-W><C-W>
 vn gwn <C-W><C-W>
 nn gwp <C-W>W
