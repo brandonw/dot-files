@@ -9,28 +9,6 @@ PS1='[\u@\h \W]\$ '
 . ~/.profile
 . ~/.keys
 
-# Easy extract
-extract () {
-  if [ -f $1 ] ; then
-      case $1 in
-          *.tar.bz2)   tar xvjf $1    ;;
-          *.tar.gz)    tar xvzf $1    ;;
-          *.bz2)       bunzip2 $1     ;;
-          *.rar)       rar x $1       ;;
-          *.gz)        gunzip $1      ;;
-          *.tar)       tar xvf $1     ;;
-          *.tbz2)      tar xvjf $1    ;;
-          *.tgz)       tar xvzf $1    ;;
-          *.zip)       unzip $1       ;;
-          *.Z)         uncompress $1  ;;
-          *.7z)        7z x $1        ;;
-          *)           echo "don't know how to extract '$1'..." ;;
-      esac
-  else
-      echo "'$1' is not a valid file!"
-  fi
-}
-
 streaming() {
 	INRES="1920x1080" # input resolution
 	OUTRES="1920x1080"
@@ -50,6 +28,16 @@ streaming() {
 		-acodec libmp3lame -ar 44100 -ab 64k -threads $THREADS -strict normal \
 		-f flv "rtmp://$SERVER.twitch.tv/app/$TWITCH_STREAM_KEY"
 }
+
+# gpg-agent
+envfile="$HOME/.gnupg/gpg-agent.env"
+if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
+    eval "$(cat "$envfile")"
+else
+    eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "$envfile")"
+fi
+export GPG_AGENT_INFO  # the env file does not contain the export statement
+export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 
 # Path to the bash it configuration
 export BASH_IT="$HOME/.bash_it"
