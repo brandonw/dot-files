@@ -22,7 +22,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'kien/ctrlp.vim'
@@ -83,9 +82,6 @@ let g:airline_right_sep = '◀'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_always_populate_location_list = 1
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsExpandTrigger = "<nop>"
 let g:ulti_expand_or_jump_res = 0
@@ -132,7 +128,6 @@ nn <silent> gow :CtrlSpace w<CR>
 nn <silent> goe :NERDTreeToggle<CR>
 nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
-nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
 ino <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 nn gwn <C-W><C-W>
@@ -207,7 +202,6 @@ if has("autocmd")
   au FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
   au FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
   au FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  au FileType python nn <silent> <C-]> :YcmCompleter GoTo<CR>
   au FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
   au FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
   au FileType rust setlocal et tw=100 ts=4 sw=4
