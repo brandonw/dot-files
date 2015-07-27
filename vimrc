@@ -109,7 +109,6 @@ let g:tagbar_type_rust = {
 syntax on
 colorscheme solarized
 
-nm <SPACE> :
 nn <silent> gob :CtrlSpace<CR>
 nn <silent> gof :CtrlP<CR>
 nn <silent> got :CtrlSpace l<CR>
@@ -144,6 +143,18 @@ endif
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
+
+" go to defn of tag under the cursor
+fun! MatchCaseTag()
+    let ic = &ic
+    set noic
+    try
+        exe 'tjump ' . expand('<cword>')
+    finally
+       let &ic = ic
+    endtry
+endfun
+nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
 
 function MyTabLine()
     let s = ''
