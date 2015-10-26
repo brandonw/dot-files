@@ -20,8 +20,8 @@ Plugin 'gregsexton/gitv'
 Plugin 'bitc/lushtags'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
+Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'kien/ctrlp.vim'
@@ -65,6 +65,9 @@ set tabline=%!MyTabLine()
 set diffopt=vertical
 set dir=~/.swap
 
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeShowLineNumbers = 1
 let g:ctrlp_switch_buffer = 'evh'
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update = 1
@@ -79,24 +82,10 @@ let g:airline_right_sep = '◀'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_always_populate_location_list = 1
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsExpandTrigger = "<nop>"
-let g:ulti_expand_or_jump_res = 0
 let g:airline_exclude_preview = 1
 let g:ctrlspace_unicode_font = 0
 let g:ctrlspace_save_workspace_on_exit = 1
 let g:ctrlspace_save_workspace_on_switch = 1
-function ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
 let g:solarized_diffmode = "high"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active' }
@@ -120,17 +109,14 @@ let g:tagbar_type_rust = {
 syntax on
 colorscheme solarized
 
-nm <SPACE> :
 nn <silent> gob :CtrlSpace<CR>
 nn <silent> gof :CtrlP<CR>
 nn <silent> got :CtrlSpace l<CR>
 nn <silent> gow :CtrlSpace w<CR>
-nn <silent> goe :Ex<CR>
+nn <silent> goe :NERDTreeToggle<CR>
 nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
-nn <silent> <F5> :UndotreeToggle<CR>
 nn <silent> <Leader>a :A<CR>
-ino <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 nn gwn <C-W><C-W>
 vn gwn <C-W><C-W>
 nn gwp <C-W>W
@@ -143,6 +129,7 @@ nn gwk <C-W>k
 vn gwk <C-W>k
 nn gwl <C-W>l
 vn gwl <C-W>l
+nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -156,6 +143,18 @@ endif
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
+
+" go to defn of tag under the cursor
+fun! MatchCaseTag()
+    let ic = &ic
+    set noic
+    try
+        exe 'tjump ' . expand('<cword>')
+    finally
+       let &ic = ic
+    endtry
+endfun
+nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
 
 function MyTabLine()
     let s = ''
@@ -202,7 +201,6 @@ if has("autocmd")
   au FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
   au FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
   au FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  au FileType python nn <silent> <C-]> :YcmCompleter GoTo<CR>
   au FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
   au FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
   au FileType rust setlocal et tw=100 ts=4 sw=4
