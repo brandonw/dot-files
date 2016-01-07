@@ -15,5 +15,6 @@ export EDITOR="vim"
 export BROWSER=firefox
 export LEDGER_PAGER=less
 export SDL_VIDEO_FULLSCREEN_HEAD=1
+export IRC_CLIENT="irssi"
 
 alias e='emacs -nw'

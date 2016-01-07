@@ -7,6 +7,7 @@
 
 #define MAX_NET_DEVICES     10
 #define SHOW_LOOPBACK       0
+#define SHOW_TUN            0
 
 #define LOW_COLOR	    ""
 #define MED_COLOR	    ""
@@ -229,6 +230,8 @@ main()
 		char *down_color, *up_color;
 
 		if (!SHOW_LOOPBACK && strcmp(net_data1[i]->device_name, "lo:") == 0)
+			continue;
+		if (!SHOW_TUN && strstr(net_data1[i]->device_name, "tun") != NULL)
 			continue;
 		downkbrate = (net_data2[i]->down_bytes - net_data1[i]->down_bytes) / 1024;
 		upkbrate = (net_data2[i]->up_bytes - net_data1[i]->up_bytes) / 1024;
