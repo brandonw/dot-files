@@ -16,5 +16,7 @@ export BROWSER=firefox
 export LEDGER_PAGER=less
 export SDL_VIDEO_FULLSCREEN_HEAD=1
 export IRC_CLIENT="irssi"
+export PYTHONDONTWRITEBYTECODE=1
 
 alias e='emacs -nw'
+alias dropbox=dropbox-cli
