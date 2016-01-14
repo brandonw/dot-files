@@ -8,6 +8,8 @@ PS1='[\u@\h \W]\$ '
 
 . ~/.profile
 . ~/.keys
+stty -ixon
+shopt -s histappend
 
 streaming() {
 	INRES="1920x1080" # input resolution
