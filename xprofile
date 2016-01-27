@@ -19,6 +19,10 @@ fi
 if [ -d /usr/share/fonts/local ]; then
 	xset +fp /usr/share/fonts/local
 fi
+if [ -e ~/.background.jpg ]; then
+	feh  --bg-scale '/home/brandon/.background.jpg'
+fi
+
 xset fp rehash
 xsetroot -cursor_name left_ptr
 xset r rate 250 20
@@ -27,9 +31,12 @@ xset dpms 0 0 300
 xset m 3/2 0
 xset s 600
 
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
-
-feh  --bg-scale '/home/brandon/.background.jpg'
-
-xss-lock -- slock &
+AUTOCUTSEL=$(ps aux | grep [a]utocutsel);
+if [ "${AUTOCUTSEL:-0}" == 0 ]; then
+	autocutsel -fork &
+	autocutsel -selection PRIMARY -fork &
+fi
+XSSLOCK=$(ps aux | grep [x]ss-lock);
+if [ "${XSSLOCK:-0}" == 0 ]; then
+	xss-lock -- slock &
+fi
