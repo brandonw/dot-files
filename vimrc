@@ -21,7 +21,6 @@ Plugin 'bitc/lushtags'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-unimpaired'
@@ -57,6 +56,8 @@ set hidden
 set tags+=tags;$HOME
 set laststatus=2
 set wildmenu
+set wildmode=list:full
+set wildignorecase
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
 set rnu
@@ -66,9 +67,6 @@ set tabline=%!MyTabLine()
 set diffopt=vertical
 set dir=~/.swap
 
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeShowBookmarks = 1
-let g:NERDTreeShowLineNumbers = 1
 let g:ctrlp_switch_buffer = 'evh'
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update = 1
@@ -110,11 +108,11 @@ let g:tagbar_type_rust = {
 syntax on
 colorscheme solarized
 
-nn <silent> gob :CtrlSpace<CR>
-nn <silent> gof :CtrlP<CR>
+nn <silent> gob :ls<CR>:b<Space>
+nn <silent> gof :find *
 nn <silent> got :CtrlSpace l<CR>
 nn <silent> gow :CtrlSpace w<CR>
-nn <silent> goe :NERDTreeToggle<CR>
+nn <silent> goe :Lex<CR>
 nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <silent> <Leader>a :A<CR>
