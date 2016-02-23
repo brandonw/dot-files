@@ -5,32 +5,29 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
-Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
-Plugin 'szw/vim-ctrlspace'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-dispatch'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'gregsexton/gitv'
-Plugin 'bitc/lushtags'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
-Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
-Plugin 'rking/ag.vim'
+Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'kien/ctrlp.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'a.vim'
 Plugin 'cscope_macros.vim'
 Plugin 'closetag.vim'
 Plugin 'ledger/vim-ledger'
 Plugin 'chase/vim-ansible-yaml'
+
+Plugin 'gregsexton/gitv'
+Plugin 'tpope/vim-dispatch'
+Plugin 'mbbill/undotree'
+" Plugin 'szw/vim-ctrlspace'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 
@@ -56,7 +53,6 @@ set hidden
 set tags+=tags;$HOME
 set laststatus=2
 set wildmenu
-set wildmode=list:full
 set wildignorecase
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
@@ -66,8 +62,8 @@ set background=dark
 set tabline=%!MyTabLine()
 set diffopt=vertical
 set dir=~/.swap
+set path=.,**
 
-let g:ctrlp_switch_buffer = 'evh'
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_default_input = 1
@@ -78,13 +74,11 @@ let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-
 let g:ledger_fillstring = '>>'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
 let g:undotree_SplitWidth = 40
 let g:airline_exclude_preview = 1
-let g:ctrlspace_unicode_font = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
+let g:CtrlSpaceSetDefaultMapping = 0
 let g:solarized_diffmode = "high"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active' }
@@ -108,13 +102,21 @@ let g:tagbar_type_rust = {
 syntax on
 colorscheme solarized
 
-nn <silent> gob :ls<CR>:b<Space>
-nn <silent> gof :find *
-nn <silent> got :CtrlSpace l<CR>
-nn <silent> gow :CtrlSpace w<CR>
-nn <silent> goe :Lex<CR>
+nn gob :ls<CR>:b<Space>
+nn gof :find *
+nn got :tabfind *
+nn gos :sfind *
+nn gov :vert sfind *
+" nn <silent> gob :CtrlPBuffer<CR>
+" nn <silent> gof :CtrlP<CR>
+" nn <silent> gob :CtrlSpace h<CR>
+" nn <silent> gof :CtrlSpace O<CR>
+" nn <silent> got :CtrlSpace l<CR>
+" nn <silent> gow :CtrlSpace w<CR>
+nn goe :Lex<CR>
 nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
+nn <F5> :UndotreeToggle<cr>
 nn <silent> <Leader>a :A<CR>
 nn gwn <C-W><C-W>
 vn gwn <C-W><C-W>
@@ -129,8 +131,16 @@ vn gwk <C-W>k
 nn gwl <C-W>l
 vn gwl <C-W>l
 nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
+" bind K to grep word under cursor
+nn K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 cmap w!! %!sudo tee > /dev/null %
+
+if executable('ag')
+  set grepprg=ag\ --vimgrep\ $*
+  set grepformat=%f:%l:%c:%m
+  let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
 
 if has("gui_running")
   set guifont=Dina
@@ -195,6 +205,7 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
+  au QuickFixCmdPost *grep* cwindow
   au FileType text setlocal tw=79
   au FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
   au FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
