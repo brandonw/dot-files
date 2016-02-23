@@ -131,8 +131,8 @@ vn gwk <C-W>k
 nn gwl <C-W>l
 vn gwl <C-W>l
 nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
-" bind K to grep word under cursor
-nn K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nn gsa :grep! "\b<C-R><C-W>\b"<CR>
+nn gsp :grep! "\b<C-R><C-W>\b" --ignore-dir tests --ignore-dir migrations<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
