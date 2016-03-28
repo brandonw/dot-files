@@ -31,6 +31,17 @@ streaming() {
 		-f flv "rtmp://$SERVER.twitch.tv/app/$TWITCH_STREAM_KEY"
 }
 
+screencast() {
+	INRES="1920x1200" # input resolution
+	OUTRES="1920x1200"
+	FPS="25" # target FPS
+	QUALITY="medium" #x264 preset: ultrafast,superfast,veryfast,faster,fast,medium
+
+	ffmpeg  -thread_queue_size 512 -f x11grab -s "$INRES" -r "$FPS" -i :1.0 \
+		-vcodec libx264 -preset $QUALITY -s "$OUTRES" -pix_fmt yuv420p -tune film \
+		-f mov file:$(date -Iseconds).mov
+}
+
 # Path to the bash it configuration
 export BASH_IT="$HOME/.bash_it"
 
