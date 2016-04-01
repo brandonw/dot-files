@@ -133,6 +133,7 @@ vn gwl <C-W>l
 nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nn gsa :grep! "\b<C-R><C-W>\b"<CR>
 nn gsp :grep! "\b<C-R><C-W>\b" --ignore-dir tests --ignore-dir migrations<CR>
+nn gcf :let @+ = expand("%")<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
