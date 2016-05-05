@@ -134,7 +134,7 @@ nn gwl <C-W>l
 vn gwl <C-W>l
 nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nn gsa :grep! "\b<C-R><C-W>\b"<CR>
-nn gsp :grep! "\b<C-R><C-W>\b" --ignore-dir tests --ignore-dir migrations<CR>
+nn gsp :grep! "\b<C-R><C-W>\b" --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql<CR>
 nn gcf :let @+ = expand("%")<CR>
 
 cmap w!! %!sudo tee > /dev/null %
