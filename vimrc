@@ -133,8 +133,8 @@ vn gwk <C-W>k
 nn gwl <C-W>l
 vn gwl <C-W>l
 nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
-nn gsa :grep! "\b<C-R><C-W>\b"<CR>
-nn gsp :grep! "\b<C-R><C-W>\b" --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql<CR>
+nn gsa :let cmd="grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nn gsp :let cmd="grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nn gcf :let @+ = expand("%")<CR>
 
 cmap w!! %!sudo tee > /dev/null %
@@ -151,6 +151,10 @@ if has("gui_running")
   set guioptions-=m
   set lines=60
 endif
+
+function! GetCurrentWord()
+  return shellescape(expand("<cWORD>"))
+endfunction
 
 function! TrimWhiteSpace()
     %s/\s\+$//e
