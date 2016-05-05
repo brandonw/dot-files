@@ -4,7 +4,8 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
@@ -27,7 +28,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-dispatch'
 Plugin 'mbbill/undotree'
 " Plugin 'szw/vim-ctrlspace'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 
@@ -76,6 +77,7 @@ let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:undotree_SplitWidth = 40
 let g:airline_exclude_preview = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
 let g:CtrlSpaceSetDefaultMapping = 0
