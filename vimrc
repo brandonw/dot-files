@@ -85,6 +85,7 @@ let g:solarized_diffmode = "high"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active' }
 let g:syntastic_python_checkers = ["flake8"]
+let g:syntastic_python_flake8_exec = 'flake8-python2'
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds'     : [
@@ -133,8 +134,8 @@ vn gwk <C-W>k
 nn gwl <C-W>l
 vn gwl <C-W>l
 nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
-nn gsa :let cmd="grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
-nn gsp :let cmd="grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nn gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nn gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nn gcf :let @+ = expand("%")<CR>
 
 cmap w!! %!sudo tee > /dev/null %
@@ -142,7 +143,6 @@ cmap w!! %!sudo tee > /dev/null %
 if executable('ag')
   set grepprg=ag\ --vimgrep\ $*
   set grepformat=%f:%l:%c:%m
-  let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
 endif
 
 if has("gui_running")
@@ -153,7 +153,7 @@ if has("gui_running")
 endif
 
 function! GetCurrentWord()
-  return shellescape(expand("<cWORD>"))
+  return shellescape(expand("<cword>"))
 endfunction
 
 function! TrimWhiteSpace()

@@ -20,7 +20,7 @@ if [ -d /usr/share/fonts/local ]; then
 	xset +fp /usr/share/fonts/local
 fi
 if [ -e ~/.background.jpg ]; then
-	feh  --bg-scale '/home/brandon/.background.jpg'
+	feh  --bg-fill '/home/brandon/.background.jpg'
 fi
 
 xset fp rehash

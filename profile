@@ -6,6 +6,7 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENV_PYTHON="python2"
+export PYTHON_VERSION="2"
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export PAGER="less"
