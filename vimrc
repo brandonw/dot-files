@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.fzf
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
@@ -27,8 +28,6 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-dispatch'
 Plugin 'mbbill/undotree'
-" Plugin 'szw/vim-ctrlspace'
-Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 
@@ -65,22 +64,12 @@ set diffopt=vertical
 set dir=~/.swap
 set path=.,**
 
-let g:ctrlp_max_files = 0
-let g:ctrlp_lazy_update = 1
-let g:ctrlp_default_input = 1
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_tabpage_position = 'al'
-let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
 let g:ledger_fillstring = '>>'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:undotree_SplitWidth = 40
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
-let g:CtrlSpaceSaveWorkspaceOnExit = 1
-let g:CtrlSpaceSetDefaultMapping = 0
 let g:solarized_diffmode = "high"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active' }
@@ -106,16 +95,7 @@ syntax on
 colorscheme solarized
 
 nn gob :ls<CR>:b<Space>
-nn gof :find *
-nn got :tabfind *
-nn gos :sfind *
-nn gov :vert sfind *
-" nn <silent> gob :CtrlPBuffer<CR>
-" nn <silent> gof :CtrlP<CR>
-" nn <silent> gob :CtrlSpace h<CR>
-" nn <silent> gof :CtrlSpace O<CR>
-" nn <silent> got :CtrlSpace l<CR>
-" nn <silent> gow :CtrlSpace w<CR>
+nn gof :FZF<CR>
 nn goe :Lex<CR>
 nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
