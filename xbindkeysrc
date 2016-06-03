@@ -9,3 +9,11 @@
 "amixer set Master 5%-"
     m:0x10 + c:122
     Mod2 + XF86AudioLowerVolume
+
+"xbacklight -10"
+    m:0x10 + c:232
+    Mod2 + XF86MonBrightnessDown
+
+"xbacklight +10"
+    m:0x10 + c:233
+    Mod2 + XF86MonBrightnessUp
