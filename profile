@@ -19,7 +19,7 @@ export IRC_CLIENT="irssi"
 export PYTHONDONTWRITEBYTECODE=1
 export NOSE_NOCAPTURE=1
 export FZF_DEFAULT_COMMAND='
-  (git ls-tree -r --name-only HEAD ||
+  (git ls-files . -co --exclude-standard ||
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
 
