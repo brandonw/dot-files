@@ -73,7 +73,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:solarized_diffmode = "high"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active' }
-let g:syntastic_python_checkers = ["flake8"]
+" let g:syntastic_python_checkers = ["pylint", "flake8"]
+let g:syntastic_python_checkers = ["pylint"]
 let g:syntastic_python_flake8_exec = 'flake8-python2'
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
