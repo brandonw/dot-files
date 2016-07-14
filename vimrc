@@ -13,7 +13,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
+Plugin 'neomake/neomake'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
@@ -71,11 +71,7 @@ let g:undotree_SplitWidth = 40
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:solarized_diffmode = "high"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = { 'mode': 'active' }
-" let g:syntastic_python_checkers = ["pylint", "flake8"]
-let g:syntastic_python_checkers = ["pylint"]
-let g:syntastic_python_flake8_exec = 'flake8-python2'
+let g:neomake_python_enabled_makers = ['pylint']
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds'     : [
@@ -98,7 +94,6 @@ colorscheme solarized
 nn gob :ls<CR>:b<Space>
 nn gof :FZF<CR>
 nn goe :Lex<CR>
-nn <silent> gst :SyntasticToggle<CR>
 nn <silent> <F9> :TagbarOpenAutoClose<CR>
 nn <F5> :UndotreeToggle<cr>
 nn <silent> <Leader>a :A<CR>
@@ -210,6 +205,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.ldg,*.ledger setf ledger
   au FileType ledger setlocal ts=2 sw=2
   au BufRead,BufNewFile Vagrantfile set ft=ruby
+  au BufWritePost * Neomake
 else
 
 endif " has("autocmd")
