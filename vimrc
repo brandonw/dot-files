@@ -72,6 +72,7 @@ let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:solarized_diffmode = "high"
 let g:neomake_python_enabled_makers = ['pylint']
+let g:terminal_scrollback_buffer_size = 100000
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds'     : [

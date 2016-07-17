@@ -31,6 +31,21 @@ xset dpms 0 0 300
 xset m 3/2 0
 xset s 600
 
+# xinput list
+# xinput list-props [dev-num]
+
+# Tapping Enabled
+xinput set-prop 11 274 1
+
+# Tapping Drag Lock Enabled
+xinput set-prop 11 278 1
+
+# Natural Scrolling Enabled
+xinput set-prop 11 282 1
+
+# Accel Speed
+xinput set-prop 11 280 1.0
+
 AUTOCUTSEL=$(ps aux | grep [a]utocutsel);
 if [ "${AUTOCUTSEL:-0}" == 0 ]; then
 	autocutsel -fork &
