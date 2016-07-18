@@ -22,6 +22,9 @@ fi
 if [ -e ~/.background.jpg ]; then
 	feh  --bg-fill '/home/brandon/.background.jpg'
 fi
+if [ -e ~/.Xmodmap ]; then
+	xmodmap ~/.Xmodmap
+fi
 
 xset fp rehash
 xsetroot -cursor_name left_ptr
