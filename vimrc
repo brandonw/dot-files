@@ -22,12 +22,12 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'a.vim'
 Plugin 'cscope_macros.vim'
 Plugin 'closetag.vim'
-Plugin 'ledger/vim-ledger'
 Plugin 'chase/vim-ansible-yaml'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'janko-m/vim-test'
+Plugin 'mbbill/undotree'
 
 Plugin 'gregsexton/gitv'
-Plugin 'tpope/vim-dispatch'
-Plugin 'mbbill/undotree'
 
 call vundle#end()
 
@@ -64,7 +64,6 @@ set diffopt=vertical
 set dir=~/.swap
 set path=.,**
 
-let g:ledger_fillstring = '>>'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:undotree_SplitWidth = 40
@@ -203,8 +202,6 @@ if has("autocmd")
   au FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
   au FileType c setlocal textwidth=80 formatoptions+=t
   au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
-  au BufNewFile,BufRead *.ldg,*.ledger setf ledger
-  au FileType ledger setlocal ts=2 sw=2
   au BufRead,BufNewFile Vagrantfile set ft=ruby
   au BufWritePost * Neomake
 else
