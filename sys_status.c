@@ -10,6 +10,7 @@
 #define SHOW_TUN            0
 #define SHOW_BR             0
 #define SHOW_DOCKER         0
+#define SHOW_VETH           0
 
 #define LOW_COLOR	    ""
 #define MED_COLOR	    ""
@@ -238,6 +239,8 @@ main()
 		if (!SHOW_BR && strstr(net_data1[i]->device_name, "br") != NULL)
 			continue;
 		if (!SHOW_DOCKER && strstr(net_data1[i]->device_name, "docker") != NULL)
+			continue;
+		if (!SHOW_VETH && strstr(net_data1[i]->device_name, "veth") != NULL)
 			continue;
 		downkbrate = (net_data2[i]->down_bytes - net_data1[i]->down_bytes) / 1024;
 		upkbrate = (net_data2[i]->up_bytes - net_data1[i]->up_bytes) / 1024;
