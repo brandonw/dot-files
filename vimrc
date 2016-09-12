@@ -48,6 +48,7 @@ set title
 set scrolloff=5
 set shortmess=atI
 set autoindent
+set clipboard+=unnamedplus
 set t_Co=256
 set hidden
 set tags+=tags;$HOME
@@ -87,6 +88,42 @@ let g:tagbar_type_rust = {
     \ ],
     \ 'sro'       : '::'
     \  }
+let g:neomake_list_height = 15
+
+function! GetVimTestExe() abort
+  return g:vimtest_exe
+endfunction
+function! GetVimTestArgs() abort
+  return g:vimtest_args
+endfunction
+let g:neomake_vimtest_maker = {
+    \ 'exe': function('GetVimTestExe'),
+    \ 'args': function('GetVimTestArgs'),
+    \ 'errorformat':
+        \ '  File "%f"\, line %l\, %m'
+    \ }
+let g:neomake_vimtest_remove_invalid_entries = 0
+
+let test#strategy = 'neomake'
+let python#runner = "nose"
+function! FabTransform(cmd) abort
+  let tokens = split(a:cmd, " ")
+  if len(tokens) == 2
+    return 'fab all_unit_tests'
+  endif
+  return 'fab test:' . join(tokens[2:-1], " ")
+endfunction
+let g:test#custom_transformations = {'fab': function('FabTransform')}
+let g:test#transformation = 'fab'
+
+function! NeoMakeStrategy(cmd)
+  echo a:cmd
+  let l:tokens = split(a:cmd, " ")
+  let g:vimtest_exe = tokens[0]
+  let g:vimtest_args = tokens[1:-1]
+  " exec "Neomake! vimtest"
+endfunction
+let g:test#custom_strategies = {'neomake': function('NeoMakeStrategy')}
 
 syntax on
 colorscheme solarized
@@ -204,6 +241,11 @@ if has("autocmd")
   au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
   au BufRead,BufNewFile Vagrantfile set ft=ruby
   au BufWritePost * Neomake
+
+  if v:version >= 700
+    au BufLeave * let b:winview = winsaveview()
+    au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+  endif
 else
 
 endif " has("autocmd")
