@@ -117,13 +117,16 @@ let g:test#custom_transformations = {'fab': function('FabTransform')}
 let g:test#transformation = 'fab'
 
 function! NeoMakeStrategy(cmd)
-  echo a:cmd
   let l:tokens = split(a:cmd, " ")
   let g:vimtest_exe = tokens[0]
   let g:vimtest_args = tokens[1:-1]
-  " exec "Neomake! vimtest"
+  exec "Neomake! vimtest"
+endfunction
+function! YankStrategy(cmd)
+  let @+=a:cmd
 endfunction
 let g:test#custom_strategies = {'neomake': function('NeoMakeStrategy')}
+let g:test#custom_strategies = {'yank': function('YankStrategy')}
 
 syntax on
 colorscheme solarized
@@ -150,6 +153,7 @@ nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nn gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nn gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nn gcf :let @+ = expand("%")<CR>
+nn gcn :TestNearest -strategy=yank<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
