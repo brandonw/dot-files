@@ -26,6 +26,9 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'janko-m/vim-test'
 Plugin 'mbbill/undotree'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'paredit.vim'
+Plugin 'jpalardy/vim-slime'
 
 Plugin 'gregsexton/gitv'
 
@@ -88,6 +91,9 @@ let g:tagbar_type_rust = {
     \ ],
     \ 'sro'       : '::'
     \  }
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ""}
+let g:slime_dont_ask_default = 1
 let g:neomake_list_height = 15
 
 function! GetVimTestExe() abort
@@ -131,6 +137,7 @@ let g:test#custom_strategies = {'yank': function('YankStrategy')}
 syntax on
 colorscheme solarized
 
+noremap <space> :
 nn gob :ls<CR>:b<Space>
 nn gof :FZF<CR>
 nn goe :Lex<CR>
