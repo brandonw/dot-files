@@ -36,10 +36,10 @@ xset s 600
 
 # xinput list
 # xinput list-props [dev-num]
-xinput set-prop 11 "libinput Tapping Enabled" 1
-xinput set-prop 11 "libinput Tapping Drag Lock Enabled" 1
-xinput set-prop 11 "libinput Natural Scrolling Enabled" 1
-xinput set-prop 11 "libinput Accel Speed" 1.0
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Drag Lock Enabled" 1
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 1.0
 
 AUTOCUTSEL=$(ps aux | grep [a]utocutsel);
 if [ "${AUTOCUTSEL:-0}" == 0 ]; then
