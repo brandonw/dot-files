@@ -68,6 +68,7 @@ set diffopt=vertical
 set dir=~/.swap
 set path=.,**
 
+let mapleader="\\"
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:undotree_SplitWidth = 40
@@ -174,6 +175,10 @@ if has("gui_running")
   set guioptions-=T
   set guioptions-=m
   set lines=60
+endif
+
+if has('nvim')
+  set inccommand=nosplit
 endif
 
 function! GetCurrentWord()
