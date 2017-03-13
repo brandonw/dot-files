@@ -30,7 +30,7 @@ xset fp rehash
 xsetroot -cursor_name left_ptr
 xset r rate 250 20
 xset +dpms
-xset dpms 0 0 0
+xset dpms 0 0 600
 xset m 3/2 0
 
 # xinput list
