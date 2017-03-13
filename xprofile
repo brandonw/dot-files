@@ -47,5 +47,5 @@ if [ "${AUTOCUTSEL:-0}" == 0 ]; then
 fi
 XSSLOCK=$(ps aux | grep [x]ss-lock);
 if [ "${XSSLOCK:-0}" == 0 ]; then
-	xss-lock -- slock &
+	xss-lock -- i3lock &
 fi
