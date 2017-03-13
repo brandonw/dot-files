@@ -257,10 +257,9 @@ if has("autocmd")
   au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
   au BufRead,BufNewFile Vagrantfile set ft=ruby
   au BufWritePost * Neomake
-
-  if v:version >= 700
-    au BufLeave * let b:winview = winsaveview()
-    au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+  if v:version >= 700 && !&diff
+      autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
+      autocmd BufLeave,BufReadPre * let b:view = winsaveview()
   endif
 else
 
