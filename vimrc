@@ -23,7 +23,7 @@ Plugin 'a.vim'
 Plugin 'cscope_macros.vim'
 Plugin 'closetag.vim'
 Plugin 'chase/vim-ansible-yaml'
-Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'janko-m/vim-test'
 Plugin 'mbbill/undotree'
 Plugin 'wlangstroth/vim-racket'
@@ -67,6 +67,7 @@ set tabline=%!MyTabLine()
 set diffopt=vertical
 set dir=~/.swap
 set path=.,**
+set mouse=a
 
 let mapleader="\\"
 let g:airline_left_sep = '▶'
@@ -74,7 +75,10 @@ let g:airline_right_sep = '◀'
 let g:undotree_SplitWidth = 40
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:solarized_diffmode = "high"
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+let g:airline#extensions#quickfix#location_text = 'Location'
+let g:airline#extensions#branch#enabled = 0
+let g:solarized_diffmode = "high" " high, low, normal
 let g:neomake_python_enabled_makers = ['pylint']
 let g:terminal_scrollback_buffer_size = 100000
 let g:tagbar_type_rust = {
@@ -118,7 +122,7 @@ function! FabTransform(cmd) abort
   if len(tokens) == 2
     return 'fab all_unit_tests'
   endif
-  return 'fab test:' . join(tokens[2:-1], " ")
+  return 'fab docker_test:' . join(tokens[2:-1], " ")
 endfunction
 let g:test#custom_transformations = {'fab': function('FabTransform')}
 let g:test#transformation = 'fab'
@@ -162,6 +166,7 @@ nn gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call his
 nn gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nn gcf :let @+ = expand("%")<CR>
 nn gcn :TestNearest -strategy=yank<CR>
+tnoremap <Esc> <C-\><C-n>
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -186,7 +191,9 @@ function! GetCurrentWord()
 endfunction
 
 function! TrimWhiteSpace()
+    let b:view = winsaveview()
     %s/\s\+$//e
+    call winrestview(b:view)
 endfunction
 
 " go to defn of tag under the cursor

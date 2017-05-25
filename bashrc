@@ -63,4 +63,4 @@ export TODO="t"
 source $BASH_IT/bash_it.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
+[ -n "$NVIM_LISTEN_ADDRESS" ] && export FZF_DEFAULT_OPTS='--no-height'
