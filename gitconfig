@@ -24,3 +24,5 @@
 	; Explicit is better than implicit. If we want to merge
 	; we should do so ourselves.
 	pull = pull --ff-only
+	recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format=\"%(refname:short)\"
+	overview = log --all --since=2
