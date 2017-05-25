@@ -2,22 +2,25 @@
 	name = Brandon Waskiewicz
 	email = brandon.waskiewicz@gmail.com
 [core]
-	editor = vim
-	pager = less
+	editor = nvim
+	pager = diff-so-fancy | less
 	excludesfile = /home/brandon/.gitignore
 [merge]
 	tool = vimdiff
 [diff]
 	tool = vimdiff
+	indentHeuristic = on
+[interactive]
+	diffFilter = diff-so-fancy
 [difftool]
 	prompt = false
 [push]
-	default = simple
+	default = current
 [rerere]
 	enabled = true
 [alias]
 	lg = log --graph --color --decorate --oneline
-	
+
 	; Explicit is better than implicit. If we want to merge
 	; we should do so ourselves.
 	pull = pull --ff-only
