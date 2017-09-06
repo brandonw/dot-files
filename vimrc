@@ -68,6 +68,7 @@ set diffopt=vertical
 set dir=~/.swap
 set path=.,**
 set mouse=a
+set scrollback=100000
 
 let mapleader="\\"
 let g:airline_left_sep = '▶'
@@ -79,8 +80,9 @@ let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 let g:airline#extensions#quickfix#location_text = 'Location'
 let g:airline#extensions#branch#enabled = 0
 let g:solarized_diffmode = "high" " high, low, normal
+let g:neomake_python_pylint_exe = './venv/bin/pylint'
 let g:neomake_python_enabled_makers = ['pylint']
-let g:terminal_scrollback_buffer_size = 100000
+
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds'     : [
