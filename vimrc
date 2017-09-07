@@ -119,10 +119,11 @@ let g:neomake_vimtest_remove_invalid_entries = 0
 
 let test#strategy = 'neomake'
 let python#runner = "nose"
+let g:test#python#runner = "nose" " short-circuit vim-test's check for nose
 function! FabTransform(cmd) abort
   let tokens = split(a:cmd, " ")
   if len(tokens) == 2
-    return 'fab all_unit_tests'
+    return 'fab docker_test'
   endif
   return 'fab docker_test:' . join(tokens[2:-1], " ")
 endfunction
