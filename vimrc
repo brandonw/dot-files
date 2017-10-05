@@ -23,12 +23,12 @@ Plugin 'a.vim'
 Plugin 'cscope_macros.vim'
 Plugin 'closetag.vim'
 Plugin 'chase/vim-ansible-yaml'
-" Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'janko-m/vim-test'
 Plugin 'mbbill/undotree'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'paredit.vim'
 Plugin 'jpalardy/vim-slime'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 Plugin 'gregsexton/gitv'
 
@@ -82,6 +82,7 @@ let g:airline#extensions#branch#enabled = 0
 let g:solarized_diffmode = "high" " high, low, normal
 let g:neomake_python_pylint_exe = './venv/bin/pylint'
 let g:neomake_python_enabled_makers = ['pylint']
+let g:vim_markdown_preview_browse = 'Firefox'
 
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
@@ -112,10 +113,25 @@ endfunction
 let g:neomake_vimtest_maker = {
     \ 'exe': function('GetVimTestExe'),
     \ 'args': function('GetVimTestArgs'),
-    \ 'errorformat':
-        \ '  File "%f"\, line %l\, %m'
+    \ 'errorformat': '  File "%f"\, line %l\, %m',
     \ }
 let g:neomake_vimtest_remove_invalid_entries = 0
+let g:neomake_error_sign = {
+    \   'text': '✖',
+    \   'texthl': 'ErrorMsg',
+    \ }
+let g:neomake_warning_sign = {
+    \   'text': '⚠',
+    \   'texthl': 'DiffChange',
+    \ }
+let g:neomake_message_sign = {
+    \   'text': '➤',
+    \   'texthl': 'StatusLine',
+    \ }
+let g:neomake_info_sign = {
+    \   'text': 'ℹ',
+    \   'texthl': 'helpExample',
+    \ }
 
 let test#strategy = 'neomake'
 let python#runner = "nose"
@@ -249,28 +265,28 @@ if has("autocmd")
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
-  au!
-
-  au QuickFixCmdPost *grep* cwindow
-  au FileType text setlocal tw=79
-  au FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
-  au FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
-  au FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
-  au FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  au FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  au FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  au FileType rust setlocal et tw=100 ts=4 sw=4
-  au FileType gitcommit hi def link gitcommitOverflow Error
-  au FileType gitcommit setlocal spell
-  au FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
-  au FileType c setlocal textwidth=80 formatoptions+=t
-  au FileType haskell setlocal textwidth=80 ts=4 sw=4 et
-  au BufRead,BufNewFile Vagrantfile set ft=ruby
-  au BufWritePost * Neomake
-  if v:version >= 700 && !&diff
-      autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
-      autocmd BufLeave,BufReadPre * let b:view = winsaveview()
-  endif
+    au!
+    autocmd QuickFixCmdPost *grep* cwindow
+    autocmd FileType text setlocal tw=79
+    autocmd FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
+    autocmd FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
+    autocmd FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
+    autocmd FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType rust setlocal et tw=100 ts=4 sw=4
+    autocmd FileType gitcommit hi def link gitcommitOverflow Error
+    autocmd FileType gitcommit setlocal spell
+    autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
+    autocmd FileType c setlocal textwidth=80 formatoptions+=t
+    autocmd FileType haskell setlocal textwidth=80 ts=4 sw=4 et
+    autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+    autocmd BufWritePost * Neomake
+    if v:version >= 700 && !&diff
+        autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
+        autocmd BufLeave,BufReadPre * let b:view = winsaveview()
+    endif
+  augroup END
 else
 
 endif " has("autocmd")
