@@ -29,6 +29,7 @@ Plugin 'wlangstroth/vim-racket'
 Plugin 'paredit.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'machakann/vim-highlightedyank'
 
 Plugin 'gregsexton/gitv'
 
@@ -162,30 +163,30 @@ syntax on
 colorscheme solarized
 
 noremap <space> :
-nn gob :ls<CR>:b<Space>
-nn gof :FZF<CR>
-nn goe :Lex<CR>
-nn <silent> <F9> :TagbarOpenAutoClose<CR>
-nn <F5> :UndotreeToggle<cr>
-nn <silent> <Leader>a :A<CR>
-nn gwn <C-W><C-W>
-vn gwn <C-W><C-W>
-nn gwp <C-W>W
-vn gwp <C-W>W
-nn gwh <C-W>h
-vn gwh <C-W>h
-nn gwj <C-W>j
-vn gwj <C-W>j
-nn gwk <C-W>k
-vn gwk <C-W>k
-nn gwl <C-W>l
-vn gwl <C-W>l
-nn gew :e <C-R>=expand("%:p:h") . "/" <CR>
-nn gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
-nn gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
-nn gcf :let @+ = expand("%")<CR>
-nn gcn :TestNearest -strategy=yank<CR>
-tnoremap <Esc> <C-\><C-n>
+nnoremap gob :ls<CR>:b<Space>
+nnoremap gof :FZF<CR>
+nnoremap goe :Lex<CR>
+nnoremap <silent> <F9> :TagbarOpenAutoClose<CR>
+nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <silent> <Leader>a :A<CR>
+nnoremap gwn <C-W><C-W>
+vnoremap gwn <C-W><C-W>
+nnoremap gwp <C-W>W
+vnoremap gwp <C-W>W
+nnoremap gwh <C-W>h
+vnoremap gwh <C-W>h
+nnoremap gwj <C-W>j
+vnoremap gwj <C-W>j
+nnoremap gwk <C-W>k
+vnoremap gwk <C-W>k
+nnoremap gwl <C-W>l
+vnoremap gwl <C-W>l
+nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nnoremap gcf :let @+ = expand("%")<CR>
+nnoremap gcn :TestNearest -strategy=yank<CR>
+map y <Plug>(highlightedyank)
 
 cmap w!! %!sudo tee > /dev/null %
 
