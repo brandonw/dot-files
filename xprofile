@@ -42,7 +42,7 @@ xinput set-prop "Synaptics TM3053-004" "libinput Accel Speed" 1.0
 
 PARCELLITE=$(ps aux | grep [p]arcellite);
 if [ "${PARCELLITE:-0}" == 0 ]; then
-	parcellite -d -n
+	parcellite -d -n &
 fi
 XSSLOCK=$(ps aux | grep [x]ss-lock);
 if [ "${XSSLOCK:-0}" == 0 ]; then
