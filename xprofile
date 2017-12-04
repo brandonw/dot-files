@@ -40,10 +40,9 @@ xinput set-prop "Synaptics TM3053-004" "libinput Tapping Drag Lock Enabled" 1
 xinput set-prop "Synaptics TM3053-004" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "Synaptics TM3053-004" "libinput Accel Speed" 1.0
 
-AUTOCUTSEL=$(ps aux | grep [a]utocutsel);
-if [ "${AUTOCUTSEL:-0}" == 0 ]; then
-	autocutsel -fork &
-	autocutsel -selection PRIMARY -fork &
+PARCELLITE=$(ps aux | grep [p]arcellite);
+if [ "${PARCELLITE:-0}" == 0 ]; then
+	parcellite -d -n
 fi
 XSSLOCK=$(ps aux | grep [x]ss-lock);
 if [ "${XSSLOCK:-0}" == 0 ]; then
