@@ -61,8 +61,8 @@ set wildmenu
 set wildignorecase
 set colorcolumn=+1
 set completeopt=menuone,longest,preview
-set rnu
-set nu
+set number
+set relativenumber
 set background=dark
 set tabline=%!MyTabLine()
 set diffopt=vertical
@@ -273,6 +273,7 @@ if has("autocmd")
     autocmd FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
     autocmd FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
     autocmd FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType groovy setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType rust setlocal et tw=100 ts=4 sw=4
@@ -286,6 +287,9 @@ if has("autocmd")
     if v:version >= 700 && !&diff
         autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
         autocmd BufLeave,BufReadPre * let b:view = winsaveview()
+    endif
+    if has('nvim')
+        autocmd TermOpen * setlocal nonumber norelativenumber
     endif
   augroup END
 else

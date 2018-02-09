@@ -70,3 +70,6 @@ if [ -f '/home/brandon/google-cloud-sdk/path.bash.inc' ]; then source '/home/bra
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/brandon/google-cloud-sdk/completion.bash.inc' ]; then source '/home/brandon/google-cloud-sdk/completion.bash.inc'; fi
+
+# The next line enables shell command completion for kubectl.
+if [ -f '/home/brandon/.kube/completion.bash.inc' ]; then source '/home/brandon/.kube/completion.bash.inc'; fi
