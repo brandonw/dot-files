@@ -23,5 +23,3 @@ export FZF_DEFAULT_COMMAND='
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/code
 source /usr/bin/virtualenvwrapper.sh
-
-alias e='emacs -nw'

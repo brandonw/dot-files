@@ -28,7 +28,6 @@ Plugin 'mbbill/undotree'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'paredit.vim'
 Plugin 'jpalardy/vim-slime'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'machakann/vim-highlightedyank'
 
 Plugin 'gregsexton/gitv'
@@ -71,6 +70,9 @@ set path=.,**
 set mouse=a
 set scrollback=100000
 
+syntax on
+colorscheme solarized
+
 let mapleader="\\"
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -81,9 +83,6 @@ let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 let g:airline#extensions#quickfix#location_text = 'Location'
 let g:airline#extensions#branch#enabled = 0
 let g:solarized_diffmode = "high" " high, low, normal
-let g:neomake_python_pylint_exe = './venv/bin/pylint'
-let g:neomake_python_enabled_makers = ['pylint']
-let g:vim_markdown_preview_browse = 'Firefox'
 
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
@@ -104,19 +103,6 @@ let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ""}
 let g:slime_dont_ask_default = 1
 let g:neomake_list_height = 15
-
-function! GetVimTestExe() abort
-  return g:vimtest_exe
-endfunction
-function! GetVimTestArgs() abort
-  return g:vimtest_args
-endfunction
-let g:neomake_vimtest_maker = {
-    \ 'exe': function('GetVimTestExe'),
-    \ 'args': function('GetVimTestArgs'),
-    \ 'errorformat': '  File "%f"\, line %l\, %m',
-    \ }
-let g:neomake_vimtest_remove_invalid_entries = 0
 let g:neomake_error_sign = {
     \   'text': '✖',
     \   'texthl': 'ErrorMsg',
@@ -133,34 +119,6 @@ let g:neomake_info_sign = {
     \   'text': 'ℹ',
     \   'texthl': 'helpExample',
     \ }
-
-let test#strategy = 'neomake'
-let python#runner = "nose"
-let g:test#python#runner = "nose" " short-circuit vim-test's check for nose
-function! FabTransform(cmd) abort
-  let tokens = split(a:cmd, " ")
-  if len(tokens) == 2
-    return 'fab docker_test'
-  endif
-  return 'fab docker_test:' . join(tokens[2:-1], " ")
-endfunction
-let g:test#custom_transformations = {'fab': function('FabTransform')}
-let g:test#transformation = 'fab'
-
-function! NeoMakeStrategy(cmd)
-  let l:tokens = split(a:cmd, " ")
-  let g:vimtest_exe = tokens[0]
-  let g:vimtest_args = tokens[1:-1]
-  exec "Neomake! vimtest"
-endfunction
-function! YankStrategy(cmd)
-  let @+=a:cmd
-endfunction
-let g:test#custom_strategies = {'neomake': function('NeoMakeStrategy')}
-let g:test#custom_strategies = {'yank': function('YankStrategy')}
-
-syntax on
-colorscheme solarized
 
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
@@ -183,9 +141,8 @@ nnoremap gwl <C-W>l
 vnoremap gwl <C-W>l
 nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
-nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests --ignore migrations --ignore core_data.json --ignore schema.sql" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
-nnoremap gcn :TestNearest -strategy=yank<CR>
 map y <Plug>(highlightedyank)
 
 cmap w!! %!sudo tee > /dev/null %
@@ -268,14 +225,16 @@ if has("autocmd")
   augroup vimrcEx
     au!
     autocmd QuickFixCmdPost *grep* cwindow
-    autocmd FileType text setlocal tw=79
+    autocmd FileType text setlocal tw=80
     autocmd FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
-    autocmd FileType mkd setlocal et ai tw=79 ts=4 sw=4 cc=+1
-    autocmd FileType css,sass,scss setlocal et ai tw=79 ts=2 sw=2
-    autocmd FileType python setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-    autocmd FileType groovy setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-    autocmd FileType javascript setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-    autocmd FileType ruby setlocal et tw=79 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType mkd setlocal et ai tw=80 ts=4 sw=4 cc=+1
+    autocmd FileType md,tex setlocal et ai tw=80 ts=4 sw=4 cc=+1
+    autocmd FileType css,sass,scss setlocal et ai tw=80 ts=2 sw=2
+    autocmd FileType python setlocal et tw=100 ts=4 sw=4 ai fdm=indent foldlevel=99
+    autocmd FileType sql setlocal et tw=80 ts=4 sw=4 ai
+    autocmd FileType groovy setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType javascript,json setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType ruby setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType rust setlocal et tw=100 ts=4 sw=4
     autocmd FileType gitcommit hi def link gitcommitOverflow Error
     autocmd FileType gitcommit setlocal spell
