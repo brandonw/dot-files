@@ -5,6 +5,8 @@
 	editor = nvim
 	pager = diff-so-fancy | less
 	excludesfile = /home/brandon/.gitignore
+[pager]
+	branch = false
 [merge]
 	tool = vimdiff
 [diff]
