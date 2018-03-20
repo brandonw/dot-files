@@ -65,11 +65,8 @@ source $BASH_IT/bash_it.sh
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -n "$NVIM_LISTEN_ADDRESS" ] && export FZF_DEFAULT_OPTS='--no-height'
 
-# The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/brandon/google-cloud-sdk/path.bash.inc' ]; then source '/home/brandon/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
 if [ -f '/home/brandon/google-cloud-sdk/completion.bash.inc' ]; then source '/home/brandon/google-cloud-sdk/completion.bash.inc'; fi
-
-# The next line enables shell command completion for kubectl.
 if [ -f '/home/brandon/.kube/completion.bash.inc' ]; then source '/home/brandon/.kube/completion.bash.inc'; fi
+if [ -f '/usr/share/nvm/init-nvm.sh' ]; then source '/usr/share/nvm/init-nvm.sh'; fi
+

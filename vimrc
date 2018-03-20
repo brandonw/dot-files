@@ -29,6 +29,7 @@ Plugin 'wlangstroth/vim-racket'
 Plugin 'paredit.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'machakann/vim-highlightedyank'
+Plugin 'pangloss/vim-javascript'
 
 Plugin 'gregsexton/gitv'
 
@@ -119,6 +120,7 @@ let g:neomake_info_sign = {
     \   'text': 'ℹ',
     \   'texthl': 'helpExample',
     \ }
+let g:javascript_plugin_jsdoc = 1
 
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
@@ -225,22 +227,22 @@ if has("autocmd")
   augroup vimrcEx
     au!
     autocmd QuickFixCmdPost *grep* cwindow
-    autocmd FileType text setlocal tw=80
+    autocmd FileType text                setlocal tw=80
     autocmd FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
-    autocmd FileType mkd setlocal et ai tw=80 ts=4 sw=4 cc=+1
-    autocmd FileType md,tex setlocal et ai tw=80 ts=4 sw=4 cc=+1
-    autocmd FileType css,sass,scss setlocal et ai tw=80 ts=2 sw=2
-    autocmd FileType python setlocal et tw=100 ts=4 sw=4 ai fdm=indent foldlevel=99
-    autocmd FileType sql setlocal et tw=80 ts=4 sw=4 ai
-    autocmd FileType groovy setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-    autocmd FileType javascript,json setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-    autocmd FileType ruby setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-    autocmd FileType rust setlocal et tw=100 ts=4 sw=4
+    autocmd FileType mkd                 setlocal et ai tw=80 ts=4 sw=4 cc=+1
+    autocmd FileType md,tex 	         setlocal et ai tw=80 ts=4 sw=4 cc=+1
+    autocmd FileType css,sass,scss       setlocal et ai tw=80 ts=2 sw=2
+    autocmd FileType javascript,json     setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType python              setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType sql 		 setlocal et tw=80 ts=4 sw=4 ai
+    autocmd FileType groovy 		 setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType ruby 		 setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType rust 		 setlocal et tw=100 ts=4 sw=4
+    autocmd FileType c 			 setlocal textwidth=80 formatoptions+=t
+    autocmd FileType haskell 		 setlocal textwidth=80 ts=4 sw=4 et
+    autocmd FileType gitcommit 		 setlocal spell
     autocmd FileType gitcommit hi def link gitcommitOverflow Error
-    autocmd FileType gitcommit setlocal spell
     autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
-    autocmd FileType c setlocal textwidth=80 formatoptions+=t
-    autocmd FileType haskell setlocal textwidth=80 ts=4 sw=4 et
     autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
     autocmd BufWritePost * Neomake
     if v:version >= 700 && !&diff

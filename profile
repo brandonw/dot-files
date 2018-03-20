@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH=$PATH:~/.bin:~/.cabal/bin:~/.local/bin
+export PATH=$PATH:~/.bin:~/.cabal/bin:~/.local/bin:./node_modules/.bin
 if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
 fi
