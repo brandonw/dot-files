@@ -30,6 +30,7 @@ Plugin 'paredit.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'pangloss/vim-javascript'
+Plugin 'digitaltoad/vim-pug'
 
 Plugin 'gregsexton/gitv'
 
