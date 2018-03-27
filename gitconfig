@@ -7,15 +7,8 @@
 	excludesfile = /home/brandon/.gitignore
 [pager]
 	branch = false
-[merge]
-	tool = vimdiff
-[diff]
-	tool = vimdiff
-	indentHeuristic = on
 [interactive]
 	diffFilter = diff-so-fancy
-[difftool]
-	prompt = false
 [push]
 	default = current
 [rerere]
