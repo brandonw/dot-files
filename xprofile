@@ -48,3 +48,7 @@ XSSLOCK=$(ps aux | grep [x]ss-lock);
 if [ "${XSSLOCK:-0}" == 0 ]; then
 	xss-lock -- i3lock &
 fi
+UDISKIE=$(ps aux | grep [u]diskie);
+if [ "${UDISKIE:-0}" == 0 ]; then
+	udiskie --automount --notify --smart-tray &
+fi
