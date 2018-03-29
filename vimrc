@@ -144,14 +144,14 @@ nnoremap gwl <C-W>l
 vnoremap gwl <C-W>l
 nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
-nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --ignore tests" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
 map y <Plug>(highlightedyank)
 
 cmap w!! %!sudo tee > /dev/null %
 
-if executable('ag')
-  set grepprg=ag\ --vimgrep\ $*
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ $*
   set grepformat=%f:%l:%c:%m
 endif
 
