@@ -23,7 +23,6 @@ Plugin 'a.vim'
 Plugin 'cscope_macros.vim'
 Plugin 'closetag.vim'
 Plugin 'chase/vim-ansible-yaml'
-Plugin 'janko-m/vim-test'
 Plugin 'mbbill/undotree'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'paredit.vim'
@@ -31,6 +30,7 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'pangloss/vim-javascript'
 Plugin 'digitaltoad/vim-pug'
+Plugin 'embear/vim-localvimrc'
 
 Plugin 'gregsexton/gitv'
 
@@ -122,6 +122,8 @@ let g:neomake_info_sign = {
     \   'texthl': 'helpExample',
     \ }
 let g:javascript_plugin_jsdoc = 1
+let g:localvimrc_sandbox = 0
+let g:localvimrc_whitelist = ['/home/brandon/code/*/']
 
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
