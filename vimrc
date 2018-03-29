@@ -12,6 +12,7 @@ Plug 'ervandew/supertab'
 Plug 'gregsexton/gitv'
 Plug 'honza/vim-snippets'
 Plug 'jpalardy/vim-slime'
+Plug 'justinmk/vim-dirvish'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
@@ -20,6 +21,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -125,7 +127,7 @@ let g:localvimrc_whitelist = ['/home/brandon/code/*/']
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
 nnoremap gof :FZF<CR>
-nnoremap goe :Lex<CR>
+nnoremap goe :Dirvish<CR>
 nnoremap <silent> <F9> :TagbarOpenAutoClose<CR>
 nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <silent> <Leader>a :A<CR>
