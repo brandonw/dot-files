@@ -1,9 +1,10 @@
 #!/bin/sh
 
 if which ruby >/dev/null && which gem >/dev/null; then
-	PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+	PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 fi
-export PATH=~/.bin:./node_modules/.bin:$PATH
+PATH=~/.bin:$PATH
+export PATH
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export PAGER="less"

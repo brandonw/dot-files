@@ -6,7 +6,6 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-. ~/.profile
 . ~/.keys
 stty -ixon
 shopt -s histappend

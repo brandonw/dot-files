@@ -7,7 +7,6 @@ Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chase/vim-ansible-yaml'
 Plug 'digitaltoad/vim-pug'
-Plug 'embear/vim-localvimrc'
 Plug 'ervandew/supertab'
 Plug 'gregsexton/gitv'
 Plug 'honza/vim-snippets'
@@ -55,7 +54,6 @@ set autoindent
 set clipboard+=unnamedplus
 set t_Co=256
 set hidden
-set tags+=tags;$HOME
 set laststatus=2
 set wildmenu
 set wildignorecase
@@ -120,9 +118,15 @@ let g:neomake_info_sign = {
     \   'text': 'ℹ',
     \   'texthl': 'helpExample',
     \ }
+let g:neomake_javascript_eslint_exe = substitute(system('npm bin'), '\n\+$', '', '') . '/eslint'
 let g:javascript_plugin_jsdoc = 1
 let g:localvimrc_sandbox = 0
 let g:localvimrc_whitelist = ['/home/brandon/code/*/']
+let g:UltiSnipsExpandTrigger = "<c-j>"
+let g:UltiSnipsListSnippets = "<F8>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+" let g:SuperTabDefaultCompletionType = "context"
 
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
