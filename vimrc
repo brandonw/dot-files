@@ -32,6 +32,13 @@ Plug 'vim-scripts/closetag.vim'
 Plug 'vim-scripts/cscope_macros.vim'
 Plug 'vim-scripts/paredit.vim'
 Plug 'wlangstroth/vim-racket'
+
+" Language Server Protocol
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 filetype plugin indent on
@@ -126,7 +133,13 @@ let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsListSnippets = "<F8>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-" let g:SuperTabDefaultCompletionType = "context"
+let g:deoplete#enable_at_startup = 1
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ }
+
+call deoplete#custom#source('LanguageClient', 'mark', '[LSP]')
+call deoplete#custom#source('ultisnips', 'mark', '[UltiSnips]')
 
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
@@ -152,6 +165,9 @@ nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> ca
 nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
 map y <Plug>(highlightedyank)
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
