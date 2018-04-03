@@ -7,7 +7,6 @@ Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chase/vim-ansible-yaml'
 Plug 'digitaltoad/vim-pug'
-Plug 'ervandew/supertab'
 Plug 'gregsexton/gitv'
 Plug 'honza/vim-snippets'
 Plug 'jpalardy/vim-slime'
@@ -127,8 +126,6 @@ let g:neomake_info_sign = {
     \ }
 let g:neomake_javascript_eslint_exe = substitute(system('npm bin'), '\n\+$', '', '') . '/eslint'
 let g:javascript_plugin_jsdoc = 1
-let g:localvimrc_sandbox = 0
-let g:localvimrc_whitelist = ['/home/brandon/code/*/']
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsListSnippets = "<F8>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
@@ -137,9 +134,15 @@ let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ }
-
-call deoplete#custom#source('LanguageClient', 'mark', '[LSP]')
-call deoplete#custom#source('ultisnips', 'mark', '[UltiSnips]')
+let g:deoplete#enable_on_insert_enter = 0
+let g:deoplete#disable_auto_complete = 1
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer']
+let g:deoplete#sources.javascript = ['LanguageClient', 'ultisnips', 'buffer', 'tag']
+call deoplete#custom#source('LanguageClient', 'mark', '[lsp]')
+call deoplete#custom#source('ultisnips', 'mark', '[ultisnips]')
+call deoplete#custom#source('buffer', 'mark', '[buf]')
+call deoplete#custom#source('tag', 'mark', '[tag]')
 
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
@@ -168,6 +171,14 @@ map y <Plug>(highlightedyank)
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
+inoremap <silent><expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -266,7 +277,9 @@ if has("autocmd")
     autocmd FileType gitcommit hi def link gitcommitOverflow Error
     autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
     autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+    autocmd CmdwinEnter * let b:deoplete_sources = ['buffer']
     autocmd BufWritePost * Neomake
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
     if v:version >= 700 && !&diff
         autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
         autocmd BufLeave,BufReadPre * let b:view = winsaveview()
