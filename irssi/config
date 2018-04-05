@@ -6,14 +6,6 @@ servers = (
     autoconnect = "yes";
   },
   {
-    address = "irc.freenode.net";
-    port = "6697";
-    chatnet = "freenode";
-    use_ssl = "yes";
-    ssl_verify = "yes";
-    autoconnect = "yes";
-  },
-  {
     address = "irc.esper.net";
     port = "6697";
     chatnet = "esper";
@@ -22,26 +14,19 @@ servers = (
     autoconnect = "yes";
   },
   {
-    address = "irc.mozilla.org";
+    address = "irc.freenode.net";
     port = "6697";
-    chatnet = "mozilla";
+    chatnet = "freenode";
     use_ssl = "yes";
     ssl_verify = "yes";
     autoconnect = "yes";
-  }
+  },
 );
 
 chatnets = {
   bitlbee = {
     type = "IRC";
     autosendcmd = "/msg root identify $BITLBEE_IRC;wait 7000";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  freenode = {
-    type = "IRC";
-    autosendcmd = "/msg nickserv identify brandonw $FREENODE_IRC;wait 7000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
@@ -53,9 +38,9 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  mozilla = {
+  freenode = {
     type = "IRC";
-    autosendcmd = "/msg nickserv identify $MOZILLA_IRC;wait 7000";
+    autosendcmd = "/msg nickserv identify brandonw $FREENODE_IRC;wait 7000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
@@ -66,13 +51,9 @@ channels = (
   { name = "#v()"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#casualteam"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
-  { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#node.js"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#rust"; chatnet = "mozilla"; autojoin = "yes"; },
-  { name = "#rust-gamedev"; chatnet = "mozilla"; autojoin = "yes"; },
-  { name = "#python"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#django"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -318,32 +299,12 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#rust";
-        tag = "mozilla";
-      }
-    );
-  };
-  8 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#rust-gamedev";
-        tag = "mozilla";
-      }
-    );
-  };
-  9 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#archlinux";
+        name = "#node.js";
         tag = "freenode";
       }
     );
   };
-  10 = {
+  8 = {
     items = (
       {
         type = "CHANNEL";
@@ -353,32 +314,12 @@ windows = {
       }
     );
   };
-  11 = {
+  9 = {
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#git";
-        tag = "freenode";
-      }
-    );
-  };
-  12 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#python";
-        tag = "freenode";
-      }
-    );
-  };
-  13 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#django";
         tag = "freenode";
       }
     );
