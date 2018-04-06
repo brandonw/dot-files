@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chase/vim-ansible-yaml'
+" Plug 'chrisbra/csv.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'gregsexton/gitv'
 Plug 'honza/vim-snippets'
@@ -96,6 +97,7 @@ let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'mixed-inden
 let g:airline#extensions#whitespace#trailing_format = ' trailing:[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = ' mixed-indent:[%s]'
 let g:airline#extensions#whitespace#mixed_indent_file_format = ' mix-indent-file:[%s]'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_exclude_preview = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 let g:airline#extensions#quickfix#location_text = 'Location'
