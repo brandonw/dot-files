@@ -5,15 +5,13 @@ URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 
-Emacs.font:             -*-dina-medium-r-*-*-13-*-*-*-*-*-*
-
 !URxvt.cursorBlink:	true
 !URxvt.cursorColor:	blue
 
 URxvt.scrollBar:	false
 URxvt.urgentOnBell:     true
 
-URxvt.font:		-*-dina-medium-r-*-*-13-*-*-*-*-*-*,xft:DejaVu Sans:pixelsize=13
+URxvt.font:		-*-dina-medium-r-*-*-13-*-*-*-*-*-*,xft:DejaVu Sans:style=Book
 
 *background:              #002b36
 *foreground:              #839496

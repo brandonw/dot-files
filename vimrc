@@ -68,7 +68,6 @@ set completeopt=menuone,longest,preview
 set number
 set relativenumber
 set background=dark
-set tabline=%!MyTabLine()
 set diffopt=vertical
 set dir=~/.swap
 set path=.,**
@@ -79,15 +78,28 @@ syntax on
 colorscheme solarized
 
 let mapleader="\\"
+let g:undotree_SplitWidth = 40
+let g:solarized_diffmode = "high" " high, low, normal
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
-let g:undotree_SplitWidth = 40
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '↪'
+let g:airline_symbols.paste = 'paste'
+let g:airline_symbols.spell = 'spell'
+let g:airline_symbols.notexists = ' ∄'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'mixed-indent-file' ]
+let g:airline#extensions#whitespace#trailing_format = ' trailing:[%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = ' mixed-indent:[%s]'
+let g:airline#extensions#whitespace#mixed_indent_file_format = ' mix-indent-file:[%s]'
 let g:airline_exclude_preview = 1
-let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 let g:airline#extensions#quickfix#location_text = 'Location'
-let g:airline#extensions#branch#enabled = 0
-let g:solarized_diffmode = "high" " high, low, normal
+let g:airline_exclude_preview = 1
 
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
@@ -187,13 +199,6 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 endif
 
-if has("gui_running")
-  set guifont=Dina
-  set guioptions-=T
-  set guioptions-=m
-  set lines=60
-endif
-
 if has('nvim')
   set inccommand=nosplit
 endif
@@ -220,40 +225,6 @@ fun! MatchCaseTag()
 endfun
 nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
 
-function MyTabLine()
-    let s = ''
-    for i in range(tabpagenr('$'))
-        " select the highlighting
-        if i + 1 == tabpagenr()
-            let s .= '%#TabLineSel#'
-        else
-            let s .= '%#TabLine#'
-        endif
-
-        " set the tab page number (for mouse clicks)
-        let s .= '%' . (i + 1) . 'T'
-
-        " the label is made by MyTabLabel()
-        let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-    endfor
-
-    " after the last tab fill with TabLineFill and reset tab page nr
-    let s .= '%#TabLineFill#%T'
-
-    " right-align the label to close the current tab page
-    if tabpagenr('$') > 1
-        let s .= '%=%#TabLine#%999Xclose'
-    endif
-
-    return s
-endfunction
-
-function MyTabLabel(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    return bufname(buflist[winnr - 1])
-endfunction
-
 if has("autocmd")
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -265,7 +236,7 @@ if has("autocmd")
     autocmd FileType mkd                 setlocal et ai tw=80 ts=4 sw=4 cc=+1
     autocmd FileType md,tex 	         setlocal et ai tw=80 ts=4 sw=4 cc=+1
     autocmd FileType css,sass,scss       setlocal et ai tw=80 ts=2 sw=2
-    autocmd FileType javascript,json     setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99
+    autocmd FileType javascript,json,pug setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99
     autocmd FileType python              setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType sql 		 setlocal et tw=80 ts=4 sw=4 ai
     autocmd FileType groovy 		 setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
