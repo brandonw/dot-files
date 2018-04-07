@@ -52,8 +52,6 @@ channels = (
   { name = "#casualteam"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#triangle"; chatnet = "esper"; autojoin = "yes"; },
   { name = "#node.js"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#git"; chatnet = "freenode"; autojoin = "yes"; },
 );
 
 aliases = {
@@ -304,25 +302,6 @@ windows = {
       }
     );
   };
-  8 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#vim";
-        tag = "freenode";
-      }
-    );
-  };
-  9 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#git";
-        tag = "freenode";
-      }
-    );
   };
 };
 mainwindows = {
