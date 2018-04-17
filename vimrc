@@ -238,7 +238,7 @@ if has("autocmd")
     autocmd FileType mkd                 setlocal et ai tw=80 ts=4 sw=4 cc=+1
     autocmd FileType md,tex 	         setlocal et ai tw=80 ts=4 sw=4 cc=+1
     autocmd FileType css,sass,scss       setlocal et ai tw=80 ts=2 sw=2
-    autocmd FileType javascript,json,pug setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99
+    autocmd FileType javascript,json,pug setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType python              setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType sql 		 setlocal et tw=80 ts=4 sw=4 ai
     autocmd FileType groovy 		 setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
