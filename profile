@@ -3,6 +3,9 @@
 if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 fi
+if which yarn >/dev/null; then
+	PATH="$PATH:$(yarn global bin)"
+fi
 PATH=~/.bin:$PATH
 export PATH
 
@@ -21,4 +24,6 @@ export FZF_DEFAULT_COMMAND='
       sed s/^..//) 2> /dev/null'
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/code
+export NPM_TOKEN=$(grep _authToken ~/.npmrc | sed 's@.*=@@')
 source /usr/bin/virtualenvwrapper.sh
+
