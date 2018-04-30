@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 SCREENCAST_NAME_PATH=~/.screencasting.file.path
 if [ -f $SCREENCAST_NAME_PATH ]
@@ -10,7 +10,7 @@ then
 	rm $SCREENCAST_NAME_PATH
 else
 	# It has not been started yet
-	OUTPUT_FILE="$HOME/$(date +'%Y-%m-%dT%I.%M%p').mov"
+	OUTPUT_FILE="$HOME/$(date +'%Y-%m-%dT%I.%M%p')"
 	echo $OUTPUT_FILE > $SCREENCAST_NAME_PATH
-	screencast.sh --from-toggle &
+	screencast.sh --from-toggle $@ &
 fi
