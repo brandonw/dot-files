@@ -44,8 +44,15 @@ then
 else
 	if [[ "$@" =~ "--to-gif" ]]
 	then
-		ffmpeg -i $MOV_FILE $GIF_FILE
-		gifsicle -O2 $GIF_FILE -o $GIF_FILE
+		ffmpeg -i $MOV_FILE $OUTPUT_FILE.tmp1.gif
+		rm $MOV_FILE
+		# convert $OUTPUT_FILE.tmp1.gif -verbose -coalesce -layers OptimizeFrame $OUTPUT_FILE.tmp2.gif
+		# rm $OUTPUT_FILE.tmp1.gif
+		# gifsicle -O2 $OUTPUT_FILE.tmp2.gif -o $GIF_FILE
+		# rm $OUTPUT_FILE.tmp2.gif
+
+		gifsicle -O2 $OUTPUT_FILE.tmp1.gif -o $GIF_FILE
+		rm $OUTPUT_FILE.tmp.gif
 	fi
 
 fi

@@ -74,6 +74,7 @@ set dir=~/.swap
 set path=.,**
 set mouse=a
 set scrollback=100000
+set switchbuf+=newtab
 
 syntax on
 colorscheme solarized
@@ -183,6 +184,9 @@ nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
+nnoremap gbn :let @+ = GetNodeBp()<CR>
+nnoremap gfj :set ft=json<CR>ggVG:!python -m json.tool<CR>
+vnoremap gfj :set ft=json<CR>:!python -m json.tool<CR>
 map y <Plug>(highlightedyank)
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -209,6 +213,10 @@ endif
 
 function! GetCurrentWord()
   return shellescape(expand("<cword>"))
+endfunction
+
+function! GetNodeBp()
+  return "sb('" . expand("%") . "', " . line(".") . ')'
 endfunction
 
 function! TrimWhiteSpace()
@@ -255,7 +263,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
     autocmd CmdwinEnter * let b:deoplete_sources = ['buffer']
     autocmd BufWritePost * Neomake
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
     if v:version >= 700 && !&diff
         autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
         autocmd BufLeave,BufReadPre * let b:view = winsaveview()
