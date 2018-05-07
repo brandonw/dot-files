@@ -35,10 +35,11 @@ xset m 3/2 0
 
 # xinput list
 # xinput list-props [dev-num]
-xinput set-prop "Synaptics TM3053-004" "libinput Tapping Enabled" 1
-xinput set-prop "Synaptics TM3053-004" "libinput Tapping Drag Lock Enabled" 1
-xinput set-prop "Synaptics TM3053-004" "libinput Natural Scrolling Enabled" 1
-xinput set-prop "Synaptics TM3053-004" "libinput Accel Speed" 1.0
+TOUCH_DEVICE=$(xinput list | grep "\(Synaptics\|Touchpad\)" | perl -pe 's/.*↳ (.*?)\s*id=.*/\1/g')
+xinput set-prop "$TOUCH_DEVICE" "libinput Tapping Enabled" 1
+xinput set-prop "$TOUCH_DEVICE" "libinput Tapping Drag Lock Enabled" 1
+xinput set-prop "$TOUCH_DEVICE" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "$TOUCH_DEVICE" "libinput Accel Speed" 0.5
 
 PARCELLITE=$(ps aux | grep [p]arcellite);
 if [ "${PARCELLITE:-0}" == 0 ]; then

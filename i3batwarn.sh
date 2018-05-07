@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 #############################################
 # This is a simple battery warning script.  #
