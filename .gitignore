@@ -3,3 +3,7 @@
 irssi/logs
 irssi/config.autosave
 irssi/scripts/autorun
+weechat/logs
+weechat/weechat.log
+weechat/script
+weechat/sec.conf
