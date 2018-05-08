@@ -53,3 +53,7 @@ UDISKIE=$(ps aux | grep [u]diskie);
 if [ "${UDISKIE:-0}" == 0 ]; then
 	udiskie --automount --notify --smart-tray &
 fi
+COMPTON=$(ps aux | grep [c]ompton);
+if [ "${COMPTON:-0}" == 0 ]; then
+	compton -b
+fi
