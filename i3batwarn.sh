@@ -29,7 +29,7 @@ PERCENT=`echo $(( $REM * 100 / $FULL ))`
 MESSAGE="Secondary battery at $PERCENT%. Charge soon or power down will commence."
 
 # set energy limit in percent, where warning should be displayed
-LIMIT="25"
+LIMIT="10"
 
 # show warning if energy limit in percent is less then user set limit and
 # if battery is discharging
