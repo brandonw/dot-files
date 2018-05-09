@@ -26,4 +26,3 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/code
 export NPM_TOKEN=$(grep _authToken ~/.npmrc | sed 's@.*=@@')
 source /usr/bin/virtualenvwrapper.sh
-
