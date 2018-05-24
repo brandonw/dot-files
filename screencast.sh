@@ -24,11 +24,19 @@ THREADS="2"
 QUALITY="medium" #x264 preset: ultrafast,superfast,veryfast,faster,fast,medium
 AUDIO_RATE="44100"
 
+AUDIO_PARAMS1="-thread_queue_size 4096 -f alsa -i pulse -ac 2 -ar $AUDIO_RATE"
+AUDIO_PARAMS2="-acodec libmp3lame -ar 44100 -ab 64k -threads $THREADS -strict normal"
+if [[ "$@" =~ "--no-audio" ]]
+then
+	AUDIO_PARAMS1=""
+	AUDIO_PARAMS2=""
+fi
+
 ffmpeg  -nostdin \
 	-thread_queue_size 512 -f x11grab -s "$INRES" -r "$FPS" -i :0.0 \
-	-thread_queue_size 512 -f alsa -i pulse -ac 2 -ar $AUDIO_RATE \
+	$AUDIO_PARAMS1 \
 	-vcodec libx264 -preset $QUALITY -s "$OUTRES" -pix_fmt yuv420p -tune film \
-	-acodec libmp3lame -ar 44100 -ab 64k -threads $THREADS -strict normal \
+	$AUDIO_PARAMS2 \
 	-f mov file:$MOV_FILE
 
 FFMPEG_STATUS_CODE=$?
@@ -46,11 +54,6 @@ else
 	then
 		ffmpeg -i $MOV_FILE $OUTPUT_FILE.tmp1.gif
 		rm $MOV_FILE
-		# convert $OUTPUT_FILE.tmp1.gif -verbose -coalesce -layers OptimizeFrame $OUTPUT_FILE.tmp2.gif
-		# rm $OUTPUT_FILE.tmp1.gif
-		# gifsicle -O2 $OUTPUT_FILE.tmp2.gif -o $GIF_FILE
-		# rm $OUTPUT_FILE.tmp2.gif
-
 		gifsicle -O2 $OUTPUT_FILE.tmp1.gif -o $GIF_FILE
 		rm $OUTPUT_FILE.tmp.gif
 	fi
