@@ -32,6 +32,7 @@ hsetroot -solid "#000000"
 xset fp rehash
 xsetroot -cursor_name left_ptr
 xset r rate 250 20
+xset s 600
 xset +dpms
 xset dpms 0 0 600
 xset m 3/2 0
@@ -50,13 +51,13 @@ if [ "${PARCELLITE:-0}" == 0 ]; then
 fi
 XSSLOCK=$(ps aux | grep [x]ss-lock);
 if [ "${XSSLOCK:-0}" == 0 ]; then
-	xss-lock -- i3lock &
+	xss-lock -- i3lock -n &
 fi
 UDISKIE=$(ps aux | grep [u]diskie);
 if [ "${UDISKIE:-0}" == 0 ]; then
 	udiskie --automount --notify --smart-tray &
 fi
-COMPTON=$(ps aux | grep [c]ompton);
-if [ "${COMPTON:-0}" == 0 ]; then
-	compton -b
-fi
+# COMPTON=$(ps aux | grep [c]ompton);
+# if [ "${COMPTON:-0}" == 0 ]; then
+# 	compton -b
+# fi

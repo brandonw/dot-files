@@ -75,6 +75,7 @@ set path=.,**
 set mouse=a
 set scrollback=100000
 set switchbuf+=newtab
+set nohls
 
 syntax on
 colorscheme solarized
@@ -182,7 +183,7 @@ nnoremap gwl <C-W>l
 vnoremap gwl <C-W>l
 nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
-nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests --iglob !test" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
 nnoremap gbn :let @+ = GetNodeBp()<CR>
 nnoremap gfj :set ft=json<CR>ggVG:!python -m json.tool<CR>
