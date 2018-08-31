@@ -5,7 +5,6 @@ set rtp+=~/.fzf
 call plug#begin('~/.vim/plugged')
 Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
-Plug 'chase/vim-ansible-yaml'
 " Plug 'chrisbra/csv.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'gregsexton/gitv'
@@ -13,7 +12,6 @@ Plug 'honza/vim-snippets'
 Plug 'jpalardy/vim-slime'
 Plug 'justinmk/vim-dirvish'
 Plug 'machakann/vim-highlightedyank'
-Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
@@ -166,7 +164,6 @@ noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
 nnoremap gof :FZF<CR>
 nnoremap goe :Dirvish<CR>
-nnoremap <silent> <F9> :TagbarOpenAutoClose<CR>
 nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <silent> <Leader>a :A<CR>
 nnoremap gwn <C-W><C-W>
@@ -251,6 +248,7 @@ if has("autocmd")
     autocmd FileType css,sass,scss       setlocal et ai tw=80 ts=2 sw=2
     autocmd FileType javascript          setlocal et tw=120 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType json,pug            setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99
+    autocmd FileType yaml                setlocal et tw=100 ts=2 sw=2 ai sr
     autocmd FileType python              setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
     autocmd FileType sql 		 setlocal et tw=80 ts=4 sw=4 ai
     autocmd FileType groovy 		 setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
