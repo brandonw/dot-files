@@ -11,6 +11,6 @@ then
 else
 	# It has not been started yet
 	OUTPUT_FILE="$HOME/$(date +'%Y-%m-%dT%I.%M%p')"
-	echo $OUTPUT_FILE > $SCREENCAST_NAME_PATH
-	screencast.sh --from-toggle $@ &
+	echo "$OUTPUT_FILE" > "$SCREENCAST_NAME_PATH"
+	screencast.sh --from-toggle "$@" &
 fi
