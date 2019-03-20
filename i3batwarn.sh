@@ -26,7 +26,7 @@ FULL=`grep "POWER_SUPPLY_ENERGY_FULL_DESIGN" $ACPI_PATH/uevent | cut -d= -f2`
 PERCENT=`echo $(( $REM * 100 / $FULL ))`
 
 # set error message
-MESSAGE="Secondary battery at $PERCENT%. Charge soon or power down will commence."
+MESSAGE="Battery at $PERCENT%. Charge soon or power down will commence."
 
 # set energy limit in percent, where warning should be displayed
 LIMIT="10"

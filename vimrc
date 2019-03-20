@@ -201,7 +201,7 @@ inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 cmap w!! %!sudo tee > /dev/null %
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ $*
+  set grepprg=rg\ --vimgrep\ --hidden\ $*
   set grepformat=%f:%l:%c:%m
 endif
 
