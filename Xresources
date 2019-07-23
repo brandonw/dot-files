@@ -4,53 +4,39 @@ URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.scrollBar:            false
+URxvt.urgentOnBell:         true
+URxvt.font:                 -*-dina-medium-r-*-*-13-*-*-*-*-*-*,xft:DejaVu Sans:style=Book
 
-!URxvt.cursorBlink:	true
-!URxvt.cursorColor:	blue
+st.font:              Dina:pixelsize=13:
+st.mouseScrollLines:  5
 
-URxvt.scrollBar:	false
-URxvt.urgentOnBell:     true
-
-URxvt.font:		-*-dina-medium-r-*-*-13-*-*-*-*-*-*,xft:DejaVu Sans:style=Book
-
-*background:              #002b36
-*foreground:              #839496
-*fading:                  15
-*fadeColor:               #002b36
-*cursorColor:             #93a1a1
-*pointerColorBackground:  #586e75
-*pointerColorForeground:  #93a1a1
-
-! base03
-*color8:                  #002b36
-! base02
-*color0:                  #073642
-! base01
-*color10:                 #586e75
-! base00
-*color11:                 #657b83
-! base0
-*color12:                 #839496
-! base1
-*color14:                 #93a1a1
-! base2
-*color7:                  #eee8d5
-! base3
-*color15:                 #fdf6e3
-
-! yellow
-*color3:                  #b58900
-! orange
-*color9:                  #cb4b16
-! red
-*color1:                  #dc322f
-! magenta
-*color5:                  #d33682
-! violet
-*color13:                 #6c71c4
-! blue
-*color4:                  #268bd2
-! cyan
-*color6:                  #2aa198
-! green
-*color2:                  #859900
+! hard contrast: st.background: #1d2021
+st.background: #282828
+! soft contrast: st.background: #32302f
+st.foreground: #ebdbb2
+st.cursorfg: #928374
+! Black + DarkGrey
+st.color0:  #282828
+st.color8:  #928374
+! DarkRed + Red
+st.color1:  #cc241d
+st.color9:  #fb4934
+! DarkGreen + Green
+st.color2:  #98971a
+st.color10: #b8bb26
+! DarkYellow + Yellow
+st.color3:  #d79921
+st.color11: #fabd2f
+! DarkBlue + Blue
+st.color4:  #458588
+st.color12: #83a598
+! DarkMagenta + Magenta
+st.color5:  #b16286
+st.color13: #d3869b
+! DarkCyan + Cyan
+st.color6:  #689d6a
+st.color14: #8ec07c
+! LightGrey + White
+st.color7:  #a89984
+st.color15: #ebdbb2

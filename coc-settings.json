@@ -1,0 +1,10 @@
+{
+//  "tsserver.log": "verbose",
+//  "tsserver.trace.server": "verbose",
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "javascript.showUnused": true,
+  "javascript.suggestionActions.enabled": false,
+  "javascript.suggest.enabled": false
+//  "eslint.nodePath": null,
+//  "eslint.options": {"configFile": "C:/mydirectory/.eslintrc.json"}
+}

@@ -3,8 +3,8 @@ filetype off
 set rtp+=~/.fzf
 
 call plug#begin('~/.vim/plugged')
-Plug 'SirVer/ultisnips'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'gruvbox-community/gruvbox'
 " Plug 'chrisbra/csv.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'gregsexton/gitv'
@@ -13,12 +13,10 @@ Plug 'jpalardy/vim-slime'
 Plug 'justinmk/vim-dirvish'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mbbill/undotree'
-Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -30,19 +28,20 @@ Plug 'vim-scripts/closetag.vim'
 Plug 'vim-scripts/cscope_macros.vim'
 Plug 'vim-scripts/paredit.vim'
 Plug 'wlangstroth/vim-racket'
-
-" Language Server Protocol
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 filetype plugin indent on
 
 " enable matchit.vim that is included with vim
 runtime macros/matchit.vim
+
+" Install the following extensions:
+" CocInstall coc-tsserver
+" CocInstall coc-snippets
+" CocInstall coc-json
+" CocInstall coc-eslint
+" CocInstall coc-lists
 
 set backspace=indent,eol,start
 set history=1000
@@ -54,10 +53,9 @@ set ignorecase
 set smartcase
 set title
 set scrolloff=5
-set shortmess=atI
+set shortmess=atIc
 set autoindent
 set clipboard+=unnamedplus
-set t_Co=256
 set hidden
 set laststatus=2
 set wildmenu
@@ -74,9 +72,14 @@ set mouse=a
 set scrollback=100000
 set switchbuf+=newtab
 set nohls
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
+set termguicolors
 
 syntax on
-colorscheme solarized
+" colorscheme solarized
+colorscheme gruvbox
 
 let mapleader="\\"
 let g:undotree_SplitWidth = 40
@@ -99,66 +102,17 @@ let g:airline#extensions#whitespace#mixed_indent_format = ' mixed-indent:[%s]'
 let g:airline#extensions#whitespace#mixed_indent_file_format = ' mix-indent-file:[%s]'
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_exclude_preview = 1
+let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 let g:airline#extensions#quickfix#location_text = 'Location'
-let g:airline_exclude_preview = 1
 
-let g:tagbar_type_rust = {
-    \ 'ctagstype' : 'rust',
-    \ 'kinds'     : [
-        \ 'f:functions',
-        \ 'T:type definitions',
-        \ 'g:enumeration names',
-        \ 's:structure names',
-        \ 'm:module names',
-        \ 'c:static constants',
-        \ 't:traits',
-        \ 'i:trait implementations',
-        \ 'd:macro definitions'
-    \ ],
-    \ 'sro'       : '::'
-    \  }
+" let g:airline_section_c = '%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#neomake#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+" call airline#parts#define_function('coc-context', 'GetCocContext')
+
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ""}
 let g:slime_dont_ask_default = 1
-let g:neomake_list_height = 15
-let g:neomake_error_sign = {
-    \   'text': '✖',
-    \   'texthl': 'ErrorMsg',
-    \ }
-let g:neomake_warning_sign = {
-    \   'text': '⚠',
-    \   'texthl': 'DiffChange',
-    \ }
-let g:neomake_message_sign = {
-    \   'text': '➤',
-    \   'texthl': 'StatusLine',
-    \ }
-let g:neomake_info_sign = {
-    \   'text': 'ℹ',
-    \   'texthl': 'helpExample',
-    \ }
-let g:neomake_javascript_eslint_exe = substitute(system('npm bin'), '\n\+$', '', '') . '/eslint'
-let g:javascript_plugin_jsdoc = 1
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsListSnippets = "<F8>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:deoplete#enable_at_startup = 1
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ }
-let g:LanguageClient_diagnosticsList = "v:null"
-let g:LanguageClient_diagnosticsEnable = 0
-let g:deoplete#enable_on_insert_enter = 0
-let g:deoplete#disable_auto_complete = 1
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['buffer']
-let g:deoplete#sources.javascript = ['LanguageClient', 'ultisnips', 'buffer', 'tag']
-call deoplete#custom#source('LanguageClient', 'mark', '[lsp]')
-call deoplete#custom#source('ultisnips', 'mark', '[ultisnips]')
-call deoplete#custom#source('buffer', 'mark', '[buf]')
-call deoplete#custom#source('tag', 'mark', '[tag]')
 
 noremap <space> :
 nnoremap gob :ls<CR>:b<Space>
@@ -182,23 +136,103 @@ nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests --iglob !test" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
-nnoremap gbn :let @+ = GetNodeBp()<CR>
 nnoremap gfj :set ft=json<CR>ggVG:!python -m json.tool<CR>
 vnoremap gfj :set ft=json<CR>:!python -m json.tool<CR>
+nnoremap <F8> :CocList snippets<CR>
 map y <Plug>(highlightedyank)
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
-inoremap <silent><expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
-cmap w!! %!sudo tee > /dev/null %
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()"
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+" nmap <silent> [c <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+" nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+" nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+" nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+" nmap <silent> <TAB> <Plug>(coc-range-select)
+" xmap <silent> <TAB> <Plug>(coc-range-select)
+" xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+" Use `:Format` to format current buffer
+" command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" cmap w!! %!sudo tee > /dev/null % " doesn't currently work in nvim
 
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --hidden\ $*
@@ -211,10 +245,6 @@ endif
 
 function! GetCurrentWord()
   return shellescape(expand("<cword>"))
-endfunction
-
-function! GetNodeBp()
-  return "sb('" . expand("%") . "', " . line(".") . ')'
 endfunction
 
 function! TrimWhiteSpace()
@@ -235,6 +265,10 @@ fun! MatchCaseTag()
 endfun
 nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
 
+function! SyntaxItem()
+  return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+
 if has("autocmd")
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -248,6 +282,7 @@ if has("autocmd")
     autocmd FileType md,tex 	         setlocal et ai tw=80 ts=4 sw=4 cc=+1
     autocmd FileType css,sass,scss       setlocal et ai tw=80 ts=2 sw=2
     autocmd FileType javascript          setlocal et tw=120 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+    autocmd FileType javascript,json     setlocal formatexpr=CocAction('formatSelected')
     autocmd FileType json,pug,xml        setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99
     autocmd FileType yaml                setlocal et tw=100 ts=2 sw=2 ai sr
     autocmd FileType python              setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
@@ -261,9 +296,10 @@ if has("autocmd")
     autocmd FileType gitcommit hi def link gitcommitOverflow Error
     autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
     autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
-    autocmd CmdwinEnter * let b:deoplete_sources = ['buffer']
-    autocmd BufWritePost * Neomake
+    " autocmd CmdwinEnter * let b:deoplete_sources = ['buffer']
+    autocmd CursorHold * silent call CocActionAsync('highlight')
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     if v:version >= 700 && !&diff
         autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
         autocmd BufLeave,BufReadPre * let b:view = winsaveview()
