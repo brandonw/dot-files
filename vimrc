@@ -3,8 +3,7 @@ filetype off
 set rtp+=~/.fzf
 
 call plug#begin('~/.vim/plugged')
-" Plug 'altercation/vim-colors-solarized'
-Plug 'gruvbox-community/gruvbox'
+Plug 'nisavid/vim-colors-solarized'
 " Plug 'chrisbra/csv.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'gregsexton/gitv'
@@ -75,11 +74,11 @@ set nohls
 set cmdheight=2
 set updatetime=300
 set signcolumn=yes
-set termguicolors
+" set termguicolors
 
 syntax on
-" colorscheme solarized
-colorscheme gruvbox
+colorscheme solarized
+hi! link SignColumn LineNr
 
 let mapleader="\\"
 let g:undotree_SplitWidth = 40
@@ -136,9 +135,10 @@ nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests --iglob !test" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
-nnoremap gfj :set ft=json<CR>ggVG:!python -m json.tool<CR>
-vnoremap gfj :set ft=json<CR>:!python -m json.tool<CR>
+nnoremap gfj :%!python -m json.tool<CR>
+vnoremap gfj :!python -m json.tool<CR>
 nnoremap <F8> :CocList snippets<CR>
+nnoremap gsd :CocList --normal diagnostics<CR>
 map y <Plug>(highlightedyank)
 
 " Use tab for trigger completion with characters ahead and navigate.
