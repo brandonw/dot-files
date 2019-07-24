@@ -40,7 +40,8 @@ st.color4:     #268bd2
 st.color5:     #d33682
 st.color6:     #2aa198
 st.color7:     #eee8d5
-st.color8:     #002b36
+! Changed to fix mocha colorized rendering bug
+st.color8:     #839496
 st.color9:     #cb4b16
 st.color10:    #586e75
 st.color11:    #657b83
