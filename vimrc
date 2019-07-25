@@ -74,8 +74,10 @@ set nohls
 set cmdheight=2
 set updatetime=300
 set signcolumn=yes
-" set termguicolors
+set termguicolors
 
+" ensure bg is taken from terminal and not botched to gray
+let g:solarized_termtrans = 1
 syntax on
 colorscheme solarized
 hi! link SignColumn LineNr

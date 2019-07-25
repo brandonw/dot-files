@@ -4,7 +4,8 @@
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "javascript.showUnused": true,
   "javascript.suggestionActions.enabled": false,
-  "javascript.suggest.enabled": false
+  "javascript.suggest.enabled": false,
+  "eslint.run": "onSave"
 //  "eslint.nodePath": null,
 //  "eslint.options": {"configFile": "C:/mydirectory/.eslintrc.json"}
 }
