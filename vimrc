@@ -3,7 +3,7 @@ filetype off
 set rtp+=~/.fzf
 
 call plug#begin('~/.vim/plugged')
-Plug 'nisavid/vim-colors-solarized'
+Plug 'brandonw/vim-colors-solarized'
 " Plug 'chrisbra/csv.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'gregsexton/gitv'
@@ -76,11 +76,8 @@ set updatetime=300
 set signcolumn=yes
 set termguicolors
 
-" ensure bg is taken from terminal and not botched to gray
-let g:solarized_termtrans = 1
 syntax on
 colorscheme solarized
-hi! link SignColumn LineNr
 
 let mapleader="\\"
 let g:undotree_SplitWidth = 40
