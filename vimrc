@@ -10,7 +10,6 @@ Plug 'gregsexton/gitv'
 Plug 'honza/vim-snippets'
 Plug 'jpalardy/vim-slime'
 Plug 'justinmk/vim-dirvish'
-Plug 'machakann/vim-highlightedyank'
 Plug 'mbbill/undotree'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
@@ -36,11 +35,14 @@ filetype plugin indent on
 runtime macros/matchit.vim
 
 " Install the following extensions:
+" CocInstall coc-marketplace
 " CocInstall coc-tsserver
 " CocInstall coc-snippets
 " CocInstall coc-json
 " CocInstall coc-eslint
 " CocInstall coc-lists
+" CocInstall coc-yank
+" CocInstall coc-yaml
 
 set backspace=indent,eol,start
 set history=1000
@@ -87,6 +89,7 @@ let g:airline_right_sep = '◀'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.branch = '↪'
@@ -104,9 +107,18 @@ let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 let g:airline#extensions#quickfix#location_text = 'Location'
 
-" let g:airline_section_c = '%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#neomake#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-" call airline#parts#define_function('coc-context', 'GetCocContext')
+fun! GetCocContext()
+  let current_func = get(b:, 'coc_current_function', '')
+  if !empty(current_func)
+    let current_func = g:airline_left_sep . g:airline_symbols.space . current_func
+  endif
+  return current_func
+endfun
+
+call airline#parts#define_function('coc-context', 'GetCocContext')
+
+let g:airline_section_c = airline#section#create(['%<', 'file', g:airline_symbols.space, 'readonly', 'coc-context'])
+let g:airline_section_x = airline#section#create_right(['bookmark', 'tagbar', 'gutentags', 'grepper', 'filetype'])
 
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ""}
@@ -138,7 +150,9 @@ nnoremap gfj :%!python -m json.tool<CR>
 vnoremap gfj :!python -m json.tool<CR>
 nnoremap <F8> :CocList snippets<CR>
 nnoremap gsd :CocList --normal diagnostics<CR>
-map y <Plug>(highlightedyank)
+nnoremap <silent> gsy  :<C-u>CocList -A --normal yank<cr>
+map <F2> :mksession! ~/.vim/vim_session<cr>
+map <F3> :source ~/.vim/vim_session<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -295,7 +309,6 @@ if has("autocmd")
     autocmd FileType gitcommit hi def link gitcommitOverflow Error
     autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
     autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
-    " autocmd CmdwinEnter * let b:deoplete_sources = ['buffer']
     autocmd CursorHold * silent call CocActionAsync('highlight')
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
