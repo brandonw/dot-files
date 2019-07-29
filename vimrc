@@ -77,6 +77,7 @@ set cmdheight=2
 set updatetime=300
 set signcolumn=yes
 set termguicolors
+set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 
 syntax on
 colorscheme solarized
@@ -148,6 +149,7 @@ nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests --ig
 nnoremap gcf :let @+ = expand("%")<CR>
 nnoremap gfj :%!python -m json.tool<CR>
 vnoremap gfj :!python -m json.tool<CR>
+nnoremap gfd :Gvdiffsplit
 nnoremap <F8> :CocList snippets<CR>
 nnoremap gsd :CocList --normal diagnostics<CR>
 nnoremap <silent> gsy  :<C-u>CocList -A --normal yank<cr>

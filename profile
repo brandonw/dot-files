@@ -15,7 +15,6 @@ export LESS="-R "
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export EDITOR="nvim"
 export BROWSER=firefox
-export TERM="st-256color"
 export TERMINAL="xst"
 export SDL_VIDEO_FULLSCREEN_HEAD=1
 export IRC_CLIENT="irssi"

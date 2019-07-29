@@ -25,8 +25,13 @@
 
 
 ! Suckless xst fork
+st.termname:     st-256color
 st.font:              Dina:pixelsize=13:
+!st.font:              Inconsolata:pixelsize=20:
+!st.font:              Hack:pixelsize=18:
 st.mouseScrollLines:  5
+!st.borderpx:          10
+st.borderpx:          5
 
 st.background: #002b36
 st.foreground: #839496
@@ -40,7 +45,6 @@ st.color4:     #268bd2
 st.color5:     #d33682
 st.color6:     #2aa198
 st.color7:     #eee8d5
-! Changed to fix mocha colorized rendering bug
 st.color8:     #839496
 st.color9:     #cb4b16
 st.color10:    #586e75

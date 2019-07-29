@@ -24,7 +24,7 @@ unset MAILCHECK
 export TODO="t"
 
 # Fix keypad issues
-#tput smkx
+tput smkx
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
