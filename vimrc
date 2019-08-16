@@ -289,6 +289,7 @@ if has("autocmd")
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
     au!
+    autocmd BufRead,BufNewFile *.snyk   setfiletype yaml
     autocmd QuickFixCmdPost *grep* cwindow
     autocmd FileType text                setlocal tw=80
     autocmd FileType sh                  setlocal et ai tw=80 ts=4 sw=4
