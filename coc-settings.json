@@ -5,6 +5,7 @@
   "javascript.showUnused": true,
   "javascript.suggestionActions.enabled": false,
   "javascript.suggest.enabled": false,
+  "javascript.validate.enable": false,
   "eslint.run": "onSave",
   "yaml.format.bracketSpacing": false,
   "yaml.format.proseWrap":"always",
@@ -61,5 +62,16 @@
     "!Join scalar",
     "!Join mapping",
     "!Join sequence"
-    ]
+    ],
+    "languageserver": {
+      "flow": {
+        "command": "flow",
+        "args": ["lsp"],
+        "filetypes": ["javascript", "javascriptreact"],
+        "initializationOptions": {},
+        "requireRootPattern": true,
+        "settings": {},
+        "rootPatterns": [".flowconfig"]
+      }
+    }
 }
