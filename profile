@@ -6,6 +6,10 @@ fi
 if which yarn >/dev/null; then
 	PATH="$PATH:$(yarn global bin)"
 fi
+if which go >/dev/null; then
+    export GOPATH="/home/brandon/go"
+    PATH="$PATH:GOPATH/bin"
+fi
 PATH=~/.bin:$PATH
 export PATH
 
