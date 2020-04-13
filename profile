@@ -10,8 +10,16 @@ if which go >/dev/null; then
     export GOPATH="/home/brandon/go"
     PATH="$PATH:GOPATH/bin"
 fi
+if which npm >/dev/null; then
+    PATH="$PATH:./node_modules/.bin"
+fi
+
+# Make sure the global npm prefix is on the path
+#[[ `which npm 2>/dev/null` ]] && pathmunge "$(npm config get prefix)/bin" "after"
+
 PATH=~/.bin:$PATH
 export PATH
+
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export PAGER="less"

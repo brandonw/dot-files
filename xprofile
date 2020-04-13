@@ -3,48 +3,37 @@
 # ~/.xprofile
 #
 
-if [ -x /usr/bin/numlockx ]; then
-	/usr/bin/numlockx on
-fi
-
+# Fonts
 if [ -d ~/.fonts ]; then
 	xset +fp ~/.fonts
 fi
 if [ -d ~/.local/share/fonts ]; then
 	xset +fp ~/.local/share/fonts
 fi
-if [ -e ~/.xbindkeysrc ]; then
-	xbindkeys
-fi
 if [ -d /usr/share/fonts/local ]; then
 	xset +fp /usr/share/fonts/local
 fi
+xset fp rehash
+
+# Background
 if [ -e ~/.background.jpg ]; then
 	feh  --bg-fill '/home/brandon/.background.jpg'
 fi
-if [ -e ~/.Xmodmap ]; then
-	xmodmap ~/.Xmodmap
-fi
-
 # Set background color
 hsetroot -solid "#000000"
 
-xset fp rehash
-xsetroot -cursor_name left_ptr
-xset r rate 250 20
+# Display
 xset s 600
 xset +dpms
 xset dpms 0 0 600
-xset m 3/2 0
 
-# xinput list
-# xinput list-props [dev-num]
-TOUCH_DEVICE=$(xinput list | grep "\(Synaptics\|Touchpad\)" | perl -pe 's/.*↳ (.*?)\s*id=.*/\1/g')
-xinput set-prop "$TOUCH_DEVICE" "libinput Tapping Enabled" 1
-xinput set-prop "$TOUCH_DEVICE" "libinput Tapping Drag Lock Enabled" 1
-xinput set-prop "$TOUCH_DEVICE" "libinput Natural Scrolling Enabled" 1
-xinput set-prop "$TOUCH_DEVICE" "libinput Accel Speed" 0.5
+# Keyboard
+source /home/brandon/.dot-files/configure-keyboard.sh
 
+# Mouse/Trackpad
+source /home/brandon/.dot-files/configure-mouse.sh
+
+# Misc. daemons/services
 PARCELLITE=$(ps aux | grep [p]arcellite);
 if [ "${PARCELLITE:-0}" == 0 ]; then
 	parcellite -d -n &
@@ -57,7 +46,7 @@ UDISKIE=$(ps aux | grep [u]diskie);
 if [ "${UDISKIE:-0}" == 0 ]; then
 	udiskie --automount --notify --smart-tray &
 fi
-# COMPTON=$(ps aux | grep [c]ompton);
-# if [ "${COMPTON:-0}" == 0 ]; then
-# 	compton -b
-# fi
+COMPTON=$(ps aux | grep [c]ompton);
+if [ "${COMPTON:-0}" == 0 ]; then
+	compton -b
+fi
