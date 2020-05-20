@@ -34,10 +34,11 @@ source /home/brandon/.dot-files/configure-keyboard.sh
 source /home/brandon/.dot-files/configure-mouse.sh
 
 # Misc. daemons/services
-PARCELLITE=$(ps aux | grep [p]arcellite);
-if [ "${PARCELLITE:-0}" == 0 ]; then
-	parcellite -d -n &
-fi
+# No longer need parcellite now that I use clipboard exclusively
+# PARCELLITE=$(ps aux | grep [p]arcellite);
+# if [ "${PARCELLITE:-0}" == 0 ]; then
+# 	parcellite -d -n &
+# fi
 XSSLOCK=$(ps aux | grep [x]ss-lock);
 if [ "${XSSLOCK:-0}" == 0 ]; then
     xss-lock -- i3lock -n &

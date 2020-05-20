@@ -178,13 +178,13 @@ nnoremap gcf :let @+ = expand("%")<CR>
 nnoremap gfj :%!python -m json.tool<CR>
 vnoremap gfj :!python -m json.tool<CR>
 nnoremap gfd :Gvdiffsplit
+nnoremap gsd :lwindow<CR>
 map <F2> :mksession! ~/.vim/vim_session<cr>
 map <F3> :source ~/.vim/vim_session<cr>
-map y <Plug>(highlightedyank)
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#manual_complete()
 inoremap <silent><expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 function! s:check_back_space() abort "{{{
