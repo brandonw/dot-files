@@ -4,6 +4,7 @@ set rtp+=~/.fzf
 call plug#begin('~/.vim/plugged')
 Plug 'brandonw/vim-colors-solarized'
 Plug 'gregsexton/gitv'
+Plug 'haorenW1025/diagnostic-nvim'
 Plug 'justinmk/vim-dirvish'
 Plug 'lambdalisue/suda.vim'
 Plug 'mbbill/undotree'
@@ -37,13 +38,14 @@ set dir=~/.swap
 set hidden
 set inccommand=nosplit
 set mouse=a
-set nohls
+set nohlsearch
+set noautoread
 set number
 set path=.,**
 set relativenumber
 " set scrolloff=5
 set shortmess=atIc
-" set signcolumn=yes
+set signcolumn=yes
 set switchbuf+=newtab " test this
 set termguicolors
 set title
@@ -73,6 +75,15 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 let g:airline#extensions#quickfix#location_text = 'Location'
 let g:airline_exclude_preview = 1
+" https://github.com/haorenW1025/diagnostic-nvim
+" let g:diagnostic_insert_delay = 1
+" let g:diagnostic_enable_virtual_text = 1
+" let g:diagnostic_virtual_text_prefix = ' '
+" call sign_define("LspDiagnosticsErrorSign", {"text" : "E", "texthl" : "LspDiagnosticsError"})
+" call sign_define("LspDiagnosticsWarningSign", {"text" : "W", "texthl" : "LspDiagnosticsWarning"})
+" call sign_define("LspDiagnosticInformationSign", {"text" : "I", "texthl" : "LspDiagnosticsInformation"})
+" call sign_define("LspDiagnosticHintSign", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
+" https://github.com/haorenW1025/completion-nvim
 
 let g:airline_section_c = '%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#neomake#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}%'
@@ -123,6 +134,8 @@ nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests --ig
 nnoremap gcf :let @+ = expand("%")<CR>
 nnoremap gfj :%!python -m json.tool<CR>
 vnoremap gfj :!python -m json.tool<CR>
+nnoremap gfh :%!prettier --parser html<CR>
+vnoremap gfh :!prettier --parser html<CR>
 nnoremap gfd :Gvdiffsplit
 nnoremap gsd :lwindow<CR>
 map <F2> :mksession! ~/.vim/vim_session<cr>
@@ -173,7 +186,7 @@ if not configs.js_ts_langserver then
     };
   }
 end
-nvim_lsp.js_ts_langserver.setup{}
+nvim_lsp.js_ts_langserver.setup{on_attach=require'diagnostic'.on_attach}
 
 EOF
 
@@ -191,35 +204,39 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 augroup vimrcEx
   autocmd!
   autocmd BufRead,BufNewFile *.snyk   setfiletype yaml
+  autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+  autocmd BufWritePost * Neomake
+  autocmd FileType gitcommit hi def link gitcommitOverflow Error
+  autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
   autocmd QuickFixCmdPost *grep* cwindow
+  autocmd TermOpen * setlocal nonumber norelativenumber
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+
+  if v:version >= 700 && !&diff
+      autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
+      autocmd BufLeave,BufReadPre * let b:view = winsaveview()
+  endif
+
   autocmd FileType text                setlocal tw=80
   autocmd FileType sh                  setlocal et ai tw=80 ts=4 sw=4
   autocmd FileType html,xml,htmldjango setlocal et ai tw=0 ts=4 sw=4 fdm=syntax
   autocmd FileType mkd                 setlocal et ai tw=80 ts=4 sw=4 cc=+1
-  autocmd FileType md,tex 	         setlocal et ai tw=80 ts=4 sw=4 cc=+1
+  autocmd FileType md,tex              setlocal et ai tw=80 ts=4 sw=4 cc=+1
   autocmd FileType css,sass,scss       setlocal et ai tw=80 ts=2 sw=2
   autocmd FileType javascript          setlocal et tw=120 ts=4 sw=4 ai sr fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType json,pug,xml        setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99
   autocmd FileType yaml                setlocal et tw=100 ts=2 sw=2 ai sr
   autocmd FileType python              setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  autocmd FileType sql 		 setlocal et tw=80 ts=4 sw=4 ai
-  autocmd FileType groovy 		 setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  autocmd FileType ruby 		 setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
-  autocmd FileType rust 		 setlocal et tw=100 ts=4 sw=4
-  autocmd FileType cs 		 setlocal et tw=100 ts=4 sw=4
-  autocmd FileType c 			 setlocal textwidth=80 formatoptions+=t
-  autocmd FileType haskell 		 setlocal textwidth=80 ts=4 sw=4 et
-  autocmd FileType gitcommit 		 setlocal spell
-  autocmd FileType gitcommit hi def link gitcommitOverflow Error
+  autocmd FileType sql                 setlocal et tw=80 ts=4 sw=4 ai
+  autocmd FileType groovy              setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+  autocmd FileType ruby                setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99
+  autocmd FileType rust                setlocal et tw=100 ts=4 sw=4
+  autocmd FileType cs                  setlocal et tw=100 ts=4 sw=4
+  autocmd FileType c                   setlocal textwidth=80 formatoptions+=t
+  autocmd FileType haskell             setlocal textwidth=80 ts=4 sw=4 et
+  autocmd FileType gitcommit           setlocal spell
 
-  autocmd FileWritePre,FileAppendPre,BufWritePre  * :call TrimWhiteSpace()
-  autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
-  autocmd BufWritePost * Neomake
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
-  if v:version >= 700 && !&diff
-      autocmd BufEnter,BufRead * if exists("b:view") | call winrestview(b:view) | endif
-      autocmd BufLeave,BufReadPre * let b:view = winsaveview()
-  endif
-  autocmd TermOpen * setlocal nonumber norelativenumber
+  " Abbreviations
+  autocmd FileType javascript :iabbr dl# console.log('---TEST---');<CR>console.log(JSON.stringify(foo));
 augroup END

@@ -20,6 +20,10 @@ fi
 PATH=~/.bin:$PATH
 export PATH
 
+function nvim_man() {
+    nvim "+Man $* | only"
+}
+alias man=nvim_man
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export PAGER="less"

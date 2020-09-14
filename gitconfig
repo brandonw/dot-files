@@ -18,3 +18,6 @@
 	; Explicit is better than implicit. If we want to merge
 	; we should do so ourselves.
 	pull = pull --ff-only
+[pull]
+	rebase = false
+	ff = only
