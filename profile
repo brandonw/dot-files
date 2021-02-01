@@ -41,4 +41,9 @@ export FZF_DEFAULT_COMMAND='
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/code
 export NPM_TOKEN=$(grep _authToken ~/.npmrc | sed 's@.*=@@')
+export PGHOST=127.0.0.1
+export PGUSER=brandon
+
 source /usr/bin/virtualenvwrapper.sh
+export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/init-nvm.sh
