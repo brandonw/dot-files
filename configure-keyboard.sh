@@ -11,7 +11,7 @@ if [ -e ~/.xbindkeysrc ]; then
 	xbindkeys
 fi
 if [ -e ~/.Xmodmap ]; then
-	xmodmap ~/.Xmodmap
+	xmodmap ~/.Xmodmap > /dev/null 2>&1
 fi
 
 xset r rate 250 20

@@ -16,21 +16,21 @@ xset +dpms
 xset dpms 0 0 600
 
 # Keyboard
-source /home/brandon/.dot-files/configure-keyboard.sh
+. /home/brandon/.dot-files/configure-keyboard.sh
 
 # Mouse/Trackpad
-source /home/brandon/.dot-files/configure-mouse.sh
+. /home/brandon/.dot-files/configure-mouse.sh
 
 # Misc. daemons/services
-XSSLOCK=$(ps aux | grep [x]ss-lock);
-if [ "${XSSLOCK:-0}" == 0 ]; then
+XSSLOCK=$(ps aux | grep "[x]ss-lock");
+if [ "${XSSLOCK:-0}" = 0 ]; then
     xss-lock -- i3lock -n &
 fi
-UDISKIE=$(ps aux | grep [u]diskie);
-if [ "${UDISKIE:-0}" == 0 ]; then
+UDISKIE=$(ps aux | grep "[u]diskie");
+if [ "${UDISKIE:-0}" = 0 ]; then
 	udiskie --automount --notify --smart-tray &
 fi
-PICOM=$(ps aux | grep [p]icom);
-if [ "${PICOM:-0}" == 0 ]; then
+PICOM=$(ps aux | grep "[p]icom");
+if [ "${PICOM:-0}" = 0 ]; then
 	picom -b
 fi
