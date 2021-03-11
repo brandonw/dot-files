@@ -4,7 +4,7 @@ set rtp+=~/.fzf
 call plug#begin('~/.vim/plugged')
 Plug 'brandonw/vim-colors-solarized'
 Plug 'gregsexton/gitv'
-Plug 'haorenW1025/diagnostic-nvim'
+" Plug 'haorenW1025/diagnostic-nvim'
 Plug 'justinmk/vim-dirvish'
 Plug 'lambdalisue/suda.vim'
 Plug 'mbbill/undotree'
@@ -171,34 +171,34 @@ endfunction
 
 " LSP
 " pacman -S javascript-typescript-langserver
-lua << EOF
+" lua << EOF
 
-local nvim_lsp = require'nvim_lsp'
-local configs = require'nvim_lsp/configs'
--- Check if it's already defined for when I reload this file.
-if not configs.js_ts_langserver then
-  configs.js_ts_langserver = {
-    default_config = {
-      cmd = {'javascript-typescript-stdio'};
-      filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' };
-      root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', '.git');
-      settings = {};
-    };
-  }
-end
-nvim_lsp.js_ts_langserver.setup{on_attach=require'diagnostic'.on_attach}
+" local nvim_lsp = require'nvim_lsp'
+" local configs = require'nvim_lsp/configs'
+" -- Check if it's already defined for when I reload this file.
+" if not configs.js_ts_langserver then
+"   configs.js_ts_langserver = {
+"     default_config = {
+"       cmd = {'javascript-typescript-stdio'};
+"       filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' };
+"       root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', '.git');
+"       settings = {};
+"     };
+"   }
+" end
+" nvim_lsp.js_ts_langserver.setup{on_attach=require'diagnostic'.on_attach}
 
-EOF
+" EOF
 
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 " AutoCommands
 augroup vimrcEx
