@@ -8,7 +8,7 @@ if which yarn >/dev/null; then
 fi
 if which go >/dev/null; then
     export GOPATH="/home/brandon/go"
-    PATH="$PATH:GOPATH/bin"
+    PATH="$PATH:$GOPATH/bin"
 fi
 if which npm >/dev/null; then
     PATH="$PATH:./node_modules/.bin"

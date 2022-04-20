@@ -67,6 +67,7 @@ let g:airline_symbols.paste = 'paste'
 let g:airline_symbols.spell = 'spell'
 let g:airline_symbols.notexists = 'a'
 let g:airline_symbols.whitespace = '-'
+let g:airline_symbols.colnr = '-'
 let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'mixed-indent-file' ]
 let g:airline#extensions#whitespace#trailing_format = ' trailing:[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = ' mixed-indent:[%s]'
@@ -130,7 +131,7 @@ nnoremap gwl <C-W>l
 vnoremap gwl <C-W>l
 nnoremap gew :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap gsa :let cmd="silent grep! " . GetCurrentWord() <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
-nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests --iglob !test" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
+nnoremap gsp :let cmd="silent grep! " . GetCurrentWord() . " --iglob !tests --iglob !test --iglob !\\*.test.js --iglob !\\*.test.js.snap" <bar> exec cmd <bar> call histadd("cmd", cmd)<CR>
 nnoremap gcf :let @+ = expand("%")<CR>
 nnoremap gfj :%!python -m json.tool<CR>
 vnoremap gfj :!python -m json.tool<CR>

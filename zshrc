@@ -68,7 +68,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws extract gitfast docker docker-compose pass sudo fzf systemd npm nvm yarn)
+plugins=(git aws extract gitfast docker docker-compose pass sudo fzf systemd npm nvm yarn virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -9,7 +9,7 @@ xsetroot -cursor_name left_ptr
 # xinput list
 # xinput list-props [dev-num]
 
-xinput set-prop "USB Optical Mouse" "libinput Accel Speed" 1
+xinput set-prop "Logitech USB Optical Mouse" "libinput Accel Speed" 1
 
 TOUCH_DEVICE=$(xinput list | grep "\(Synaptics\|Touchpad\)" | perl -pe 's/.*↳ (.*?)\s*id=.*/\1/g')
 xinput set-prop "$TOUCH_DEVICE" "libinput Tapping Enabled" 1
