@@ -3,6 +3,7 @@ set rtp+=~/.fzf
 
 call plug#begin('~/.vim/plugged')
 Plug 'brandonw/vim-colors-solarized'
+Plug 'hashivim/vim-terraform'
 Plug 'gregsexton/gitv'
 " Plug 'haorenW1025/diagnostic-nvim'
 Plug 'justinmk/vim-dirvish'
@@ -22,7 +23,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/closetag.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 call plug#end()
 
 filetype plugin indent on

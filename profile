@@ -7,7 +7,7 @@ if which yarn >/dev/null; then
 	PATH="$PATH:$(yarn global bin)"
 fi
 if which go >/dev/null; then
-    export GOPATH="/home/brandon/go"
+    export GOPATH="$HOME/go"
     PATH="$PATH:$GOPATH/bin"
 fi
 if which npm >/dev/null; then
