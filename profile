@@ -43,6 +43,7 @@ export PROJECT_HOME=$HOME/code
 export NPM_TOKEN=$(grep _authToken ~/.npmrc | sed 's@.*=@@')
 export PGHOST=127.0.0.1
 export PGUSER=brandon
+export AWS_SDK_LOAD_CONFIG=1
 
 source /usr/bin/virtualenvwrapper.sh
 export NVM_DIR="$HOME/.nvm"
