@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 [ -d $HOME/.bin ] && export PATH="$HOME/.bin:$PATH"
 
 export PAGER="less"
