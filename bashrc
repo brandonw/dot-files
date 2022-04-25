@@ -82,8 +82,12 @@ export COMMAND_DURATION_MIN_SECONDS=1
 # export BASH_IT_RELOAD_LEGACY=1
 
 # Enable plugins: [fzf]
+
 # [system] completion plugin should be enabled by default which should handle
-# all installed package completions
+# all installed package completions. Exceptions likely include tools typically
+# installed via asdf that have their completions stored in dirs relative to
+# their root, instead of the standard bash completion directory:
+# Enable completions: [awscli]
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
