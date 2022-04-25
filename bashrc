@@ -82,6 +82,8 @@ export COMMAND_DURATION_MIN_SECONDS=1
 # export BASH_IT_RELOAD_LEGACY=1
 
 # Enable plugins: [fzf]
-# Enable completions: [awscli,  docker-compose, docker]
+# [system] completion plugin should be enabled by default which should handle
+# all installed package completions
+
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
