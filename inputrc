@@ -1,3 +1,7 @@
 set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+set colored-stats on
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\t": menu-complete
+"\e[Z": menu-complete-backward

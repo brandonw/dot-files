@@ -6,8 +6,6 @@ case $- in
     *) return;;
 esac
 
-alias ls='ls --color=auto'
-
 [ -r "$HOME/.keys" ] && . "$HOME/.keys"
 # [ -r "$HOME/.profile" ] && . "$HOME/.profile"
 
