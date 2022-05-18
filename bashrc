@@ -11,6 +11,7 @@ esac
 
 stty -ixon -ixoff
 shopt -s histappend
+export HISTCONTROL=ignoredups
 
 #PS1='[\u@\h \W]\$ '
 
@@ -82,10 +83,10 @@ export COMMAND_DURATION_MIN_SECONDS=1
 # Enable plugins: [fzf]
 
 # [system] completion plugin should be enabled by default which should handle
-# all installed package completions. Exceptions likely include tools typically
-# installed via asdf that have their completions stored in dirs relative to
-# their root, instead of the standard bash completion directory:
-# Enable completions: [awscli]
+# all installed package completions. Easiest way to use these regardless of
+# environment is to install a system version of any commonly used package, and
+# then let asdf override the specific version. That way the system bash always
+# has completion available without needing to kludge custom completion together.
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh

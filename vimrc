@@ -107,7 +107,10 @@ let g:neomake_info_sign = {
     \   'text': 'i',
     \   'texthl': 'helpExample',
     \ }
+let g:neomake_typescript_enabled_makers = ['eslint', 'tsc']
 let g:neomake_javascript_eslint_exe = substitute(system('npm bin'), '\n\+$', '', '') . '/eslint'
+let g:neomake_typescript_eslint_exe = substitute(system('npm bin'), '\n\+$', '', '') . '/eslint'
+let g:neomake_typescript_tsc_exe = substitute(system('npm bin'), '\n\+$', '', '') . '/tsc'
 let g:javascript_plugin_jsdoc = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 1
@@ -226,6 +229,7 @@ augroup vimrcEx
   autocmd FileType md,tex              setlocal et ai tw=80 ts=4 sw=4 cc=+1
   autocmd FileType css,sass,scss       setlocal et ai tw=80 ts=2 sw=2
   autocmd FileType javascript          setlocal et tw=120 ts=4 sw=4 ai sr fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc
+  autocmd FileType typescript          setlocal et tw=120 ts=2 sw=2 ai sr fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType json,pug,xml        setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99
   autocmd FileType yaml                setlocal et tw=100 ts=2 sw=2 ai sr
   autocmd FileType python              setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99
@@ -239,5 +243,5 @@ augroup vimrcEx
   autocmd FileType gitcommit           setlocal spell
 
   " Abbreviations
-  autocmd FileType javascript :iabbr dl# console.log('---TEST---');<CR>console.log(JSON.stringify(foo));
+  autocmd FileType javascript,typescript :iabbr dl# console.log('---TEST---');<CR>console.log(JSON.stringify(foo));
 augroup END
