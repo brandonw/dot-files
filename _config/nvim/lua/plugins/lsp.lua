@@ -1,0 +1,2 @@
+-- See https://github.com/neovim/nvim-lspconfig
+-- Also update _config/nvim/lua/plugins/cmp.lua

@@ -1,0 +1,126 @@
+/*
+ * To debug:
+ *   env GTK_DEBUG=interactive waybar -l debug
+ * Colors:
+ *   https://camo.githubusercontent.com/410b3ab80570bcd5b470a08d84f93caa5b4962ccd994ebceeb3d1f78364c2120/687474703a2f2f692e696d6775722e636f6d2f776136363678672e706e67
+*/
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: NotoSansMono Nerd Font;
+    font-size: 16px;
+}
+
+window#waybar {
+    background-color: #282828;
+    color: #ebdbb2;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ebdbb2;
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each workspace name */
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button:hover {
+    background: rgba(40, 40, 40, 0.2);
+    box-shadow: inset 0 -3px #ebdbb2;
+}
+
+#workspaces button.focused {
+    background-color: #689d6a;
+    box-shadow: inset 0 -3px #ebdbb2;
+}
+
+#workspaces button.urgent {
+    background-color: #cc241d;
+}
+
+/*
+#workspaces button.visible {
+#workspaces button.persistent {
+#workspaces button.current_output {
+    background-color: #cc241d;
+}
+*/
+
+#mode {
+    background-color: #d79921;
+    border-bottom: 3px solid #ebdbb2;
+}
+
+#mode {
+    padding: 0 10px;
+    color: #ebdbb2;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#workspaces,
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#network,
+#disk,
+#tray {
+    background: #504945;
+}
+
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#network,
+#disk {
+    padding: 0 13px;
+    margin: 0 5px;
+    border-width: 1px;
+    border-color: #504945;
+    border-radius: 15px;
+}
+
+#clock {
+    padding: 0 13px;
+    margin: 0 0 0 5px;
+    border-width: 1px;
+    border-color: #504945;
+    border-radius: 15px 0 0 15px;
+}
+
+#tray {
+    padding: 0 13px 0 0;
+}

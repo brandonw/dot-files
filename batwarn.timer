@@ -1,9 +1,0 @@
-[Unit]
-Description=Run batwarn regularly.
-
-[Timer]
-OnBootSec=0seconds
-OnUnitActiveSec=5minutes 
-
-[Install]
-WantedBy=timers.target

@@ -1,8 +1,0 @@
-"3.8.3 (created: 2014/11/09 13:19:01)
-
-highlight Hint font-family: monospace; font-size: 16px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
-set tabnumbers
-set gui=noaddons,nobookmarks,nomenu,nonavigation
-source! /home/brandon/.vimperatorrc.local
-
-" vim: set ft=vimperator:

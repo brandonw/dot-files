@@ -1,0 +1,12 @@
+# Enable with
+# systemctl --user enable batwarn.timer && systemctl --user start batwarn.timer
+
+[Unit]
+Description=Battery level check
+
+[Timer]
+OnCalendar=minutely
+Persistent=true
+
+[Install]
+WantedBy=timers.target

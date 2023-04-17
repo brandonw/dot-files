@@ -1,4 +1,0 @@
-;; The following line loads `xrepl' support
-(require xrepl)
-(require sicp)
-(require sicp-pict)

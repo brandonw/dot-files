@@ -1,0 +1,20 @@
+local utils = require("utils.functions")
+
+local keymap = vim.keymap.set
+
+keymap('', '<space>', ':')
+keymap('n', 'gob', ':ls<cr>:b<space>')
+keymap('n', 'gwh', '<c-w>h')
+keymap('n', 'gwj', '<c-w>j')
+keymap('n', 'gwk', '<c-w>k')
+keymap('n', 'gwl', '<c-w>l')
+keymap("n", 'gew', ':e <C-R>=expand("%:p:h") . "/" <CR>')
+keymap("n", 'gsa', utils.searchAll)
+keymap("n", 'gsp', utils.searchProd)
+keymap('n', 'gcf', ':let @+ = expand("%")<CR>')
+keymap('n', 'gfj', ':%!python -m json.tool<CR>')
+keymap('v', 'gfj', ':!python -m json.tool<CR>')
+keymap('n', '[d', vim.diagnostic.goto_prev)
+keymap('n', ']d', vim.diagnostic.goto_next)
+keymap('', '<f2>', ':mksession! ~/.nvim_session<cr>')
+keymap('', '<f3>', ':source ~/.nvim_session<cr>')

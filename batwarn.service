@@ -1,7 +1,0 @@
-[Unit]
-Description=Checks battery level
-
-[Service]
-Type=oneshot
-User=brandon
-ExecStart=/home/brandon/.bin/i3batwarn.sh

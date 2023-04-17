@@ -1,0 +1,25 @@
+font=NotoSansMono Nerd Font
+background=282828
+border=eddbb2
+border-bottom=282828
+button-background=282828
+text=eddbb2
+button-text=eddbb2
+
+[error]
+font=NotoSansMono Nerd Font
+background=cc241d
+border=eddbb2
+border-bottom=cc241d
+button-background=cc241d
+text=eddbb2
+button-text=eddbb2
+
+[warning]
+font=NotoSansMono Nerd Font
+background=d79921
+border=eddbb2
+border-bottom=d79921
+button-background=d79921
+text=eddbb2
+button-text=eddbb2
