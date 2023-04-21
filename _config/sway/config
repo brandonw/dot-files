@@ -15,18 +15,20 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term foot
-set $font NotoSansMono Nerd Font
+set $font Hack Nerd Font Mono
 
 set $bg     #282828
 set $fg     #eddbb2
+set $gray   #504945
 set $red    #cc241d
 set $yellow #d79921
 set $orange #d65d0e
+set $aqua   #689d6a
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run --prompt "" --fn "$font 12" -H 30 --ff "$fg" --fb "$bg" --nf "$fg" --nb "$bg" --hf "$fg" --hb "$orange"
+set $menu bemenu-run --prompt "" --fn "$font 14" -H 30 --ff "$fg" --fb "$bg" --nf "$fg" --nb "$bg" --af "$fg" --ab "$gray" --hf "$fg" --hb "$orange"
 
 set $lock swaylock -f -c 000000
 
@@ -244,13 +246,13 @@ mode "$mode_system" {
 }
 bindsym $mod+End mode "$mode_system"
 
-font pango:$font 12
+font pango:$font 14
 
 ### Colors
 
 # Windows
-client.focused          $orange $orange $fg $orange $orange
-client.unfocused        $fg     $bg     $fg $bg     $fg
+client.focused          $aqua   $aqua   $fg $aqua   $aqua
+client.unfocused        $fg     $gray   $fg $gray   $gray
 client.focused_inactive $yellow $yellow $fg $yellow $yellow
 client.urgent           $red    $red    $fg $red    $red
 

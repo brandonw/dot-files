@@ -17,11 +17,12 @@ pacman -S \
   ripgrep \
   xdg-user-dirs \
   xdg-utils \
+  ttf-hack-nerd \
+  ttf-jetbrains-mono-nerd \
   noto-fonts \
-  noto-fonts-cjk \
+  noto-fonts-cjk  \
   noto-fonts-emoji \
   noto-fonts-extra \
-  ttf-noto-nerd
   bash-completion \
   git
 
