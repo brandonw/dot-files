@@ -176,5 +176,74 @@ return {
       })
     end,
   },
-  -- nvim-neotest/neotest
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "haydenmeade/neotest-jest",
+    },
+    lazy = false,
+    keys = {
+      {
+        "<leader>tn",
+        function ()
+          require("neotest").run.run()
+        end,
+        mode = "n",
+      },
+      {
+        "<leader>tf",
+        function ()
+          require("neotest").run.run(vim.fn.expand("%"))
+        end,
+        mode = "n",
+      },
+      {
+        "<leader>to",
+        function ()
+          require("neotest").output.open({ enter = true, short = false })
+        end,
+        mode = "n",
+      },
+      {
+        "<leader>tp",
+        function ()
+          require("neotest").output_panel.toggle()
+        end,
+        mode = "n",
+      },
+      {
+        "<leader>ts",
+        function ()
+          require("neotest").summary.toggle()
+        end,
+        mode = "n",
+      },
+    },
+    config = function()
+      require('neotest').setup({
+        adapters = {
+          require('neotest-jest')({
+            jestCommand = "npm run test --",
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          }),
+        },
+        output_panel = {
+          enabled = true,
+          open = "botright split | resize 30"
+        },
+        quickfix = {
+          enabled = true,
+          open = false,
+        },
+        summary = {
+          open = "botright vsplit | vertical resize 50"
+        }
+      })
+    end
+  },
 }
