@@ -32,7 +32,8 @@ auracle clone \
   clipman \
   grimshot \
   ly \
-  wev
+  wev \
+  ttf-dina-remastered
 ```
 
 ## Install Git Repos
