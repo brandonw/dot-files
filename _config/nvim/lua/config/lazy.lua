@@ -21,7 +21,7 @@ require("lazy").setup('config.plugins', {
     rtp = {
       disabled_plugins = {
         "gzip",
-        "netrwPlugin",
+        -- "netrwPlugin", -- let neo-tree hijack
         "tarPlugin",
         "tohtml",
         "tutor",

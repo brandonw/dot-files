@@ -49,16 +49,23 @@ return {
     end,
   },
   {
-    "nvim-tree/nvim-tree.lua",
+    "nvim-neo-tree/neo-tree.nvim",
     dependencies = {
+      "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
+    lazy = false,
     keys = {
-      { "<leader>f", "<cmd>NvimTreeToggle<cr>", mode = "n" },
+      { "<leader>f", "<cmd>Neotree float<cr>", mode = "n" },
     },
-    config = function()
-      require("nvim-tree").setup()
-    end,
+    config = function ()
+      require("neo-tree").setup({
+        filesystem = {
+          hijack_netrw_behavior = "open_current",
+        }
+      })
+    end
   },
   {
     "sindrets/diffview.nvim",
