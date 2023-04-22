@@ -71,7 +71,6 @@ ln -s \
   $HOME/.dot-files/_config/foot \
   $HOME/.dot-files/_config/mako \
   $HOME/.dot-files/_config/sway \
-  $HOME/.dot-files/_config/swaynag \
   $HOME/.dot-files/_config/user-dirs.dirs \
   $HOME/.dot-files/_config/waybar \
   $HOME/.config
