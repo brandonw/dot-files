@@ -7,8 +7,8 @@
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Hack Nerd Font Mono;
-    font-size: 18px;
+    font-family: DinaRemasterII;
+    font-size: 22px;
 }
 
 window#waybar {

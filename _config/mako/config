@@ -11,7 +11,7 @@ icons=0
 max-icon-size=64
 default-timeout=5000
 ignore-timeout=1
-font=Hack Nerd Font Mono 14
+font=DinaRemasterII 18
 
 [urgency=low]
 border-color=#d79921

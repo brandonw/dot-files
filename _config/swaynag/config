@@ -1,4 +1,4 @@
-font=Hack Nerd Font Mono 12
+font=DinaRemasterII 14
 background=282828
 border=eddbb2
 border-bottom=282828
@@ -8,7 +8,7 @@ text=eddbb2
 button-text=eddbb2
 
 [error]
-font=Hack Nerd Font Mono 12
+font=DinaRemasterII 14
 background=cc241d
 border=eddbb2
 border-bottom=cc241d
@@ -18,7 +18,7 @@ text=eddbb2
 button-text=eddbb2
 
 [warning]
-font=Hack Nerd Font Mono 12
+font=DinaRemasterII 14
 background=d79921
 border=eddbb2
 border-bottom=d79921
