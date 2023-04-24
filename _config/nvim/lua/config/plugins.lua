@@ -222,8 +222,8 @@ return {
         mode = "n",
       },
     },
-    config = function()
-      require('neotest').setup({
+    config = function ()
+      require("neotest").setup({
         adapters = {
           require('neotest-jest')({
             jestCommand = "npm run test --",
@@ -244,6 +244,6 @@ return {
           open = "botright vsplit | vertical resize 50"
         }
       })
-    end
+    end,
   },
 }
