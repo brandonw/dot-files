@@ -57,7 +57,7 @@ return {
     },
     lazy = false,
     keys = {
-      { "<leader>f", "<cmd>Neotree float<cr>", mode = "n" },
+      { "goe", "<cmd>Neotree float<cr>", mode = "n" },
     },
     config = function ()
       require("neo-tree").setup({
@@ -75,18 +75,25 @@ return {
     },
     event = "VeryLazy",
     keys = {
-      { "<leader>h", "<cmd>DiffviewFileHistory %<cr>", mode = "n" },
+      { "gfh", "<cmd>DiffviewFileHistory %<cr>", mode = "n" },
+      { "gq", "<cmd>DiffviewClose<cr>", mode = "n" },
     },
     config = function()
       require("diffview").setup()
-      vim.api.nvim_set_keymap('n', '<leader>d', ':DiffviewOpen ', {})
+      vim.api.nvim_set_keymap("n", "gfd", ":DiffviewOpen  -- %<Left><Left><Left><Left><Left>", {})
     end,
+  },
+  {
+    "f-person/git-blame.nvim",
+    keys = {
+      { "gfb", "<cmd>GitBlameToggle<cr>", mode = "n" },
+    },
   },
   {
     "numToStr/Comment.nvim",
     event = "VeryLazy",
     config = function()
-      require('Comment').setup()
+      require("Comment").setup()
     end,
   },
   {
@@ -129,7 +136,7 @@ return {
           "nvim-lua/plenary.nvim",
         },
 				config = function()
-          require('cmp-npm').setup({
+          require("cmp-npm").setup({
             ignore = {},
             only_semantic_versions = true,
           })
@@ -225,7 +232,7 @@ return {
     config = function ()
       require("neotest").setup({
         adapters = {
-          require('neotest-jest')({
+          require("neotest-jest")({
             jestCommand = "npm run test --",
             cwd = function(path)
               return vim.fn.getcwd()
@@ -245,5 +252,19 @@ return {
         }
       })
     end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "VeryLazy",
+    config = function ()
+      require("bufferline").setup({
+        options = {
+          mode = "tabs",
+        },
+      })
+    end
   },
 }
