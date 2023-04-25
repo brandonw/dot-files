@@ -85,6 +85,12 @@ return {
   },
   {
     "f-person/git-blame.nvim",
+    init = function ()
+      -- Ensure blame is disabled at first so we can let the first invocation
+      -- load the plugin and enable it, instead of load and have it enabled,
+      -- then disable it.
+      vim.g.gitblame_enabled = 0
+    end,
     keys = {
       { "gfb", "<cmd>GitBlameToggle<cr>", mode = "n" },
     },
