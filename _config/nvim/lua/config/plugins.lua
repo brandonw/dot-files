@@ -76,7 +76,7 @@ return {
     event = "VeryLazy",
     keys = {
       { "gfh", "<cmd>DiffviewFileHistory %<cr>", mode = "n" },
-      { "gq", "<cmd>DiffviewClose<cr>", mode = "n" },
+      { "gq", "<cmd>DiffviewClose<cr><cmd>tabprevious<cr>", mode = "n" },
     },
     config = function()
       require("diffview").setup()
