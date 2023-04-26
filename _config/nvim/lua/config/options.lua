@@ -13,6 +13,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shortmess = "atIc"
 vim.opt.signcolumn = "number"
+vim.opt.switchbuf = "newtab"
 vim.opt.termguicolors = true
 vim.opt.title = true
 
