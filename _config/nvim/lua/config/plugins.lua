@@ -37,8 +37,8 @@ return {
       vim.opt.list = true
       vim.opt.listchars = {
         tab = "> ",
-        eol = "↴",
-        space = "⋅",
+        -- eol = "↴",
+        -- space = "⋅",
       }
       require("indent_blankline").setup({
           show_current_context = true,

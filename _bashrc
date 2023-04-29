@@ -129,4 +129,5 @@ export HISTCONTROL="ignorespace:ignoredups"
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 
-# Machine-specific customizations below
+# Machine-specific customizations
+[[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
