@@ -20,6 +20,12 @@ autocmd({"TextYankPost"}, {
   end,
 })
 
+-- if a file is changed externally, don't messages
+autocmd({"FileChangedShell"}, {
+  pattern = {"*"},
+  callback = function () end,
+})
+
 ---- filetype
 autocmd({"FileType"}, {
   pattern = {"text"},
