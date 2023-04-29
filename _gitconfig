@@ -1,11 +1,9 @@
 [user]
 	name = Brandon Waskiewicz
-	email = brandon.waskiewicz@gmail.com
 	signingkey = ECCC21B70B69FFD6
 [core]
 	editor = nvim
 	pager = less --tabs=4 -RFX
-	excludesfile = /home/brandon/.gitignore
 [pager]
 	branch = false
 [push]
