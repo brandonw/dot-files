@@ -90,7 +90,7 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-	"format": "{bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format": "{bandwidthDownBytes}  {bandwidthUpBytes} ",
         "tooltip-format": "{essid} ({signalStrength}%) ",
     },
 }

@@ -80,7 +80,7 @@ return {
       },
     },
     config = function()
-			require("plugins.telescope")
+      require("plugins.telescope")
     end,
   },
   {
@@ -163,44 +163,44 @@ return {
   },
   { "tpope/vim-repeat", event = "VeryLazy" },
   { "tpope/vim-unimpaired", event = "VeryLazy" },
-	{
-		"neovim/nvim-lspconfig",
-		event = "BufReadPre",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-		},
-    config = function ()
-			require("plugins.lsp")
-    end,
-	},
   {
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-calc",
-			"saadparwaiz1/cmp_luasnip",
-			"L3MON4D3/LuaSnip",
-			{
-				"David-Kunz/cmp-npm",
+    "neovim/nvim-lspconfig",
+    event = "BufReadPre",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    config = function ()
+      require("plugins.lsp")
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-calc",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+      {
+        "David-Kunz/cmp-npm",
         dependencies = {
           "nvim-lua/plenary.nvim",
         },
-				config = function()
+        config = function()
           require("cmp-npm").setup({
             ignore = {},
             only_semantic_versions = true,
           })
-				end,
-			},
-		},
-		config = function()
-			require("plugins.cmp")
-		end,
-	},
+        end,
+      },
+    },
+    config = function()
+      require("plugins.cmp")
+    end,
+  },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
@@ -209,7 +209,7 @@ return {
     },
     event = "VeryLazy",
     config = function ()
-			require("plugins.lualine")
+      require("plugins.lualine")
     end,
   },
   {
@@ -220,7 +220,7 @@ return {
     },
     event = "VeryLazy",
     config = function ()
-			require("plugins.ts")
+      require("plugins.ts")
     end,
   },
   {
