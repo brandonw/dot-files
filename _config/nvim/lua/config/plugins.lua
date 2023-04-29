@@ -31,6 +31,20 @@ return {
     end,
   },
   {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+    config = function ()
+      vim.opt.list = true
+      vim.opt.listchars = ""
+      vim.opt.listchars:append("eol:↴")
+      -- vim.opt.listchars:append("space:⋅")
+      require("indent_blankline").setup({
+          show_current_context = true,
+          show_current_context_start = true,
+      })
+    end
+  },
+  {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },
