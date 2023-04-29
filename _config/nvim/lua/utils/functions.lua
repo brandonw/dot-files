@@ -17,10 +17,4 @@ M.getCurrentWord = function ()
   return vim.fn.shellescape(vim.fn.expand("<cword>"))
 end
 
-M.trimWhiteSpace = function ()
-  local view = vim.fn.winsaveview()
-  vim.cmd("%s/\\s\\+$//e")
-  vim.fn.winrestview(view)
-end
-
 return M

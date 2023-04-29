@@ -24,6 +24,13 @@ return {
     event = "VeryLazy",
   },
   {
+    "cappyzawa/trim.nvim",
+    event = "VeryLazy",
+    config = function ()
+      require('trim').setup()
+    end,
+  },
+  {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },

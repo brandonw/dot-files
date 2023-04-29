@@ -8,11 +8,6 @@ autocmd({"BufRead", "BufNewFile"}, {
   command = "setfiletype yaml",
 })
 
-autocmd({"FileWritePre", "FileAppendPre", "BufWritePre"}, {
-  pattern = {"*"},
-  callback = utils.trimWhiteSpace,
-})
-
 autocmd({"QuickFixCmdPost"}, {
   pattern = {"*grep*"},
   command = "cwindow",
