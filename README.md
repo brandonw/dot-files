@@ -24,7 +24,8 @@ pacman -S \
   noto-fonts-emoji \
   noto-fonts-extra \
   bash-completion \
-  git
+  git \
+  cmake
 
 # Install auracle
 

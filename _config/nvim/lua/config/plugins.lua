@@ -20,51 +20,73 @@ return {
     end,
   },
   {
-    "junegunn/fzf",
-    keys = {
-      { "gof", "<cmd>FZF<cr>", mode = "n" },
-    },
-  },
-  {
     "hashivim/vim-terraform",
     event = "VeryLazy",
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "debugloop/telescope-undo.nvim",
       "nvim-tree/nvim-web-devicons",
+      "nvim-telescope/telescope-fzf-native.nvim",
+      "debugloop/telescope-undo.nvim",
     },
     keys = {
-      { "<leader>u", "<cmd>Telescope undo<cr>", mode = "n" },
+      {
+        "gof",
+        function ()
+          require('telescope.builtin').git_files()
+        end,
+        mode = "n",
+      },
+      {
+        "gob",
+        function ()
+          require('telescope.builtin').buffers()
+        end,
+        mode = "n",
+      },
+      {
+        "<Leader>h",
+        function ()
+          require('telescope.builtin').help_tags()
+        end,
+        mode = "n",
+      },
+      {
+        "gls",
+        function ()
+          require('telescope.builtin').live_grep()
+        end,
+        mode = "n",
+      },
+      {
+        "<Leader>u",
+        function ()
+          require("telescope").extensions.undo.undo()
+        end,
+        mode = "n",
+      },
     },
     config = function()
-      require("telescope").setup({
-        extensions = {
-          undo = {},
-        },
-      })
-      require("telescope").load_extension("undo")
+			require("plugins.telescope")
     end,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
+    "stevearc/oil.nvim",
     lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     keys = {
-      { "goe", "<cmd>Neotree float<cr>", mode = "n" },
+      { "goe", function () require("oil").open() end, mode = "n" },
     },
     config = function ()
-      require("neo-tree").setup({
-        filesystem = {
-          hijack_netrw_behavior = "open_current",
-        }
-      })
+      require("oil").setup()
     end
   },
   {
@@ -75,11 +97,30 @@ return {
     },
     event = "VeryLazy",
     keys = {
-      { "gfh", "<cmd>DiffviewFileHistory %<cr>", mode = "n" },
-      { "gq", "<cmd>DiffviewClose<cr><cmd>tabprevious<cr>", mode = "n" },
+      { "gfh", "<Cmd>DiffviewFileHistory %<CR>", mode = "n" },
+      { "gq", "<Cmd>DiffviewClose<CR>", mode = "n" },
     },
     config = function()
-      require("diffview").setup()
+      require("diffview").setup({
+        view = {
+          default = {
+            -- Config for changed files, and staged files in diff views.
+            layout = "diff2_horizontal",
+            winbar_info = false,          -- See ':h diffview-config-view.x.winbar_info'
+          },
+          merge_tool = {
+            -- Config for conflicted files in diff views during a merge or rebase.
+            layout = "diff3_horizontal",
+            disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
+            winbar_info = true,           -- See ':h diffview-config-view.x.winbar_info'
+          },
+          file_history = {
+            -- Config for changed files in file history views.
+            layout = "diff2_horizontal",
+            winbar_info = false,          -- See ':h diffview-config-view.x.winbar_info'
+          },
+        },
+      })
       vim.api.nvim_set_keymap("n", "gfd", ":DiffviewOpen  -- %<Left><Left><Left><Left><Left>", {})
     end,
   },
@@ -92,7 +133,7 @@ return {
       vim.g.gitblame_enabled = 0
     end,
     keys = {
-      { "gfb", "<cmd>GitBlameToggle<cr>", mode = "n" },
+      { "gfb", "<Cmd>GitBlameToggle<CR>", mode = "n" },
     },
   },
   {
@@ -200,35 +241,35 @@ return {
     lazy = false,
     keys = {
       {
-        "<leader>tn",
+        "<Leader>tn",
         function ()
           require("neotest").run.run()
         end,
         mode = "n",
       },
       {
-        "<leader>tf",
+        "<Leader>tf",
         function ()
           require("neotest").run.run(vim.fn.expand("%"))
         end,
         mode = "n",
       },
       {
-        "<leader>to",
+        "<Leader>to",
         function ()
           require("neotest").output.open({ enter = true, short = false })
         end,
         mode = "n",
       },
       {
-        "<leader>tp",
+        "<Leader>tp",
         function ()
           require("neotest").output_panel.toggle()
         end,
         mode = "n",
       },
       {
-        "<leader>ts",
+        "<Leader>ts",
         function ()
           require("neotest").summary.toggle()
         end,
