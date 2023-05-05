@@ -117,6 +117,8 @@ return {
       { "gq", "<Cmd>DiffviewClose<CR>", mode = "n" },
     },
     config = function()
+      local diffview = require("diffview")
+      local actions = require("diffview.config").actions
       require("diffview").setup({
         view = {
           default = {
@@ -136,6 +138,14 @@ return {
             winbar_info = false,          -- See ':h diffview-config-view.x.winbar_info'
           },
         },
+        hooks = {
+          view_opened = function(view)
+            if (view:class():name() == "DiffView") then
+              -- Close DiffView:FilePanel initially
+              actions.toggle_files()
+            end
+          end,
+        }
       })
       vim.api.nvim_set_keymap("n", "gfd", ":DiffviewOpen  -- %<Left><Left><Left><Left><Left>", {})
     end,
