@@ -81,13 +81,6 @@ return {
         mode = "n",
       },
       {
-        "gls",
-        function ()
-          require('telescope.builtin').live_grep()
-        end,
-        mode = "n",
-      },
-      {
         "<Leader>u",
         function ()
           require("telescope").extensions.undo.undo()
@@ -148,15 +141,9 @@ return {
     end,
   },
   {
-    "f-person/git-blame.nvim",
-    init = function ()
-      -- Ensure blame is disabled at first so we can let the first invocation
-      -- load the plugin and enable it, instead of load and have it enabled,
-      -- then disable it.
-      vim.g.gitblame_enabled = 0
-    end,
+    "tpope/vim-fugitive",
     keys = {
-      { "gfb", "<Cmd>GitBlameToggle<CR>", mode = "n" },
+      { "gfb", "<Cmd>Git blame<CR>", mode = "n" },
     },
   },
   {
