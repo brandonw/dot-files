@@ -62,7 +62,9 @@ return {
       {
         "gof",
         function ()
-          require('telescope.builtin').git_files()
+          require('telescope.builtin').git_files({
+            show_untracked = true,
+          })
         end,
         mode = "n",
       },
