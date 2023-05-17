@@ -12,6 +12,15 @@ telescope.setup({
     },
     undo = {},
   },
+  pickers = {
+    buffers = {
+      mappings = {
+        n = {
+          ["x"] = actions.delete_buffer,
+        }
+      }
+    },
+  },
   defaults = {
     mappings = {
       i = {
