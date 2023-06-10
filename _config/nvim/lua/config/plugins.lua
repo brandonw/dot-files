@@ -189,6 +189,10 @@ return {
     end,
   },
   {
+    "towolf/vim-helm",
+    event = "VeryLazy",
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {

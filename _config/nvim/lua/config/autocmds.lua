@@ -8,6 +8,11 @@ autocmd({"BufRead", "BufNewFile"}, {
   command = "setfiletype yaml",
 })
 
+autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*/kubernetes/*.yaml"},
+  command = "setlocal filetype=helm",
+})
+
 autocmd({"QuickFixCmdPost"}, {
   pattern = {"*grep*"},
   command = "cwindow",
@@ -71,7 +76,7 @@ autocmd({"FileType"}, {
 })
 
 autocmd({"FileType"}, {
-  pattern = {"yaml"},
+  pattern = {"yaml", "helm"},
   command = "setlocal et tw=100 ts=2 sw=2 ai sr",
 })
 
