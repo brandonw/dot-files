@@ -191,6 +191,13 @@ return {
   {
     "towolf/vim-helm",
     event = "VeryLazy",
+    config = function ()
+      -- Override the commentstring used in vim-helm back to standard yaml
+      vim.api.nvim_create_autocmd({"FileType"}, {
+        pattern = {"yaml", "helm"},
+        command = "setlocal commentstring=#\\ %s et tw=100 ts=2 sw=2 ai sr",
+      })
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
