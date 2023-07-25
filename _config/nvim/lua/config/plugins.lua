@@ -3,7 +3,7 @@ return {
     "sainnhe/gruvbox-material",
     lazy = false, -- make sure we load this during startup as it is our main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
+    config = function ()
       vim.g.gruvbox_material_foreground = "material"
       vim.g.gruvbox_material_background = "medium"
       vim.g.gruvbox_material_better_performance = 1
@@ -217,7 +217,7 @@ return {
       },
     },
     config = function()
-      require("plugins.cmp")
+      require("plugins.completion")
     end,
   },
   {
@@ -239,21 +239,14 @@ return {
     },
     event = "VeryLazy",
     config = function ()
-      require("plugins.ts")
+      require("plugins.treesitter")
     end,
   },
   {
     "mfussenegger/nvim-lint",
     event = "VeryLazy",
     config = function ()
-      require("lint").linters_by_ft = {
-        javascript = {"eslint"},
-      }
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-        callback = function()
-          require("lint").try_lint()
-        end,
-      })
+      require("plugins.lint")
     end,
   },
   {
