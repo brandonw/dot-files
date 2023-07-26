@@ -6,4 +6,5 @@ local lspconfig = require('lspconfig')
 
 -- Per npm install:
 -- npm install -g typescript-language-server typescript
-lspconfig.tsserver.setup {}
+lspconfig.tsserver.setup({
+})
