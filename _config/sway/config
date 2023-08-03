@@ -265,6 +265,9 @@ bar {
 ### Window Config:
 
 for_window [instance="pinentry-gtk-2"] floating enable
+# sway
 assign [app_id="firefox"] 9
+# xwayland
+assign [class="firefox"] 9
 
 include /etc/sway/config.d/*
