@@ -178,6 +178,7 @@ return {
   },
   { "tpope/vim-repeat", event = "VeryLazy" },
   { "tpope/vim-unimpaired", event = "VeryLazy" },
+  { "b0o/SchemaStore.nvim" },
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
