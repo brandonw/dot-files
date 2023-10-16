@@ -40,10 +40,7 @@ return {
         -- eol = "↴",
         -- space = "⋅",
       }
-      require("indent_blankline").setup({
-          show_current_context = true,
-          show_current_context_start = true,
-      })
+      require("ibl").setup({})
     end
   },
   {
@@ -142,7 +139,7 @@ return {
         },
         hooks = {
           view_opened = function(view)
-            if (view:class():name() == "DiffView") then
+            if (view.class:name() == "DiffView") then
               -- Close DiffView:FilePanel initially
               actions.toggle_files()
             end
