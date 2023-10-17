@@ -19,7 +19,7 @@
   "neotest": { "branch": "master", "commit": "6fd61fe665381939a6d70eb08ef1959a10af369e" },
   "neotest-jest": { "branch": "main", "commit": "65ab61c77aa1c245f16982ffe1a4d31589e18023" },
   "nvim-cmp": { "branch": "main", "commit": "983453e32cb35533a119725883c04436d16c0120" },
-  "nvim-lint": { "branch": "master", "commit": "6d596b87862909370f4d1e6535cc9fad80c89fe6" },
+  "nvim-lint": { "branch": "master", "commit": "c232cbfbe759b448a8c4a3eca5bde17de8c5ca00" },
   "nvim-lspconfig": { "branch": "master", "commit": "255e07ce2a05627d482d2de77308bba51b90470c" },
   "nvim-surround": { "branch": "main", "commit": "0d6882635817a2677749a330127d12ac30a4f3c8" },
   "nvim-treesitter": { "branch": "master", "commit": "63260da18bf273c76b8e2ea0db84eb901cab49ce" },

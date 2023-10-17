@@ -40,7 +40,12 @@ return {
         -- eol = "↴",
         -- space = "⋅",
       }
-      require("ibl").setup({})
+      require("ibl").setup({
+        -- not super useful, but if performance improves we could try it again
+        scope = {
+          enabled = false,
+        },
+      })
     end
   },
   {
