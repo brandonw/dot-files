@@ -34,36 +34,36 @@ autocmd({"FileChangedShell"}, {
 ---- filetype
 autocmd({"FileType"}, {
   pattern = {"text"},
-  command = "setlocal tw=80",
+  command = "setlocal textwidth=80",
 })
 
 autocmd({"FileType"}, {
   pattern = {"sh"},
-  command = "setlocal et ai tw=80 ts=4 sw=4",
+  command = "setlocal et autoindent textwidth=80 tabstop=4 shiftwidth=4",
 })
 
 autocmd({"FileType"}, {
   pattern = {"html", "xml"},
-  command = "setlocal et ai tw=0 ts=4 sw=4 fdm=syntax",
+  command = "setlocal et autoindent textwidth=0 tabstop=4 shiftwidth=4 fdm=syntax",
 })
 
 autocmd({"FileType"}, {
   pattern = {"mkd", "md", "tex"},
-  command = "setlocal et ai tw=80 ts=4 sw=4 cc=+1",
+  command = "setlocal et autoindent textwidth=80 tabstop=4 shiftwidth=4 cc=+1",
 })
 
 autocmd({"FileType"}, {
   pattern = {"css", "sass", "scss"},
-  command = "setlocal et ai tw=80 ts=2 sw=2",
+  command = "setlocal et autoindent textwidth=80 tabstop=2 shiftwidth=2",
 })
 
 autocmd({"FileType"}, {
   pattern = {"javascript"},
-  command = "setlocal et tw=120 ts=4 sw=4 ai sr fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
+  command = "setlocal et textwidth=120 tabstop=4 shiftwidth=4 autoindent shiftround fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
 })
 autocmd({"FileType"}, {
   pattern = {"typescript"},
-  command = "setlocal et tw=120 ts=2 sw=2 ai sr fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
+  command = "setlocal et textwidth=120 tabstop=2 shiftwidth=2 autoindent shiftround fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
 })
 autocmd({"FileType"}, {
   pattern = {"javascript", "typescript"},
@@ -72,42 +72,47 @@ autocmd({"FileType"}, {
 
 autocmd({"FileType"}, {
   pattern = {"json", "pug", "xml"},
-  command = "setlocal et tw=100 ts=2 sw=2 ai sr fdm=indent foldlevel=99",
+  command = "setlocal et textwidth=100 tabstop=2 shiftwidth=2 autoindent shiftround fdm=indent foldlevel=99",
 })
 
 autocmd({"FileType"}, {
   pattern = {"yaml", "helm"},
-  command = "setlocal et tw=100 ts=2 sw=2 ai sr",
+  command = "setlocal et textwidth=100 tabstop=2 shiftwidth=2 autoindent shiftround",
 })
 
 autocmd({"FileType"}, {
   pattern = {"python"},
-  command = "setlocal et tw=100 ts=4 sw=4 ai sr fdm=indent foldlevel=99",
+  command = "setlocal et textwidth=100 tabstop=4 shiftwidth=4 autoindent shiftround fdm=indent foldlevel=99",
 })
 
 autocmd({"FileType"}, {
   pattern = {"sql"},
-  command = "setlocal et tw=80 ts=4 sw=4 ai",
+  command = "setlocal et textwidth=80 tabstop=4 shiftwidth=4 autoindent",
 })
 
 autocmd({"FileType"}, {
   pattern = {"ruby"},
-  command = "setlocal et tw=80 ts=4 sw=4 ai sr fdm=indent foldlevel=99",
+  command = "setlocal et textwidth=80 tabstop=4 shiftwidth=4 autoindent shiftround fdm=indent foldlevel=99",
 })
 
 autocmd({"FileType"}, {
   pattern = {"lua"},
-  command = "setlocal et tw=80 ts=2 sw=2 ai sr fdm=indent foldlevel=99",
+  command = "setlocal et textwidth=80 tabstop=2 shiftwidth=2 autoindent shiftround fdm=indent foldlevel=99",
 })
 
 autocmd({"FileType"}, {
   pattern = {"cs"},
-  command = "setlocal et tw=100 ts=4 sw=4",
+  command = "setlocal et textwidth=100 tabstop=4 shiftwidth=4",
 })
 
 autocmd({"FileType"}, {
   pattern = {"c"},
   command = "setlocal textwidth=80 formatoptions+=t",
+})
+
+autocmd({"FileType"}, {
+  pattern = {"go"},
+  command = "setlocal textwidth=120 tabstop=4 shiftwidth=4 noexpandtab formatoptions+=t",
 })
 
 autocmd({"FileType"}, {
