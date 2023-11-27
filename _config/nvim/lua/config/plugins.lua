@@ -124,6 +124,7 @@ return {
       local diffview = require("diffview")
       local actions = require("diffview.config").actions
       require("diffview").setup({
+        enhanced_diff_hl = true,
         view = {
           default = {
             -- Config for changed files, and staged files in diff views.
