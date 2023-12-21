@@ -45,7 +45,6 @@ integrated into .bashrc that will be symlinked below.
 - https://github.com/asdf-vm/asdf
 - https://github.com/Bash-it/bash-it
 - https://github.com/junegunn/fzf
-- password-store
 
 ## Symlink Stuff
 
@@ -58,6 +57,8 @@ ln -s $HOME/.dot-files/_ignore $HOME/.ignore
 ln -s $HOME/.dot-files/_inputrc $HOME/.inputrc
 ln -s $HOME/.dot-files/_profile $HOME/.profile
 ln -s $HOME/.dot-files/_psqlrc $HOME/.psqlrc
+mkdir $HOME/.bin
+ln -s $HOME/.dot-files/switch_branches.sh $HOME/.bin/sb
 # Linux specific
 ln -s $HOME/.dot-files/_gpg-agent.conf $HOME/.gpg-agent.conf
 
