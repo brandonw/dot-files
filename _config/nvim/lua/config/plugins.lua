@@ -46,7 +46,7 @@ return {
           enabled = false,
         },
       })
-    end
+    end,
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
@@ -107,7 +107,7 @@ return {
     },
     config = function ()
       require("oil").setup()
-    end
+    end,
   },
   {
     "sindrets/diffview.nvim",
@@ -133,7 +133,7 @@ return {
           },
           merge_tool = {
             -- Config for conflicted files in diff views during a merge or rebase.
-            layout = "diff3_horizontal",
+            layout = "diff3_mixed",
             disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
             winbar_info = true,           -- See ':h diffview-config-view.x.winbar_info'
           },
@@ -335,6 +335,18 @@ return {
           mode = "tabs",
         },
       })
-    end
+    end,
+  },
+  {
+    "PagerDuty/id-utils.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    event = "VeryLazy",
+    config = function ()
+      local idutils = require("idutils")
+      idutils.setup()
+      vim.keymap.set("v", "<Leader>to", require("idutils").toggle_ids)
+    end,
   },
 }
