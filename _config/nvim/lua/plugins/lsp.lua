@@ -1,19 +1,19 @@
 -- See https://github.com/neovim/nvim-lspconfig
--- Also update _config/nvim/lua/plugins/cmp.lua
+-- Also update _config/nvim/lua/plugins/completion.lua
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- npm install -g typescript-language-server typescript
-lspconfig.tsserver.setup({
-  capabilities = capabilities,
-  init_options = {
-    preferences = {
-      disableSuggestions = true,
-    }
-  }
-})
+-- lspconfig.tsserver.setup({
+--   capabilities = capabilities,
+--   init_options = {
+--     preferences = {
+--       disableSuggestions = true,
+--     }
+--   }
+-- })
 
 -- npm install -g vscode-langservers-extracted
 lspconfig.jsonls.setup({
