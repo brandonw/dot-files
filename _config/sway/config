@@ -28,7 +28,7 @@ set $aqua   #689d6a
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run --prompt "" --fn "$font 18" -H 30 --ff "$fg" --fb "$bg" --nf "$fg" --nb "$bg" --af "$fg" --ab "$gray" --hf "$fg" --hb "$orange"
+set $menu bemenu-run --prompt "" --fn "$font 18" -H 30 --cf "$orange" --cb "$orange" --ff "$fg" --fb "$bg" --nf "$fg" --nb "$bg" --af "$fg" --ab "$gray" --hf "$fg" --hb "$orange"
 
 set $lock swaylock -f -c 000000
 
