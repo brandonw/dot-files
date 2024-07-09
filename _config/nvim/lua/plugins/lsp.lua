@@ -6,14 +6,14 @@ local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- npm install -g typescript-language-server typescript
--- lspconfig.tsserver.setup({
---   capabilities = capabilities,
---   init_options = {
---     preferences = {
---       disableSuggestions = true,
---     }
---   }
--- })
+lspconfig.tsserver.setup({
+  capabilities = capabilities,
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
+    }
+  }
+})
 
 -- npm install -g vscode-langservers-extracted
 lspconfig.jsonls.setup({

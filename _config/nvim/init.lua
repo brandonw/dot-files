@@ -6,5 +6,4 @@ require('config.keymappings')
 require('config.autocmds')
 
 -- TODO:
--- _config/nvim/lua/plugins/lsp.lua -- re-enable tsserver
 -- _config/nvim/lua/plugins/treesitter.lua -- re-enable function.* and class.*
