@@ -45,7 +45,7 @@ output eDP-1 bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fi
 output eDP-1 resolution 1920x1080 position 0,0
 
 # Uncomment to disable xwayland
-#xwayland disable
+# xwayland disable
 
 ### Idle configuration
 # This will lock your screen after 300 seconds of inactivity, then turn off
