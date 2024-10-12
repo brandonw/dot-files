@@ -58,7 +58,7 @@ exec swayidle -w \
          before-sleep 'swaylock -f -c 000000'
 
 ### Clipboard
-exec wl-paste --type text --watch clipman store --no-persist
+exec wl-paste --watch cliphist store
 
 ### Auto-Mount
 exec udiskie --automount --notify --tray
