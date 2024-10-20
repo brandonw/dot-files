@@ -6,7 +6,7 @@ local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- npm install -g typescript-language-server typescript
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   capabilities = capabilities,
   init_options = {
     preferences = {
