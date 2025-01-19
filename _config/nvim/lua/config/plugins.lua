@@ -267,16 +267,4 @@ return {
       })
     end,
   },
-  {
-    "PagerDuty/id-utils.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    event = "VeryLazy",
-    config = function ()
-      local idutils = require("idutils")
-      idutils.setup()
-      vim.keymap.set("v", "<Leader>to", require("idutils").toggle_ids)
-    end,
-  },
 }
