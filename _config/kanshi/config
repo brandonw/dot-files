@@ -1,0 +1,31 @@
+output "BOE 0x0791 Unknown" {
+  mode 1920x1080@60.012Hz
+  position 0,0
+}
+output "Dell Inc. DELL U2412M M2GCR288268L" {
+  mode 1920x1200@59.950Hz
+  position -1920,-1200
+}
+output "LG Electronics LG HDR 4K 0x0001806F" {
+  mode 3840x2160@60Hz
+  position 0,-2160
+}
+
+profile dock {
+  output "BOE 0x0791 Unknown"
+  output "Dell Inc. DELL U2412M M2GCR288268L"
+  output "LG Electronics LG HDR 4K 0x0001806F"
+  exec swaymsg workspace 1, move workspace to output '"LG Electronics LG HDR 4K 0x0001806F"'
+  exec swaymsg workspace 2, move workspace to output '"LG Electronics LG HDR 4K 0x0001806F"'
+  exec swaymsg workspace 3, move workspace to output '"LG Electronics LG HDR 4K 0x0001806F"'
+  exec swaymsg workspace 4, move workspace to output '"LG Electronics LG HDR 4K 0x0001806F"'
+  exec swaymsg workspace 5, move workspace to output '"LG Electronics LG HDR 4K 0x0001806F"'
+  exec swaymsg workspace 6, move workspace to output '"LG Electronics LG HDR 4K 0x0001806F"'
+  exec swaymsg workspace 7, move workspace to output '"LG Electronics LG HDR 4K 0x0001806F"'
+  exec swaymsg workspace 8, move workspace to output '"BOE 0x0791 Unknown"'
+  exec swaymsg workspace 9, move workspace to output '"Dell Inc. DELL U2412M M2GCR288268L"'
+}
+
+profile mobile {
+  output "BOE 0x0791 Unknown"
+}

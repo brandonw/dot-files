@@ -4,10 +4,17 @@
 
 ```sh
 pacman -S \
+  fwupd \
+  cage \
+  greetd \
+  greetd-gtkgreet \
   sway \
+  sway-contrib \
+  kanshi \
   bemenu \
   foot \
   mako \
+  wl-clipboard \
   swayidle \
   swaylock \
   waybar \
@@ -17,8 +24,6 @@ pacman -S \
   ripgrep \
   xdg-user-dirs \
   xdg-utils \
-  ttf-hack-nerd \
-  ttf-jetbrains-mono-nerd \
   noto-fonts \
   noto-fonts-cjk  \
   noto-fonts-emoji \
@@ -27,14 +32,9 @@ pacman -S \
   git \
   cmake
 
-# Install auracle
-
-auracle clone \
-  clipman \
-  grimshot \
-  ly \
-  wev \
-  ttf-dina-remastered
+# Install aur-utils; AUR packges of use:
+# ttf-dina-remastered
+# ttf-dina-remastered-nerd-font
 ```
 
 ## Install Git Repos
@@ -80,7 +80,19 @@ mkdir -p $HOME/.config/systemd
 ln -s \
   $HOME/.dot-files/_config/systemd/user/* \
   $HOME/.config/systemd/user
-# Enable batwarn systemd timer
+systemctl --user enable kanshi.service
+systemctl --user enable wl-paste.service
+systemctl --user enable udiskie.service
+systemctl --user enable mako.service
+systemctl --user enable swayidle.service
 systemctl --user enable batwarn.timer
-systemctl --user start batwarn.timer
+
+sudo mkdir /etc/greetd
+sudo cp /home/brandon/.dot-files/etc/greetd/* /etc/greetd/
+systemctl enable greetd.service
 ```
+
+Useful References:
+- https://wiki.archlinux.org/title/Systemd-boot
+- https://wiki.archlinux.org/title/Greetd
+- https://wiki.archlinux.org/title/Thunderbolt -- May need to tweak UEFI ThunderBolt settings especially add pcie_port_pm=off to kernel params

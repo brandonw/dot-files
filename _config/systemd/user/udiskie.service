@@ -1,0 +1,11 @@
+[Unit]
+Description=udisks2 front-end that manages removable media in userspace
+Documentation=https://github.com/coldfix/udiskie
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/udiskie --automount --notify --tray
+
+[Install]
+WantedBy=sway-session.target

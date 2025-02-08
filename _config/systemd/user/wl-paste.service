@@ -1,0 +1,11 @@
+[Unit]
+Description=Manages Wayland paste clipboard
+Documentation=https://github.com/bugaevc/wl-clipboard
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wl-paste --watch cliphist store
+
+[Install]
+WantedBy=sway-session.target
