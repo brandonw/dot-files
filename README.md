@@ -11,14 +11,16 @@ pacman -S \
   sway \
   sway-contrib \
   kanshi \
-  bemenu \
+  fuzzel \
   foot \
-  mako \
+  wezterm \
+  swaync \
   wl-clipboard \
   swayidle \
   swaylock \
   waybar \
   udiskie \
+  blueman \
   pamixer \
   brightnessctl \
   ripgrep \
@@ -68,10 +70,11 @@ mkdir -p $HOME/.config
 ln -s \
   $HOME/.dot-files/_config/nvim \
   $HOME/.config
-# Linux specific
 ln -s \
   $HOME/.dot-files/_config/foot \
-  $HOME/.dot-files/_config/mako \
+  $HOME/.dot-files/_config/wezterm \
+  $HOME/.dot-files/_config/swaync \
+  $HOME/.dot-files/_config/fuzzel \
   $HOME/.dot-files/_config/sway \
   $HOME/.dot-files/_config/user-dirs.dirs \
   $HOME/.dot-files/_config/waybar \
@@ -83,7 +86,7 @@ ln -s \
 systemctl --user enable kanshi.service
 systemctl --user enable wl-paste.service
 systemctl --user enable udiskie.service
-systemctl --user enable mako.service
+systemctl --user enable swaync.service
 systemctl --user enable swayidle.service
 systemctl --user enable batwarn.timer
 

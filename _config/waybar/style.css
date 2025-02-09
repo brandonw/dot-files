@@ -96,6 +96,7 @@ window#waybar.hidden {
 #battery,
 #network,
 #disk,
+#custom-notification,
 #tray {
     background: #504945;
 }
@@ -105,20 +106,21 @@ window#waybar.hidden {
 #cpu,
 #battery,
 #network,
-#disk {
-    padding: 0 13px;
-    margin: 0 5px;
+#disk,
+#clock {
+    padding: 0 10px;
+    margin: 0 3px;
     border-width: 1px;
     border-color: #504945;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
-#clock {
-    padding: 0 13px;
-    margin: 0 0 0 5px;
+#custom-notification {
+    padding: 0 10px;
+    margin: 0 0 0 3px;
     border-width: 1px;
     border-color: #504945;
-    border-radius: 15px 0 0 15px;
+    border-radius: 10px 0 0 10px;
 }
 
 #tray {

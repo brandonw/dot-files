@@ -1,0 +1,11 @@
+[Unit]
+Description=A simple notification daemon with a GTK gui for notifications and the control center
+Documentation=https://github.com/ErikReider/SwayNotificationCenter
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swaync
+
+[Install]
+WantedBy=sway-session.target
