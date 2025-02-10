@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term wezterm
+set $term foot
 set $font DinaRemasterII
 
 set $bg     #282828
@@ -254,10 +254,12 @@ bar {
 ### Window Config:
 
 for_window [instance="pinentry-gtk-2"] floating enable
+for_window [instance="zoom"] floating enable
 # sway
 assign [app_id="firefox"] 9
 # xwayland
 assign [class="firefox"] 9
+assign [class="zoom"] 8
 
 include /etc/sway/config.d/*
-exec_always systemctl --user start sway-session.target
+exec_always systemctl --user restart sway-session.target
