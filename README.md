@@ -20,6 +20,9 @@ pacman -S \
   swaylock \
   waybar \
   udiskie \
+  wireplumber \
+  easyeffects \
+  bluez \
   blueman \
   pamixer \
   brightnessctl \
@@ -87,6 +90,7 @@ systemctl --user enable kanshi.service
 systemctl --user enable wl-paste.service
 systemctl --user enable udiskie.service
 systemctl --user enable swaync.service
+systemctl --user enable blueman-applet.service
 systemctl --user enable swayidle.service
 systemctl --user enable batwarn.timer
 

@@ -1,0 +1,10 @@
+[Unit]
+Description=Blueman Applet
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/blueman-applet
+
+[Install]
+WantedBy=sway-session.target
