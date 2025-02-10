@@ -108,19 +108,23 @@ window#waybar.hidden {
 #network,
 #disk,
 #clock {
-    padding: 0 10px;
-    margin: 0 3px;
+    padding: 0 15px;
+    margin: 0 0px;
     border-width: 1px;
     border-color: #504945;
-    border-radius: 10px;
+    border-radius: 0px;
+}
+
+#cpu {
+    border-radius: 10px 0 0 10px;
 }
 
 #custom-notification {
     padding: 0 10px;
-    margin: 0 0 0 3px;
+    margin: 0 0 0 0px;
     border-width: 1px;
     border-color: #504945;
-    border-radius: 10px 0 0 10px;
+    border-radius: 0px 0 0 0px;
 }
 
 #tray {
