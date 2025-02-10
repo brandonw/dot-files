@@ -29,6 +29,8 @@ pacman -S \
   ripgrep \
   xdg-user-dirs \
   xdg-utils \
+  ttf-hack \
+  ttf-jetbrains-mono \
   noto-fonts \
   noto-fonts-cjk  \
   noto-fonts-emoji \
@@ -39,7 +41,6 @@ pacman -S \
 
 # Install aur-utils; AUR packges of use:
 # ttf-dina-remastered
-# ttf-dina-remastered-nerd-font
 ```
 
 ## Install Git Repos
