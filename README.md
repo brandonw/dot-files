@@ -41,6 +41,7 @@ pacman -S \
 
 # Install aur-utils; AUR packges of use:
 # ttf-dina-remastered
+# bluetooth-autoconnect
 ```
 
 ## Install Git Repos
