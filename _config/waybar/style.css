@@ -50,14 +50,12 @@ window#waybar.hidden {
     /* workspaces assigned to the active output but not visible */
 }
 
+#workspaces button.focused,
 #workspaces button.visible {
-    color: #282828;
-    background-color: #d8a657;
+    background-color: #689d6a;
 }
 
 #workspaces button.focused {
-    color: #ebdbb2;
-    background-color: #689d6a;
     box-shadow: inset 0 -3px #ebdbb2;
 }
 
