@@ -13,13 +13,12 @@ set $right l
 set $term foot
 set $font DinaRemasterII
 
-set $bg     #282828
-set $fg     #eddbb2
-set $gray   #504945
-set $red    #cc241d
-set $yellow #d79921
-set $orange #d65d0e
-set $aqua   #689d6a
+set $bg          #282828
+set $fg          #eddbb2
+set $gray        #504945
+set $red         #ea6962
+set $bgdiffgreen #34381b
+set $aqua        #89b482
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -242,10 +241,10 @@ font pango:$font 16
 ### Colors
 
 # Windows
-client.focused          $aqua   $aqua   $fg $aqua   $aqua
-client.unfocused        $fg     $gray   $fg $gray   $gray
-client.focused_inactive $yellow $yellow $fg $yellow $yellow
-client.urgent           $red    $red    $fg $red    $red
+client.focused          $aqua        $aqua        $bg $aqua        $aqua
+client.unfocused        $fg          $gray        $fg $gray        $gray
+client.focused_inactive $bgdiffgreen $bgdiffgreen $fg $bgdiffgreen $bgdiffgreen
+client.urgent           $red         $red         $fg $red         $red
 
 ### Status Bar:
 # Read `man 5 sway-bar` for more information about this section.

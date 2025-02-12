@@ -27,7 +27,7 @@ window#waybar.hidden {
     background-color: transparent;
     color: #ebdbb2;
     /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
+    box-shadow: inset 0 -3px #282828;
     /* Avoid rounded borders under each workspace name */
     border: none;
     border-radius: 0;
@@ -39,28 +39,29 @@ window#waybar.hidden {
 }
 
 #workspaces button.urgent {
-    background-color: #cc241d;
+    background-color: #ea6962;
 }
 
 #workspaces button.persistent {
-    /* ??? */
 }
 
 #workspaces button.current_output {
     /* workspaces assigned to the active output but not visible */
 }
 
-#workspaces button.focused,
 #workspaces button.visible {
-    background-color: #689d6a;
+    color: #ebdbb2;
+    background-color: #34381b;
 }
 
 #workspaces button.focused {
+    color: #282828;
+    background-color: #89b482;
     box-shadow: inset 0 -3px #ebdbb2;
 }
 
 #mode {
-    background-color: #d79921;
+    background-color: #7daea3;
     box-shadow: inset 0 -3px #ebdbb2;
 }
 
