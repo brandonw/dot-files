@@ -1,3 +1,4 @@
+local utils = require("utils.functions")
 local keymap = vim.keymap.set
 
 keymap('', '<Space>', ':')
@@ -6,6 +7,8 @@ keymap('n', 'gwj', '<C-W>j')
 keymap('n', 'gwk', '<C-W>k')
 keymap('n', 'gwl', '<C-W>l')
 keymap("n", 'get', ':tabnew <C-R>=expand("%:h") . "/" <CR>')
+keymap("n", 'gsa', utils.searchAll)
+keymap("n", 'gsp', utils.searchProd)
 keymap('n', 'gcf', ':let @+ = expand("%")<CR>')
 keymap('n', 'gfj', ':%!python -m json.tool<CR>')
 keymap('v', 'gfj', ':!python -m json.tool<CR>')

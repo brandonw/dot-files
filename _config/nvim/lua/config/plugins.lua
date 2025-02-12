@@ -37,38 +37,6 @@ return {
     end,
   },
   {
-    "mangelozzi/rgflow.nvim",
-    version = nil,
-    event = "VeryLazy",
-    config = function ()
-      require("rgflow").setup({
-        default_ui_mappings = true,
-        default_quickfix_mappings = true,
-        incsearch_after = false,
-        quickfix = {
-          open_qf_cmd_or_func = "botright copen", -- Open the quickfix window across the full bottom edge
-        },
-        cmd_flags = ("--fixed-strings --no-fixed-strings --no-ignore --ignore"
-          .. " -g !tests"
-          .. " -g !test"
-          .. " -g !\\*.test.js"
-          .. " -g !\\*.test.js.snap"
-        ),
-        mappings = {
-          trigger = {
-              n = {
-                  ["gs"] = "open_cword",
-              },
-              -- Visual/select mode maps
-              x = {
-                  ["gs"] = "open_visual", -- Open UI - search pattern = current visual selection
-              },
-          },
-        },
-      })
-    end,
-  },
-  {
     "sindrets/diffview.nvim",
     version = nil,
     dependencies = {
