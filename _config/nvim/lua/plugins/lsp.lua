@@ -1,9 +1,8 @@
 -- See https://github.com/neovim/nvim-lspconfig
--- Also update _config/nvim/lua/plugins/completion.lua
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 -- npm install -g typescript-language-server typescript
 lspconfig.ts_ls.setup({
