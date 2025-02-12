@@ -241,10 +241,10 @@ font pango:$font 16
 ### Colors
 
 # Windows
-client.focused          $aqua        $aqua        $bg $aqua        $aqua
-client.unfocused        $fg          $gray        $fg $gray        $gray
-client.focused_inactive $bgdiffgreen $bgdiffgreen $fg $bgdiffgreen $bgdiffgreen
-client.urgent           $red         $red         $fg $red         $red
+client.focused          $aqua $aqua $bg $aqua $aqua
+client.unfocused        $fg   $gray $fg $gray $gray
+client.focused_inactive $fg   $gray $fg $gray $gray
+client.urgent           $red  $red  $fg $red  $red
 
 ### Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
