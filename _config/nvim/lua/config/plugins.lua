@@ -238,7 +238,7 @@ return {
 
   {
     "folke/snacks.nvim",
-    version = "v2.20.0",
+    version = "v2.21.0",
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
