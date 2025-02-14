@@ -270,6 +270,14 @@ return {
         chunk = {
           enabled = true,
         },
+        animate = {
+          style = "out",
+          easing = "linear",
+          duration = {
+            step = 20, -- ms per step
+            total = 100, -- maximum duration
+          },
+        },
         only_scope = false,
       },
       scope = {
