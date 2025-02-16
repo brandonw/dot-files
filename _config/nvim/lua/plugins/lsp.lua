@@ -11,7 +11,7 @@ lspconfig.ts_ls.setup({
     preferences = {
       disableSuggestions = true,
     }
-  }
+  },
 })
 
 -- npm install -g vscode-langservers-extracted
@@ -23,7 +23,7 @@ lspconfig.jsonls.setup({
       schemas = require('schemastore').json.schemas(),
       validate = { enable = true },
     }
-  }
+  },
 })
 
 -- npm install -g yaml-language-server
@@ -38,5 +38,10 @@ lspconfig.yamlls.setup({
       },
       schemas = require('schemastore').yaml.schemas(),
     }
-  }
+  },
 })
+
+-- go install golang.org/x/tools/gopls@latest
+lspconfig.gopls.setup({
+  capabilities = capabilities,
+});
