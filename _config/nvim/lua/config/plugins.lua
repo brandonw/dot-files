@@ -32,9 +32,6 @@ return {
     "cappyzawa/trim.nvim",
     version = "v0.10.2",
     event = "VeryLazy",
-    config = function ()
-      require("trim").setup()
-    end,
   },
   {
     "sindrets/diffview.nvim",
@@ -102,13 +99,11 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     event = "VeryLazy",
-    config = function ()
-      require("bufferline").setup({
-        options = {
-          mode = "tabs",
-        },
-      })
-    end,
+    opts = {
+      options = {
+        mode = "tabs",
+      },
+    },
   },
   {
     "mfussenegger/nvim-lint",
@@ -128,38 +123,36 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     event = "VeryLazy",
-    config = function ()
-      require("lualine").setup({
-        options = {
-          theme = "gruvbox-material",
+    opts = {
+      options = {
+        theme = "gruvbox-material",
+      },
+      sections = {
+        lualine_a = {"mode"},
+        lualine_b = {"branch", "diff", "diagnostics"},
+        lualine_c = {
+          {
+            "filename",
+            path = 1,
+          }
         },
-        sections = {
-          lualine_a = {"mode"},
-          lualine_b = {"branch", "diff", "diagnostics"},
-          lualine_c = {
-            {
-              "filename",
-              path = 1,
-            }
-          },
-          lualine_x = {"encoding", "fileformat", "filetype"},
-          lualine_y = {"progress"},
-          lualine_z = {"location"}
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {"filename"},
-          lualine_x = {"location"},
-          lualine_y = {},
-          lualine_z = {}
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {}
-      })
-    end,
+        lualine_x = {"encoding", "fileformat", "filetype"},
+        lualine_y = {"progress"},
+        lualine_z = {"location"}
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {"filename"},
+        lualine_x = {"location"},
+        lualine_y = {},
+        lualine_z = {}
+      },
+      tabline = {},
+      winbar = {},
+      inactive_winbar = {},
+      extensions = {}
+    },
   },
   {
     "kylechui/nvim-surround",
@@ -169,9 +162,7 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects"
     },
     event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup()
-    end,
+    opts = {},
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -202,7 +193,7 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = "rafamadriz/friendly-snippets",
-    version = "v0.11.0",
+    version = "v0.12.3",
     lazy = false,
 
     ---@module "blink.cmp"
@@ -228,12 +219,12 @@ return {
       signature = {
         enabled = true,
       },
-      -- Default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
+      },
+      cmdline = {
         -- Use native cmdline completion
-        cmdline = {},
+        enabled = false,
       },
     },
     opts_extend = { "sources.default" }
@@ -241,6 +232,8 @@ return {
 
   {
     "folke/snacks.nvim",
+    -- Not released yet, but will include required fixes once released.
+    -- Otherwise, will fail to find tag and default to `nil`.
     version = "v2.21.0",
     priority = 1000,
     lazy = false,
