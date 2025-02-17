@@ -60,13 +60,10 @@ window#waybar.hidden {
 }
 
 #mode {
-    background-color: #7daea3;
-    box-shadow: inset 0 -3px #ebdbb2;
-}
-
-#mode {
     padding: 0 10px;
-    color: #ebdbb2;
+    color: #282828;
+    background-color: #89b482;
+    box-shadow: inset 0 -3px #ebdbb2;
 }
 
 #window,
