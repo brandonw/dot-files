@@ -11,11 +11,15 @@
     "modules-center": [
     ],
     "modules-right": [
+        "network",
         "cpu",
         "memory",
         "disk",
         "battery",
         "pulseaudio",
+        // TODO: Switch to wireplumber when bugs are resolved and source/sink are shown independently
+        // "wireplumber",
+        // "wireplumber#microphone",
         "clock",
 	"custom/notification",
         "tray"
@@ -46,11 +50,11 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
     "pulseaudio": {
-        "format": "{volume:3}% {icon}  {format_source}",
+        "format": "{icon} {volume:3}% {format_source}",
         "format-bluetooth": "{volume:3}% {icon}  {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume:3}% ",
+        "format-source": " {volume:3}%",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -61,6 +65,18 @@
             "car": "",
             "default": ["", "", ""]
         }
+    },
+    "wireplumber": {
+        "format": "{icon}  {volume:3}%",
+        "format-muted": "",
+        "format-icons": ["", "", ""],
+        "tooltip-format": "{node_name}",
+    },
+    "wireplumber#microphone": {
+        "format": "{icon} {volume:3}%",
+        "format-muted": "",
+	"format-icons": [""],
+        "tooltip-format": "{node_name}",
     },
     "battery": {
         "states": {
@@ -90,9 +106,13 @@
         "path": "/"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format": "{bandwidthDownBytes}  {bandwidthUpBytes} ",
-        "tooltip-format": "{essid} ({signalStrength}%) ",
+	"interval": 5,
+        "format-wifi": "wifi {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
+        "format-ethernet": "eth {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
     },
     "custom/notification": {
         "tooltip": false,
