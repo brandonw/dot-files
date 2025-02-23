@@ -13,7 +13,7 @@ pacman -S \
   kanshi \
   fuzzel \
   foot \
-  wezterm \
+  alacritty \
   swaync \
   wl-clipboard \
   swayidle \
@@ -77,7 +77,8 @@ ln -s \
   $HOME/.config
 ln -s \
   $HOME/.dot-files/_config/foot \
-  $HOME/.dot-files/_config/wezterm \
+  $HOME/.dot-files/_config/foot \
+  $HOME/.dot-files/_config/alacritty \
   $HOME/.dot-files/_config/swaync \
   $HOME/.dot-files/_config/fuzzel \
   $HOME/.dot-files/_config/sway \

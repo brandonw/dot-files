@@ -10,7 +10,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term alacritty
 set $font DinaRemasterII
 
 set $bg          #282828
