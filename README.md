@@ -106,3 +106,5 @@ Useful References:
 - https://wiki.archlinux.org/title/Systemd-boot
 - https://wiki.archlinux.org/title/Greetd
 - https://wiki.archlinux.org/title/Thunderbolt -- May need to tweak UEFI ThunderBolt settings especially add pcie_port_pm=off to kernel params
+- https://wiki.archlinux.org/title/Power_management/Wakeup_triggers#Instantaneous_wakeup_after_suspending
+- https://wiki.archlinux.org/title/Systemd#systemd-tmpfiles_-_temporary_files
