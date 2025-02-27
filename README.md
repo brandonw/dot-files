@@ -84,6 +84,7 @@ ln -s \
   $HOME/.dot-files/_config/sway \
   $HOME/.dot-files/_config/user-dirs.dirs \
   $HOME/.dot-files/_config/waybar \
+  $HOME/.dot-files/_config/pipewire \
   $HOME/.config
 mkdir -p $HOME/.config/systemd
 ln -s \
