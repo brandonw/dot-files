@@ -45,3 +45,13 @@ lspconfig.yamlls.setup({
 lspconfig.gopls.setup({
   capabilities = capabilities,
 });
+
+-- npm install -g pyright
+lspconfig.pyright.setup({
+  capabilities = capabilities,
+  init_options = {
+    settings = {
+      -- Server settings should go here
+    }
+  }
+})
