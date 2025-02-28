@@ -1,7 +1,7 @@
 return {
   {
     "sainnhe/gruvbox-material",
-    version = "1aa1842d80a8845842b9340df2d93683d667247b", -- change to explicit version once blink updates included
+    version = "146f40fd42cbef30fed69b4ef51329aeeaceb909", -- change to explicit version once blink updates included
     lazy = false, -- make sure we load this during startup as it is our main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function ()
@@ -193,7 +193,7 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = "rafamadriz/friendly-snippets",
-    version = "v0.12.3",
+    version = "v0.13.1",
     lazy = false,
 
     ---@module "blink.cmp"
@@ -222,10 +222,6 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
       },
-      cmdline = {
-        -- Use native cmdline completion
-        enabled = false,
-      },
     },
     opts_extend = { "sources.default" }
   },
@@ -234,7 +230,7 @@ return {
     "folke/snacks.nvim",
     -- Not released yet, but will include required fixes once released.
     -- Otherwise, will fail to find tag and default to `nil`.
-    version = "v2.21.0",
+    version = "v2.22.0",
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
