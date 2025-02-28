@@ -10,7 +10,6 @@ pacman -S \
   greetd-gtkgreet \
   sway \
   sway-contrib \
-  kanshi \
   fuzzel \
   foot \
   alacritty \
@@ -42,6 +41,7 @@ pacman -S \
 # Install aur-utils; AUR packges of use:
 # ttf-dina-remastered
 # bluetooth-autoconnect
+# shikane
 ```
 
 ## Install Git Repos
@@ -80,6 +80,7 @@ ln -s \
   $HOME/.dot-files/_config/foot \
   $HOME/.dot-files/_config/alacritty \
   $HOME/.dot-files/_config/swaync \
+  $HOME/.dot-files/_config/shikane \
   $HOME/.dot-files/_config/fuzzel \
   $HOME/.dot-files/_config/sway \
   $HOME/.dot-files/_config/user-dirs.dirs \
@@ -90,7 +91,7 @@ mkdir -p $HOME/.config/systemd
 ln -s \
   $HOME/.dot-files/_config/systemd/user/* \
   $HOME/.config/systemd/user
-systemctl --user enable kanshi.service
+systemctl --user enable shikane.service
 systemctl --user enable wl-paste.service
 systemctl --user enable udiskie.service
 systemctl --user enable swaync.service

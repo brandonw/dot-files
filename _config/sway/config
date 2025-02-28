@@ -33,7 +33,7 @@ output "BOE 0x0791 Unknown" resolution 1920x1080@60.012Hz position 0,0
 output "Dell Inc. DELL U2412M M2GCR288268L" resolution 1920x1200@59.950Hz position -1920,-1200
 output "LG Electronics LG HDR 4K 0x0001806F" resolution 3840x2160@60Hz position 0,-2160
 
-# Also configured in ./.config/kanshi for hotplug dock support
+# Also configured in ./.config/shikane/config.tml for hotplug dock support
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -140,7 +140,7 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
-# Ensure if docked the workspace configured even if empty
+# Ensure if docked the workspaces are configured even if empty
 workspace 1 output "LG Electronics LG HDR 4K 0x0001806F"
 workspace 2 output "LG Electronics LG HDR 4K 0x0001806F"
 workspace 3 output "LG Electronics LG HDR 4K 0x0001806F"

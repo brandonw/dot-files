@@ -1,11 +1,11 @@
 [Unit]
 Description=Dynamic output configuration for Wayland compositors
-Documentation=https://sr.ht/~emersion/kanshi
+Documentation=https://gitlab.com/w0lff/shikane
 BindsTo=sway-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/kanshi
+ExecStart=/usr/bin/shikane
 
 [Install]
 WantedBy=sway-session.target
