@@ -22,3 +22,9 @@ if vim.fn.executable('rg') == 1 then
   vim.opt.grepformat="%f:%l:%c:%m"
   vim.opt.grepprg="rg --vimgrep --hidden $*"
 end
+
+vim.shadafile = "" -- default
+local gitdir = vim.uv.cwd() .. "/.git"
+if vim.uv.fs_stat(gitdir) then
+  vim.opt.shadafile = ".shada"
+end

@@ -4,6 +4,7 @@
 [core]
 	editor = nvim
 	pager = less --tabs=4 -RFX
+	excludesFile = ~/.gitignore
 [pager]
 	branch = false
 [push]
