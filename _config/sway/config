@@ -279,6 +279,7 @@ assign [class="firefox"] 9
 assign [class="zoom"] 8
 
 for_window [instance="zoom"] inhibit_idle fullscreen
+for_window [instance="zoom"] floating enable
 for_window [app_id="firefox"] inhibit_idle fullscreen
 
 include /etc/sway/config.d/*
