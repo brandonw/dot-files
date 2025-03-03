@@ -125,6 +125,9 @@ shopt -s direxpand
 # Do not add commands that are space prefixed or repeats
 export HISTCONTROL="ignorespace:ignoredups"
 
+# Default of 500 is waaaaay too small
+export HISTSIZE=5000
+
 # asdf
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
