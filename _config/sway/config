@@ -276,10 +276,15 @@ for_window [instance="pinentry-gtk-2"] floating enable
 assign [app_id="firefox"] 9
 # xwayland
 assign [class="firefox"] 9
-assign [class="zoom"] 8
+assign [class="zoom"] 7
 
-for_window [instance="zoom"] inhibit_idle fullscreen
-for_window [instance="zoom"] floating enable
+# Enable floating for misc. windows
+for_window [class="zoom" title="^(zoom|Settings|About)$"] floating enable
+# Enable floating for pre-meeting window
+for_window [class="zoom" title="Zoom Meeting$"] floating enable
+# Ensure tiled mode for actual meetings and inhibit idle while open
+for_window [class="zoom" title="^Meeting$"] floating disable, inhibit_idle open
+
 for_window [app_id="firefox"] inhibit_idle fullscreen
 
 include /etc/sway/config.d/*
