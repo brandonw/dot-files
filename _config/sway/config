@@ -147,7 +147,7 @@ workspace 3 output "LG Electronics LG HDR 4K 0x0001806F"
 workspace 4 output "LG Electronics LG HDR 4K 0x0001806F"
 workspace 5 output "LG Electronics LG HDR 4K 0x0001806F"
 workspace 6 output "LG Electronics LG HDR 4K 0x0001806F"
-workspace 7 output "LG Electronics LG HDR 4K 0x0001806F"
+workspace 7 output "BOE 0x0791 Unknown"
 workspace 8 output "BOE 0x0791 Unknown"
 workspace 9 output "Dell Inc. DELL U2412M M2GCR288268L"
 
