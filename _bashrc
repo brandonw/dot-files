@@ -39,7 +39,7 @@ export IRC_CLIENT='irssi'
 export TODO="t"
 
 # Set this to the location of your work or project folders
-BASH_IT_PROJECT_PATHS="${HOME}/code:${HOME}/old-code"
+BASH_IT_PROJECT_PATHS="${HOME}/code"
 
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
