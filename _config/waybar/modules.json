@@ -1,27 +1,48 @@
 {
     "sway/workspaces": {
       "disable-scroll": true,
-      "all-outputs": true,
+      "all-outputs": false,
       "format": "{name}",
     },
     "sway/mode": {
       "format": "{}"
     },
-    "tray": {
-      "icon-size": 18,
-      "spacing": 10
+
+    "network": {
+      "interval": 5,
+      "format-wifi": "wifi {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
+      "format-ethernet": "eth {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
+      "tooltip-format": "{ifname}",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+      "tooltip-format-ethernet": "{ifname}",
+      "tooltip-format-disconnected": "Disconnected",
     },
-    "idle_inhibitor": {
-      "format": "{icon}",
-      "format-icons": {
-        "activated": "",
-        "deactivated": ""
-      }
+    "memory": {
+      "interval": 5,
+      "format": "Mem {percentage:3}%"
     },
-    "clock": {
-      "format": "{:%a %b %e %Y %I:%M:%S %p %Z}",
-      "interval": 1,
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "cpu": {
+      "interval": 5,
+      "format": "CPU {usage:3}%"
+    },
+    "disk": {
+      "interval": 5,
+      "format": "Disk {percentage_used:3}%",
+      "path": "/"
+    },
+    "battery": {
+      "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon} {capacity:3}%",
+      "format-charging": " {capacity:3}%",
+      "format-plugged": " {capacity:3}%",
+      "format-alt": "{time} {icon}",
+      // "format-good": "", // An empty format will hide the module
+      // "format-full": "",
+      "format-icons": ["", "", "", "", ""]
     },
     "pulseaudio": {
       "format": "{icon} {volume:3}% {format_source}",
@@ -37,13 +58,13 @@
         "phone": "",
         "portable": "",
         "car": "",
-        "default": ["", "", ""]
+        "default": ["", ""]
       }
     },
     "wireplumber": {
       "format": "{icon}  {volume:3}%",
       "format-muted": "",
-      "format-icons": ["", "", ""],
+      "format-icons": ["", ""],
       "tooltip-format": "{node_name}",
     },
     "wireplumber#microphone": {
@@ -52,41 +73,18 @@
 	    "format-icons": [""],
       "tooltip-format": "{node_name}",
     },
-    "battery": {
-      "states": {
-        "good": 95,
-        "warning": 30,
-        "critical": 15
-      },
-      "format": "{icon} {capacity:3}%",
-      "format-charging": "{capacity:3}% ",
-      "format-plugged": "{capacity:3}% ",
-      "format-alt": "{time} {icon}",
-      // "format-good": "", // An empty format will hide the module
-      // "format-full": "",
-      "format-icons": ["", "", "", "", ""]
+    "clock": {
+      "format": "{:%a %b %e %Y %I:%M:%S %p %Z}",
+      "interval": 1,
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
-    "memory": {
-      "interval": 5,
-      "format": "Mem {percentage:3}%"
-    },
-    "cpu": {
-      "interval": 5,
-      "format": "CPU {usage:3}%"
-    },
-    "disk": {
-      "interval": 5,
-      "format": "Disk {percentage_used:3}%",
-      "path": "/"
-    },
-    "network": {
-      "interval": 5,
-      "format-wifi": "wifi {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
-      "format-ethernet": "eth {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
-      "tooltip-format": "{ifname}",
-      "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-      "tooltip-format-ethernet": "{ifname}",
-      "tooltip-format-disconnected": "Disconnected",
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
     },
     "custom/notification": {
       "tooltip": false,
@@ -107,5 +105,9 @@
       "on-click": "swaync-client -t -sw",
       "on-click-right": "swaync-client -d -sw",
       "escape": true
+    },
+    "tray": {
+      "icon-size": 18,
+      "spacing": 10
     },
 }

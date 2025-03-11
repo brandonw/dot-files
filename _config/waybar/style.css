@@ -45,13 +45,17 @@ window#waybar.hidden {
 #workspaces button.persistent {
 }
 
-/* Visible on an output (overridden by next target) */
+/* Workspace is on this output (contextual based on output) */
+/* Using "all-outputs": false to denote this better than a color */
+#workspaces button.current_output {
+}
+
+/* Workspace is visible */
 #workspaces button.visible {
     box-shadow: inset 0 -3px #ebdbb2;
 }
 
-/* Focused, or visible on this output but unfocused */
-#workspaces button.current_output,
+/* Workspace is currently focused */
 #workspaces button.focused {
     box-shadow: inset 0 -3px #89b482;
 }
@@ -91,6 +95,10 @@ window#waybar.hidden {
     -gtk-icon-effect: highlight;
 }
 
+.modules-right {
+    /*background: #ebdbb2;*/
+}
+
 #workspaces,
 #network,
 #cpu,
@@ -102,7 +110,7 @@ window#waybar.hidden {
 #clock,
 #custom-notification,
 #tray {
-    background: #504945;
+    background-color: #282828;
 }
 
 #network,
