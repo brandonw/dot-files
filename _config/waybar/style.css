@@ -119,8 +119,7 @@ window#waybar.hidden {
 #disk,
 #battery,
 #pulseaudio,
-#wireplumber,
-#clock {
+#wireplumber {
     padding: 0 15px;
     margin: 0 0px;
     border-style: solid;
@@ -140,4 +139,19 @@ window#waybar.hidden {
 }
 #tray {
     padding: 0 13px 0 0;
+}
+
+/* Manage differences across outputs of clock styling */
+/* Default */
+#clock {
+    padding: 0 5px;
+    margin: 0 0px;
+}
+/* Primary bar */
+.eDP-1 #clock {
+    padding: 0 15px;
+    border-style: solid;
+    border-width: 0px 1px 0px 1px;
+    border-color: #ebdbb2;
+    border-radius: 10px;
 }

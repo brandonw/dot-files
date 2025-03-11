@@ -45,5 +45,8 @@
       "sway/workspaces",
       "sway/mode",
     ],
+    "modules-right": [
+      "clock",
+    ],
   }
 ]
