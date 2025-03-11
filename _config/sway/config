@@ -272,18 +272,21 @@ bar {
 
 for_window [instance="pinentry-gtk-2"] floating enable
 
-# sway
 assign [app_id="firefox"] 9
-# xwayland
 assign [class="firefox"] 9
 assign [class="zoom"] 7
+assign [app_id="Zoom Workplace"] 7
 
+# Force main window to be tiled (zoom tries to set it to floating by default)
+for_window [class="zoom" title="^Zoom Workplace.+"] floating disable
 # Enable floating for misc. windows
-for_window [class="zoom" title="^(zoom|Settings|About)$"] floating enable
-# Enable floating for pre-meeting window
-for_window [class="zoom" title="Zoom Meeting$"] floating enable
-# Ensure tiled mode for actual meetings and inhibit idle while open
-for_window [class="zoom" title="^Meeting$"] floating disable, inhibit_idle open
+for_window [class="zoom" title="^(zoom|Settings|About|Zoom Workplace)$"] floating enable
+# Ensure inhibit idle while meeting in progress
+# NOTE: xwayland does not show as_toolbar in the sway tree so we cannot actually target it.
+# Make sure to show meeting after sharing screen to ensure Meeting is always available
+for_window [class="zoom" title="^(Meeting)$"] inhibit_idle open
+
+# TODO: Stop using xwayland for zoom  and test various features in the future when Zoom has better support
 
 for_window [app_id="firefox"] inhibit_idle fullscreen
 

@@ -1,137 +1,49 @@
-{
+[
+  {
+    "output": "eDP-1",
     "layer": "bottom", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
-    // Choose the order of the modules
+
+    "include": [
+      "~/.config/waybar/modules.json",
+    ],
+
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "custom/media"
+      "sway/workspaces",
+      "sway/mode",
+      "custom/media",
     ],
     "modules-center": [
     ],
     "modules-right": [
-        "network",
-        "cpu",
-        "memory",
-        "disk",
-        "battery",
-        "pulseaudio",
-        // TODO: Switch to wireplumber when bugs are resolved and source/sink are shown independently
-        // "wireplumber",
-        // "wireplumber#microphone",
-        "clock",
-	"custom/notification",
-        "tray"
+      "network",
+      "cpu",
+      "memory",
+      "disk",
+      "battery",
+      "pulseaudio",
+      // TODO: Switch to wireplumber when bugs are resolved and source/sink are shown independently
+      // "wireplumber",
+      // "wireplumber#microphone",
+      "clock",
+      "custom/notification",
+      "tray",
     ],
-    // Modules configuration
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}",
-    },
-    "sway/mode": {
-        "format": "{}"
-    },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "clock": {
-        "format": "{:%a %b %e %Y %I:%M:%S %p %Z}",
-        "interval": 1,
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume:3}% {format_source}",
-        "format-bluetooth": "{icon} {volume:3}% {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": " {volume:3}%",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        }
-    },
-    "wireplumber": {
-        "format": "{icon}  {volume:3}%",
-        "format-muted": "",
-        "format-icons": ["", "", ""],
-        "tooltip-format": "{node_name}",
-    },
-    "wireplumber#microphone": {
-        "format": "{icon} {volume:3}%",
-        "format-muted": "",
-	"format-icons": [""],
-        "tooltip-format": "{node_name}",
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity:3}%",
-        "format-charging": "{capacity:3}% ",
-        "format-plugged": "{capacity:3}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "memory": {
-        "interval": 5,
-        "format": "Mem {percentage:3}%"
-    },
-    "cpu": {
-        "interval": 5,
-        "format": "CPU {usage:3}%"
-    },
-    "disk": {
-        "interval": 5,
-        "format": "Disk {percentage_used:3}%",
-        "path": "/"
-    },
-    "network": {
-	"interval": 5,
-        "format-wifi": "wifi {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
-        "format-ethernet": "eth {bandwidthDownBytes:=} ↓ / {bandwidthUpBytes:=} ↑",
-        "tooltip-format": "{ifname}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "{ifname}",
-        "tooltip-format-disconnected": "Disconnected",
-    },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{} {icon}",
-        "format-icons": {
-            "notification": "",
-            "none": "",
-            "dnd-notification": "",
-            "dnd-none": "",
-            "inhibited-notification": "",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "",
-            "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-}
+  },
+  {
+    "output": "!eDP-1",
+    "layer": "bottom", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+
+    "include": [
+      "~/.config/waybar/modules.json",
+    ],
+
+    "modules-left": [
+      "sway/workspaces",
+      "sway/mode",
+    ],
+  }
+]
