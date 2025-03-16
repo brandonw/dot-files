@@ -200,8 +200,8 @@ return {
     ---@type blink.cmp.Config
     opts = {
       keymap = {
-        -- https://cmp.saghen.dev/configuration/keymap.html#default
-        preset = "default",
+        -- https://cmp.saghen.dev/configuration/keymap.html#super-tab
+        preset = "super-tab",
       },
       appearance = {
         -- Set to "mono" for "Nerd Font Mono" or "normal" for "Nerd Font"
@@ -228,8 +228,6 @@ return {
 
   {
     "folke/snacks.nvim",
-    -- Not released yet, but will include required fixes once released.
-    -- Otherwise, will fail to find tag and default to `nil`.
     version = "v2.22.0",
     priority = 1000,
     lazy = false,

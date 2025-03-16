@@ -6,7 +6,7 @@ exec = ["notify-send shikane \"Profile '$SHIKANE_PROFILE_NAME' has been applied\
     enable = true
     search = ["m=DELL U2412M", "s=M2GCR288268L", "v=Dell Inc."]
     mode = "1920x1200@59.95Hz"
-    position = "-1920,-1200"
+    position = "-1920,-2160"
     scale = 1.0
     transform = "normal"
     adaptive_sync = false
