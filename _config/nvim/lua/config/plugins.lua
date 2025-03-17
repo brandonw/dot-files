@@ -199,28 +199,20 @@ return {
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
-      keymap = {
-        -- https://cmp.saghen.dev/configuration/keymap.html#super-tab
-        preset = "super-tab",
-      },
       appearance = {
         -- Set to "mono" for "Nerd Font Mono" or "normal" for "Nerd Font"
         -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono"
       },
-      completion = {
-        trigger = {
-          prefetch_on_insert = false,
-          show_in_snippet = false,
-          show_on_keyword = false,
-          show_on_trigger_character = false,
-        },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      keymap = {
+        -- https://cmp.saghen.dev/configuration/keymap.html#default
+        preset = "default",
       },
       signature = {
         enabled = true,
-      },
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
       },
     },
     opts_extend = { "sources.default" }
