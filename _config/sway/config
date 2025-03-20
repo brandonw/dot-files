@@ -288,7 +288,7 @@ for_window [class="zoom" title="^(Meeting)$"] inhibit_idle open
 
 # TODO: Stop using xwayland for zoom  and test various features in the future when Zoom has better support
 
-for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [all] inhibit_idle fullscreen
 
 include /etc/sway/config.d/*
 exec_always systemctl --user restart sway-session.target
