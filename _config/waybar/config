@@ -27,6 +27,8 @@
       // "wireplumber",
       // "wireplumber#microphone",
       "clock",
+      // TODO: If idle_inhibitor can detect state change other than itself, try this again
+      // "idle_inhibitor",
       "custom/notification",
       "tray",
     ],

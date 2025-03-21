@@ -109,6 +109,7 @@ window#waybar.hidden {
 #wireplumber,
 #clock,
 #custom-notification,
+#idle_inhibitor,
 #tray {
     background-color: #282828;
 }

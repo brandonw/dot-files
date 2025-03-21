@@ -12,8 +12,6 @@ return {
       vim.cmd([[colorscheme gruvbox-material]])
     end,
   },
-  -- If I don"t notice this is gone, delete it for good
-  -- { "tpope/vim-repeat", event = "VeryLazy", version = nil },
   {
     "lambdalisue/suda.vim",
     version = "v1.2.4",
@@ -32,6 +30,7 @@ return {
     "cappyzawa/trim.nvim",
     version = "v0.10.2",
     event = "VeryLazy",
+    opts = {},
   },
   {
     "sindrets/diffview.nvim",
