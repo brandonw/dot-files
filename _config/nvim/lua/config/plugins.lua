@@ -1,4 +1,19 @@
 return {
+  ------------------------------------------------
+  -- generic dependencies with no configuration --
+  ------------------------------------------------
+  {
+    "nvim-tree/nvim-web-devicons",
+    version = nil,
+  },
+  {
+    "nvim-lua/plenary.nvim",
+    version = nil, -- tags do not seem to fully track releases?
+  },
+
+  -------------------------------------------
+  -- plugins that are reasonably hands-off --
+  -------------------------------------------
   {
     "sainnhe/gruvbox-material",
     version = "146f40fd42cbef30fed69b4ef51329aeeaceb909", -- change to explicit version once blink updates included
@@ -113,7 +128,9 @@ return {
     end,
   },
 
-  -- treesitter
+  ----------------
+  -- treesitter --
+  ----------------
   {
     "nvim-lualine/lualine.nvim",
     version = nil,
@@ -154,6 +171,10 @@ return {
     },
   },
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    version = nil,
+  },
+  {
     "kylechui/nvim-surround",
     version = "v2.3.2",
     dependencies = {
@@ -176,7 +197,13 @@ return {
     end,
   },
 
-  -- lsp
+  ----------------------------------------------------
+  -- language server protocol, snippets, completion --
+  ----------------------------------------------------
+  {
+    "b0o/SchemaStore.nvim",
+    version = nil,
+  },
   {
     "neovim/nvim-lspconfig",
     version = "v1.6.0",
@@ -190,9 +217,13 @@ return {
     end,
   },
   {
+    "rafamadriz/friendly-snippets",
+    version = nil,
+  },
+  {
     "saghen/blink.cmp",
     dependencies = "rafamadriz/friendly-snippets",
-    version = "v0.13.1",
+    version = "v1.0.0",
     lazy = false,
 
     ---@module "blink.cmp"
@@ -217,6 +248,9 @@ return {
     opts_extend = { "sources.default" }
   },
 
+  ---------------------------
+  -- pickers, explorer, ux --
+  ---------------------------
   {
     "folke/snacks.nvim",
     version = "v2.22.0",
@@ -314,27 +348,5 @@ return {
         end,
       })
     end,
-  },
-
-  -- dependencies with no configuration
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    version = nil,
-  },
-  {
-    "rafamadriz/friendly-snippets",
-    version = nil,
-  },
-  {
-    "nvim-tree/nvim-web-devicons",
-    version = nil,
-  },
-  {
-    "b0o/SchemaStore.nvim",
-    version = nil,
-  },
-  {
-    "nvim-lua/plenary.nvim",
-    version = nil, -- tags do not seem to fully track releases?
   },
 }

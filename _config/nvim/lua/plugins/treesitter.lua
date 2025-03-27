@@ -7,6 +7,7 @@ ts.setup({
     "vimdoc",
     "javascript",
     "typescript",
+    "go",
     "markdown",
     "markdown_inline",
   },
