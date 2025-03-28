@@ -1,6 +1,14 @@
- [font]
- normal = { family = "DinaRemasterII", style = "Regular" }
- size = 17
+[font]
+normal = { family = "DinaRemasterII", style = "Medium" }
+size = 17
+# normal = { family = "Hack Nerd Font Mono", style = "Regular" }
+# size = 15
+# normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular" }
+# size = 13
+# TODO: Fix this when Mac OS font fallback doesn't suck?
+
+[window]
+option_as_alt = "Both"
 
 # https://gist.github.com/sainnhe/ad5cbc4f05c4ced83f80e54d9a75d22f
 # Colors (gruvbox_material_medium_dark)

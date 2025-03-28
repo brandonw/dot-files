@@ -11,7 +11,6 @@ pacman -S \
   sway \
   sway-contrib \
   fuzzel \
-  foot \
   alacritty \
   swaync \
   wl-clipboard \
@@ -36,7 +35,9 @@ pacman -S \
   noto-fonts-extra \
   bash-completion \
   git \
-  cmake
+  cmake \
+  asdf \
+  fzf
 
 # Install aur-utils; AUR packges of use:
 # ttf-dina-remastered
@@ -44,19 +45,31 @@ pacman -S \
 # shikane
 ```
 
+```sh
+brew install \
+  asdf \
+  bash \
+  bash-completion@2 \
+  font-hack-nerd-font \
+  fzf \
+  git \
+  neovim \
+  ripgrep \
+  font-hack-nerd-font \
+  font-jetbrains-mono-nerd-font
+```
+
 ## Install Git Repos
 
 Clone and follow default bash+git install, except for bash-it which should be
 integrated into .bashrc that will be symlinked below.
 
-- https://github.com/asdf-vm/asdf
 - https://github.com/Bash-it/bash-it
-- https://github.com/junegunn/fzf
 
 ## Symlink Stuff
 
 ```sh
-# Top Level
+# All systems
 ln -s $HOME/.dot-files/_bashrc $HOME/.bashrc
 ln -s $HOME/.dot-files/_gitconfig $HOME/.gitconfig
 ln -s $HOME/.dot-files/_gitignore $HOME/.gitignore
@@ -66,19 +79,18 @@ ln -s $HOME/.dot-files/_profile $HOME/.profile
 ln -s $HOME/.dot-files/_psqlrc $HOME/.psqlrc
 mkdir $HOME/.bin
 ln -s $HOME/.dot-files/switch_branches.sh $HOME/.bin/sb
-# Linux specific
-ln -s $HOME/.dot-files/_gpg-agent.conf $HOME/.gpg-agent.conf
 
-
-# Config
 mkdir -p $HOME/.config
 ln -s \
   $HOME/.dot-files/_config/nvim \
   $HOME/.config
 ln -s \
-  $HOME/.dot-files/_config/foot \
-  $HOME/.dot-files/_config/foot \
   $HOME/.dot-files/_config/alacritty \
+  $HOME/.config
+
+# Linux specific
+ln -s $HOME/.dot-files/_gpg-agent.conf $HOME/.gpg-agent.conf
+ln -s \
   $HOME/.dot-files/_config/swaync \
   $HOME/.dot-files/_config/shikane \
   $HOME/.dot-files/_config/fuzzel \
@@ -102,6 +114,12 @@ systemctl --user enable batwarn.timer
 sudo mkdir /etc/greetd
 sudo cp /home/brandon/.dot-files/etc/greetd/* /etc/greetd/
 systemctl enable greetd.service
+
+# Mac specific
+ln -s $HOME/.bashrc $HOME/.bash_profile
+cat '#!/usr/bin/env bash' >> $HOME/.bashrc.local
+cat 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bashrc.local
+cat '[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"' >> $HOME/.bashrc.local
 ```
 
 Useful References:
