@@ -57,6 +57,8 @@ brew install \
   ripgrep \
   font-hack-nerd-font \
   font-jetbrains-mono-nerd-font
+brew install --cask nikitabobko/tap/aerospace
+brew tap FelixKratz/formulae && brew install sketchybar
 ```
 
 ## Install Git Repos
@@ -116,6 +118,11 @@ sudo cp /home/brandon/.dot-files/etc/greetd/* /etc/greetd/
 systemctl enable greetd.service
 
 # Mac specific
+ln -s $HOME/.dot-files/_aerospace.toml $HOME/.aerospace.toml
+ln -s \
+  $HOME/.dot-files/_config/sketchybar \
+  $HOME/.config
+
 ln -s $HOME/.bashrc $HOME/.bash_profile
 cat '#!/usr/bin/env bash' >> $HOME/.bashrc.local
 cat 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bashrc.local
