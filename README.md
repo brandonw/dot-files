@@ -59,6 +59,7 @@ brew install \
   font-jetbrains-mono-nerd-font
 brew install --cask nikitabobko/tap/aerospace
 brew tap FelixKratz/formulae && brew install sketchybar
+brew tap FelixKratz/formulae && brew install borders
 ```
 
 ## Install Git Repos
