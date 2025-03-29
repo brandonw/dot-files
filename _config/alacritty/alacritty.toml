@@ -35,3 +35,10 @@ blue    = '0x7daea3'
 magenta = '0xd3869b'
 cyan    = '0x89b482'
 white   = '0xd4be98'
+
+
+[keyboard]
+bindings = [
+  # Disable macOS binding for new tab-- tabs do not interoperate with aerospace
+  { key = "T", mods = "Command", action = "ReceiveChar" }
+]
