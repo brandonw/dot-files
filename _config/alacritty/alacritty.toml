@@ -2,7 +2,7 @@
 # normal = { family = "DinaRemasterII", style = "Medium" }
 # size = 17
 normal = { family = "Hack Nerd Font Mono", style = "Regular" }
-size = 15
+size = 18
 # normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular" }
 # size = 13
 # TODO: Fix this when Mac OS font fallback doesn't suck?
