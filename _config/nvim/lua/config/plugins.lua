@@ -330,11 +330,9 @@ return {
     },
     keys = {
       -- Explorer
-      -- Switch to this when available
-      -- { "goe", function () Snacks.explorer.reveal() end, desc = "Open Explorer" },
-      { "goe", function () Snacks.explorer.open() end, desc = "Open Explorer" },
-      { "goa", function () Snacks.picker.git_files() end, desc = "Find Git Files" },
-      { "gof", function () Snacks.picker.pick({ source = "git_files", cwd = "./packages/backend/", title = "packages/backend/ Git Files" }) end, desc = "Find Git Backend Files" },
+      { "goe", function () Snacks.explorer.reveal() end, desc = "Open Explorer" },
+      { "gof", function () Snacks.picker.git_files() end, desc = "Find Git Files" },
+      { "god", function () Snacks.picker.pick({ source = "git_files", cwd = "./packages/backend/", title = "packages/backend/ Git Files" }) end, desc = "Find Git Backend Files" },
       { "gob", function () Snacks.picker.buffers() end, desc = "Buffers" },
       { "gom", function () Snacks.picker.marks() end, desc = "Marks" },
       { "gos", function () Snacks.picker.lsp_symbols() end, desc = "LSP document symbols" },
