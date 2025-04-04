@@ -341,13 +341,5 @@ return {
       { "<Leader>h", function () Snacks.picker.help() end, desc = "Help Pages" },
       { "<Leader>u", function () Snacks.picker.undo() end, desc = "Undo History" },
     },
-    init = function()
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "VeryLazy",
-        callback = function()
-          Snacks.toggle.option("hlsearch", { name = "Highlight Search" }):map("yoh")
-        end,
-      })
-    end,
   },
 }
