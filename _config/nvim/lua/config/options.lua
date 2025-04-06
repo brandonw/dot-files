@@ -5,10 +5,6 @@ vim.opt.clipboard:append { "unnamedplus" }
 vim.opt.colorcolumn = { "+1" }
 vim.opt.completeopt = { "menuone", "longest", "preview" }
 vim.opt.diffopt = { "filler", "vertical", "internal", "indent-heuristic", "algorithm:histogram", "iwhite" }
-vim.opt.foldenable = false
--- vim.opt.foldmethod = "indent"
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.hlsearch = false
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -17,6 +13,12 @@ vim.opt.signcolumn = "number"
 vim.opt.switchbuf = "newtab"
 vim.opt.termguicolors = true
 vim.opt.title = true
+
+-- Default to treesitter folding
+-- LSP autocmd overrides on attach if support is available
+vim.opt.foldenable = false
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 if vim.fn.executable('rg') == 1 then
   vim.opt.grepformat="%f:%l:%c:%m"
