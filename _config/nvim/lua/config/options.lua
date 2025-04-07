@@ -5,7 +5,6 @@ vim.opt.clipboard:append { "unnamedplus" }
 vim.opt.colorcolumn = { "+1" }
 vim.opt.completeopt = { "menuone", "longest", "preview" }
 vim.opt.diffopt = { "filler", "vertical", "internal", "indent-heuristic", "algorithm:histogram", "iwhite" }
-vim.opt.hlsearch = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shortmess = "atIc"
