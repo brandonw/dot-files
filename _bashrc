@@ -130,3 +130,7 @@ export HISTSIZE=5000
 
 # Machine-specific customizations
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
+
+# Set up fzf key bindings and fuzzy completion (after local bashrc in case it
+# affects PATH
+eval "$(fzf --bash)"
