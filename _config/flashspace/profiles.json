@@ -1,0 +1,126 @@
+{
+  "profiles" : [
+    {
+      "id" : "4803C416-AC26-40B5-AEE4-B2E1F461A09F",
+      "name" : "Default",
+      "workspaces" : [
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "org.alacritty",
+              "iconPath" : "/Applications/Alacritty.app/Contents/Resources/alacritty.icns",
+              "name" : "Alacritty"
+            }
+          ],
+          "assignAppShortcut" : "opt+shift+1",
+          "display" : "LG HDR 4K",
+          "id" : "A7479CBD-692A-4A44-9C5A-F488ACC77EA2",
+          "name" : "Terminal",
+          "shortcut" : "opt+1",
+          "symbolIconName" : "1.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+2",
+          "display" : "LG HDR 4K",
+          "id" : "C2D42884-001B-424B-B8E7-AA32A9674735",
+          "name" : "2",
+          "shortcut" : "opt+2",
+          "symbolIconName" : "2.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+3",
+          "display" : "LG HDR 4K",
+          "id" : "39E26D7A-361E-4345-A7BD-CAF3D119CC12",
+          "name" : "3",
+          "shortcut" : "opt+3",
+          "symbolIconName" : "3.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+4",
+          "display" : "LG HDR 4K",
+          "id" : "4DC8039B-EB1F-41F1-9208-F3D43A76CC37",
+          "name" : "4",
+          "shortcut" : "opt+4",
+          "symbolIconName" : "4.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+5",
+          "display" : "LG HDR 4K",
+          "id" : "025E10A2-8B03-4075-9C5F-7165B7B2B10A",
+          "name" : "5",
+          "shortcut" : "opt+5",
+          "symbolIconName" : "5.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+6",
+          "display" : "LG HDR 4K",
+          "id" : "8DF8F559-5FA8-4140-8528-6A78E308D956",
+          "name" : "6",
+          "shortcut" : "opt+6",
+          "symbolIconName" : "6.lane"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "us.zoom.xos",
+              "iconPath" : "/Applications/zoom.us.app/Contents/Resources/ZPLogo.icns",
+              "name" : "zoom.us"
+            }
+          ],
+          "assignAppShortcut" : "opt+shift+7",
+          "display" : "LG HDR 4K",
+          "id" : "DFDA4FCD-ED69-4B96-8A40-DA276C1B4731",
+          "name" : "Zoom",
+          "shortcut" : "opt+7",
+          "symbolIconName" : "7.lane"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.tinyspeck.slackmacgap",
+              "iconPath" : "/Applications/Slack.app/Contents/Resources/electron.icns",
+              "name" : "Slack"
+            }
+          ],
+          "assignAppShortcut" : "opt+shift+8",
+          "display" : "Built-in Retina Display",
+          "id" : "19F9F876-2260-4054-8F66-C71EE4F8836B",
+          "name" : "Slack",
+          "shortcut" : "opt+8",
+          "symbolIconName" : "8.lane"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "org.mozilla.firefox",
+              "iconPath" : "/Applications/Firefox.app/Contents/Resources/firefox.icns",
+              "name" : "Firefox"
+            }
+          ],
+          "assignAppShortcut" : "opt+shift+9",
+          "display" : "DELL U2412M",
+          "id" : "0F1EF71A-6A8B-4068-BF93-ED39257769C4",
+          "name" : "Browser",
+          "shortcut" : "opt+9",
+          "symbolIconName" : "9.lane"
+        }
+      ]
+    }
+  ],
+  "selectedProfileId" : "4803C416-AC26-40B5-AEE4-B2E1F461A09F"
+}
