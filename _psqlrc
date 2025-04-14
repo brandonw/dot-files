@@ -1,3 +1,5 @@
 \x auto
 \set PROMPT1 '%M:%> %n@%/%R%#%x '
 \pset null '(null)'
+
+\set HISTSIZE 10000

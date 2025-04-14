@@ -8,6 +8,7 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 lspconfig.ts_ls.setup({
   capabilities = capabilities,
   init_options = {
+    maxTsServerMemory = 4096,
     preferences = {
       disableSuggestions = true,
     }

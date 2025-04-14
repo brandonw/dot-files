@@ -127,6 +127,45 @@ return {
       require("plugins.lint")
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    version = "v9.0.0",
+    event = { "VeryLazy" },
+    keys = {
+      {
+        "<Leader>f",
+        function()
+          require("conform").format({ async = true })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
+      -- {
+      --   "gfj",
+      --   function()
+      --     require("conform").format({
+      --       async = true,
+      --       formatters = { "prettierjson" },
+      --     })
+      --   end,
+      --   mode = "",
+      --   desc = "Format buffer",
+      -- },
+    },
+    ---@module "conform"
+    ---@type conform.setupOpts
+    opts = {
+      formatters_by_ft = {
+        javascript = { "prettier", stop_after_first = true },
+        typescript = { "prettier", stop_after_first = true },
+        json = { "prettier", stop_after_first = true },
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+      format_on_save = { timeout_ms = 500 },
+    },
+  },
 
   ----------------
   -- treesitter --
@@ -301,10 +340,14 @@ return {
       toggle = {
         enabled = true,
       },
+      terminal = {
+        enable = true,
+      },
       picker = {
         enabled = true,
         sources = {
           explorer = {
+            layout = { preset = "ivy", layout = { position = "top" } },
             watch = false, -- remove if/when luv usage is fixed
           },
           git_files = {
@@ -327,6 +370,37 @@ return {
           }
         },
       },
+      styles = {
+        terminal = {
+          bo = {
+            filetype = "snacks_terminal",
+          },
+          wo = {},
+          keys = {
+            q = "hide",
+            gf = function(self)
+              local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
+              if f == "" then
+                Snacks.notify.warn("No file under cursor")
+              else
+                self:hide()
+                vim.schedule(function()
+                  vim.cmd("e " .. f)
+                end)
+              end
+            end,
+            term_normal = {
+              "<esc>",
+              function(self)
+                vim.cmd("stopinsert")
+              end,
+              mode = "t",
+              expr = true,
+              desc = "Escape to normal mode",
+            },
+          },
+        }
+      },
     },
     keys = {
       -- Explorer
@@ -337,6 +411,7 @@ return {
       { "gom", function () Snacks.picker.marks() end, desc = "Marks" },
       { "gos", function () Snacks.picker.lsp_symbols() end, desc = "LSP document symbols" },
       { "got", function () Snacks.picker.treesitter() end, desc = "Treesitter symbols" },
+      { "goc", function () Snacks.terminal() end, desc = "Toggle terminal" },
       { "<Leader>gb", function () Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
       { "<Leader>h", function () Snacks.picker.help() end, desc = "Help Pages" },
       { "<Leader>u", function () Snacks.picker.undo() end, desc = "Undo History" },

@@ -65,12 +65,16 @@
         },
         {
           "apps" : [
-
+            {
+              "bundleIdentifier" : "com.postmanlabs.mac",
+              "iconPath" : "/Applications/Postman.app/Contents/Resources/app.icns",
+              "name" : "Postman"
+            }
           ],
           "assignAppShortcut" : "opt+shift+6",
           "display" : "LG HDR 4K",
           "id" : "8DF8F559-5FA8-4140-8528-6A78E308D956",
-          "name" : "6",
+          "name" : "Postman",
           "shortcut" : "opt+6",
           "symbolIconName" : "6.lane"
         },

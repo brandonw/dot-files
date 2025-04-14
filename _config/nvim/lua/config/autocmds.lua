@@ -144,9 +144,10 @@ autocmd('LspAttach', {
     vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<Leader>f', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
+    -- conform owns formatting and can fallback to lsp as needed
+    -- vim.keymap.set('n', '<Leader>f', function()
+    --   vim.lsp.buf.format { async = true }
+    -- end, opts)
 
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client:supports_method('textDocument/foldingRange') then

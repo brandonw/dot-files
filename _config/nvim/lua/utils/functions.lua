@@ -20,6 +20,11 @@ M.searchProd = function ()
     .. " -g !\\*.test.js.snap"
     .. " -g !\\*.test.ts"
     .. " -g !\\*.test.ts.snap"
+    .. " -g !@types/zapatos/index.d.ts"
+    .. " -g !packages/backend/core/server/graphql"
+    .. " -g !packages/app/src/graphql"
+    .. " -g !\\*.sql"
+    .. " -g !packages/backend/core/hasura"
   )
   vim.fn.execute(command)
   vim.fn.histadd("cmd", command)
