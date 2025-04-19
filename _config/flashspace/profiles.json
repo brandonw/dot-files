@@ -66,9 +66,9 @@
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.postmanlabs.mac",
-              "iconPath" : "/Applications/Postman.app/Contents/Resources/app.icns",
-              "name" : "Postman"
+              "bundleIdentifier" : "com.1password.1password",
+              "iconPath" : "/Applications/1Password.app/Contents/Resources/icon.icns",
+              "name" : "1Password"
             }
           ],
           "assignAppShortcut" : "opt+shift+6",
@@ -84,6 +84,16 @@
               "bundleIdentifier" : "us.zoom.xos",
               "iconPath" : "/Applications/zoom.us.app/Contents/Resources/ZPLogo.icns",
               "name" : "zoom.us"
+            },
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
+            },
+            {
+              "bundleIdentifier" : "com.postmanlabs.mac",
+              "iconPath" : "/Applications/Postman.app/Contents/Resources/app.icns",
+              "name" : "Postman"
             }
           ],
           "assignAppShortcut" : "opt+shift+7",
