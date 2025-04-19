@@ -4,11 +4,11 @@ return {
   ------------------------------------------------
   {
     "nvim-tree/nvim-web-devicons",
-    version = nil,
+    branch = "master",
   },
   {
     "nvim-lua/plenary.nvim",
-    version = nil, -- tags do not seem to fully track releases?
+    branch = "master", -- tags do not seem to fully track releases?
   },
 
   -------------------------------------------
@@ -16,7 +16,7 @@ return {
   -------------------------------------------
   {
     "sainnhe/gruvbox-material",
-    version = "146f40fd42cbef30fed69b4ef51329aeeaceb909", -- change to explicit version once blink updates included
+    branch = "master", -- change to explicit version once blink updates included
     lazy = false, -- make sure we load this during startup as it is our main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function ()
@@ -38,7 +38,7 @@ return {
   },
   {
     "hashivim/vim-terraform",
-    version = nil,
+    branch = "master",
     event = "VeryLazy",
   },
   {
@@ -49,7 +49,7 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    version = nil,
+    branch = "main",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -96,14 +96,14 @@ return {
   },
   {
     "tpope/vim-fugitive",
-    version = nil, -- lots of commits after latest version (2+ years old)
+    branch = "master", -- lots of commits after latest version (2+ years old)
     keys = {
       { "gfb", "<Cmd>Git blame<CR>", mode = "n" },
     },
   },
   {
     "towolf/vim-helm",
-    version = nil,
+    branch = "master",
     event = "VeryLazy",
   },
   {
@@ -121,7 +121,7 @@ return {
   },
   {
     "mfussenegger/nvim-lint",
-    version = nil,
+    branch = "master",
     event = "VeryLazy",
     config = function ()
       require("plugins.lint")
@@ -172,7 +172,7 @@ return {
   ----------------
   {
     "nvim-lualine/lualine.nvim",
-    version = nil,
+    branch = "master",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "nvim-treesitter/nvim-treesitter",
@@ -211,7 +211,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    version = nil,
+    branch = "master",
   },
   {
     "kylechui/nvim-surround",
@@ -241,7 +241,7 @@ return {
   ----------------------------------------------------
   {
     "b0o/SchemaStore.nvim",
-    version = nil,
+    branch = "main",
   },
   {
     "neovim/nvim-lspconfig",
@@ -257,7 +257,7 @@ return {
   },
   {
     "rafamadriz/friendly-snippets",
-    version = nil,
+    branch = "main",
   },
   {
     "saghen/blink.cmp",
