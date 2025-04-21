@@ -140,17 +140,6 @@ return {
         mode = "",
         desc = "Format buffer",
       },
-      -- {
-      --   "gfj",
-      --   function()
-      --     require("conform").format({
-      --       async = true,
-      --       formatters = { "prettierjson" },
-      --     })
-      --   end,
-      --   mode = "",
-      --   desc = "Format buffer",
-      -- },
     },
     ---@module "conform"
     ---@type conform.setupOpts
@@ -164,6 +153,7 @@ return {
         lsp_format = "fallback",
       },
       format_on_save = { timeout_ms = 500 },
+      log_level = vim.log.levels.DEBUG
     },
   },
 
