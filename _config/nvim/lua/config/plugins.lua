@@ -359,6 +359,14 @@ return {
             },
           }
         },
+        formatters = {
+          file = {
+            -- Truncate the file path to (roughly) this length.
+            -- Will not play well if you tile a new terminal in nvim's workspace
+            -- after it has started.
+            truncate = math.floor(vim.o.columns * 0.333),
+          },
+        },
       },
       styles = {
         terminal = {
