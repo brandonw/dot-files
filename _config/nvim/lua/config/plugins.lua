@@ -343,6 +343,9 @@ return {
           git_files = {
             untracked = true,
           },
+          buffers = {
+            sort_lastused = false,
+          },
         },
         jump = {
           reuse_win = true,
