@@ -206,5 +206,8 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'org.mozilla.firefox'
     run = ['layout floating', 'move-node-to-workspace 9']
 [[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = ['layout floating', 'move-node-to-workspace 9']
+[[on-window-detected]]
     if.app-id = 'com.apple.finder'
     run = ['layout floating']
