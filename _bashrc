@@ -128,6 +128,11 @@ export HISTCONTROL="ignorespace:ignoredups"
 # Default of 500 is waaaaay too small
 export HISTSIZE=5000
 
+# Mutate path before anything else so that we can rely on binaries being
+# accessible if needed.
+[ -d $HOME/.bin ] && export PATH="$HOME/.bin:$PATH"
+[ -d $HOME/go/bin ] && export PATH="$HOME/go/bin:$PATH"
+
 # Machine-specific customizations
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
 

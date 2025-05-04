@@ -1,8 +1,5 @@
 #!/bin/sh
 
-[ -d $HOME/.bin ] && export PATH="$HOME/.bin:$PATH"
-[ -d $HOME/go/bin ] && export PATH="$HOME/go/bin:$PATH"
-
 export PAGER="less"
 export LESS="-R "
 export EDITOR="nvim"
