@@ -1,0 +1,3 @@
+k9s:
+  # Specifies if modification commands like delete/kill/edit are disabled. Default is false
+  readOnly: true

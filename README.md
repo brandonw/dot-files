@@ -84,12 +84,19 @@ mkdir $HOME/.bin
 ln -s $HOME/.dot-files/switch_branches.sh $HOME/.bin/sb
 
 mkdir -p $HOME/.config
+mkdir -p $HOME/.config/k9s
 ln -s \
   $HOME/.dot-files/_config/nvim \
   $HOME/.config
 ln -s \
   $HOME/.dot-files/_config/alacritty \
   $HOME/.config
+ln -s \
+  $HOME/.dot-files/_config/k9s/config.yaml \
+  $HOME/.config/k9s
+ln -s \
+  $HOME/.dot-files/_config/k9s/views.yaml \
+  $HOME/.config/k9s
 
 # Linux specific
 ln -s $HOME/.dot-files/_gpg-agent.conf $HOME/.gpg-agent.conf

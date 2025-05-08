@@ -4,6 +4,7 @@ export PAGER="less"
 export LESS="-R "
 export EDITOR="nvim"
 export KUBE_EDITOR="nvim"
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export BROWSER="firefox"
 export FZF_DEFAULT_COMMAND='
   (git ls-files . -co --exclude-standard ||

@@ -1,0 +1,17 @@
+views:
+  v1/nodes:
+    columns:
+      - NAME
+      - STATUS
+      - ROLE
+      - TAINTS
+      - VERSION
+      - PODS
+      - CPU
+      - MEM
+      - '%CPU'
+      - '%MEM'
+      - CPU/A
+      - MEM/A
+      - AGE
+      - POOL:.metadata.labels.hightouch\.com/nodegroup
