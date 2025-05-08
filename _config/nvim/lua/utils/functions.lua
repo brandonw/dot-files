@@ -25,6 +25,7 @@ M.searchProd = function ()
     .. " -g !packages/app/src/graphql"
     .. " -g !\\*.sql"
     .. " -g !packages/backend/core/hasura"
+    .. " -g !cdktf.out/*"
   )
   vim.fn.execute(command)
   vim.fn.histadd("cmd", command)

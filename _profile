@@ -3,6 +3,7 @@
 export PAGER="less"
 export LESS="-R "
 export EDITOR="nvim"
+export KUBE_EDITOR="nvim"
 export BROWSER="firefox"
 export FZF_DEFAULT_COMMAND='
   (git ls-files . -co --exclude-standard ||
