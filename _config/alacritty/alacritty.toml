@@ -16,7 +16,8 @@ background = '0x282828'
 foreground = '0xd4be98'
 
 [colors.normal]
-black   = '0x3c3836'
+# black   = '0x3c3836'
+black   = '0xa89984'
 red     = '0xea6962'
 green   = '0xa9b665'
 yellow  = '0xd8a657'
@@ -26,7 +27,9 @@ cyan    = '0x89b482'
 white   = '0xd4be98'
 
 [colors.bright]
-black   = '0x3c3836'
+# chalk uses this but isn't smart enough to prevent dark on dark
+# black   = '0x3c3836'
+black   = '0xa89984'
 red     = '0xea6962'
 green   = '0xa9b665'
 yellow  = '0xd8a657'
@@ -34,7 +37,6 @@ blue    = '0x7daea3'
 magenta = '0xd3869b'
 cyan    = '0x89b482'
 white   = '0xd4be98'
-
 
 [keyboard]
 bindings = [

@@ -413,6 +413,7 @@ return {
       -- Explorer
       { "goe", function () Snacks.explorer.reveal() end, desc = "Open Explorer" },
       { "gof", function () Snacks.picker.files() end, desc = "Find Files" },
+      { "goa", function () Snacks.picker.files({hidden = true, ignored = true}) end, desc = "Find All Files" },
       {
         -- Customized Find Files with a good preset based on the basename of cwd
         "god",

@@ -57,7 +57,7 @@ autocmd({"FileType"}, {
 
 autocmd({"FileType"}, {
   pattern = {"javascript"},
-  command = "setlocal et textwidth=120 tabstop=4 shiftwidth=4 autoindent shiftround fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
+  command = "setlocal et textwidth=120 tabstop=2 shiftwidth=2 autoindent shiftround fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
 })
 autocmd({"FileType"}, {
   pattern = {"typescript"},
