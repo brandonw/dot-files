@@ -2,7 +2,41 @@
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
+-- local configs = require('lspconfig.configs')
 local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+-- if not configs.tsgo then
+--   configs.tsgo = {
+--     default_config = {
+--       cmd = { 'tsgo', '--lsp', '--stdio' },
+--       filetypes = {
+--         'javascript',
+--         'javascriptreact',
+--         'javascript.jsx',
+--         'typescript',
+--         'typescriptreact',
+--         'typescript.tsx',
+--       },
+--       root_dir = lspconfig.util.root_pattern(
+--         'tsconfig.json',
+--         'jsconfig.json',
+--         'package.json',
+--         '.git',
+--         'tsconfig.base.json'
+--       ),
+--       settings = {},
+--     },
+--   }
+-- end
+--
+-- -- npm install -g @typescript/native-preview
+-- lspconfig.tsgo.setup({
+--   capabilities = capabilities,
+--   -- on_attach = function(client, bufnr)
+--   --   disable_formatting(client)
+--   --   on_attach(client, bufnr)
+--   -- end,
+-- })
 
 -- npm install -g typescript-language-server typescript
 lspconfig.ts_ls.setup({
