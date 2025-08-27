@@ -15,4 +15,5 @@ views:
       - MEM/A
       - AGE
       - POOL:.metadata.labels.hightouch\.com/nodegroup
+      - AGENTPOOL:.metadata.labels.kubernetes\.azure\.com/agentpool
       - TYPE:.metadata.labels.beta\.kubernetes\.io/instance-type
