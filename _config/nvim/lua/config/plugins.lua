@@ -10,6 +10,11 @@ return {
     "nvim-lua/plenary.nvim",
     branch = "master", -- tags do not seem to fully track releases?
   },
+  -- {
+  --   -- for ramilito/kubectl.nvim
+  --   "saghen/blink.download",
+  --   branch = "main",
+  -- },
 
   -------------------------------------------
   -- plugins that are reasonably hands-off --
@@ -156,6 +161,41 @@ return {
       log_level = vim.log.levels.DEBUG
     },
   },
+
+  -----------
+  --- k8s ---
+  -----------
+  -- pretty buggy, try again in the future as it is much faster and generally
+  -- better ux than k9s
+  -- {
+  --   "ramilito/kubectl.nvim",
+  --   -- use a release tag to download pre-built binaries
+  --   version = "2.*",
+  --   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+  --   -- build = 'cargo build --release',
+  --   dependencies = "saghen/blink.download",
+  --   opts = {},
+  --   cmd = { "Kubectl" },
+  --   keys = {
+  --     { "gok", "<cmd>lua require('kubectl').toggle()<CR>" },
+  --
+  --     { "1", "<Plug>(kubectl.view_deployments)", ft = "k8s_*" },
+  --     { "2", "<Plug>(kubectl.view_replicasets)", ft = "k8s_*" },
+  --     { "3", "<Plug>(kubectl.view_pods)", ft = "k8s_*" },
+  --     { "4", "<Plug>(kubectl.view_nodes)", ft = "k8s_*" },
+  --     { "5", "<Plug>(kubectl.view_events)", ft = "k8s_*" },
+  --     { "6", "<Plug>(kubectl.view_horizontalpodautoscalers)", ft = "k8s_*" },
+  --     { "7", "<Plug>(kubectl.view_horizontalpodautoscalers)", ft = "k8s_*" },
+  --
+  --     { "8", "<Plug>(kubectl.view_api_resources)", ft = "k8s_*" },
+  --     { "9", "<Plug>(kubectl.view_overview)", ft = "k8s_*" },
+  --   },
+  --   config = function()
+  --     require("kubectl").setup()
+  --   end,
+  -- },
+
+  ---
   --------
   -- ai --
   --------
