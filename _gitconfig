@@ -17,6 +17,9 @@
 	; Explicit is better than implicit. If we want to merge
 	; we should do so ourselves.
 	pull = pull --ff-only
+
+	; Clean branch -- deletes local + remote branch (assumes remote=origin)
+	cb = "!c() { git branch -D $1 && git branch -dr origin/$1 ; }; c"
 [pull]
 	rebase = false
 	ff = only
