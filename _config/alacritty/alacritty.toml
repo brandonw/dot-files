@@ -43,3 +43,7 @@ bindings = [
   # Disable macOS binding for new tab-- tabs do not interoperate with aerospace
   { key = "T", mods = "Command", action = "ReceiveChar" }
 ]
+
+[scrolling]
+# Default=10000 -- 100000 is is the max alacritty supports
+history = 100000
