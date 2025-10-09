@@ -273,14 +273,41 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    version = "v1.6.0",
+    version = "v2.5.0",
     dependencies = {
       "saghen/blink.cmp",
       "b0o/SchemaStore.nvim",
     },
     event = "BufReadPre",
     config = function ()
-      require("plugins.lsp")
+      local util = require("lspconfig.util")
+
+      -- Customized root_dir to allow non-git root_markers in a project while
+      -- still only targeting the .git marker.
+      local root_dir = function(bufnr, on_dir)
+        local root_markers = { '.git' }
+        local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
+        on_dir(project_root)
+      end,
+
+      vim.lsp.config("*", { capabilities = require('blink.cmp').get_lsp_capabilities() })
+
+      -- npm install -g typescript-language-server typescript
+      -- vim.lsp.enable("ts_ls")
+      -- npm install -g @typescript/native-preview
+      vim.lsp.config("tsgo", { root_dir = root_dir })
+      vim.lsp.enable("tsgo")
+      -- npm install -g vscode-langservers-extracted
+      vim.lsp.enable("jsonls")
+      -- npm install -g yaml-language-server
+      vim.lsp.enable("yamlls")
+      -- go install golang.org/x/tools/gopls@latest
+      vim.lsp.enable("gopls")
+      -- npm install -g pyright
+      vim.lsp.enable("pyright")
+      -- npm install -g @biomejs/biome
+      vim.lsp.config("biome", { root_dir = root_dir })
+      vim.lsp.enable("biome")
     end,
   },
   {
