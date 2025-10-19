@@ -132,6 +132,11 @@ ln -s $HOME/.bashrc $HOME/.bash_profile
 cat '#!/usr/bin/env bash' >> $HOME/.bashrc.local
 cat 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bashrc.local
 cat '[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"' >> $HOME/.bashrc.local
+
+defaults write com.knollsoft.Rectangle screenEdgeGapTop -int 45
+defaults write com.knollsoft.Rectangle screenEdgeGapTopNotch -int 6
+defaults write com.knollsoft.Rectangle almostMaximizeHeight -float 0.99
+defaults write com.knollsoft.Rectangle almostMaximizeWidth -float 0.995
 ```
 
 Useful References:

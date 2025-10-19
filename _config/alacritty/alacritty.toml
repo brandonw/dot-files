@@ -41,7 +41,7 @@ white   = '0xd4be98'
 [keyboard]
 bindings = [
   # Disable macOS binding for new tab-- tabs do not interoperate with aerospace
-  { key = "T", mods = "Command", action = "ReceiveChar" }
+  # { key = "T", mods = "Command", action = "ReceiveChar" }
 ]
 
 [scrolling]

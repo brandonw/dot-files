@@ -15,7 +15,8 @@
           "assignAppShortcut" : "opt+shift+1",
           "display" : "LG HDR 4K",
           "id" : "A7479CBD-692A-4A44-9C5A-F488ACC77EA2",
-          "name" : "Terminal",
+          "name" : "1",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+1",
           "symbolIconName" : "1.lane"
         },
@@ -25,8 +26,9 @@
           ],
           "assignAppShortcut" : "opt+shift+2",
           "display" : "LG HDR 4K",
-          "id" : "C2D42884-001B-424B-B8E7-AA32A9674735",
+          "id" : "8D9C68BC-EE29-4189-8B00-9BC3C4B9A66E",
           "name" : "2",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+2",
           "symbolIconName" : "2.lane"
         },
@@ -36,8 +38,9 @@
           ],
           "assignAppShortcut" : "opt+shift+3",
           "display" : "LG HDR 4K",
-          "id" : "39E26D7A-361E-4345-A7BD-CAF3D119CC12",
+          "id" : "F622AC44-649C-434F-B7C4-1A45A360B5BA",
           "name" : "3",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+3",
           "symbolIconName" : "3.lane"
         },
@@ -47,8 +50,9 @@
           ],
           "assignAppShortcut" : "opt+shift+4",
           "display" : "LG HDR 4K",
-          "id" : "4DC8039B-EB1F-41F1-9208-F3D43A76CC37",
+          "id" : "E326B4C2-0CFC-430C-A053-8B90837DC343",
           "name" : "4",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+4",
           "symbolIconName" : "4.lane"
         },
@@ -58,23 +62,25 @@
           ],
           "assignAppShortcut" : "opt+shift+5",
           "display" : "LG HDR 4K",
-          "id" : "025E10A2-8B03-4075-9C5F-7165B7B2B10A",
+          "id" : "2A6131D2-74E7-45BA-8086-AD9ED9F323FB",
           "name" : "5",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+5",
           "symbolIconName" : "5.lane"
         },
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.1password.1password",
-              "iconPath" : "/Applications/1Password.app/Contents/Resources/icon.icns",
-              "name" : "1Password"
+              "bundleIdentifier" : "com.github.th-ch.youtube-music",
+              "iconPath" : "/Applications/YouTube Music.app/Contents/Resources/icon.icns",
+              "name" : "YouTube Music"
             }
           ],
           "assignAppShortcut" : "opt+shift+6",
-          "display" : "LG HDR 4K",
+          "display" : "Built-in Retina Display",
           "id" : "8DF8F559-5FA8-4140-8528-6A78E308D956",
-          "name" : "Postman",
+          "name" : "6",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+6",
           "symbolIconName" : "6.lane"
         },
@@ -84,22 +90,13 @@
               "bundleIdentifier" : "us.zoom.xos",
               "iconPath" : "/Applications/zoom.us.app/Contents/Resources/ZPLogo.icns",
               "name" : "zoom.us"
-            },
-            {
-              "bundleIdentifier" : "com.apple.finder",
-              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
-              "name" : "Finder"
-            },
-            {
-              "bundleIdentifier" : "com.postmanlabs.mac",
-              "iconPath" : "/Applications/Postman.app/Contents/Resources/app.icns",
-              "name" : "Postman"
             }
           ],
           "assignAppShortcut" : "opt+shift+7",
           "display" : "Built-in Retina Display",
           "id" : "DFDA4FCD-ED69-4B96-8A40-DA276C1B4731",
-          "name" : "Zoom",
+          "name" : "7",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+7",
           "symbolIconName" : "7.lane"
         },
@@ -114,7 +111,8 @@
           "assignAppShortcut" : "opt+shift+8",
           "display" : "Built-in Retina Display",
           "id" : "19F9F876-2260-4054-8F66-C71EE4F8836B",
-          "name" : "Slack",
+          "name" : "8",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+8",
           "symbolIconName" : "8.lane"
         },
@@ -129,12 +127,12 @@
           "assignAppShortcut" : "opt+shift+9",
           "display" : "DELL U2412M",
           "id" : "0F1EF71A-6A8B-4068-BF93-ED39257769C4",
-          "name" : "Browser",
+          "name" : "9",
+          "openAppsOnActivation" : true,
           "shortcut" : "opt+9",
           "symbolIconName" : "9.lane"
         }
       ]
     }
-  ],
-  "selectedProfileId" : "4803C416-AC26-40B5-AEE4-B2E1F461A09F"
+  ]
 }
