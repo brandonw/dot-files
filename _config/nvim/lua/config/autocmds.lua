@@ -69,7 +69,7 @@ autocmd({"FileType"}, {
 })
 
 autocmd({"FileType"}, {
-  pattern = {"json", "pug", "xml"},
+  pattern = {"json", "jsonc", "pug", "xml"},
   command = "setlocal et textwidth=100 tabstop=2 shiftwidth=2 autoindent shiftround fdm=indent foldlevel=99",
 })
 

@@ -153,6 +153,7 @@ return {
         javascript = { "prettier", stop_after_first = true },
         typescript = { "prettier", stop_after_first = true },
         json = { "prettier", stop_after_first = true },
+        jsonc = { "prettier", stop_after_first = true },
       },
       default_format_opts = {
         lsp_format = "fallback",
