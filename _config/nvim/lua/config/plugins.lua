@@ -307,7 +307,6 @@ return {
       -- npm install -g pyright
       vim.lsp.enable("pyright")
       -- npm install -g @biomejs/biome
-      vim.lsp.config("biome", { root_dir = root_dir })
       vim.lsp.enable("biome")
     end,
   },
