@@ -48,7 +48,7 @@ return {
   },
   {
     "cappyzawa/trim.nvim",
-    version = "v0.10.2",
+    version = "v0.11.0",
     event = "VeryLazy",
     opts = {},
   },
@@ -134,7 +134,7 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    version = "v9.0.0",
+    version = "v9.1.0",
     event = { "VeryLazy" },
     keys = {
       {
@@ -191,11 +191,6 @@ return {
     end,
   },
 
-  ---
-  --------
-  -- ai --
-  --------
-
   ----------------
   -- treesitter --
   ----------------
@@ -244,7 +239,7 @@ return {
   },
   {
     "kylechui/nvim-surround",
-    version = "v2.3.2",
+    version = "v3.1.8",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-treesitter/nvim-treesitter-textobjects"
@@ -254,7 +249,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    version = "v0.9.3",
+    version = "v0.10.0",
     build = { ":TSUpdate" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects"
@@ -348,7 +343,7 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = "rafamadriz/friendly-snippets",
-    version = "v1.0.0",
+    version = "v1.8.0",
     lazy = false,
 
     ---@module "blink.cmp"
@@ -378,7 +373,7 @@ return {
   ---------------------------
   {
     "folke/snacks.nvim",
-    version = "v2.22.0",
+    version = "v2.30.0",
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
@@ -386,19 +381,6 @@ return {
       bigfile = {
         enabled = true,
         size = 1.5 * 1024 * 1024, -- 1.5MB
-      },
-      scroll = {
-        enabled = true,
-        animate = {
-          duration = { step = 6, total = 100 },
-          easing = "linear",
-        },
-        -- faster animation when repeating scroll after delay
-        animate_repeat = {
-          delay = 100, -- delay in ms before using the repeat animation
-          duration = { step = 2, total = 25 },
-          easing = "linear",
-        },
       },
       explorer = {
         enabled = true,
