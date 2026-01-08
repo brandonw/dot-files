@@ -64,6 +64,10 @@ autocmd({"FileType"}, {
   command = "setlocal et textwidth=120 tabstop=2 shiftwidth=2 autoindent shiftround fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
 })
 autocmd({"FileType"}, {
+  pattern = {"typescriptreact"},
+  command = "setlocal et textwidth=120 tabstop=2 shiftwidth=2 autoindent shiftround fdm=indent foldlevel=99 omnifunc=v:lua.vim.lsp.omnifunc",
+})
+autocmd({"FileType"}, {
   pattern = {"javascript", "typescript"},
   command = ":iabbr dl# console.log('---TEST---');<CR>console.log(JSON.stringify(foo));",
 })

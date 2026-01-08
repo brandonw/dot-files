@@ -307,6 +307,37 @@ return {
       -- npm install -g pyright
       vim.lsp.enable("pyright")
       -- npm install -g @biomejs/biome
+      vim.lsp.config("biome", {
+        root_dir = function(bufnr, on_dir)
+          -- The project root is where the LSP can be started from
+          -- As stated in the documentation above, this LSP supports monorepos and simple projects.
+          -- Ignore all but .git, as root_markers can be misleading when
+          -- looking for a project root when some packages exist in the monorepo
+          -- and are linted by the singular monorepo biome config but are not
+          -- managed as a monorepo package.
+          local root_markers = { '.git' }
+          -- We fallback to the current working directory if no project root is found
+          local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
+
+          -- We know that the buffer is using Biome if it has a config file
+          -- in its directory tree.
+          local filename = vim.api.nvim_buf_get_name(bufnr)
+          local biome_config_files = { 'biome.json', 'biome.jsonc' }
+          biome_config_files = util.insert_package_json(biome_config_files, 'biome', filename)
+          local is_buffer_using_biome = vim.fs.find(biome_config_files, {
+            path = filename,
+            type = 'file',
+            limit = 1,
+            upward = true,
+            stop = vim.fs.dirname(project_root),
+          })[1]
+          if not is_buffer_using_biome then
+            return
+          end
+
+          on_dir(project_root)
+        end,
+      })
       vim.lsp.enable("biome")
     end,
   },
