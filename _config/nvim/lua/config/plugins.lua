@@ -7,13 +7,14 @@ return {
     branch = "master",
   },
   {
-    "nvim-lua/plenary.nvim",
-    branch = "master", -- tags do not seem to fully track releases?
-  },
-  {
     -- for ramilito/kubectl.nvim
     "saghen/blink.download",
     branch = "main",
+  },
+  {
+    -- for esmuellert/codediff.nvim
+    "MunifTanjim/nui.nvim",
+    version = "v0.4.0",
   },
 
   -------------------------------------------
@@ -53,50 +54,14 @@ return {
     opts = {},
   },
   {
-    "sindrets/diffview.nvim",
-    branch = "main",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
+    "esmuellert/codediff.nvim",
+    version = "v2.0.0",
+    dependencies = { "MunifTanjim/nui.nvim" },
     event = "VeryLazy",
-    keys = {
-      { "gfh", "<Cmd>DiffviewFileHistory %<CR>", mode = "n" },
-      { "gq", "<Cmd>DiffviewClose<CR>", mode = "n" },
-    },
+    cmd = "CodeDiff",
     config = function()
-      local diffview = require("diffview")
-      local actions = require("diffview.config").actions
-      require("diffview").setup({
-        enhanced_diff_hl = true,
-        view = {
-          default = {
-            -- Config for changed files, and staged files in diff views.
-            layout = "diff2_horizontal",
-            winbar_info = false,          -- See ":h diffview-config-view.x.winbar_info"
-          },
-          merge_tool = {
-            -- Config for conflicted files in diff views during a merge or rebase.
-            layout = "diff3_mixed",
-            disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
-            winbar_info = true,           -- See ":h diffview-config-view.x.winbar_info"
-          },
-          file_history = {
-            -- Config for changed files in file history views.
-            layout = "diff2_horizontal",
-            winbar_info = false,          -- See ":h diffview-config-view.x.winbar_info"
-          },
-        },
-        hooks = {
-          view_opened = function(view)
-            if (view.class:name() == "DiffView") then
-              -- Close DiffView:FilePanel initially
-              actions.toggle_files()
-            end
-          end,
-        }
-      })
-      vim.api.nvim_set_keymap("n", "gfd", ":DiffviewOpen  -- %<Left><Left><Left><Left><Left>", {})
+      require("codediff").setup({})
+      vim.api.nvim_set_keymap("n", "gfd", ":CodeDiff file HEAD", {})
     end,
   },
   {
