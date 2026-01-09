@@ -392,6 +392,8 @@ return {
           buffers = {
             sort_lastused = false,
           },
+          lsp_references = {
+          },
         },
         jump = {
           reuse_win = true,
@@ -475,6 +477,7 @@ return {
       { "gom", function () Snacks.picker.marks() end, desc = "Marks" },
       { "gos", function () Snacks.picker.lsp_symbols() end, desc = "LSP document symbols" },
       { "got", function () Snacks.picker.treesitter() end, desc = "Treesitter symbols" },
+      { "gor", function () Snacks.picker.lsp_references() end, desc = "LSP references" },
       { "<Leader>gb", function () Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
       { "<Leader>h", function () Snacks.picker.help() end, desc = "Help Pages" },
       { "<Leader>u", function () Snacks.picker.undo() end, desc = "Undo History" },

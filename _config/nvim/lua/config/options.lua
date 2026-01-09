@@ -7,6 +7,7 @@ vim.opt.completeopt = { "menuone", "longest", "preview" }
 vim.opt.diffopt = { "internal", "vertical", "filler", "closeoff", "linematch:40", "indent-heuristic", "algorithm:histogram" } -- { after closeoff; "inline:word", "iwhite" }
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 vim.opt.shortmess = "atIc"
 vim.opt.signcolumn = "number"
 vim.opt.switchbuf = "newtab"
