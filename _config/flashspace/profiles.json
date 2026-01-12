@@ -58,7 +58,11 @@
         },
         {
           "apps" : [
-
+            {
+              "bundleIdentifier" : "org.libreoffice.script",
+              "iconPath" : "/Applications/LibreOffice.app/Contents/Resources/main.icns",
+              "name" : "LibreOffice"
+            }
           ],
           "assignAppShortcut" : "opt+shift+5",
           "display" : "LG HDR 4K",
@@ -70,11 +74,7 @@
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "com.github.th-ch.youtube-music",
-              "iconPath" : "/Applications/YouTube Music.app/Contents/Resources/icon.icns",
-              "name" : "YouTube Music"
-            }
+
           ],
           "assignAppShortcut" : "opt+shift+6",
           "display" : "Built-in Retina Display",
@@ -102,6 +102,11 @@
         },
         {
           "apps" : [
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
+            },
             {
               "bundleIdentifier" : "com.tinyspeck.slackmacgap",
               "iconPath" : "/Applications/Slack.app/Contents/Resources/electron.icns",
