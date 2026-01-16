@@ -16,32 +16,6 @@ autocmd({"QuickFixCmdPost"}, {
   command = "cwindow",
 })
 
-autocmd({"FileType"}, {
-  pattern = {"qf"},
-  desc = "Quickfix vertical split mappings",
-  callback = function ()
-    local opts = { buffer = true, silent = true }
-
-    local function custom_open(command)
-      local qf_idx = vim.fn.line(".")
-      -- go to previous window (this assumes it is the one to split from)
-      vim.cmd("wincmd p")
-      -- apply custom open command
-      vim.cmd(command)
-      -- navigate to the cached quickfix item based on line index
-      vim.cmd(qf_idx .. "cc")
-    end
-
-    -- left
-    vim.keymap.set("n", "<C-S-h>", function() custom_open("leftabove vsplit") end, opts)
-    -- right
-    vim.keymap.set("n", "<C-S-l>", function() custom_open("rightbelow vsplit") end, opts)
-    -- tab
-    vim.keymap.set("n", "<C-S-t>", function() custom_open("tabnew") end, opts)
-  end,
-
-})
-
 autocmd({"TextYankPost"}, {
   pattern = {"*"},
   callback = function ()

@@ -456,28 +456,29 @@ return {
       { "goe", function () Snacks.explorer.reveal() end, desc = "Open Explorer" },
       { "gof", function () Snacks.picker.files() end, desc = "Find Files" },
       { "goa", function () Snacks.picker.files({hidden = true, ignored = true}) end, desc = "Find All Files" },
-      {
-        -- Customized Find Files with a good preset based on the basename of cwd
-        "god",
-        function ()
-          local basename = vim.fs.basename(vim.uv.cwd())
-          if basename == "hightouch" then
-            Snacks.picker.pick({ source = "files", cwd = "./packages/backend/", title = "packages/backend/ Files" })
-          elseif basename == "passage-internal" then
-            Snacks.picker.files({ exclude = { "vendor/**" } })
-          elseif basename == "infra" then
-            Snacks.picker.files({ exclude = { "cdktf.out/**", "vendor/**" } })
-          else
-            vim.notify("\"" .. basename .. "\" does not have a customized Find Files", vim.log.levels.WARN)
-          end
-        end,
-        desc = "Find Backend Files",
-      },
+      -- {
+      --   -- Customized Find Files with a good preset based on the basename of cwd
+      --   "god",
+      --   function ()
+      --     local basename = vim.fs.basename(vim.uv.cwd())
+      --     if basename == "hightouch" then
+      --       Snacks.picker.pick({ source = "files", cwd = "./packages/backend/", title = "packages/backend/ Files" })
+      --     elseif basename == "passage-internal" then
+      --       Snacks.picker.files({ exclude = { "vendor/**" } })
+      --     elseif basename == "infra" then
+      --       Snacks.picker.files({ exclude = { "cdktf.out/**", "vendor/**" } })
+      --     else
+      --       vim.notify("\"" .. basename .. "\" does not have a customized Find Files", vim.log.levels.WARN)
+      --     end
+      --   end,
+      --   desc = "Find Backend Files",
+      -- },
       { "gob", function () Snacks.picker.buffers() end, desc = "Buffers" },
       { "gom", function () Snacks.picker.marks() end, desc = "Marks" },
       { "gos", function () Snacks.picker.lsp_symbols() end, desc = "LSP document symbols" },
       { "got", function () Snacks.picker.treesitter() end, desc = "Treesitter symbols" },
       { "gor", function () Snacks.picker.lsp_references() end, desc = "LSP references" },
+      { "god", function () Snacks.picker.git_diff() end, desc = "Git diff" },
       { "<Leader>gb", function () Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
       { "<Leader>h", function () Snacks.picker.help() end, desc = "Help Pages" },
       { "<Leader>u", function () Snacks.picker.undo() end, desc = "Undo History" },

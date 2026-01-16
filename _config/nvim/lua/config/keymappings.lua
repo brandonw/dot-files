@@ -20,10 +20,9 @@ keymap("n", "<A-j>", "<C-w>j", { noremap = true })
 keymap("n", "<A-k>", "<C-w>k", { noremap = true })
 keymap("n", "<A-l>", "<C-w>l", { noremap = true })
 
-keymap("n", "<C-]>", function()
-  vim.cmd("rightbelow vsplit")
-  vim.lsp.buf.definition()
-end)
+keymap("n", "<C-S-h>", ":leftabove vsplit<CR>", { noremap = true })
+keymap("n", "<C-S-l>", ":rightbelow vsplit<CR>", { noremap = true })
+
 keymap("n", "get", ':tabnew <C-R>=expand("%:p:~:.:h") . "/" <CR>')
 keymap("n", "gsa", utils.searchAll)
 keymap("n", "gsp", utils.searchProd)
