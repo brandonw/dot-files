@@ -61,7 +61,7 @@ return {
     cmd = "CodeDiff",
     config = function()
       require("codediff").setup({})
-      vim.api.nvim_set_keymap("n", "gfd", ":CodeDiff file HEAD", {})
+      vim.api.nvim_set_keymap("n", "gfd", ":CodeDiff file master", {})
     end,
   },
   {
@@ -344,15 +344,12 @@ return {
     ---@type snacks.Config
     opts = {
       bigfile = {
-        enabled = true,
         size = 1.5 * 1024 * 1024, -- 1.5MB
       },
       explorer = {
-        enabled = true,
         replace_netrw = true,
       },
       indent = {
-        enableed = true,
         priority = 1,
         chunk = {
           enabled = true,
@@ -367,17 +364,11 @@ return {
         },
         only_scope = false,
       },
-      scope = {
-        enabled = true,
-      },
-      toggle = {
-        enabled = true,
-      },
-      terminal = {
-        enable = true,
-      },
+      scope = {},
+      toggle = {},
+      terminal = {},
+      input = {},
       picker = {
-        enabled = true,
         sources = {
           explorer = {
             layout = { preset = "ivy", layout = { position = "top" } },
