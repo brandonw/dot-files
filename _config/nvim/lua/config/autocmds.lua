@@ -23,10 +23,6 @@ autocmd({"TextYankPost"}, {
   end,
 })
 
-autocmd({"TermOpen"}, {
-  command = "startinsert",
-})
-
 -- if a file is changed externally, don't messages
 autocmd({"FileChangedShell"}, {
   pattern = {"*"},
