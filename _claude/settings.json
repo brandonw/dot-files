@@ -35,6 +35,5 @@
     ],
     "deny": []
   },
-  "model": "opus",
   "skipDangerousModePermissionPrompt": true
 }

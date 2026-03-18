@@ -61,7 +61,7 @@ return {
     cmd = "CodeDiff",
     config = function()
       require("codediff").setup({})
-      vim.api.nvim_set_keymap("n", "gfd", ":CodeDiff file master", {})
+      vim.api.nvim_set_keymap("n", "gfd", ":CodeDiff file HEAD", {})
     end,
   },
   {
