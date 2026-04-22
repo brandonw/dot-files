@@ -1,3 +1,12 @@
+-- This is gross
+local function js_formatter(bufnr)
+  local cwd = vim.fn.getcwd()
+  if cwd:match("/code/infra") then
+    return { "biome", stop_after_first = true  }
+  end
+  return { "prettier", stop_after_first = true  }
+end
+
 return {
   ------------------------------------------------
   -- generic dependencies with no configuration --
@@ -115,15 +124,15 @@ return {
     ---@type conform.setupOpts
     opts = {
       formatters_by_ft = {
-        javascript = { "prettier", stop_after_first = true },
-        typescript = { "prettier", stop_after_first = true },
-        json = { "prettier", stop_after_first = true },
-        jsonc = { "prettier", stop_after_first = true },
+        javascript = js_formatter,
+        typescript = js_formatter,
+        json = js_formatter,
+        jsonc = js_formatter,
       },
       default_format_opts = {
         lsp_format = "fallback",
       },
-      format_on_save = { timeout_ms = 500 },
+      format_on_save = { timeout_ms = 1000 },
       log_level = vim.log.levels.DEBUG
     },
   },

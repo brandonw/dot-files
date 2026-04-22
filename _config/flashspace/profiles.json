@@ -58,11 +58,7 @@
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "org.libreoffice.script",
-              "iconPath" : "/Applications/LibreOffice.app/Contents/Resources/main.icns",
-              "name" : "LibreOffice"
-            }
+
           ],
           "assignAppShortcut" : "opt+shift+5",
           "display" : "LG HDR 4K",
@@ -74,7 +70,11 @@
         },
         {
           "apps" : [
-
+            {
+              "bundleIdentifier" : "com.1password.1password",
+              "iconPath" : "/Applications/1Password.app/Contents/Resources/icon.icns",
+              "name" : "1Password"
+            }
           ],
           "assignAppShortcut" : "opt+shift+6",
           "display" : "Built-in Retina Display",
