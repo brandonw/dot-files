@@ -116,6 +116,9 @@ alias ls='ls --color=auto'
 # YOLO
 alias clauded='claude --dangerously-skip-permissions'
 
+alias gs='git-spice'
+complete -C git-spice git-spice gs
+
 # Don't let unused features get in our way
 stty -ixon -ixoff
 
