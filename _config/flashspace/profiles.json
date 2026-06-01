@@ -58,10 +58,14 @@
         },
         {
           "apps" : [
-
+            {
+              "bundleIdentifier" : "com.qobuz.desktop",
+              "iconPath" : "/Applications/Qobuz.app/Contents/Resources/icon.icns",
+              "name" : "Qobuz"
+            }
           ],
           "assignAppShortcut" : "opt+shift+5",
-          "display" : "LG HDR 4K",
+          "display" : "Built-in Retina Display",
           "id" : "2A6131D2-74E7-45BA-8086-AD9ED9F323FB",
           "name" : "5",
           "openAppsOnActivation" : true,

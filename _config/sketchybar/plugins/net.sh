@@ -28,7 +28,7 @@ if [[ "$currentservice" == *"LAN"* ]]; then
     exit 0
 fi
 
-CURRENT_NETWORK=$(echo "$currentdevice" | ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}')
+CURRENT_NETWORK=$(ipconfig getsummary "$currentdevice" | awk -F ' SSID : '  '/ SSID : / {print $2}')
 
 # Check if the current network is associated with an airport network
 if echo "$CURRENT_NETWORK" | grep -q "You are not associated with an AirPort network"; then

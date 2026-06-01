@@ -128,6 +128,7 @@ systemctl enable greetd.service
 
 # Mac specific
 ln -s $HOME/.dot-files/_config/flashspace $HOME/.config/
+ln -s $HOME/.dot-files/_config/rift $HOME/.config/
 
 ln -s $HOME/.bashrc $HOME/.bash_profile
 cat '#!/usr/bin/env bash' >> $HOME/.bashrc.local
