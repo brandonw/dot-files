@@ -3,23 +3,6 @@ local keymap = vim.keymap.set
 
 keymap("", "<Space>", ":")
 
-keymap("n", "gwh", "<C-W>h")
-keymap("n", "gwj", "<C-W>j")
-keymap("n", "gwk", "<C-W>k")
-keymap("n", "gwl", "<C-W>l")
-keymap("t", "<A-h>", "<C-\\><C-n><C-w>h", { noremap = true })
-keymap("t", "<A-j>", "<C-\\><C-n><C-w>j", { noremap = true })
-keymap("t", "<A-k>", "<C-\\><C-n><C-w>k", { noremap = true })
-keymap("t", "<A-l>", "<C-\\><C-n><C-w>l", { noremap = true })
-keymap("i", "<A-h>", "<C-\\><C-n><C-w>h", { noremap = true })
-keymap("i", "<A-j>", "<C-\\><C-n><C-w>j", { noremap = true })
-keymap("i", "<A-k>", "<C-\\><C-n><C-w>k", { noremap = true })
-keymap("i", "<A-l>", "<C-\\><C-n><C-w>l", { noremap = true })
-keymap("n", "<A-h>", "<C-w>h", { noremap = true })
-keymap("n", "<A-j>", "<C-w>j", { noremap = true })
-keymap("n", "<A-k>", "<C-w>k", { noremap = true })
-keymap("n", "<A-l>", "<C-w>l", { noremap = true })
-
 keymap("n", "<C-S-h>", ":leftabove vsplit<CR>", { noremap = true })
 keymap("n", "<C-S-l>", ":rightbelow vsplit<CR>", { noremap = true })
 
