@@ -63,21 +63,11 @@ return {
     opts = {},
   },
   {
-    "esmuellert/codediff.nvim",
-    version = "v2.0.0",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    event = "VeryLazy",
-    cmd = "CodeDiff",
-    config = function()
-      require("codediff").setup({})
-      vim.api.nvim_set_keymap("n", "gfd", ":CodeDiff file HEAD", {})
-    end,
-  },
-  {
     "tpope/vim-fugitive",
     branch = "master", -- lots of commits after latest version (2+ years old)
     keys = {
       { "gfb", "<Cmd>Git blame<CR>", mode = "n" },
+      { "gfd", ":Gdiffsplit ", mode = "n" },
     },
   },
   {
