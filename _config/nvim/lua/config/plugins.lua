@@ -264,6 +264,20 @@ return {
     config = function ()
       local util = require("lspconfig.util")
 
+      -- Wrap vim.lsp.start to block attaching to buffers we don't want an LSP
+      -- for.
+      local lsp_start = vim.lsp.start
+      vim.lsp.start = function(config, opts)
+        opts = opts or {}
+        local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
+        local name = vim.api.nvim_buf_get_name(bufnr)
+        local scheme = name:match("^(%w+)://")
+        if vim.bo[bufnr].buftype ~= "" or (scheme ~= nil and scheme ~= "file") then
+          return
+        end
+        return lsp_start(config, opts)
+      end
+
       -- Customized root_dir to allow non-git root_markers in a project while
       -- still only targeting the .git marker.
       local root_dir = function(bufnr, on_dir)
