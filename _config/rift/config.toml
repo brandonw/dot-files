@@ -1,3 +1,6 @@
+# rift config
+# Copy this file to ~/.config/rift/config.toml or $HOME~/.config/rift/config.toml
+
 [settings]
 # Animations
 # - animate: master switch for all window animations
@@ -55,8 +58,6 @@ auto_focus_blacklist = []
 # ]
 
 run_on_start = [
-  # Tell sketchybar to repaint workspace indicators on every workspace switch.
-  # The wrapping `sh -c` swallows the JSON payload rift appends as a trailing arg.
   "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'sketchybar --trigger rift_workspace_change'",
 ]
 
@@ -67,11 +68,10 @@ hot_reload = true
 
 [settings.layout]
 # Layout Types:
-#   - "traditional" (i3/sway-like containers)
-#   - "bsp" (binary space partitioning),
+# 	- "traditional" (i3/sway-like containers)
+#	- "bsp" (binary space partitioning),
 #   - "stack" (single stacked container)
 #   - "master_stack" (master area + stack area)
-#   - "scrolling" (master area + scrolling)
 # defaults to "traditional" if omitted
 #
 # This is the default layout mode if there is nothing else configured
@@ -355,6 +355,7 @@ app_rules = [
 # Example usage: with `Alt + Shift = "Alt + Shift"`, you can write:
 #   "Alt + Shift + H" = { move_node = "left" }
 [modifier_combinations]
+comb1 = "Alt + Shift"
 
 [keys]
 # Key binding syntax
@@ -406,10 +407,10 @@ app_rules = [
 "Alt + K" = { move_focus = "up" }
 "Alt + L" = { move_focus = "right" }
 
-"Alt + Shift + H" = { move_node = "left" }
-"Alt + Shift + J" = { move_node = "down" }
-"Alt + Shift + K" = { move_node = "up" }
-"Alt + Shift + L" = { move_node = "right" }
+"comb1 + H" = { move_node = "left" }
+"comb1 + J" = { move_node = "down" }
+"comb1 + K" = { move_node = "up" }
+"comb1 + L" = { move_node = "right" }
 
 # Bound by workspace *name* (quoted string), not index, so the digit you press
 # matches the label shown in the bar. Name "0" lives at the last index.
@@ -424,16 +425,16 @@ app_rules = [
 "Alt + 9" = { switch_to_workspace = "9" }
 "Alt + 0" = { switch_to_workspace = "0" }
 
-"Alt + Shift + 1" = { move_window_to_workspace = "1" }
-"Alt + Shift + 2" = { move_window_to_workspace = "2" }
-"Alt + Shift + 3" = { move_window_to_workspace = "3" }
-"Alt + Shift + 4" = { move_window_to_workspace = "4" }
-"Alt + Shift + 5" = { move_window_to_workspace = "5" }
-"Alt + Shift + 6" = { move_window_to_workspace = "6" }
-"Alt + Shift + 7" = { move_window_to_workspace = "7" }
-"Alt + Shift + 8" = { move_window_to_workspace = "8" }
-"Alt + Shift + 9" = { move_window_to_workspace = "9" }
-"Alt + Shift + 0" = { move_window_to_workspace = "0" }
+"comb1 + 1" = { move_window_to_workspace = "1" }
+"comb1 + 2" = { move_window_to_workspace = "2" }
+"comb1 + 3" = { move_window_to_workspace = "3" }
+"comb1 + 4" = { move_window_to_workspace = "4" }
+"comb1 + 5" = { move_window_to_workspace = "5" }
+"comb1 + 6" = { move_window_to_workspace = "6" }
+"comb1 + 7" = { move_window_to_workspace = "7" }
+"comb1 + 8" = { move_window_to_workspace = "8" }
+"comb1 + 9" = { move_window_to_workspace = "9" }
+"comb1 + 0" = { move_window_to_workspace = "0" }
 
 "Alt + Tab" = "switch_to_last_workspace"
 
@@ -456,7 +457,7 @@ app_rules = [
 # This is somehow the default, despite conflict with every shell and emacs
 # "Alt + F" = "toggle_fullscreen"
 "Alt + Shift + F" = "toggle_fullscreen_within_gaps"
-"Alt + Shift + Ctrl + Space" = "toggle_focus_floating" # briefly bring focus to floating window
+"comb1 + Ctrl + Space" = "toggle_focus_floating" # briefly bring focus to floating window
 
 # smartly resize windows
 "Alt + Shift + Equal" = "resize_window_grow"
@@ -467,29 +468,15 @@ app_rules = [
 # "Alt + Shift + A" = { move_mouse_to_display = 0 }
 # "Alt + Shift + S" = { move_mouse_to_display = 1 }
 # "Alt + Shift + D" = { move_mouse_to_display = "e9a4f5a1-2f8b-45c1-9f4e-5a6b7c8d9e0f" }
-# Per-display focus DISABLED: `focus_display` / `rift-cli execute display focus` is a
-# no-op in this rift build (verified via CLI — returns success but keyboard focus and
-# active display never change), so these binds did nothing. To move focus between
-# monitors, use the directional `move_focus` binds (Alt + H/J/K/L) instead, which do
-# cross displays. Re-enable / revisit if a rift update fixes focus_display.
-# "Alt + Ctrl + Shift + H" = { exec = ["/opt/homebrew/bin/rift-cli", "execute", "display", "focus", "--uuid", "CF60BDDB-9966-4FE3-8672-35A36323EA62"] }  # -> DELL U2412M
-# "Alt + Ctrl + Shift + L" = { exec = ["/opt/homebrew/bin/rift-cli", "execute", "display", "focus", "--uuid", "4FAD2224-7444-4999-B5C5-DC170CD827E7"] }  # -> LG HDR 4K
-# "Alt + Ctrl + Shift + J" = { exec = ["/opt/homebrew/bin/rift-cli", "execute", "display", "focus", "--uuid", "37D8832A-2D66-02CA-B9F7-8F30A301B230"] }  # -> Built-in Retina
+# Focus another display (direction/index/uuid)
+# "Alt + Shift + F" = { focus_display = "right" }
 
-# Move the focused window to the display in a given direction (relative to the
-# window's current display). Directional selectors are resolved live, so no static
-# monitor UUIDs.
-#
-# IMPORTANT: keybind changes only take effect after a rift RESTART
-# (`rift-cli service restart`). `rift-cli execute config reload` / hot_reload does
-# NOT re-register keybinds.
-#
-# Move focused window to a specific display by UUID (deterministic). Directional
-# selectors resolve illogically on this L-shaped layout, so target displays explicitly.
-# H=Dell(left), L=LG(right), J=Built-in(down). H/J/L avoid the dead Alt+Ctrl+Arrow combo.
-"Alt + Ctrl + H" = { exec = ["/opt/homebrew/bin/rift-cli", "execute", "display", "move-window", "--uuid", "CF60BDDB-9966-4FE3-8672-35A36323EA62"] }  # -> DELL U2412M
-"Alt + Ctrl + L" = { exec = ["/opt/homebrew/bin/rift-cli", "execute", "display", "move-window", "--uuid", "4FAD2224-7444-4999-B5C5-DC170CD827E7"] }  # -> LG HDR 4K
-"Alt + Ctrl + J" = { exec = ["/opt/homebrew/bin/rift-cli", "execute", "display", "move-window", "--uuid", "37D8832A-2D66-02CA-B9F7-8F30A301B230"] }  # -> Built-in Retina
+# Move a window to a display (by index, UUID, or direction)
+# "Alt + Ctrl + Up" = { move_window_to_display = { selector = "up" } }
+# "Alt + Ctrl + Down" = { move_window_to_display = { selector = "down" } }
+# "Alt + Ctrl + Left" = { move_window_to_display = { selector = "left" } }
+# "Alt + Ctrl + Right" = { move_window_to_display = { selector = "right" } }
+# "Alt + Ctrl + A" = { move_window_to_display = { selector = 0 } }
 
 # if mission control is enabled
 # this will show an exploded view of the windows in the active workspace
