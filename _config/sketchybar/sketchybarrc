@@ -131,7 +131,7 @@ sketchybar --add item volume right \
 
 sketchybar --add item net right \
            --set net script="~/.config/sketchybar/plugins/net.sh" \
-                     update_freq=10 \
+                     update_freq=30 \
                      icon.drawing=off \
                      background.color=0xff3C3E4F \
                      background.padding_left=0 \
