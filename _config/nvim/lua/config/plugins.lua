@@ -221,7 +221,58 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    branch = "master",
+    branch = "main",
+    config = function ()
+      require("nvim-treesitter-textobjects").setup({
+        select = {
+          -- Automatically jump forward to textobj, similar to targets.vim
+          lookahead = true,
+          -- charwise 'v', linewise 'V', or blockwise '<c-v>' per query
+          selection_modes = {
+            ["@parameter.outer"] = "v",
+            ["@function.outer"] = "V",
+            ["@class.outer"] = "<c-v>",
+          },
+          -- extend textobjects to include surrounding whitespace (like `ap`)
+          include_surrounding_whitespace = true,
+        },
+        move = {
+          set_jumps = true, -- add movements to the jumplist
+        },
+      })
+    end,
+    keys = {
+      {
+        "af",
+        function() require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects") end,
+        mode = { "x", "o" },
+        desc = "Select outer function",
+      },
+      {
+        "if",
+        function() require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects") end,
+        mode = { "x", "o" },
+        desc = "Select inner function",
+      },
+      {
+        "ac",
+        function() require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects") end,
+        mode = { "x", "o" },
+        desc = "Select outer class",
+      },
+      {
+        "ic",
+        function() require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects") end,
+        mode = { "x", "o" },
+        desc = "Select inner class",
+      },
+      {
+        "as",
+        function() require("nvim-treesitter-textobjects.select").select_textobject("@scope", "locals") end,
+        mode = { "x", "o" },
+        desc = "Select language scope",
+      },
+    },
   },
   {
     "kylechui/nvim-surround",
@@ -235,12 +286,12 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    version = "v0.10.0",
-    build = { ":TSUpdate" },
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects"
     },
-    event = "VeryLazy",
     config = function ()
       require("plugins.treesitter")
     end,
