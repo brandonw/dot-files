@@ -6,7 +6,7 @@ vim.opt.autoread = false
 vim.opt.clipboard:append { "unnamedplus" }
 vim.opt.colorcolumn = { "+1" }
 vim.opt.completeopt = { "menuone", "longest", "preview" }
- vim.opt.diffopt = { "internal", "vertical", "filler", "closeoff", "linematch:40", "algorithm:histogram", "inline:word" } -- { "inline:",  "iwhite" }
+vim.opt.diffopt = { "internal", "filler", "closeoff", "indent-heuristic", "inline:char", "linematch:40", "vertical", "algorithm:histogram" }
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
