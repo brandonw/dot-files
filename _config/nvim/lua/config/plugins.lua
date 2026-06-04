@@ -199,9 +199,9 @@ return {
           {
             "filename",
             path = 1,
-          }
+          },
         },
-        lualine_x = {"encoding", "fileformat", "filetype"},
+        lualine_x = {"lsp_status", "encoding", "fileformat", "filetype"},
         lualine_y = {"progress"},
         lualine_z = {"location"}
       },
