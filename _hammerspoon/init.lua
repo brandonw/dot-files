@@ -35,6 +35,10 @@ local function focusDisplay(uuid)
     hs.alert.show("Display not found")
     return
   end
+
+  if hs.mouse.getCurrentScreen() == screen then
+    return
+  end
   local win = hs.fnutils.find(hs.window.orderedWindows(), function(w)
     return w:screen() == screen and w:isStandard()
   end)
@@ -52,12 +56,48 @@ hs.hotkey.bind(MOD, "1", function() focusDisplay(DISPLAYS.dell) end)
 hs.hotkey.bind(MOD, "2", function() focusDisplay(DISPLAYS.lg) end)
 hs.hotkey.bind(MOD, "3", function() focusDisplay(DISPLAYS.builtin) end)
 
--- Warp the cursor to the center of any window that gets activated, however the
--- activation happened (⌃⌘1/2/3, cmd-tab, cmd-`, or even a mouse click).
-local wf = hs.window.filter.new(nil)
-wf:subscribe(hs.window.filter.windowFocused, function(win)
-  if win and win:isStandard() then warpToWindow(win) end
+local RIFT_CLI = "/opt/homebrew/bin/rift-cli"
+
+local function riftSwitchWorkspace(name)
+  -- Keys and workspace names are 1-based ("1".."9").
+  -- rift-cli takes the 0-based workspace index
+  local idx = tostring(tonumber(name) - 1)
+  hs.task.new(RIFT_CLI, nil, { "execute", "workspace", "switch", idx }):start()
+end
+
+local function threeDisplays()
+  return #hs.screen.allScreens() == 3
+end
+
+for i = 1, 7 do
+  local name = tostring(i)
+  hs.hotkey.bind({ "alt" }, name, function()
+    if threeDisplays() then focusDisplay(DISPLAYS.lg) end
+    riftSwitchWorkspace(name)
+  end)
+end
+
+hs.hotkey.bind({ "alt" }, "8", function()
+  if threeDisplays() then
+    focusDisplay(DISPLAYS.builtin)
+  else
+    riftSwitchWorkspace("8")
+  end
 end)
+
+hs.hotkey.bind({ "alt" }, "9", function()
+  if threeDisplays() then
+    focusDisplay(DISPLAYS.dell)
+  else
+    riftSwitchWorkspace("9")
+  end
+end)
+
+-- Warp the cursor to the center of any window that gets activated
+-- local wf = hs.window.filter.new(nil)
+-- wf:subscribe(hs.window.filter.windowFocused, function(win)
+--   if win and win:isStandard() then warpToWindow(win) end
+-- end)
 
 -- Auto-reload config on save.
 hs.pathwatcher.new(hs.configdir, function(files)

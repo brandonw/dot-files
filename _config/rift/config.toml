@@ -240,7 +240,7 @@ drag_swap_fraction = 0.3
 #   that's already active, it will switch to the last workspace instead
 # - reapply_app_rules_on_title_change: if true, app rules are re-evaluated when a window's title changes
 enabled = true
-default_workspace_count = 10
+default_workspace_count = 9
 auto_assign_windows = true
 preserve_focus_per_workspace = true
 workspace_auto_back_and_forth = false
@@ -273,8 +273,7 @@ workspace_names = [
 	"6",
 	"7",
 	"8",
-	"9",
-	"0"
+	"9"
 ]
 
 # App rules (automatic assignment)
@@ -341,13 +340,15 @@ workspace_names = [
 #
 # By default there are no app rules; add or uncomment rules below as needed.
 app_rules = [
-	{ app_id = "com.qobuz.desktop", floating = true },
-	{ app_id = "com.1password.1password", floating = true },
+	{ app_id = "com.qobuz.desktop",                          workspace = "7" },
+	{ app_id = "com.1password.1password",   floating = true, workspace = "7" },
 	# Zoom ignores window placement on quit and always starts on the primary display
-	# Easier to just fully ignore it than try to fight it.
-	{ app_id = "us.zoom.xos", manage = false },
+	# Easier to just fully ignore it than try to fight it. `workspace` only takes
+	# effect if `manage` is ever flipped to true.
+	{ app_id = "us.zoom.xos",               floating = true, workspace = "7", manage = false },
 	{ app_id = "com.tinyspeck.slackmacgap", floating = true },
-	{ app_id = "org.mozilla.firefox", floating = true },
+	{ app_id = "org.mozilla.firefox",       floating = true },
+	{ app_id = "com.apple.systempreferences", floating = true },
 ]
 
 # Modifier combinations that can be reused in key bindings
@@ -414,16 +415,17 @@ comb1 = "Alt + Shift"
 
 # Bound by workspace *name* (quoted string), not index, so the digit you press
 # matches the label shown in the bar. Name "0" lives at the last index.
-"Alt + 1" = { switch_to_workspace = "1" }
-"Alt + 2" = { switch_to_workspace = "2" }
-"Alt + 3" = { switch_to_workspace = "3" }
-"Alt + 4" = { switch_to_workspace = "4" }
-"Alt + 5" = { switch_to_workspace = "5" }
-"Alt + 6" = { switch_to_workspace = "6" }
-"Alt + 7" = { switch_to_workspace = "7" }
-"Alt + 8" = { switch_to_workspace = "8" }
-"Alt + 9" = { switch_to_workspace = "9" }
-"Alt + 0" = { switch_to_workspace = "0" }
+#
+# Leave unbound to let Hammerspoon own unless Mac/Rift improve multi-display configuration.
+# "Alt + 1" = { switch_to_workspace = "1" }
+# "Alt + 2" = { switch_to_workspace = "2" }
+# "Alt + 3" = { switch_to_workspace = "3" }
+# "Alt + 4" = { switch_to_workspace = "4" }
+# "Alt + 5" = { switch_to_workspace = "5" }
+# "Alt + 6" = { switch_to_workspace = "6" }
+# "Alt + 7" = { switch_to_workspace = "7" }
+# "Alt + 8" = { switch_to_workspace = "8" }
+# "Alt + 9" = { switch_to_workspace = "9" }
 
 "comb1 + 1" = { move_window_to_workspace = "1" }
 "comb1 + 2" = { move_window_to_workspace = "2" }
@@ -434,7 +436,6 @@ comb1 = "Alt + Shift"
 "comb1 + 7" = { move_window_to_workspace = "7" }
 "comb1 + 8" = { move_window_to_workspace = "8" }
 "comb1 + 9" = { move_window_to_workspace = "9" }
-"comb1 + 0" = { move_window_to_workspace = "0" }
 
 "Alt + Tab" = "switch_to_last_workspace"
 
