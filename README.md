@@ -80,6 +80,7 @@ ln -s $HOME/.dot-files/_ignore $HOME/.ignore
 ln -s $HOME/.dot-files/_inputrc $HOME/.inputrc
 ln -s $HOME/.dot-files/_profile $HOME/.profile
 ln -s $HOME/.dot-files/_psqlrc $HOME/.psqlrc
+ln -s $HOME/.dot-files/_pspgconf $HOME/.pspgconf
 mkdir $HOME/.bin $HOME/.claude
 ln -s $HOME/.dot-files/switch_branches.sh $HOME/.bin/sb
 ln -s $HOME/.dot-files/_claude/settings.json $HOME/.claude
