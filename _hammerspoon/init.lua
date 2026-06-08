@@ -1,14 +1,11 @@
 -- ~/.hammerspoon/init.lua
---
--- Per-display keyboard focus + cursor warp.
---   ⌃⌘1 = DELL U2412M (left)   ⌃⌘2 = LG HDR 4K (right)   ⌃⌘3 = Built-in Retina
--- (Ctrl+1/2/3 is reserved by macOS Mission Control "Switch to Desktop" and
---  can't be claimed via RegisterEventHotKey, so we use Ctrl+Cmd instead.)
+
 local DISPLAYS = {
-  dell    = "CF60BDDB-9966-4FE3-8672-35A36323EA62", -- DELL U2412M  (left)
   builtin = "37D8832A-2D66-02CA-B9F7-8F30A301B230", -- Built-in Retina
-  lg      = "4FAD2224-7444-4999-B5C5-DC170CD827E7", -- LG HDR 4K   (right)
+  dell    = "CF60BDDB-9966-4FE3-8672-35A36323EA62", -- DELL U2412M
+  lg      = "4FAD2224-7444-4999-B5C5-DC170CD827E7", -- LG HDR 4K
 }
+local RIFT_CLI = "/opt/homebrew/bin/rift-cli"
 
 local function screenByUUID(uuid)
   for _, s in ipairs(hs.screen.allScreens()) do
@@ -50,14 +47,6 @@ local function focusDisplay(uuid)
   end
 end
 
--- ⌃⌘1/2/3 focus that display and warp the cursor onto it.
-local MOD = { "ctrl", "cmd" }
-hs.hotkey.bind(MOD, "1", function() focusDisplay(DISPLAYS.dell) end)
-hs.hotkey.bind(MOD, "2", function() focusDisplay(DISPLAYS.lg) end)
-hs.hotkey.bind(MOD, "3", function() focusDisplay(DISPLAYS.builtin) end)
-
-local RIFT_CLI = "/opt/homebrew/bin/rift-cli"
-
 local function riftSwitchWorkspace(name)
   -- Keys and workspace names are 1-based ("1".."9").
   -- rift-cli takes the 0-based workspace index
@@ -69,6 +58,16 @@ local function threeDisplays()
   return #hs.screen.allScreens() == 3
 end
 
+-- Manage rift workspace switching in hammerspoon, since Mac is not good at
+-- switching between spaces. We make this more simple with some easy
+-- assumptions:
+-- If we are docked, then:
+--   workspace 8 will always be on the builtin
+--   workspace 9 will always be on the dell
+--   both will ideally have only one application (window)
+--   workspace 1-7 will be on the lg and are where rift actually does work
+-- If we are undocked, then we fallback to only switching workspaces, since rift
+-- then owns everything.
 for i = 1, 7 do
   local name = tostring(i)
   hs.hotkey.bind({ "alt" }, name, function()
