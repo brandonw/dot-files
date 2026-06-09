@@ -340,14 +340,14 @@ workspace_names = [
 #
 # By default there are no app rules; add or uncomment rules below as needed.
 app_rules = [
-	{ app_id = "com.qobuz.desktop",           floating = true, workspace = "7" },
+	{ app_id = "com.qobuz.desktop",                            workspace = "7" },
 	# NOTE: Zoom ignores window placement on quit and always starts on the primary display.
 	{ app_id = "us.zoom.xos",                 floating = true, workspace = "7" },
 
 	# Workspace 8
-	{ app_id = "com.tinyspeck.slackmacgap",   floating = true },
+	# { app_id = "com.tinyspeck.slackmacgap",   floating = true },
 	# Workspace 9
-	{ app_id = "org.mozilla.firefox",         floating = true },
+	# { app_id = "org.mozilla.firefox",         floating = true },
 
 	{ app_id = "com.1password.1password",     floating = true },
 	{ app_id = "com.apple.systempreferences", floating = true },
