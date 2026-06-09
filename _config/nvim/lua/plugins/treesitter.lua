@@ -12,7 +12,9 @@ local ensure_installed = {
   "markdown",
   "markdown_inline",
 }
-
+local ignore_filetypes = {
+  qf = true,
+}
 ts.setup({})
 ts.install(ensure_installed)
 
@@ -23,6 +25,10 @@ vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("treesitter_highlight", { clear = true }),
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
+    if ignore_filetypes[ft] then
+      return
+    end
+
     local lang = vim.treesitter.language.get_lang(ft) or ft
 
     if vim.treesitter.language.add(lang) then
