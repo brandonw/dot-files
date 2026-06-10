@@ -341,16 +341,14 @@ workspace_names = [
 # By default there are no app rules; add or uncomment rules below as needed.
 app_rules = [
 	{ app_id = "com.qobuz.desktop",                            workspace = "7" },
-	# NOTE: Zoom ignores window placement on quit and always starts on the primary display.
-	{ app_id = "us.zoom.xos",                 floating = true, workspace = "7" },
-
-	# Workspace 8
-	# { app_id = "com.tinyspeck.slackmacgap",   floating = true },
-	# Workspace 9
-	# { app_id = "org.mozilla.firefox",         floating = true },
-
 	{ app_id = "com.1password.1password",     floating = true },
 	{ app_id = "com.apple.systempreferences", floating = true },
+
+	# Unmanaged windows that are annoying to fix when display count changes.
+	# NOTE: Zoom ignores window placement on quit and always starts on the primary display.
+	{ app_id = "us.zoom.xos",                 floating = true, workspace = "7", manage = false },
+	{ app_id = "com.tinyspeck.slackmacgap",   floating = true, workspace = "8", manage = false },
+	{ app_id = "org.mozilla.firefox",         floating = true, workspace = "9", manage = false },
 ]
 
 # Modifier combinations that can be reused in key bindings
