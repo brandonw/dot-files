@@ -67,7 +67,7 @@ return {
     branch = "master", -- lots of commits after latest version (2+ years old)
     keys = {
       { "gfb", "<Cmd>Git blame<CR>", mode = "n" },
-      { "gfd", ":Gdiffsplit", mode = "n" },
+      { "gfd", ":Gdiffsplit ", mode = "n" },
     },
   },
   {

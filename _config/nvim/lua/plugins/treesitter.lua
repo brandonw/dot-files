@@ -14,6 +14,9 @@ local ensure_installed = {
 }
 local ignore_filetypes = {
   qf = true,
+  env = true,
+  text = true,
+  git = true,
 }
 ts.setup({})
 ts.install(ensure_installed)
