@@ -2,7 +2,17 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 # rift workspaces as "index name" pairs, sorted by index so the workspace
 # named "0" (the highest index) renders last, after "9".
-WORKSPACES=$(rift-cli query workspaces | jq -r 'sort_by(.index)[] | "\(.index) \(.name)"')
+#
+# After a rift upgrade/restart, sketchybar can load this config before rift's
+# IPC is answering queries. If we don't wait, the query returns empty and the
+# `while read` loop below runs once with empty values, creating a single bogus
+# `rift.` item with no workspace indicators. Retry until rift responds.
+WORKSPACES=""
+for _ in $(seq 1 50); do
+    WORKSPACES=$(rift-cli query workspaces 2>/dev/null | jq -r 'sort_by(.index)[] | "\(.index) \(.name)"')
+    [ -n "$WORKSPACES" ] && break
+    sleep 0.2
+done
 
 # Bar
 sketchybar --bar height=45 \
@@ -40,6 +50,7 @@ sketchybar \
         click_script="sketchybar --update"
 
 echo "$WORKSPACES" | while read -r idx name; do
+    [ -z "$idx" ] && continue
     sketchybar --add item rift.$idx left \
         --subscribe rift.$idx rift_workspace_change \
         --set rift.$idx \
