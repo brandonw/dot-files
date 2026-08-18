@@ -22,6 +22,7 @@ default_disable = true
 # - focus_follows_mouse: moving the mouse into a window focuses it
 # - mouse_follows_focus: when focus changes, move the mouse to the focused window
 # - mouse_hides_on_focus: hide the mouse cursor after focusing a window
+# 	(this only works with mouse_follows_focus=true)
 focus_follows_mouse = false
 mouse_follows_focus = true
 mouse_hides_on_focus = false
@@ -72,12 +73,25 @@ hot_reload = true
 #	- "bsp" (binary space partitioning),
 #   - "stack" (single stacked container)
 #   - "master_stack" (master area + stack area)
+#   - "scrolling" (niri-like)
 # defaults to "traditional" if omitted
 #
 # This is the default layout mode if there is nothing else configured
 # in the `workspace_rules` section below.
 # You can set different layouts per workspace using `workspace_rules`.
-mode = "bsp"
+mode = "master_stack"
+
+# Where new windows are inserted by default for every layout:
+# - "next_to_selection": immediately after the selected window
+# - "end_of_tree": at the end of the layout
+# This can be overridden per-layout in each layouts respective section.
+window_insertion_point = "next_to_selection"
+
+# these settings only apply when layout mode == "traditional"
+[settings.layout.traditional]
+# Use Sway-style node normalization when adding windows. This gives a new node the
+# average sibling share while preserving the relative proportions of resized nodes.
+equalize_nodes = true
 
 # these settings only apply when layout mode == "master_stack"
 [settings.layout.master_stack]
@@ -89,6 +103,12 @@ master_count = 1
 master_side = "left"
 # Where new windows go when the master area is already full (master | stack | focused)
 new_window_placement = "stack"
+# Orientation arrangement for the master area (horizontal | vertical)
+# If omitted, defaults to the direction perpendicular to master_side's split
+# master_arrangement = "vertical"
+# Orientation arrangement for the stack area (horizontal | vertical)
+# If omitted, defaults to the direction perpendicular to master_side's split
+# stack_arrangement = "vertical"
 
 # these settings only apply when layout mode == "scrolling"
 [settings.layout.scrolling]
@@ -116,6 +136,9 @@ invert_horizontal = false
 # Number of fingers required for gesture
 fingers = 3
 # If true, scrolling past the end of the strip will trigger a workspace switch
+#
+# This enables a seemingly endless scroll experience through each workspace's
+# strip of windows
 propagate_to_workspace_swipe = false
 
 [settings.layout.stack]
@@ -181,10 +204,14 @@ active_label = "name"
 # when displaying workspaces, choose whether to draw the layout preview or a set of labels
 # options are "layout" or "label"
 display_style = "layout"
+# .ron files in this folder appear under Layout Files in the menu bar
+layout_folder = "~/.config/rift/layouts"
 
 [settings.ui.stack_line]
 # experimental stack line indicator (defaults to off)
 enabled = false
+# action on hover: "click" or "hover" (defaults to "hover" which is just a visual indicator)
+hover = "hover"
 # in a horizontal stack where the line will be (top/bottom)
 horiz_placement = "top"
 # in a vertical stack where the line will be (left/right)
@@ -206,6 +233,9 @@ fade_duration_ms = 180.0
 [settings.gestures]
 # Enable horizontal swipes to switch virtual workspaces
 enabled = false
+# If true, Rift consumes horizontal swipes handled by its trackpad gesture handlers
+# so macOS and the foreground app do not also handle them
+consume_dock_swipe = true
 # Invert horizontal direction (swap next/prev)
 invert_horizontal_swipe = false
 # Maximum vertical travel allowed for the horizontal swipe to register.
@@ -238,12 +268,15 @@ drag_swap_fraction = 0.3
 # - preserve_focus_per_workspace: remember last focused window per workspace
 # - workspace_auto_back_and_forth: when enabled, if you try to switch to the same workspace
 #   that's already active, it will switch to the last workspace instead
+# - prevent_wrapping: when true, next/previous workspace switching stops at the first/last
+#   workspace instead of wrapping around
 # - reapply_app_rules_on_title_change: if true, app rules are re-evaluated when a window's title changes
 enabled = true
 default_workspace_count = 9
 auto_assign_windows = true
 preserve_focus_per_workspace = true
 workspace_auto_back_and_forth = false
+prevent_wrapping = false
 reapply_app_rules_on_title_change = true
 
 # Workspace-specific rules
@@ -290,6 +323,11 @@ workspace_names = [
 #   - workspace (integer, 0-based): target workspace index. If omitted or invalid, uses the active workspace.
 #     Alternatively, `workspace` may be a workspace name string to target by name.
 #   - floating (boolean): whether matched windows should float by default.
+#   - position ({ x, y }): initial normalized position for floating windows. Values range from
+#     0.0 (top/left) to 1.0 (bottom/right); the window remains freely movable afterward.
+#   - size ({ w, h }): initial size in logical pixels. Either dimension may be omitted. Floating
+#     windows are initially resized; tiled windows receive a one-time resize after insertion.
+#   - focus (boolean): focus the window after applying the rule, switching to its virtual workspace.
 #   - manage (boolean): whether Rift should manage the matching window. Set to false to ignore the window completely (default = true).
 #
 # Matching behavior (summary):
@@ -333,6 +371,11 @@ workspace_names = [
 #         { app_name = "Calendar", workspace = 2, floating = true },
 #       ]
 #
+#   - Float, place, resize, and focus a window:
+#       app_rules = [
+#         { app_id = "com.example.X", floating = true, position = { x = 0.4, y = 0.7 }, size = { w = 640, h = 480 }, focus = true },
+#       ]
+#
 #   - Accessibility example: float dialog windows for a specific app:
 #       app_rules = [
 #         { app_id = "com.example.X", ax_subrole = "AXDialog", floating = true },
@@ -353,8 +396,8 @@ app_rules = [
 
 # Modifier combinations that can be reused in key bindings
 # Define common modifier combinations to avoid repetition.
-# Example usage: with `Alt + Shift = "Alt + Shift"`, you can write:
-#   "Alt + Shift + H" = { move_node = "left" }
+# Example usage: with `comb1 = "Alt + Shift"`, you can write:
+#   "comb1 + H" = { move_node = "left" }
 [modifier_combinations]
 comb1 = "Alt + Shift"
 
@@ -368,11 +411,14 @@ comb1 = "Alt + Shift"
 
 # Commands
 # - toggle_space_activated
+# - reload_config
 # - next_workspace / prev_workspace
 # - next_workspace = true|false (optional skip-empty override)
 # - prev_workspace = true|false (optional skip-empty override)
 # - switch_to_workspace = N
-# - move_window_to_workspace = N / move_window_to_workspace = { workspace = N, window_id = 123 } (optional window id)
+# - move_window_to_workspace = N|"next"|"prev"
+# - move_window_to_workspace = { workspace = N|"next"|"prev", follow = true|false, window_id = 123 }
+#   (follow and window_id are optional)
 # - create_workspace
 # - switch_to_last_workspace
 # - set_workspace_layout = { mode = "traditional"|"bsp"|"stack"|"master_stack"|"scrolling" } (active workspace)
@@ -382,14 +428,17 @@ comb1 = "Alt + Shift"
 # - move_focus = "left"|"right"|"up"|"down"
 # - move_node = "left"|"right"|"up"|"down"
 # - join_window = "left"|"right"|"up"|"down"
+# - consume_or_expel_window = "left"|"right"|"up"|"down"
 # - toggle_stack / toggle_orientation / unjoin_windows
 # - toggle_focus_floating / toggle_window_floating / toggle_fullscreen / toggle_fullscreen_within_gaps
-# - resize_window_grow / resize_window_shrink / resize_window_by = 0.05
+# - resize_window_grow / resize_window_shrink (without param, horizontal is default)
+# - resize_window_grow = "horizontal"|"vertical"|"smart"
+# - resize_window_shrink = "horizontal"|"vertical"|"smart"
 # - swap_windows = [123, 456]
 # - exec = "command" | exec = ["cmd", "arg1", "..."]
 # - move_mouse_to_display = "left"|"right"|"up"|"down"|N|"<display_uuid>"
 # - move_window_to_display = { selector = "left"|"right"|"up"|"down"|N|"<display_uuid>", window_id = 123 }
-# - close_window = { window_server_id = 123 }
+# - close_window / close_window = { window_server_id = 123 } (optional window id)
 # - focus_window = { window_id = 123, window_server_id = 456 }
 # - show_mission_control_all / show_mission_control_current / dismiss_mission_control (this is rift's own mission control, not macOS's)
 
@@ -463,6 +512,10 @@ comb1 = "Alt + Shift"
 # smartly resize windows
 "Alt + Shift + Equal" = "resize_window_grow"
 "Alt + Shift + Minus" = "resize_window_shrink"
+# Example vertical bindings for windows stacked in a scrolling-layout column:
+# "Alt + Ctrl + Equal" = { resize_window_grow = "vertical" }
+# "Alt + Ctrl + Minus" = { resize_window_shrink = "vertical" }
+# Use "smart" to resize the nearest applicable split automatically.
 
 # Move mouse cursor to display by index (0-based) or UUID
 # Examples:
