@@ -154,7 +154,7 @@ return {
   -----------
   {
     "ramilito/kubectl.nvim",
-    version = "2.9.4",
+    version = "2.44.1",
     dependencies = "saghen/blink.download",
     opts = {},
     cmd = { "Kubectl" },

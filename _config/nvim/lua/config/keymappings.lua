@@ -3,9 +3,6 @@ local keymap = vim.keymap.set
 
 keymap("", "<Space>", ":")
 
-keymap("n", "<C-S-h>", ":leftabove vsplit<CR>", { noremap = true })
-keymap("n", "<C-S-l>", ":rightbelow vsplit<CR>", { noremap = true })
-
 keymap("n", "get", ':tabnew <C-R>=expand("%:p:~:.:h") . "/" <CR>')
 keymap("n", "gsa", utils.searchAll)
 keymap("n", "gsp", utils.searchProd)
@@ -27,5 +24,3 @@ keymap("", "<F5>", ":e!<CR>")
 
 keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true})
 keymap("t", "<C-v><Esc>", "<Esc>", { noremap = true})
-
--- keymap("c", "bd", "lua Snacks.bufdelete()")

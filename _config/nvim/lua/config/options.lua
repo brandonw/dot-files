@@ -15,6 +15,10 @@ vim.opt.signcolumn = "number"
 vim.opt.termguicolors = true
 vim.opt.title = true
 
+-- keep focus on the right/bottom window instead of left/upper
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- Default to treesitter folding
 -- LSP autocmd overrides on attach if support is available
 vim.opt.foldenable = false
