@@ -23,6 +23,8 @@ keymap("n", "]d", vim.diagnostic.goto_next)
 keymap("n", "<Leader>dq", vim.diagnostic.setloclist)
 keymap("", "<F2>", ":mksession! ~/.nvim_session<CR>")
 keymap("", "<F3>", ":source ~/.nvim_session<CR>")
+keymap("", "<F7>", ":AgentsSave<CR>")
+keymap("", "<F8>", ":AgentsRestore<CR>")
 keymap("", "<F5>", ":e!<CR>")
 
 keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true})
