@@ -33,9 +33,26 @@
       "Bash(python3:*)",
       "Update(*)"
     ],
-    "deny": []
+    "deny": [],
+    "ask": [
+      "Bash(git commit)",
+      "Bash(git commit:*)"
+    ]
   },
+  "model": "opus[1m]",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/brandon/.claude/hooks/git-commit-gate.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "matcher": "",
@@ -153,6 +170,16 @@
       }
     ]
   },
+  "enabledPlugins": {
+    "datadog@claude-plugins-official": true
+  },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "awaySummaryEnabled": false,
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
   "editorMode": "vim",
