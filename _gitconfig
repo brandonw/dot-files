@@ -1,5 +1,6 @@
 [user]
 	name = Brandon Waskiewicz
+	email = brandon.waskiewicz@gmail.com
 	signingkey = ECCC21B70B69FFD6
 [core]
 	editor = nvim
@@ -27,3 +28,8 @@
 	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
+
+; Machine-specific overrides (user.email, maintenance.repo, ...). Keep last so
+; it wins over the values above.
+[include]
+	path = ~/.gitconfig.local
