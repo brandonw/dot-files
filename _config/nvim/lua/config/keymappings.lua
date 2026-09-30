@@ -1,4 +1,5 @@
 local utils = require("utils.functions")
+local agents = require("utils.agents")
 local keymap = vim.keymap.set
 
 keymap("", "<Space>", ":")
@@ -12,7 +13,9 @@ keymap("n", "gfj", ":%!python3 -m json.tool<CR>")
 keymap("v", "gfj", ":!python3 -m json.tool<CR>")
 keymap("n", "gss", ":tabnew | terminal npm run dev api<CR>")
 keymap("n", "gsr", ":tabnew | terminal npm run app<CR>:tabnew<CR>:terminal npm run dev worker<CR>:tabnew<CR>:terminal npm run dev scheduler<CR>:tabnew<CR>:terminal npm run dev customer-data-worker<CR>")
-keymap("n", "gsc", ":tabnew | terminal claude --dangerously-skip-permissions<CR>")
+keymap("n", "gsc", agents.new)
+keymap("n", "gsC", agents.new_prompt)
+keymap("n", "goc", agents.pick)
 keymap("n", "[b", ":bprevious<CR>")
 keymap("n", "]b", ":bnext<CR>")
 keymap("n", "[d", vim.diagnostic.goto_prev)

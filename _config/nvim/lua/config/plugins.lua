@@ -85,6 +85,10 @@ return {
     opts = {
       options = {
         mode = "tabs",
+        max_name_length = 32,
+        name_formatter = function(tab)
+          return require("utils.agents").tab_name(tab)
+        end,
       },
     },
   },
