@@ -211,14 +211,9 @@ return {
           k("n", "2", "<Plug>(kubectl.view_replicasets)", opts)
           k("n", "3", "<Plug>(kubectl.view_pods)", opts)
           k("n", "4", "<Plug>(kubectl.view_nodes)", opts)
-          k("n", "5", "<Plug>(kubectl.view_horizontalpodautoscalers)", opts)
-          k("n", "6", crd_view("scaledobjects.keda.sh"), opts)
-          k("n", "7", "<Plug>(kubectl.view_secrets)", opts)
-          k("n", "8", crd_view("externalsecrets.external-secrets.io"), opts) -- ExternalSecrets view
 
           k("n", "8", "<Plug>(kubectl.view_events)", opts) -- Events view
           k("n", "9", "<Plug>(kubectl.view_overview)", opts) -- Overview view
-          k("n", "0", "<Plug>(kubectl.view_api_resources)", opts) -- API-Resources view
 
           -- the plugin binds 1-6 to its default views unless each view's <Plug> is already mapped,
           -- which clobbers our numbers; park every default view we didn't bind above on an untypeable key
