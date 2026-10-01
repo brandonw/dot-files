@@ -39,6 +39,18 @@ return {
       vim.g.gruvbox_material_background = "medium"
       vim.g.gruvbox_material_better_performance = 1
       vim.opt.background = "dark"
+      -- dim_inactive_windows uses bg_dim, which is barely darker than bg0. Darken only
+      -- NormalNC (to the hard palette's bg_dim, the darkest color in the scheme) so
+      -- floats/sidebars that also use bg_dim are left alone.
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "gruvbox-material",
+        callback = function()
+          local nc = vim.api.nvim_get_hl(0, { name = "NormalNC" })
+          nc.bg = "#141617"
+          nc.ctermbg = 232
+          vim.api.nvim_set_hl(0, "NormalNC", nc)
+        end,
+      })
       vim.cmd([[colorscheme gruvbox-material]])
     end,
   },
