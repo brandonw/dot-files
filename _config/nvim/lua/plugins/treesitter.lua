@@ -28,7 +28,8 @@ vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("treesitter_highlight", { clear = true }),
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
-    if ignore_filetypes[ft] then
+    -- kubectl.nvim buffers (k8s_*) have no parsers; don't try to install one
+    if ignore_filetypes[ft] or ft:match("^k8s_") then
       return
     end
 

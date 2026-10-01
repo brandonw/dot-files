@@ -170,25 +170,67 @@ return {
   -----------
   {
     "ramilito/kubectl.nvim",
-    version = "2.44.1",
+    version = "2.46.0",
     dependencies = "saghen/blink.download",
     opts = {},
     cmd = { "Kubectl" },
     keys = {
       { "gok", "<cmd>lua require('kubectl').toggle()<CR>" },
-
-      -- { "1", "<Plug>(kubectl.view_deployments)", ft = "k8s_*" },
-      -- { "2", "<Plug>(kubectl.view_replicasets)", ft = "k8s_*" },
-      -- { "3", "<Plug>(kubectl.view_pods)", ft = "k8s_*" },
-      -- { "4", "<Plug>(kubectl.view_nodes)", ft = "k8s_*" },
-      -- { "5", "<Plug>(kubectl.view_events)", ft = "k8s_*" },
-      -- { "6", "<Plug>(kubectl.view_horizontalpodautoscalers)", ft = "k8s_*" },
-      -- { "7", "<Plug>(kubectl.view_horizontalpodautoscalers)", ft = "k8s_*" },
-      --
-      -- { "8", "<Plug>(kubectl.view_api_resources)", ft = "k8s_*" },
-      -- { "9", "<Plug>(kubectl.view_overview)", ft = "k8s_*" },
     },
     config = function()
+      -- default mappings are only set if the action is unmapped after config()
+      local group = vim.api.nvim_create_augroup("kubectl_mappings", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        group = group,
+        pattern = "k8s_*",
+        callback = function(ev)
+          local k = vim.keymap.set
+          local opts = { buffer = ev.buf }
+
+          -- kubectl floats inherit the global treesitter foldexpr from the window
+          -- they open from; turn it off (views that fold set their own afterwards)
+          for _, win in ipairs(vim.fn.win_findbuf(ev.buf)) do
+            if vim.wo[win].foldexpr == "v:lua.vim.treesitter.foldexpr()" then
+              vim.wo[win].foldmethod = "manual"
+            end
+          end
+
+          -- opens any resource by its CRD name (or short name) in the generic fallback view
+          local function crd_view(name)
+            return function()
+              require("kubectl.views").resource_or_fallback(name)
+            end
+          end
+
+          -- Don't use C-f to filter when C-f is already scroll page
+          k("n", "gf", "<Plug>(kubectl.filter_view)", opts) -- Filter prompt
+          k("v", "gf", "<Plug>(kubectl.filter_term)", opts) -- Filter selected text
+
+          -- views
+          k("n", "1", "<Plug>(kubectl.view_deployments)", opts)
+          k("n", "2", "<Plug>(kubectl.view_replicasets)", opts)
+          k("n", "3", "<Plug>(kubectl.view_pods)", opts)
+          k("n", "4", "<Plug>(kubectl.view_nodes)", opts)
+          k("n", "5", "<Plug>(kubectl.view_horizontalpodautoscalers)", opts)
+          k("n", "6", crd_view("scaledobjects.keda.sh"), opts)
+          k("n", "7", "<Plug>(kubectl.view_secrets)", opts)
+          k("n", "8", crd_view("externalsecrets.external-secrets.io"), opts) -- ExternalSecrets view
+
+          k("n", "8", "<Plug>(kubectl.view_events)", opts) -- Events view
+          k("n", "9", "<Plug>(kubectl.view_overview)", opts) -- Overview view
+          k("n", "0", "<Plug>(kubectl.view_api_resources)", opts) -- API-Resources view
+
+          -- the plugin binds 1-6 to its default views unless each view's <Plug> is already mapped,
+          -- which clobbers our numbers; park every default view we didn't bind above on an untypeable key
+          for _, view in ipairs({ "deployments", "pods", "configmaps", "secrets", "services", "ingresses" }) do
+            local plug = "<Plug>(kubectl.view_" .. view .. ")"
+            if vim.fn.hasmapto(plug, "n") == 0 then
+              k("n", "<Plug>(unbound." .. view .. ")", plug, opts)
+            end
+          end
+        end,
+      })
+
       require("kubectl").setup()
     end,
   },
@@ -332,14 +374,15 @@ return {
       local util = require("lspconfig.util")
 
       -- Wrap vim.lsp.start to block attaching to buffers we don't want an LSP
-      -- for.
+      -- for. kubectl.nvim's in-process LSP is exempt: it provides completion in
+      -- its prompt buffers (e.g. the namespace picker).
       local lsp_start = vim.lsp.start
       vim.lsp.start = function(config, opts)
         opts = opts or {}
         local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
         local name = vim.api.nvim_buf_get_name(bufnr)
         local scheme = name:match("^(%w+)://")
-        if vim.bo[bufnr].buftype ~= "" or (scheme ~= nil and scheme ~= "file") then
+        if config.name ~= "kubectl" and (vim.bo[bufnr].buftype ~= "" or (scheme ~= nil and scheme ~= "file")) then
           return
         end
         return lsp_start(config, opts)
@@ -423,6 +466,13 @@ return {
       },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
+        -- kubectl.nvim prompts: only its own LSP list, no path/snippets/buffer
+        per_filetype = {
+          k8s_namespaces = { "lsp" },
+          k8s_aliases = { "lsp" },
+          k8s_contexts = { "lsp" },
+          k8s_filter = { "lsp" },
+        },
       },
       keymap = {
         -- https://cmp.saghen.dev/configuration/keymap.html#default

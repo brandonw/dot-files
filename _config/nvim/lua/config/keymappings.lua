@@ -29,3 +29,8 @@ keymap("", "<F5>", ":e!<CR>")
 
 keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true})
 keymap("t", "<C-v><Esc>", "<Esc>", { noremap = true})
+
+-- Why prompt buffers treat i_CTRL-W as a window command I do not know
+keymap("i", "<C-w>", function()
+  return vim.bo.buftype == "prompt" and "<C-S-w>" or "<C-w>"
+end, { expr = true })
