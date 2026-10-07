@@ -1,6 +1,8 @@
 vim.g.mapleader = "\\"
 
 vim.g.gruvbox_material_dim_inactive_windows = 1
+-- the default "bright" floats use bg3, the same as Visual, so selections in floats vanish
+vim.g.gruvbox_material_float_style = "blend"
 
 vim.opt.autoread = false
 vim.opt.clipboard:append { "unnamedplus" }
