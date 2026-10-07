@@ -172,12 +172,15 @@ return {
     "ramilito/kubectl.nvim",
     version = "2.46.0",
     dependencies = "saghen/blink.download",
-    opts = {},
+    opts = {
+      -- Large clusters make a short interval a bit painful
+      auto_refresh = { interval = 5000 },
+    },
     cmd = { "Kubectl" },
     keys = {
       { "gok", "<cmd>lua require('kubectl').toggle()<CR>" },
     },
-    config = function()
+    config = function(_, kubectl_opts)
       -- default mappings are only set if the action is unmapped after config()
       local group = vim.api.nvim_create_augroup("kubectl_mappings", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
@@ -195,11 +198,25 @@ return {
             end
           end
 
-          -- opens any resource by its CRD name (or short name) in the generic fallback view
-          local function crd_view(name)
-            return function()
-              require("kubectl.views").resource_or_fallback(name)
+          -- opens a view filtered down to one object (like the plugin's <cr> drill-down);
+          -- <bs> goes back, gr clears the filter
+          local function open_filtered(view_name, name, ns)
+            local state = require("kubectl.state")
+            state.filter = ""
+            state.filter_key = "metadata.name=" .. name .. (ns and ",metadata.namespace=" .. ns or "")
+            require("kubectl.views").resource_or_fallback(view_name)
+          end
+
+          -- full object under the cursor (served from the plugin's cluster cache)
+          local function object_under_cursor()
+            local view = require("kubectl.views").resource_and_definition(vim.trim(vim.b.buf_name or ""))
+            local name, ns = view.getCurrentSelection()
+            if not name then
+              return nil
             end
+            local args = { gvk = view.definition.gvk, namespace = ns, name = name, output = "Json" }
+            local ok, json = pcall(require("kubectl.client").get_single, vim.json.encode(args))
+            return ok and vim.json.decode(json, { luanil = { object = true, array = true } }) or nil
           end
 
           -- Don't use C-f to filter when C-f is already scroll page
@@ -210,7 +227,7 @@ return {
           k("n", "1", "<Plug>(kubectl.view_deployments)", opts)
           k("n", "2", "<Plug>(kubectl.view_replicasets)", opts)
           k("n", "3", "<Plug>(kubectl.view_pods)", opts)
-          k("n", "4", "<Plug>(kubectl.view_nodes)", opts)
+          k("n", "4", function() require("kubectl.resources.nodes_wide").View() end, opts) -- custom node view
 
           k("n", "8", "<Plug>(kubectl.view_events)", opts) -- Events view
           k("n", "9", "<Plug>(kubectl.view_overview)", opts) -- Overview view
@@ -223,10 +240,38 @@ return {
               k("n", "<Plug>(unbound." .. view .. ")", plug, opts)
             end
           end
+
+          -- jumps
+          if ev.match == "k8s_pods" then
+            k("n", "gn", function() -- pod -> its node
+              local pod = object_under_cursor()
+              if not pod then
+                return
+              end
+              if not pod.spec.nodeName then
+                return vim.notify("pod isn't scheduled on a node")
+              end
+              open_filtered("nodes_wide", pod.spec.nodeName)
+            end, opts)
+          end
+          k("n", "gu", function() -- owner: pod -> ReplicaSet/StatefulSet/DaemonSet/Job, ReplicaSet -> Deployment
+            local obj = object_under_cursor()
+            if not obj then
+              return
+            end
+            local refs = obj.metadata.ownerReferences or {}
+            local owner = vim.iter(refs):find(function(r) return r.controller end) or refs[1]
+            if not owner then
+              return vim.notify("no owner")
+            end
+            local kind_view = require("kubectl.views.lineage.definition").find_resource_name(owner.kind)
+            open_filtered(kind_view or owner.kind:lower(), owner.name, obj.metadata.namespace)
+          end, opts)
         end,
       })
 
-      require("kubectl").setup()
+      require("plugins.kubectl_views")
+      require("kubectl").setup(kubectl_opts)
     end,
   },
 
