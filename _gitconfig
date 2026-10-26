@@ -33,3 +33,5 @@
 ; it wins over the values above.
 [include]
 	path = ~/.gitconfig.local
+[spice "branchCreate"]
+	prefix = brandonw/
