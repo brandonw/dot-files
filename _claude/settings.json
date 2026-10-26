@@ -49,6 +49,21 @@
             "type": "command",
             "command": "/Users/brandon/.claude/hooks/git-commit-gate.sh",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/Users/brandon/.claude/hooks/delete-gate.py",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__.*|Artifact|ArtifactData|ArtifactComments",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/brandon/.claude/hooks/delete-gate.py",
+            "timeout": 10
           }
         ]
       }
@@ -175,7 +190,7 @@
   },
   "modelSettings": {
     "claude-opus-5-5": {
-      "effortLevel": "xhigh"
+      "effortLevel": "medium"
     }
   },
   "awaySummaryEnabled": false,
