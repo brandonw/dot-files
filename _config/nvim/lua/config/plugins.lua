@@ -20,11 +20,6 @@ return {
     "saghen/blink.download",
     branch = "main",
   },
-  {
-    -- for esmuellert/codediff.nvim
-    "MunifTanjim/nui.nvim",
-    version = "v0.4.0",
-  },
 
   -------------------------------------------
   -- plugins that are reasonably hands-off --
