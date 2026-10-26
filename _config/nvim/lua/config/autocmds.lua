@@ -128,6 +128,11 @@ autocmd({"FileType"}, {
 autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
+    -- border only the hover float; other floats manage their own borders
+    vim.keymap.set('n', 'K', function()
+      vim.lsp.buf.hover({ border = 'rounded' })
+    end, { buffer = args.buf, desc = 'vim.lsp.buf.hover()' })
+
     -- conform owns formatting and can fallback to lsp as needed
     -- vim.keymap.set('n', '<Leader>f', function()
     --   vim.lsp.buf.format { async = true }
