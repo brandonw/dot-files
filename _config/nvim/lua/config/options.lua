@@ -6,7 +6,6 @@ vim.g.gruvbox_material_dim_inactive_windows = 1
 -- separately in plugins.lua so floats still read lighter than inactive windows.
 vim.g.gruvbox_material_float_style = "dim"
 
-vim.opt.autoread = false
 vim.opt.clipboard:append { "unnamedplus" }
 vim.opt.colorcolumn = { "+1" }
 vim.opt.completeopt = { "menuone", "longest", "preview" }

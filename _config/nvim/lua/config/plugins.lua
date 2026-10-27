@@ -159,6 +159,42 @@ return {
     },
     cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
   },
+  {
+    "esmuellert/codediff.nvim",
+    version = "v4.0.6",
+    event = "VeryLazy",
+    cmd = "CodeDiff",
+    opts = {
+      keymaps = {
+        view = {
+          -- Default gc shadows gcf and the builtin comment operator
+          -- Use zR, zM and za instead
+          toggle_compact = false,
+        },
+      },
+
+      diff = {
+        -- layout = "side-by-side",             -- Diff layout: "side-by-side" (two panes) or "inline" (single pane with virtual lines)
+        -- filler_text = "╱",                   -- Repeated filler pattern; use "" for blank alignment rows
+        -- cycle_next_hunk = true,             -- Wrap around when navigating hunks (]c/[c): false to stop at first/last
+        -- cycle_next_file = true,             -- Wrap around when navigating files (]f/[f): false to stop at first/last
+        -- cycle_hunks_across_files = false,   -- ]c/[c at file boundary hops to first/last hunk of next/prev file (explorer/history)
+        -- jump_to_first_change = true,        -- Auto-scroll to first change when opening a diff: false to stay at same line
+        -- highlight_added_deleted_files = false, -- Tint full contents of added, untracked, and deleted files
+        -- gutter_signs = false,                -- Gutter +/- signs; see Gutter signs below
+        -- compute_moves = false,              -- Detect moved code blocks (opt-in, matches VSCode experimental.showMoves)
+        compact_context_lines = 5,          -- Number of context lines around hunks in compact mode
+        compact_sync_folds = true,          -- Sync fold open/close across panes (mirrors Vim diff mode behavior)
+        compact = true,
+      },
+
+      explorer = {
+        width = 50, -- Width when position is "left" (columns)
+        view_mode = "tree",
+        focus_on_select = true,
+      },
+    },
+  },
 
   -----------
   --- k8s ---
