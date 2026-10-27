@@ -21,6 +21,9 @@
 
 	; Clean branch -- deletes local + remote branch (assumes remote=origin)
 	cb = "!c() { git branch -D $1 && git branch -dr origin/$1 ; }; c"
+
+	; Clean up git-review
+	review-discard = "!git reset --hard && git clean -fd"
 [pull]
 	rebase = false
 	ff = only
