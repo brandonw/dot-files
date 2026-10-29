@@ -170,6 +170,8 @@ return {
           -- Default gc shadows gcf and the builtin comment operator
           -- Use zR, zM and za instead
           toggle_compact = false,
+
+          focus_explorer = "ge",
         },
       },
 
