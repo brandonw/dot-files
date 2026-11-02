@@ -2,21 +2,31 @@
 -- require("kubectl.resources.<name>"), so preloading a module there adds a view.
 -- These lean on plugin internals, so recheck them when bumping its version.
 
--- node labels/annotations shown as extra columns.
--- Clusters name the same thing differently, so each column lists candidate keys
+-- Node object fields shown as extra columns. Each column reads keys under the `field`
+-- path. Clusters name the same thing differently, so each column lists candidate keys
 -- in priority order; per cluster, it reads the first key that any node has.
 local node_columns = {
   {
     header = "POOL",
-    field = "labels",
+    field = { "metadata", "labels" },
     keys = { "hightouch.com/nodegroup", "kubernetes.azure.com/agentpool", "cloud.google.com/gke-nodepool" },
   },
   {
     header = "TYPE",
-    field = "labels",
+    field = { "metadata", "labels" },
     keys = { "node.kubernetes.io/instance-type", "beta.kubernetes.io/instance-type" },
   },
+  {
+    header = "KERNEL",
+    field = { "status", "nodeInfo" },
+    keys = { "kernelVersion" },
+  },
 }
+
+-- the table at path `field` in Node `n`, or {}
+local function field_of(n, field)
+  return vim.tbl_get(n, unpack(field)) or {}
+end
 
 -- the built-in nodes view plus node_columns
 package.preload["kubectl.resources.nodes_wide"] = function()
@@ -42,7 +52,7 @@ package.preload["kubectl.resources.nodes_wide"] = function()
         for _, col in ipairs(node_columns) do
           col_keys[col] = vim.iter(col.keys):find(function(key)
             return vim.iter(by_name):any(function(_, n)
-              return (n.metadata[col.field] or {})[key] ~= nil
+              return field_of(n, col.field)[key] ~= nil
             end)
           end)
         end
@@ -66,7 +76,7 @@ package.preload["kubectl.resources.nodes_wide"] = function()
       for _, row in ipairs(rows) do
         local n = raw[row.name]
         for _, col in ipairs(node_columns) do
-          local value = n and keys[col] and (n.metadata[col.field] or {})[keys[col]]
+          local value = n and keys[col] and field_of(n, col.field)[keys[col]]
           row[col.header:lower()] = value or "-"
         end
       end
