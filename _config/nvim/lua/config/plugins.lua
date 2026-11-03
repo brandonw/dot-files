@@ -208,6 +208,8 @@ return {
     opts = {
       -- Large clusters make a short interval a bit painful
       auto_refresh = { interval = 5000 },
+      -- keybind hints make the header float tall enough to cover long tables; g? shows them
+      headers = { hints = false },
     },
     cmd = { "Kubectl" },
     keys = {
