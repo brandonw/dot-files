@@ -1,6 +1,5 @@
--- Extra kubectl.nvim views. The plugin resolves every view (and its keymaps) with
--- require("kubectl.resources.<name>"), so preloading a module there adds a view.
--- These lean on plugin internals, so recheck them when bumping its version.
+-- Extra columns for kubectl.nvim's built-in views. These lean on plugin internals, so
+-- recheck them when bumping its version.
 
 -- Node object fields shown as extra columns. Each column reads keys under the `field`
 -- path. Clusters name the same thing differently, so each column lists candidate keys
@@ -28,64 +27,51 @@ local function field_of(n, field)
   return vim.tbl_get(n, unpack(field)) or {}
 end
 
--- the built-in nodes view plus node_columns
-package.preload["kubectl.resources.nodes_wide"] = function()
-  local nodes = require("kubectl.resources.nodes")
-  local gvk = nodes.definition.gvk
-  local headers = vim.deepcopy(nodes.definition.headers)
-  for _, col in ipairs(node_columns) do
-    table.insert(headers, col.header)
-  end
-
-  -- raw Node objects by name, plus the key each column reads in this cluster; re-read at
-  -- most every 5s (the view redraws every 500ms)
-  local by_name, col_keys, fetched_at = {}, {}, -math.huge
-  local function raw_nodes()
-    if vim.uv.now() - fetched_at > 5000 then
-      fetched_at = vim.uv.now()
-      local ok, json = pcall(require("kubectl.client").get_all, vim.json.encode({ gvk = gvk }))
-      if ok then
-        by_name = {}
-        for _, n in ipairs(vim.json.decode(json, { luanil = { object = true, array = true } })) do
-          by_name[n.metadata.name] = n
-        end
-        for _, col in ipairs(node_columns) do
-          col_keys[col] = vim.iter(col.keys):find(function(key)
-            return vim.iter(by_name):any(function(_, n)
-              return field_of(n, col.field)[key] ~= nil
-            end)
-          end)
-        end
-      end
-    end
-    return by_name, col_keys
-  end
-
-  return require("kubectl.resources.base_resource").extend({
-    resource = "nodes_wide",
-    display_name = "NODES",
-    ft = "k8s_nodes_wide",
-    gvk = gvk,
-    child_view = nodes.definition.child_view, -- <cr> lists the node's pods
-    hints = nodes.definition.hints,
-    headers = headers,
-    -- rows arrive from the built-in node table; bolt the extra columns on. Empty cells
-    -- get "-" because the plugin finds NAME by splitting the line on runs of spaces.
-    processRow = function(rows)
-      local raw, keys = raw_nodes()
-      for _, row in ipairs(rows) do
-        local n = raw[row.name]
-        for _, col in ipairs(node_columns) do
-          local value = n and keys[col] and field_of(n, col.field)[keys[col]]
-          row[col.header:lower()] = value or "-"
-        end
-      end
-      return rows
-    end,
-  })
+-- Extend the built-in nodes view in place with node_columns. Every code path (reload,
+-- back, :Kubectl nodes, drain) resolves the view by its buffer name with
+-- require("kubectl.resources.nodes") and passes that module's `definition` to the
+-- builder by reference, so changing it here changes the view everywhere. Load this
+-- after setup() and before the first nodes View().
+local nodes = require("kubectl.resources.nodes")
+local definition = nodes.definition
+for _, col in ipairs(node_columns) do
+  table.insert(definition.headers, col.header)
 end
 
--- reuse the built-in node view's drain/cordon/uncordon/shell keymaps
-package.preload["kubectl.resources.nodes_wide.mappings"] = function()
-  return require("kubectl.resources.nodes.mappings")
+-- raw Node objects by name, plus the key each column reads in this cluster; re-read at
+-- most every 5s (the view redraws every 500ms)
+local by_name, col_keys, fetched_at = {}, {}, -math.huge
+local function raw_nodes()
+  if vim.uv.now() - fetched_at > 5000 then
+    fetched_at = vim.uv.now()
+    local ok, json = pcall(require("kubectl.client").get_all, vim.json.encode({ gvk = definition.gvk }))
+    if ok then
+      by_name = {}
+      for _, n in ipairs(vim.json.decode(json, { luanil = { object = true, array = true } })) do
+        by_name[n.metadata.name] = n
+      end
+      for _, col in ipairs(node_columns) do
+        col_keys[col] = vim.iter(col.keys):find(function(key)
+          return vim.iter(by_name):any(function(_, n)
+            return field_of(n, col.field)[key] ~= nil
+          end)
+        end)
+      end
+    end
+  end
+  return by_name, col_keys
+end
+
+-- rows arrive from the built-in node table; bolt the extra columns on. Empty cells get
+-- "-" because the plugin finds NAME by splitting the line on runs of spaces.
+definition.processRow = function(rows)
+  local raw, keys = raw_nodes()
+  for _, row in ipairs(rows) do
+    local n = raw[row.name]
+    for _, col in ipairs(node_columns) do
+      local value = n and keys[col] and field_of(n, col.field)[keys[col]]
+      row[col.header:lower()] = value or "-"
+    end
+  end
+  return rows
 end

@@ -262,7 +262,7 @@ return {
           k("n", "1", "<Plug>(kubectl.view_deployments)", opts)
           k("n", "2", "<Plug>(kubectl.view_replicasets)", opts)
           k("n", "3", "<Plug>(kubectl.view_pods)", opts)
-          k("n", "4", function() require("kubectl.resources.nodes_wide").View() end, opts) -- custom node view
+          k("n", "4", "<Plug>(kubectl.view_nodes)", opts) -- nodes, with extra columns (plugins.kubectl_views)
 
           k("n", "8", "<Plug>(kubectl.view_events)", opts) -- Events view
           k("n", "9", "<Plug>(kubectl.view_overview)", opts) -- Overview view
@@ -286,7 +286,7 @@ return {
               if not pod.spec.nodeName then
                 return vim.notify("pod isn't scheduled on a node")
               end
-              open_filtered("nodes_wide", pod.spec.nodeName)
+              open_filtered("nodes", pod.spec.nodeName)
             end, opts)
           end
           k("n", "gu", function() -- owner: pod -> ReplicaSet/StatefulSet/DaemonSet/Job, ReplicaSet -> Deployment
@@ -305,8 +305,8 @@ return {
         end,
       })
 
-      require("plugins.kubectl_views")
       require("kubectl").setup(kubectl_opts)
+      require("plugins.kubectl_views")
     end,
   },
 
