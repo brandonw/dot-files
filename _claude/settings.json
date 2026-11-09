@@ -3,7 +3,7 @@
     "allow": [
       "Bash(mkdir:*)",
       "Bash(go:*)",
-      "Write(*)",
+      "Write",
       "Bash(ls:*)",
       "Bash(git:*)",
       "Update(*:*)",
